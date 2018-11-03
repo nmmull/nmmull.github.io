@@ -1,0 +1,6 @@
+---
+layout: post
+title: "test post"
+date: 2018-11-02
+---
+This is just a note. Nothing to it.
