@@ -1,4 +1,8 @@
 body {
+    background-color: #eeeedd;
+}
+
+body#course {
     background-color: #c6d6ec;
 }
 
@@ -17,16 +21,30 @@ h1 {
 h2 {
     font-family: Palatino;
     font-weight: lighter;
-    font-size: 24pt;
     font-style: italic;
-    margin-top: 1.0cm;
     text-align: center;
+    font-size:24pt;
+    margin-top: 1.0cm;
+}
+
+p {
+    font-family: Helvetica;
+    font-weight: lighter;
+    width:1000px;
+    margin-bottom:10;
+    margin-top:auto;
+    margin-left:auto;
+    margin-right:auto;
+    line-height: 160%;
+    font-size: 18pt;
+    word-wrap: break-word;
 }
 
 h3 {
     font-family: Palatino;
     font-weight: lighter;
-    font-size: 18pt;
+    font-size: 20pt;
+    font-style: italic;
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
