@@ -7,9 +7,9 @@ body#course {
 }
 
 h1 {
-    font-family: Palatino;
-    font-weight: lighter;
+    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
     font-size: 38pt;
+    font-weight: 500;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1.5cm;
@@ -20,18 +20,18 @@ h1 {
 }
 
 h2 {
-    font-family: Palatino;
+    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
+    font-size: 24pt;
     font-weight: lighter;
     font-style: italic;
     text-align: center;
-    font-size:24pt;
     margin-top: 1.0cm;
 }
 
 h3 {
-    font-family: Palatino;
-    font-weight: lighter;
+    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
     font-size: 20pt;
+    font-weight: lighter;
     font-style: italic;
     margin-left: auto;
     margin-right: auto;
@@ -40,9 +40,9 @@ h3 {
 }
 
 p {
-    font-family: Helvetica;
-    font-weight: lighter;
+    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
     font-size: 18pt;
+    font-weight: lighter;
     margin-bottom: 10;
     margin-top: auto;
     margin-left: auto;
@@ -54,7 +54,7 @@ p {
 }
 
 ul {
-    font-family: Helvetica;
+    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
     font-weight: lighter;
     font-size: 18pt;
     margin-bottom: 10;
@@ -68,7 +68,7 @@ ul {
 }
 
 ol {
-    font-family: Helvetica;
+    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
     font-weight: lighter;
     font-size: 18pt;
     margin-bottom: 10;
@@ -83,7 +83,7 @@ ol {
 
 pre code {
     background-color: #eee;
-    font-family: Monaco;
+    font-family: 'Monaco', 'New Courier', 'Courier', monospace;
     font-size: 14pt;
     display: block;
     padding: 20px;
@@ -91,6 +91,15 @@ pre code {
     margin-right: auto;
     width: 90%;
     max-width: 950px;
+}
+
+hr {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 1000px;
+    size: 3;
+    border: 1px solid black;
 }
 
 
