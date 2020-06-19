@@ -1,118 +1,88 @@
+/* This is the CSS stylesheet of Nathan Mull. */
+
 body {
+    /* Home background color */
     background-color: #eeeedd;
-    margin-bottom: 50px;
+
+    /* Primary body font */
+    font-family: 'Roman', 'Helvetica', 'Arial', sans-serif;
+    font-size: 18pt;
+    font-weight: lighter;
+
+    /* Primary margin setting */
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 1000px;
+
+    /* Global line height */
+    line-height: 160%;
 }
+
+/* Course background color */
 
 body#course {
     background-color: #c6d6ec;
 }
 
-h1 {
+/* Header font*/
+
+h1,
+h2,
+h3 {
     font-family: 'Palatino', 'Times New Roman', 'Times', serif;
+    font-weight: lighter;
+}
+
+/* Header styles */
+
+h1 {
     font-size: 38pt;
-    font-weight: 500;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1.5cm;
-    margin-bottom: 1.0cm;
     text-align: center;
-    width: 90%;
-    max-width: 900px;
+    margin-top: 50px;
 }
 
 h2 {
-    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
     font-size: 24pt;
-    font-weight: lighter;
     font-style: italic;
     text-align: center;
-    margin-top: 1.0cm;
+    margin-top: 40px;
 }
 
 h3 {
-    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
     font-size: 20pt;
-    font-weight: lighter;
     font-style: italic;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
 }
 
-p {
-    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
-    font-size: 18pt;
-    font-weight: lighter;
-    margin-bottom: 10;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
-    line-height: 160%;
-    word-wrap: break-word;
-}
-
-ul {
-    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
-    font-weight: lighter;
-    font-size: 18pt;
-    margin-bottom: 10;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
-    line-height: 160%;
-    word-wrap: break-word;
-}
-
-ol {
-    font-family: 'Helvetica', 'Roman', 'Arial', sans-serif;
-    font-weight: lighter;
-    font-size: 18pt;
-    margin-bottom: 10;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
-    line-height: 160%;
-    word-wrap: break-word;
-}
+/* Code block style */
 
 pre code {
     background-color: #eee;
     font-family: 'Monaco', 'New Courier', 'Courier', monospace;
     font-size: 14pt;
+    line-height: normal;
     display: block;
     padding: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 950px;
 }
 
+/* Horizontal Line */
+
 hr {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
-    size: 3;
+    size: 3px;
     border: 1px solid black;
 }
 
 
+/* Link behavior */
 
 a:link {
     text-decoration: none;
-    color:rgb(0, 0, 0);
+    color:black;
 }
 
 a:visited {
     text-decoration: none;
-    color:rgb(0, 0, 0);
+    color:black;
 }
 
 a:hover {
