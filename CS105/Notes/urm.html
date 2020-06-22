@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Unlimited Register Machines</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Unlimited Register Machines</h1>
+<p>We begin our unconventional study of programming with an examination of <em>unlimited register machines (URMs)</em>. These mathematical objects are used by N.J. Cutland in his book <em>Computability</em> as a model of computation for proving theorems in computability theory, a subfield of logic. We are interested in the simple programming language accompanying URMs, particularly as a prototypical language for testing basic concepts. From this exercise, I hope to emphasize two points.</p>
+<ul>
+<li>Many basic principles of programming are language independent. Programming requires a particular mode of thinking, one that can even be applied in setting that are not apparently computational.</li>
+<li>If we want to fully understand a programming language, we need a working <em>model of execution</em>. This model is an abstraction for how data is handled by a program, and the extent to which this model accurately accounts for what happens in the computer depends on the language and the task.</li>
+</ul>
+<h2 id="urm-definition">URM Definition</h2>
+<p>A URM is comprised of a collection of registers, which may be thought of as boxes or containers, that can hold any natural number (0, 1, 2, and so on). These registers are usually visualized as being arranged in a single row from left to right, so that we may refer to the <code>i</code>th register as the one in the <code>i</code>th position. <em>Note:</em> the convention in computer science is to <em>zero index</em> sequences, which is to say that the zeroth element of a sequence refers to the first element, the first element refers to the second, and so on. Despite their simplicity, URMs are not unreasonable models of real computers, which do stores numeric values in fixed locations of their hardware. The model diverges from reality when taking into account how these locations are arranged, how they are accessed, and the range of values they can store. But the abstraction of the model is maintained to the extent possible when a URM program is executed.</p>
+<h2 id="urm-programs">URM Programs</h2>
+<p>The basic building blocks of a URM program are <em>instructions</em>, of which there are only four:</p>
+<ul>
+<li>the increment instruction, written <code>S(i)</code>,</li>
+<li>the zero instruction, written <code>Z(i)</code>,</li>
+<li>the transfer instruction, written <code>T(i)</code>, and</li>
+<li>the jump instruction, written <code>J(i, j, k)</code>,</li>
+</ul>
+<p>where <code>i</code>, <code>j</code> and <code>k</code> are arbitrary natural numbers. A <em>URM program</em> is a sequence of instructions. We will write URM programs so that each instruction appears on its own line.</p>
+<p>Though these instructions have suggestive names, a program is a syntactic object; it is just a collection of symbols. This is, in part, the beauty of programming; the wildly complex consequences of computer programs come from plain text files. A program is meaningless without an <em>interpreter</em>, another program that executes those instructions. This might, at first, seems terribly circular. Hopefully, it will feel less so in time. But even its extreme forms have proved useful in practice. PyPy, for example, is an interpreter for the popular programming language Python which is itself written in Python. An interpreter connects a programming language to a model of execution; it maintains the model and augments its state according to individual instructions as they are executed.</p>
+<h2 id="interpreting-urm-programs">Interpreting URM Programs</h2>
+<p>An interpreter for URM programs maintains a URM <span class="math inline">\(M\)</span> and a natural number <span class="math inline">\(c\)</span>. The number <span class="math inline">\(c\)</span> that represents the index of the next instruction to be executed and is initially set to <code>0</code>. The initial state of <span class="math inline">\(M\)</span>, before any instructions have been executed, is specified by a finite sequence of natural numbers called <em>inputs</em>. The <code>i</code>th element in the sequence is the value stored in the <code>i</code>th register of <span class="math inline">\(M\)</span>, and all other registers store the number <code>0</code>. Given a program <span class="math inline">\(P\)</span> and a sequence of inputs, <span class="math inline">\(M\)</span> is initialized according to the inputs and then <span class="math inline">\(M\)</span> and <span class="math inline">\(c\)</span> are updated according to the following rules.</p>
+<ul>
+<li>If the <span class="math inline">\(c\)</span>th instruction is <code>S(i)</code>, the value of the <code>i</code>th register of <span class="math inline">\(M\)</span> is increased by one and <span class="math inline">\(c\)</span> is increased by one.</li>
+<li>If it is <code>Z(i)</code>, the value of the <code>i</code>th register of <span class="math inline">\(M\)</span> is set to <code>0</code> and <span class="math inline">\(c\)</span> is increased by one.</li>
+<li>If it is <code>T(i, j)</code> then the value of the <code>i</code>th register of <span class="math inline">\(M\)</span> is copied into the <code>j</code>th register of <span class="math inline">\(M\)</span> and <span class="math inline">\(c\)</span> is increased by one.</li>
+<li>If it is <code>J(i, j, k)</code>, then <span class="math inline">\(c\)</span> is set to <code>k</code> if the <code>i</code>th register and the <code>j</code>th register of <span class="math inline">\(M\)</span> contain the same value. Otherwise, <span class="math inline">\(c\)</span> is increased by one.</li>
+</ul>
+<p>The interpreter performs these rules as long as possible. When <span class="math inline">\(c\)</span> is greater than or equal to the number of instruction in <span class="math inline">\(P\)</span>, the program is said to <em>terminate</em> and its <em>output</em> is the value in the <code>0</code>th register. The interpreter has finished its job. It is possible that a program never terminates, like the program</p>
+<pre><code>J(1, 1, 0)</code></pre>
+<p>with a single jump instruction. In general, the jump instruction is the only one that allows you to move <em>backwards</em> in a program, so it gives power to the language but can cause the most trouble.</p>
+<h2 id="syntax-and-semantics">Syntax and Semantics</h2>
+<p>We have just described a simple programming language in two separate parts: its <em>syntax</em> and its <em>semantics</em>. Its syntax is the collection of rules for determining those arrangements of symbols, those plain text files, which constitute well-formed programs. Its semantics is the collection of rules for determining the meaning of those well-formed programs. The strict separation of syntax and semantics is crucial in the enterprise of programming, though the full scope of reasons why might not be fully appreciable at the moment. One reason of particular importance to us now is that it provides a possible justification for why programming is interesting. It is obvious that syntactically equivalent programs, programs composed of identical arrangements of symbols, should be semantically equivalent, they should have the same meaning. But there are so many syntactically distinct programs which are semantically equivalent; determining which one is the <em>right</em> one in a given context is the role of the programmer.</p>
+<h2 id="examples">Examples</h2>
+<p>Let's consider some examples of URM programs. Suppose we want to compute the sum of two natural numbers. That is, we want to write a program that, given inputs <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, terminates with output <span class="math inline">\(x + y\)</span>. One approach is to increment the value of the <span class="math inline">\(0\)</span>th register, which contains <span class="math inline">\(x\)</span>, as many times as the value in the <span class="math inline">\(1\)</span>st register, which contains <span class="math inline">\(y\)</span>. We can do this by maintaining a <em>counter</em> in a third register which is incremented at the same rate as the <span class="math inline">\(0\)</span>th register. The program should then terminate if the counter register has the same value as the <span class="math inline">\(1\)</span>st register, which can be done using a jump instruction. Here is such a program, which we will refer to below as <code>ADD-TWO</code>.</p>
+<pre><code>J(1, 2, 100)
+S(0)
+S(2)
+J(0, 0, 0)</code></pre>
+<p>A couple things to note about this program:</p>
+<ul>
+<li>The third value in the line <code>0</code> is <code>100</code> but the smallest number we could have used is <code>4</code>. We can use any value that is larger than the length of the program so that the program terminates.</li>
+<li>The last jump instruction compares the <code>0</code>th register with itself. This is mechanism for moving around a program without performing any comparisons.</li>
+<li>The value of the <code>1</code>st and <code>2</code>nd registers are not <code>0</code> when the program terminates. This is fine. Nothing in the semantics requires that the <code>0</code>th register be the only one with a nontrivial value.</li>
+</ul>
+<p>Simple enough, for a more complicated example, suppose we want to compute the sum of three numbers. We can do this by computing the sum of the first and second number, and then computing the sum of the result and the third number. Let's call this program <code>ADD-THREE</code>.</p>
+<pre><code>J(1, 3, 4)
+S(0)
+S(3)
+J(0, 0, 0)
+J(2, 4, 100)
+S(0)
+S(4)
+J(0, 0, 3)</code></pre>
+<p>We are performing a rough form of <em>program composition</em>, in which the output of one program is fed into another program. The first half and the second half of this program look similar because they both are, in essence, the same as <code>ADD-TWO</code>. This process can be generalized so that we can compose any programs and, more generally, use any program as a <em>subroutine</em> in another. First, let's rewrite <code>ADD-TWO</code> as a general template <code>ADD-TWO-SUBROUTINE</code>. Let <code>i</code>, <code>j</code>, <code>k</code>, <code>l</code> and <code>m</code> be arbitrary natural numbers.</p>
+<pre><code>Z(k)
+Z(k + 1)
+Z(k + 2)
+T(i, k)
+T(j, k + 1)
+J(k + 1, k + 2, l + 9)
+S(k)
+S(k + 2)
+J(0, 0, l + 5)
+T(k, m)</code></pre>
+<p>This program (template) adds the values the <code>i</code>th and <code>j</code>th register, performing its work starting at register <code>k</code>, and transfers the result into register <code>m</code>. The variables <code>l</code> refers to the line number of the first instruction in the subroutine, as this code might appear anywhere in a more complex program. It has four phases:</p>
+<ol type="1">
+<li>clearing the work space,</li>
+<li>transferring the input,</li>
+<li>performing the procedure, and</li>
+<li>transferring the output.</li>
+</ol>
+<p>When <code>i = 0</code>, <code>j = 1</code>, <code>k = 100</code>, <code>l = 0</code>, and <code>m = 0</code>, this program is semantically equivalent to <code>ADD-TWO</code>. More complicated, sure, but it is easier to imagine how we might include it in more complex programs. We can, for example, write the program for adding three numbers like so.</p>
+<pre><code>Z(100)
+Z(101)
+Z(102)
+T(0, 100)
+T(1, 101)
+J(101, 102, 9)
+S(100)
+S(102)
+J(0, 0, 5)
+T(100, 0)
+Z(100)
+Z(101)
+Z(102)
+T(0, 100)
+T(2, 101)
+J(101, 102, 19)
+S(100)
+S(102)
+J(0, 0, 15)
+T(100, 0)</code></pre>
+<p>This program is certainly longer than its predecessor, it has some unnecessary instructions like the first three zero instructions. But it is constructed by creating two copies of <code>ADD-TWO-SUBROUTINE</code> and filling in the appropriate values. No need to keep track of a bunch of auxiliary counter registers ourselves. That said, this should be done with a bit of care; we don't want the subroutine to erase work done for other parts of the program. To see how this might be useful in a slightly more complicated example, here is a program for multiplying two numbers which uses <code>ADD-TWO-SUBROUTINE</code>.</p>
+<pre><code>J(1, 2, 13)
+Z(100)
+Z(101)
+Z(102)
+T(0, 100)
+T(3, 101)
+J(101, 102, 10)
+S(100)
+S(102)
+J(0, 0, 6)
+T(100, 3)
+S(2)
+J(0, 0, 0)
+T(3, 0)</code></pre>
+<h2 id="additional-reading">Additional Reading</h2>
+<ul>
+<li>Someone has graciously scanned [<a href="http://www.cs.cornell.edu/courses/cs6110/2015sp/docs/computability%20an%20intro%20to%20recursive%20function%20theory.pdf">the pages</a>] in Cutland's book with the definition of URMs. The presentation is only slightly different from the one here.</li>
+</ul>
+</body>
+
+</html>

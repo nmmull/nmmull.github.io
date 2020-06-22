@@ -59,7 +59,7 @@ h3 {
 pre code {
     background-color: #eee;
     font-family: 'Monaco', 'New Courier', 'Courier', monospace;
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: normal;
     display: block;
     padding: 20px;
@@ -71,7 +71,6 @@ hr {
     size: 3px;
     border: 1px solid black;
 }
-
 
 /* Link behavior */
 
@@ -91,4 +90,17 @@ a:hover {
 
 a:active {
     text-decoration: underline;
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid black;
 }
