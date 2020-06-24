@@ -54,10 +54,14 @@ h3 {
     font-style: italic;
 }
 
-/* Code block style */
+/* Code style */
+
+code {
+    background-color: #eee;
+    border-radius: 3px;
+}
 
 pre code {
-    background-color: #eee;
     font-family: 'Monaco', 'New Courier', 'Courier', monospace;
     font-size: 12pt;
     line-height: normal;

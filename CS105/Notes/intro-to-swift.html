@@ -11,13 +11,13 @@
 <body id="course">
 <h1>Introduction to Swift</h1>
 <p>Swift was introduced in 2014 to replace Objective-C as the language for developing Apple applications. Despite the association with Apple, it's [<a href="https://github.com/apple/swift">open-source</a>] and can be used as a standalone language. We start by developing our knowledge of Swift enough to use it as a heavy-duty calculator (woohoo!).</p>
-<p>Though I think writing URM programs is pretty satisfying, they're not going to work for writing actual programs. A couple issues (among the many):</p>
+<p>Though I think writing URM programs is pretty satisfying, they're not going to work for solving actual problems. A couple issues (among the many):</p>
 <ul>
 <li>We could only write programs that work with natural numbers. This is sufficient for theoretical purposes; any other kind of data can be encoded using natural numbers. But a usable programming language should be <em>expressive</em>, it should be possible to write programs that are understandable. This is easier to do if we have different kinds of data that are interpreted in different ways.</li>
 <li>When we computed a value for later use, we had to store it some register, remember that register, and then be careful not to accidentally write to that register in some other part of the program. This <em>modus operandi</em> won't scale well to more complicated programming tasks.</li>
 <li>When we wanted to use one program as a subroutine, or combine multiple programs, we had to rewrite the code each time, changing the some instructions as necessary. This is irritating, especially since the first [<a href="http://threevirtues.com">great virtue of a programmer</a>] is laziness.</li>
 </ul>
-<p>We will see how many programming languages addresses issues by looking at how Swift does.</p>
+<p>We will see how many programming languages addresses these issues by looking at how Swift does.</p>
 <h2 id="primitive-types-and-literals">Primitive Types and Literals</h2>
 <p>Swift is a <em>strongly typed</em> language. This means all data that appears in a Swift program have attributed <em>types</em>. The type of a value is information about what kind of data it is, and how it should be interpreted. URM programs can be thought of as working with a single type <code>Nat</code> for natural numbers. Swift has many more types, along with mechanisms for creating new types. The <em>primitive types</em> are those that are built into Swift and are common among most full-scale languages. Because they are built-in and fundamental, there is special syntax for constructing fixed values of primitive types. Objects constructed this way are called <em>literals</em>.</p>
 <h3 id="a-couple-primitive-types">A Couple Primitive Types</h3>
@@ -27,7 +27,7 @@
 <li><code>String</code>. Values of type <code>String</code> are representations of text. The way that Swift handles strings is admittedly a bit strange, so we will only be using them in a fairly basic capacity. The literals for <code>String</code> are sequences of characters surrounded by quotations: <code>"This is a string."</code>, <code>"1.23"</code>, <code>"&amp;())"</code>.</li>
 <li><code>Bool</code>. I'm sure you can guess. There are only two values of type <code>Bool</code> given by the literals <code>true</code> and <code>false</code>.</li>
 </ul>
-<p>In addition to simple data types like these, we will also want to combine data types. The simplest way to do this is by using the <em>tuple</em> type. The tuple type depends on other types, it has the general form <code>(&lt;type1&gt;,..., &lt;typeK&gt;)</code>. Given values <code>v1,..., vK</code> of type <code>&lt;type1&gt;,..., &lt;typeK&gt;</code> (not necessarily distinct), the literal <code>(v1,..., vk)</code> is a value of type <code>(&lt;type1&gt;,..., &lt;typeK&gt;)</code>. So <code>(1, "one")</code> is a value of type <code>(Int, String)</code> and <code>(1, 1)</code> is a value of type <code>(Int, Int)</code>. Tuples should really only be used to combine at most three, maybe four, objects. We will eventually develop way to create intricate compound data types which can be used for combining any number of objects.</p>
+<p>In addition to simple data types like these, we will also want to combine data types. The simplest way to do this is by using the <em>tuple</em> type. The tuple type depends on other types, it has the general form <code>(&lt;type1&gt;,..., &lt;typeK&gt;)</code>. Given values <code>v1,..., vK</code> of type <code>&lt;type1&gt;,..., &lt;typeK&gt;</code> (not necessarily distinct), the literal <code>(v1,..., vk)</code> is a value of type <code>(&lt;type1&gt;,..., &lt;typeK&gt;)</code>. So <code>(1, "one")</code> is a value of type <code>(Int, String)</code> and <code>(1, 1)</code> is a value of type <code>(Int, Int)</code>. Tuples should really only be used to combine at most three, maybe four, objects. We will eventually develop ways to create intricate compound data types which can be used for combining any number of objects.</p>
 <p>There are two special cases of tuples. First: the singleton tuples, <code>(&lt;type&gt;)</code> is treated in roughly the same as <code>&lt;type&gt;</code>. The value <code>(((2)))</code> is technically distinct from <code>2</code>, but they are treated internally in exactly the same way, so you can ignore the surrounding parentheses. Second: the empty tuple <code>()</code> is also called <code>Void</code> and has a single value <code>()</code>. <code>Void</code> is used in swift to represent nothing (this is not the same as <code>nil</code>, which we will see later, that represents a different kind of nothing!).</p>
 <h2 id="primitive-operators">Primitive Operators</h2>
 <p>All of the above primitive types have a number primitive operators (functions) written for them. Binary operators are usually written with <em>infix</em> notation, where the operator name appears between its two arguments.</p>
@@ -44,7 +44,7 @@
 <li><em>Greater than or equal to</em> (<code>a  &gt;= b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Less than or equal to</em> (<code>a &lt;= b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Not</em> (<code>!a</code>) applies to a <code>Bool</code> and behaves like <span class="math inline">\(\neg\)</span>.</li>
-<li><em>And</em> (<code>a &amp;&amp; b</code>) applies to two <code>Bool</code>s and behaves like <span class="math inline">\(\land\)</span>.</li>
+<li><em>And</em> (<code>a &amp;&amp; b</code>) applies to <code>Bool</code>s and behaves like <span class="math inline">\(\land\)</span>.</li>
 <li><em>Or</em> (<code>a || b</code>) applies to <code>Bool</code>s and behaves like <span class="math inline">\(\lor\)</span>.</li>
 </ul>
 <h2 id="variables-and-constants">Variables and Constants</h2>
@@ -52,10 +52,10 @@
 <pre class="swift"><code>let &lt;name&gt;: &lt;type&gt; = &lt;value&gt;</code></pre>
 <p>and to declare a variable we use the line</p>
 <pre class="swift"><code>var &lt;name&gt;: &lt;type&gt; = &lt;value&gt;</code></pre>
-<p>where <code>&lt;name&gt;</code> is a sequence of characters naming the value in the program and <code>&lt;value&gt;</code> is the value with type <code>&lt;type&gt;</code> stored. So</p>
+<p>where <code>&lt;name&gt;</code> is a sequence of characters naming the value in the program and <code>&lt;value&gt;</code> is the value with type <code>&lt;type&gt;</code>&#xA0;that is stored. So</p>
 <pre class="swift"><code>var variableWithLongName: Int = 2</code></pre>
-<p>declares a variable named <code>variableWithLongName</code> with value <code>2</code> that can be used throughout the program after its declaration (<em>note:</em> this is not strictly true, they are only available within their own <em>scope</em>, but we delay this discussion for now). It is convention in Swift to use <em>camelCase</em> for long variable names and constant names (camel because the capital letters looking like humps, I guess) with the first letter lower case.</p>
-<p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>), takes two values of the same type, and if the one on the left is a variable, then it assigns the value of that variable on the value to the right. If the left argument is <em>not</em> a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>
+<p>declares a variable named <code>variableWithLongName</code> with value <code>2</code> that can be used throughout the program after its declaration (<em>note:</em> this is not strictly true, they are only available within their own <em>scope</em>, but we delay this discussion for now). It is convention in Swift to use <em>camelCase</em> for long variable names and constant names (camel because the capital letters looking like humps, I guess) with the first letter lowercase.</p>
+<p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>), takes two values of the same type, and if the one on the left is a variable, then it assigns the value of that variable to the value on the right. If the left argument is <em>not</em> a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>
 <pre class="swift"><code>var x: Int = 2
 x = 3</code></pre>
 <p>is valid Swift code and</p>
@@ -82,7 +82,7 @@ x = x + 1</code></pre>
 <li><p><code>&lt;funcName&gt;</code> is the name of the function (also in camelCase),</p></li>
 <li><p><code>&lt;in1&gt;</code>,...,<code>&lt;inK&gt;</code> are names of input parameters,</p></li>
 <li><p><code>&lt;in1Type&gt;</code>,..., <code>&lt;inKType&gt;</code> are types of the inputs,</p></li>
-<li><p><code>&lt;outType&gt;</code>, and</p></li>
+<li><p><code>&lt;outType&gt;</code> is the type of the output of the function, and</p></li>
 <li><p><code>&lt;body&gt;</code> is a block of code with any number of lines.</p></li>
 </ul>
 <p>There are a couple variations on this structure which you will see in the additional reading.</p>
@@ -96,7 +96,7 @@ x = x + 1</code></pre>
 }</code></pre>
 <p>We can use a function after it is declared by <em>calling</em> it:</p>
 <pre class="swift"><code>let x = surfaceOfRectangularPrism(length: 5.0, width: 5.0, height: 5.0) </code></pre>
-<p>Note that we had to include the names of the parameters. This can be tedious. Fortunately, Swift has an interesting mechanism for using more readable parameters in function calls. For every parameter in a function declaration we can actually supply <em>two</em> names. The <em>outer name</em> ,also called an <em>argument label</em>, and is the name that used when calling the function. The inner name, sometimes just called the <em>parameter name</em>, is used in the body of the function. Supplying only one is equivalent to supplying both with the same name. Supplying <code>_</code> as the argument label allows you to call the function without an argument label. It is in Swift style to try to write argument labels so that function calls almost read like sentences. The function</p>
+<p>Note that we had to include the names of the parameters. This can be tedious. Fortunately, Swift has an interesting mechanism for using more readable parameters in function calls. For every parameter in a function declaration we can actually supply <em>two</em> names. The <em>outer name</em>, also called an <em>argument label</em>, is the name that used when calling the function. The inner name, sometimes just called the <em>parameter name</em>, is used in the body of the function. Supplying only one is equivalent to supplying both with the same name. Supplying <code>_</code> as the argument label allows you to call the function without an argument label. It is in Swift style to try to write argument labels so that function calls almost read like sentences. The function</p>
 <pre class="swift"><code>func power(_ x: Double, toThe y: Double) -&gt; Double {
     &lt;WE DONT KNOW HOW TO WRITE THIS YET!&gt;
 }</code></pre>
