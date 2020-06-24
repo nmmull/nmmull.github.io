@@ -60,7 +60,7 @@ J(0, 0, 0)
 J(2, 4, 100)
 S(0)
 S(4)
-J(0, 0, 3)</code></pre>
+J(0, 0, 4)</code></pre>
 <p>We are performing a rough form of <em>program composition</em>, in which the output of one program is fed into another program. The first half and the second half of this program look similar because they both are, in essence, the same as <code>ADD-TWO</code>. This process can be generalized so that we can compose any programs and, more generally, use any program as a <em>subroutine</em> in another. First, let's rewrite <code>ADD-TWO</code> as a general template <code>ADD-TWO-SUBROUTINE</code>. Let <code>i</code>, <code>j</code>, <code>k</code>, <code>l</code> and <code>m</code> be arbitrary natural numbers.</p>
 <pre><code>Z(k)
 Z(k + 1)
