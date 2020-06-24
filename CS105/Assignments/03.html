@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 3</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 3</h1>
+<p>This assignment is due <strong>Monday, June 29 by 6:00PM</strong>. Submit a file <code>hw1.swift</code> with problems 1, 3, and 4. Please include the <code>assert</code> tests in your submission. For the remaining problems, submit a file <code>hw1.pdf</code>.</p>
+<h2 id="problem-1-approximating-pi-using-regular-polygons">Problem 1: Approximating <span class="math inline">\(\pi\)</span> using Regular Polygons</h2>
+<p>Due to the discrete nature of computers, irrational numbers like <span class="math inline">\(\pi\)</span> have to be approximated if we want to used them in programs. One way to approximate <span class="math inline">\(\pi\)</span>, similar to how it was done by Archimedes, is by finding the area of an inscribing or circumscribing regular polygon of a circle with radius <span class="math inline">\(1\)</span>, with sufficiently many sides. An inscribing polygon gives an underestimate and a circumscribing polygon gives an overestimate. One way to try to fix this is to take the average of the two. Write a function <code>approxPiByPolygons(numberOfSides:)</code> which takes as input an <code>Int</code> <span class="math inline">\(n\)</span> and returns the average of the area of an inscribing polygon with <span class="math inline">\(n\)</span> sides and the area of a circumscribing polygon with <span class="math inline">\(n\)</span> sides of a circle of radius <span class="math inline">\(1\)</span>.</p>
+<pre class="swift"><code>func approxPiByPolygons(numberOfSides n: Int) -&gt; Double {
+    // TODO
+    return 0.0
+}</code></pre>
+<p>In order to use trig functions like <code>sin(_:)</code> and <code>cos(_:)</code>, you have to add the line <code>import Foundation</code> at the top of your program. This is an example of an <em>import declaration</em>. It makes an additional collection of functions available to your program.</p>
+<p>Test your function on a couple inputs. Roughly what order of magnitude does <span class="math inline">\(n\)</span> need to be so that the first 5 decimal places are correct?</p>
+<h2 id="problem-2-everything-with-while">Problem 2: Everything with <code>while</code></h2>
+<p>Write a template for code which is semantically equivalent to</p>
+<pre class="swift"><code>if &lt;condition1&gt; {
+    &lt;body1&gt;
+} else if &lt;condition2&gt; {
+    &lt;body2&gt;
+} else {
+    &lt;body3&gt;
+}</code></pre>
+<p>using only <code>if</code> statements.</p>
+<p>Write a template for code which is semantically equivalent to</p>
+<pre class="swift"><code>if &lt;condition&gt; {
+    &lt;body&gt;
+}</code></pre>
+<p>using only <code>while</code> statements.</p>
+<p>Write a template for code which is semantically equivalent to</p>
+<pre class="swift"><code>for i in &lt;left&gt;...&lt;right&gt; {
+    &lt;body&gt;
+}</code></pre>
+<p>using only <code>while</code> statements.</p>
+<h2 id="problem-3-fibonacci">Problem 3: Fibonacci</h2>
+<p>The [<a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci sequence</a>] is a sequence of nonnegative integers with the property that each element is the sum of the previous two elements, where the first element is <span class="math inline">\(0\)</span> and the second is <span class="math inline">\(1\)</span>. In symbols, <span class="math inline">\(F_0 = 0\)</span>, <span class="math inline">\(F_1 = 1\)</span>, and for <span class="math inline">\(j\)</span> satisfying <span class="math inline">\(j \geq 2\)</span>, <span class="math inline">\(F_j = F_{j - 1} + F_{j - 2}\)</span>. We will let <span class="math inline">\(F_i = 0\)</span> when <span class="math inline">\(i &lt; 0\)</span>. Write a function <code>fibonacci(_:)</code> that takes as input and <code>Int</code> <span class="math inline">\(k\)</span> and returns the <span class="math inline">\(k\)</span>th Fibonacci number as an <code>Int</code>. Your function should pass the following tests.</p>
+<pre class="swift"><code>assert(fibonacci(-1) == 0)
+assert(fibonacci(3) == 2)
+assert(fibonacci(10) == 55)</code></pre>
+<h2 id="problem-4-sum-of-digits">Problem 4: Sum of Digits</h2>
+<p>Write a function <code>sumOfDigits(of:)</code> that outputs the sum of its digits of its input. Negative inputs should output the same values as positive inputs. It should pass the following tests.</p>
+<pre class="swift"><code>assert(sumOfTheDigits(of: 123) == 6)
+assert(sumOfTheDigits(of: -10101) == 3)
+assert(sumOfTheDigits(of: 55555) = 25)</code></pre>
+<p><em>Note.</em> For those of you with experience in programming, you are not allowed to use type conversion here. Your function must be arithmetical in nature.</p>
+<p>As a hint, take a look at the <code>%</code> operator, and remember that <code>/</code> is floor division for <code>Int</code>s.</p>
+<h2 id="problem-5-no-jump-instructions">Problem 5: No Jump Instructions</h2>
+<p>In the notes on Control Flow, I claimed that the class of functions that can be computed using URM programs without jump instructions is extremely limited. Formally describe the functions with one input which can be expressed with URM programs without jump instructions.</p>
+<h2 id="challenge-problem-palindrome-integers">Challenge Problem: Palindrome Integers</h2>
+<p>Write a function <code>isPalindrome(_:)</code> which takes an input an <code>Int</code> and returns <code>true</code> if and only if it is the same read forwards and backwards. We will say negative numbers are not palindromes. As with Problem 4, you can only use arithmetic operations. It should pass the following tests.</p>
+<pre class="swift"><code>assert(!isPalindrome(12345))
+assert(isPalindrome(10101))
+assert(!isPaindrome(-101))</code></pre>
+</body>
+
+</html>
