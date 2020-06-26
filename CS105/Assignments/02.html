@@ -10,7 +10,7 @@
 
 <body id="course">
 <h1>Assignment 2</h1>
-<p>This assignment is due <strong>Friday, June 26 by 6:00PM</strong>. For problems 2, 3, and 5, submit files named <code>problem2.urm</code>, <code>problem3.urm</code>, and <code>problem5.urm</code>, each containing your solution to the corresponding problem. For the remaining problems, submit a single file <code>assignment2.pdf</code>.</p>
+<p>This assignment is due <strong>Friday, June 26 by 6:00PM</strong>. For problems 2, 3, and 5, submit files named <code>problem2.urm</code>, <code>problem3.urm</code>, and <code>problem5.urm</code>, each containing your solution to the corresponding problem. For the remaining problems, submit a single file <code>assignment2.pdf</code>. <em>(edit: Problem 5 is a challenge problem and is extra credit.)</em></p>
 <h2 id="problem-1-eliminating-the-transfer-instruction">Problem 1: Eliminating the Transfer Instruction</h2>
 <p>The transfer instruction, though useful, is not actually necessary. Show that any URM program can be transformed into one that is semantically equivalent and does not contain any transfer instructions.</p>
 <h2 id="problem-2-even-or-odd">Problem 2: Even or Odd</h2>
@@ -19,7 +19,7 @@
 <p>Write a URM program that, given inputs <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, outputs the maximum of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <h2 id="problem-4-unused-registers">Problem 4: Unused Registers</h2>
 <p>Argue that, given any program, there is always a register whose value that remains the same throughout its entire execution, even if the program does not terminate. In particular, given a program, write an informal procedure for determining an explicit index at which this holds.</p>
-<h2 id="problem-5-exponentiation">Problem 5: Exponentiation</h2>
+<h2 id="problem-5-exponentiation-challenge-problem">Problem 5: Exponentiation (Challenge Problem)</h2>
 <p>Write a URM program that, given inputs <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, has outputs <span class="math inline">\(x^y\)</span>, the <span class="math inline">\(y\)</span>th power of <span class="math inline">\(x\)</span>.</p>
 <h2 id="problem-6-some-basic-logic-questions">Problem 6: Some Basic Logic Questions</h2>
 <p>Turn the following statements into formulas in propositional logic, doing your best to determine which parts of the statements are propositions. You can use any letters you like for the individual propositions.</p>
@@ -32,6 +32,12 @@
 <li><span class="math inline">\(\neg ((A \land \neg B) \lor (B \land C)) \land C\)</span></li>
 <li><span class="math inline">\(\neg(\neg A \lor (\neg (\neg (B \lor A)) \lor C))\)</span></li>
 </ul>
+<h3 id="edit">Edit</h3>
+<p>The second formula was supposed to read.</p>
+<ul>
+<li><span class="math inline">\(\neg(\neg A \lor (\neg (\neg (B \lor A) \lor C)))\)</span></li>
+</ul>
+<p>Goes to show what one misplaced parenthesis can do. For your submission, you can either answer the question with the correct formula here or you can give a brief informal argument for why the second formula above does not have an assignment that makes it true.</p>
 <h2 id="problem-7-fewer-connectives">Problem 7: Fewer Connectives</h2>
 <p>For functional completeness, we don't need both <span class="math inline">\(\lor\)</span> and <span class="math inline">\(\land\)</span>.</p>
 <p>Write a formula which is semantically equivalent to <span class="math inline">\(A \land B\)</span> using only <span class="math inline">\(\neg\)</span> and <span class="math inline">\(\lor\)</span>. Also write a formula which is semantically equivalent to <span class="math inline">\(A \lor B\)</span> using only <span class="math inline">\(\neg\)</span> and <span class="math inline">\(\land\)</span>.</p>
