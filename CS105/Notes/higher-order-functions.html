@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Higher Order Functions</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Higher Order Functions</h1>
+<p>An object in a programming language is said to have <em>first-class</em> status, it is a <em>first-class object</em>, if it can be treated as data. Robin Popplestone, an early researcher of AI and robotics, gave the following definition that has stood for decades.</p>
+<ol type="1">
+<li>First-class objects can be parameters of functions.</li>
+<li>They can be returned as results of functions.</li>
+<li>They can be subjects of assignment statements.</li>
+</ol>
+<p>The notion of <em>higher order functions</em> is the treatment of functions as first class objects, and is a feature co-opted from functional programing, where it is fundamental. It has proved one of the more fruitful paradigms in programming that is, at this point, indispensable. The idea, however, does not come from computer science, mathematicians had been using this idea for centuries. An indefinite integral is an operation which takes a function and returns another function. We might think of it schematically as looking like <span class="math inline">\((\mathbb R \to \mathbb R) \to (\mathbb R \to \mathbb R)\)</span> and, in fact, we can think of this as the <em>type</em> of the indefinite integral operation.</p>
+<h2 id="functions-types">Functions Types</h2>
+<p>If we are going to treat functions as data then, due to the strongly-typed nature of Swift, we have to be able to express the type of a function. This is simple: a function with input types <code>i1,..., iK</code> and output type <code>o</code> is of type <code>(i1, ..., ik) -&gt; o</code> where <code>(i1,...,ik)</code> is a tuple type. The functions</p>
+<pre class="swift"><code>func addOne (_ x: Int) -&gt; Int {
+    return x + 1
+}
+
+func addTwo (_ x: Int) -&gt; Int {
+    return x + 2
+}</code></pre>
+<p>have type <code>(Int) -&gt; Int</code>. Note the singleton tuple here. This is the one case where singleton tuples can not be replaced with the type inside the tuple, the input part of a function type must be a tuple.</p>
+<p>And so, satisfying the third rule of first-class objects, we can assign functions as values to variables. Once assigned, the variable behaves just like a function, it can be applied to arguments.</p>
+<pre class="swift"><code>var eitherAddOneOrAddTwo: (Int) -&gt; Int = addOne
+assert(eitherAddOneOrAdd(2) == 3)
+eitherAddOneOrAddTwo = addTwo
+assert(eitherAddOneOrAdd(2) == 4)</code></pre>
+<h2 id="functions-as-inputs">Functions as Inputs</h2>
+<p>Another simple but powerful tool of this paradigm. Here is a basic example of a function that applies another function a particular number of times.</p>
+<pre class="swift"><code>func funcPower(_ f: (Int) -&gt; Int, toThe n : Int, appliedTo x: Int) -&gt; Int {
+    var counter = 0
+    var accum = x
+    while counter &lt; n {
+        accum = f(accum)
+    }
+    return accum
+}</code></pre>
+<p>This function has type <code>((Int) -&gt; Int, Int, Int) -&gt; Int)</code>. Using functions as inputs will prove to be useful for <em>abstraction</em>, a technique for making code more general and reusable (more abstract...). For example, we can create an abstract version of the <code>sum(upto:)</code> function which takes the addition function as input.</p>
+<pre class="swift"><code>func accumInts(upTo k: Int, applying f: (Int, Int) -&gt; Int) -&gt; Int {
+  if k &lt;= 0 {
+    return 0
+  }
+  var accum = 0
+  for i in 1...k {
+    accum = f(accum, i)
+  }
+  return accum
+}</code></pre>
+<p>Then we can define a summing function and a <em>factorial</em> function without having to rewrite code.</p>
+<pre class="swift"><code>func add(_ x: Int, _ y: Int) { return x + y }    // Not using indentations is okay for short code
+func multiply(_ x: Int, _ y: Int) { return x * y }
+
+func sum(upTo k: Int) -&gt; Int {
+    return accumInts(upTo: k, applying: add)
+}
+
+func factorial(of k: Int) -&gt; Int {
+    return accumInts(upTo: k, applying: multiply)
+}</code></pre>
+<h2 id="functions-as-output">Functions as Output</h2>
+<p>Before being able to return a function as an output, we need to be able to construct them as necessary. Not so surprisingly, we can write functions definitions <em>inside</em> other function definitions. Here is a function which creates the add <span class="math inline">\(k\)</span> function.</p>
+<pre class="swift"><code>func makeAddFunction(_ k : Int) -&gt; (Int) -&gt; Int {
+    func addK(x: Int) -&gt; Int {
+        return x + k
+    }
+    return addK
+}</code></pre>
+<p>The type of this function is written <code>(Int) -&gt; (Int) -&gt; Int</code>,&#xA0;no parentheses around the output function type. A couple things:</p>
+<ul>
+<li>The variable <code>k</code> is available inside the function <code>addK(_:)</code>, like how variables written outside of functions are available within functions. We say that the function definition is in the <em>scope</em> of <code>k</code>. We will talk more about scope when we talk about environments. Similarly, we <strong>cannot</strong> use the function <code>addK(_:)</code> outside of the body of <code>makeAddFunction(_:)</code>.</li>
+<li>The value of <code>k</code> has to get copied at some point after calling <code>makeAddFunction(_:)</code>. If we look at the definition of <code>addK(x:)</code> in isolation, the value of <code>k</code> would seem to come from thin air. Formally, it is said to be <em>captured</em>.</li>
+<li>Outer names are <strong>not</strong> used for returned functions. We would simply write <code>makeAddFunction(2)(3)</code> in this case, without any argument label <code>x</code> in the second function call.</li>
+</ul>
+<p>Here is an example of a function which combines both of these last two ideas. It takes two functions as input and returns their composition, giving it the strange-looking type <code>((Int) -&gt; Int, (Int) -&gt; Int) -&gt; (Int) -&gt; Int</code>. We might expect it to look something like this.</p>
+<pre class="swift"><code>func composeINCORRECT(_ f: (Int) -&gt; Int, _ g: (Int) -&gt; Int) -&gt; (Int) -&gt; Int {
+    func composed(x: Int) -&gt; Int {
+        return f(g(x))
+    }
+  return composed
+}</code></pre>
+<p>Now this is technically not quite right. The output of this function depends functions <code>f</code> and <code>g</code>, which are not defined locally within the function. The functions are said to <em>escape</em> the body of the function, they might need to be referenced outside of the compose function, and may even be called after the compose function finishes its execution. This is similar to the captured value <code>k</code> above, but functions are more complicated objects than, say, <code>Int</code>s. They are <em>reference types</em> as opposed to <em>value types</em>, another topic we will see in coming weeks. Because of this, Swift requires us to explicitly state when a function escapes, this helps with efficiency on the side of the compiler and is done by adding the <code>@escaping</code> label to the type.</p>
+<h3 id="unnamed-closures">Unnamed Closures</h3>
+<p>Before giving the correct definition of composition, we introduce the notion of <em>unnamed closures</em>, also called <em>lambdas</em> in other languages due to their relationship with the lambda calculus, a model of computation that is the basis of functional programming. Many of the functions we use as inputs or return as outputs are very simple. We don't always want to create a function declaration for these, we want to reserve function declarations for important procedures that need names or especially complicated procedures. Swift has special syntax for building nameless functions, or, said another way, literals for function types. Their general syntax is</p>
+<pre class="swift"><code>{ (&lt;i1&gt;: &lt;type1&gt;,..., &lt;iK&gt;: &lt;typeK&gt;) -&gt; &lt;returnType&gt; in
+    &lt;body&gt;
+}</code></pre>
+<p>and behave just like functions, only without a new to reference later. We can represent the function <code>add</code> from above as</p>
+<pre class="swift"><code>{ (x: Int) -&gt; Int in x + y }</code></pre>
+<p>This is simpler, but we can take this one step further. If the type inference in Swift can figure out the types are, and then we can write</p>
+<pre class="swift"><code>{ (x, y) in x + y }</code></pre>
+<p>And even one step further, there is specialized notation for inputs for even shorter definitions: we can use <code>$k</code> to stand for the <code>k</code>th input to the function. Then we can just write</p>
+<pre><code>{ $0 + $1 }</code></pre>
+<p>Coming back to composition, we can simplify the body of the function significantly using unnamed closures.</p>
+<pre class="swift"><code>func compose(_ f:  @escaping (Int) -&gt; Int, _ g: @escaping (Int) -&gt; Int) -&gt; (Int) -&gt; Int {
+    return { f(g($0)) }
+}</code></pre>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>From the Swift Book:</p>
+<ul>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID174">Function Types</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID178">Nested Functions</a>], this will be covered in the next set of notes, but it is referenced in the reading on closures and is fairly simple</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Closures.html#ID95">Closure Expressions</a>]</li>
+</ul>
+</body>
+
+</html>
