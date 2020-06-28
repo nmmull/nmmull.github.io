@@ -19,6 +19,9 @@
 }</code></pre>
 <p>In order to use trig functions like <code>sin(_:)</code> and <code>cos(_:)</code>, you have to add the line <code>import Foundation</code> at the top of your program. This is an example of an <em>import declaration</em>. It makes an additional collection of functions available to your program.</p>
 <p>Test your function on a couple inputs. Roughly what order of magnitude does <span class="math inline">\(n\)</span> need to be so that the first 5 decimal places are correct?</p>
+<h3 id="edit">Edit</h3>
+<p>Because <code>sin(_:)</code> and <code>cos(_:)</code> are implemented in terms of radians, you might have to use <code>Double.pi</code> in your function. This is fine (even if it is a bit circular), imagine that we are just trying to see how good this approximation is.</p>
+<p>I&#xA0;also forgot to mention that you will have to do a bit of <em>type conversion</em>&#xA0;in this problem. In order to get a <code>Double</code>&#xA0;with the same value as an <code>Int</code>,&#xA0;you can use the function (later, we will call it a constructor) <code>Double(_:)</code>. So <code>Double(n)</code>&#xA0;is a <code>Double</code> version of the <code>Int</code>&#xA0;<code>n</code>.</p>
 <h2 id="problem-2-everything-with-while">Problem 2: Everything with <code>while</code></h2>
 <p>Write a template for code which is semantically equivalent to</p>
 <pre class="swift"><code>if &lt;condition1&gt; {
