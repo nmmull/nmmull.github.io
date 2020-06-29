@@ -66,6 +66,8 @@ func getDigit(_ x: Int, at index: Int) -> Int {
                                       // X ? Y : Z means "if X then Y else Z.
 }
 
+assert(getDigit(1201201, at: 4) == 0)
+
 assert(getDigit(123456, at: 0) == 6)
 assert(getDigit(123456, at: 1) == 5)
 assert(getDigit(123456, at: 2) == 4)

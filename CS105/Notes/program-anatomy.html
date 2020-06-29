@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Program Anatomy</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Program Anatomy</h1>
+<p>When first learning to program, students are often leery of what is possible to write in a program. Can an <code>if</code> statement be put in a while statement? Can a function be defined in another function? Can a function call itself? (This last one is called <em>recursion</em> and will make up a chunk of the material later in the course.) The answer to these questions is pretty much always <em>yes, also much more</em>. But the right way to understand this is to understand the general structure of programs, the grammar, so that it is clear what the compiler is expecting, why is has no problem handling certain constructions, and how exactly it handles them.</p>
+<h2 id="expressions">Expressions</h2>
+<p>The objects or things in a program are called <em>expressions</em>. These are usually the subjects of assignment operators, but they can also stand on their own. Every expression in Swift has a type. If you are ever unclear of whether something is an expression, you simply have to ask <em>does it have a type?</em> The number <code>2</code> has type <code>Int</code> so <code>2</code> is an expression. The function <code>{ (x: Int) in x + 1 }</code> has type <code>(Int) -&gt; Int</code> so it is an expression. The line <code>var x = 2</code> does not have a type so it is not an expression.</p>
+<p>Expressions can be defined formally in tandem with their type. This is yet another inductive definition.</p>
+<ul>
+<li>Literals of type <code>t</code> are expressions of type <code>t</code>.</li>
+<li>Constants and variables of type <code>t</code> are expressions of type <code>t</code>.</li>
+<li>If <code>f</code> is an expression of type <code>(i1,...,iK) -&gt; o</code> and <code>e1,..., eK</code> are expressions of type <code>i1,..., ik</code>, respectively, then <code>f(e1,...,eK)</code> is an expression of type <code>o</code>.</li>
+</ul>
+<p>This definition only becomes interesting in the last line, which is the part which refers inductively to other expressions. Because of higher-order functions, the expression <code>f</code> could be quite complicated. Given the function</p>
+<pre class="swift"><code>func makeAdder(_ k: Int) -&gt; (Int) -&gt; Int {
+    return { $0 + k }
+}</code></pre>
+<p><code>makeAdder(3)</code> is an expression of type <code>(Int) -&gt; Int</code> and <code>makeAdder(3)(4)</code> is an expression of type <code>Int</code>. This definition also seems to indicate that an assignment <code>x = 2</code> is an expression. Indeed, this is the case, but only formally speaking. As you saw in the additional reading, functions are allowed to return nothing, but in practice they actually return the value <code>()</code> of type <code>()</code> or <code>Void</code>. So <code>x=2</code> is an expression of type <code>Void</code>. One would rarely say this, more likely you will see something like <code>x=2</code> <em>has no value</em>. But because every piece of data has to have a type, nothing has to be represented by something... Personally, I find this a bit unsavory, this is another feature for which function languages are designed specifically to avoid.</p>
+<p>It might seem like we have forgot about operators, but operators are just special functions. In fact, infix notation is just shorthand for prefix notation: <code>2 +&#xA0;3</code> is shorthand fo <code>(+)(2, 3)</code>.</p>
+<h3 id="an-aside-on-generics">An Aside on Generics</h3>
+<p>One part of Swift that is ignored by this definition is generics, which complicate the situation quite a bit. Roughly speaking, we can think of a generic function as having multiple possible types. In Swift, however, their behavior is restricted a bit. For example, we cannot assigned to variables without the variable specifying the value of the type variable. In other words, we cannot write</p>
+<pre class="swift"><code>func id&lt;T&gt;(_ x: T) -&gt; T {
+    return x
+}
+
+var f = id</code></pre>
+<p>I&#xA0;guess you could say that generic functions are not first-class objects.</p>
+<h3 id="evaluating-expressions">Evaluating Expressions</h3>
+<p>It is not enough be able to identify expressions, we also have to be able to determine their values. They may appear on the right hand side of an assignment operator, so the compiler has to determine what value to assign the variable. Like many imperative programming languages, Swift uses an <em>eager</em> evaluation strategy for determining the value of an expression. The procedure for eagerly evaluating an expression looks a lot like our process for determining the truth value of a formula. It is an inductive definition on the structure of the expression being evaluated.</p>
+<ul>
+<li>The value of a literal is the literal itself.</li>
+<li>The value of a constant or variable is the value which it is assigned.</li>
+<li>Given an expression of the form <code>f(e1,..., eK)</code>, the value of this expression is determined by first determining the value <code>v0</code> of <code>f</code>, then determining the values of <code>v1,..., vK</code> of <code>e1,..., eK</code>, respectively, from left to right. then applying <code>v0</code> to <code>v1,..., vK</code>.</li>
+</ul>
+<p>The expression <code>f, e1,..., eK</code> are called <em>subexpressions</em> of <code>f(e1,..., eK)</code>. The choice to evaluate to the functional subexpression <code>f</code> before is inputs is reasonable: there is no use evaluating each input if the program will ultimately crash when trying to evaluate <code>f</code>. The choice to evaluate input subexpressions from left to right is arbitrary. Using print statements, we can write Swift code to verify that this is the order in which expressions are evaluated.</p>
+<pre class="swift"><code>func makeSumOfThree() -&gt; (Int, Int, Int) -&gt; Int {
+    print(&quot;making sumOfThree function...&quot;)
+    return { $0 + $1 + $2 }
+}
+
+func makeOne() -&gt; Int {
+    print(&quot;making 1...&quot;)
+    return 1
+}
+
+func makeTwo() -&gt; Int {
+    print(&quot;making 2...&quot;)
+    return 2
+}
+
+func makeThree() -&gt; Int {
+    print(&quot;making 3...&quot;)
+    return 3
+}
+
+print(makeSumOfThree()(makeOne(), makeTwo(), makeThree()))</code></pre>
+<p>This code prints the following when run.</p>
+<pre><code>making sumOfThree function...
+making 1...
+making 2...
+making 3...
+6</code></pre>
+<h2 id="statements">Statements</h2>
+<p>Every piece of a program which constitutes the substance of a program is considered a statement in that program. Generally speaking, a <em>statement</em> in a program is construction what can change the state of the underlying model of execution. For URM programs, these were just the instructions. Statements in Swift are far more complicated. There are a number of special kinds of statements, but all statements fall roughly into two categories: <em>simple</em> and <em>compound</em>. A simple statement is a single line of code. The simple statements we have seen so far are</p>
+<ul>
+<li>expressions which are not functions (in other languages, we are allowed to use functions as statements, not in Swift though),</li>
+<li>variable and constant declarations,</li>
+<li>print statements, and</li>
+<li>return statements (which can, of course, only be written in the body of a function).</li>
+</ul>
+<p>It may seem that expressions don't satisfy the criteria of a statement, as they do not apparently alter the state of the program. This is true of many expressions, but not all.</p>
+<pre class="swift"><code>var counter = 0
+func addToCounter(_ x: Int) -&gt; Int {
+    counter += x
+    return counter
+}
+
+addOneToCounter(2)
+addOneToCounter(3)</code></pre>
+<p>This last two lines of this program are expressions with type <code>Int</code>, and have fixed values. But they also have <em>side effects</em>, they change the value of the counter variable, which is a part of the state of the program.</p>
+<p>Compound statements are statements which are made of other statements (another inductive definition!). So far we have seen</p>
+<ul>
+<li>function declarations and</li>
+<li>control flow statements like <code>if</code> statements, <code>while</code> statements, and <code>for-in-range</code> statements.</li>
+</ul>
+<p>The general structure of compound statements is</p>
+<pre class="swift"><code>&lt;header&gt; {
+      &lt;statement&gt;
+      ...
+      &lt;statement&gt;
+}</code></pre>
+<p>where <code>&lt;statement&gt;</code> is any statement, simple or compound, or</p>
+<pre class="swift"><code>&lt;header1&gt; {
+      &lt;statement&gt;
+      ...
+      &lt;statement&gt;
+} &lt;header2&gt; {
+      &lt;statement&gt;
+      ...
+      &lt;statements&gt;
+}
+...
+} &lt;header-k&gt; {
+      &lt;statement&gt;
+      ...
+      &lt;statement&gt;
+}</code></pre>
+<p>in the case of multiple headers like the <code>if</code>-<code>else if</code>-<code>else</code> statements. Moving forward we will see a number of additional statements which will fall into this same structure. And, though the syntax may change, other imperative languages like python or C++ will have similar inductive structures for describing statements.</p>
+<p>Ultimately, this is why we can write a function declaration in a while loop, even if we would rarely want to. The compiler has a general purpose procedure for reading statements called a <em>parser</em>, and anytime it expects to see a statement, it runs the parser, even inside nested compound statements. This constitutes the way the compiler handles the <em>syntax</em>&#xA0;of a Swift program. In the next set of notes, we will talk about the semantics, which explains how, for example, <code>while</code>&#xA0;statements are interpreted, and how to determine what values are available at any given time during the execution of a program.</p>
+</body>
+
+</html>

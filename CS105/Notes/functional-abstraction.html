@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Functional Abstraction</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Functional Abstraction</h1>
+<p>If there ever were a universal theme of computer science, it might be <em>abstraction</em>. From its conception, programming required abstraction as a fundamental concept. A computer, at its core is a collection of registers with a fixed set of operations for affecting the values in those registers, usually called the <em>machine langauge</em> or <em>machine code</em> for the computer's hardware, which can be executed directly by the hardware. Note the similarity of this setup to that of URMs. But just like with URMs, we don't want to deal with these down-to-the-metal details every time we want to perform a computational task. Programming languages allow us to ignore these details, to abstract them away, and work with a more human readable language with human understandable semantics. Compilers then take these high level languages and translate them down into machine code so that the computer can run them. <em>Programming is abstraction.</em></p>
+<p>But even within a programming language, we can use abstraction to help organize and manage complex programs. The terms I am going to use in these notes are not standard, they reflect my own experiences with abstraction as influenced by my first encounters with programming as well as my continued practice. We will discuss two forms of abstraction in this course: <em>functional abstraction</em>, the design and organization of functions to make code more general, readable, manageable and reusable, and <em>data abstraction</em> the design and organization of data structures for the same purposes. We will see data abstraction once we have discussed <em>structures</em>, a tool for building new types in Swift.</p>
+<p>In my mind, functional abstraction comes in two major forms: <em>downwards</em> and <em>upwards</em> abstraction. Downwards abstraction is used to aid the construction and debugging of code (this is a fancy programming term for <em>making broken code work</em>, unexpected errors are called <em>bugs</em>), and upwards abstraction is the generalization of code, the recognition of coding patters to aid further code development.</p>
+<p>Abstraction is very much an art. Like I said at the beginning of the course, I can not tell you how to use abstraction correctly, I can only explain my own approach, which is similar to the approach of many others because it has proved successful in the past. The easiest way to demonstrate these ideas is to have a working example in mind. We will use the <code>isPalindromeInt(_:)</code> function from Assignment 3.</p>
+<h2 id="downward-abstraction">Downward Abstraction</h2>
+<p>What I call downward abstraction, my advisor likes to call "the advanced technique of wishful thinking." It is also often called <em>functional decomposition</em>. It stems from the observation that, when defining a function, we don't have to have completed every single part to give a reasonable definition. We can abstract out certain parts as to-be-implemented functions. This has a couple apparent benefits:</p>
+<ul>
+<li>We can more clearly state the intention of a function by removing complicated implementation details of subroutines.</li>
+<li>It makes it easier for us to identify errors, should they occur, because the different parts of a procedure are isolated.</li>
+</ul>
+<p>Coming back to our example, we said that a palindrome integer is one that is the same read forwards and backwards. So negative integers are not palindromes. We can build a partial implementation of this function by expressing exactly this with function calls.</p>
+<pre class="swift"><code>func isPalindromeInt(_ x: Int) -&gt; Bool {
+    if x &lt; 0 { return false }
+    return x == reverseInt(x)
+}</code></pre>
+<p>Of course, this won't run yet because we haven't written <code>reverseInt(_:)</code> yet but it gives us a slightly more manageable problem to solve. And because it makes the definition more clear, we know that if there are mistakes, we can look directly to <code>reverseInt(_:)</code> for finding bugs.</p>
+<p>Let's try to use abstraction to define the reversing function. We need to start with a simple idea for the procedure. We can use the following: <em>iterate through the digits of the input from right to left and construct a new integer from left to right.</em> Here is a possible translation of this into code.</p>
+<pre class="swift"><code>func reverseInt(_ x: Int) -&gt; Int {
+    assert(x &gt;= 0)
+    var accum = 0
+    for i in 0..&lt;numberOfDigits(x) {
+        let d = getDigitFromRight(x, atIndex: i)
+        accum = addDigitOnRight(d, to: accum)
+    }
+    return accum
+}</code></pre>
+<p>We can apply this technique until we get down to simple functions that seem clear enough to implement directly.</p>
+<p>For number of digits:</p>
+<pre class="swift"><code>func numberOfDigits(_ x: Int) -&gt; Int {
+    var curr = x
+    var count = 0
+    while curr != 0 {
+        curr = removeLastDigit(from: curr)
+        count += 1
+    }
+    return count
+}
+
+func removeLastDigit(from x: Int) -&gt; Int {
+    return x / 10
+}</code></pre>
+<p>for getting digits on the right:</p>
+<pre class="swift"><code>func getDigitFromRight(_ x: Int, atIndex i: Int) -&gt; Int {
+    return abs((x / powerInt(10, toThe: i)) % 10)
+}
+
+func powerInt(_ x: Int, toThe y: Int) -&gt; Int {
+    assert(y &gt;= 0)
+    var accum = 1
+    var count = 0
+    while count &lt; y {
+        accum *= x
+        count += 1
+    }
+    return accum
+}</code></pre>
+<p>and for adding digits on the right:</p>
+<pre class="swift"><code>func addDigitOnRight(_ d: Int, to x: Int) -&gt; Int {
+    assert(d &gt;= 0 &amp;&amp; d &lt; 10)
+    return x * 10 + d
+}</code></pre>
+<h3 id="tradeoffs">Tradeoffs</h3>
+<p>We went a couple levels deep in the abstraction for the definition of <code>isPalindromeInt(_:)</code> which made the code more clear and modular, but this did not come without consequences. Obviously this implementation is longer than it would have been had we approached the problem directly from the beginning. For the most part, I think this is fine, longer code is worth it if it is clearer. But there are also matters of efficiency that we need to consider. For example, if a number has a different first digit than last digit, then it is certainly not a palindrome, and if we checked digits from inside-out, we would recognize non-palindromes earlier. For example, we might have started with a different abstract implementation:</p>
+<pre class="swift"><code>func isPalindromeInt(_ x: Int) -&gt; Bool {
+    if x &lt; 0 { return false }
+    var curr : Int? = x
+    while let val = curr {    // note the use of while let, it works like if let
+        let (first, last) = firstAndLastDigits(of: val)
+        if first != last { return false }
+        curr = removeFirstAndLastDigits(of: val)
+    }
+    return true
+}
+
+func firstAndLastDigits(of x: Int) -&gt; (Int, Int) {
+    // TODO
+}
+
+func removeFirstAndLastDigits(of x: Int) -&gt; Int? {
+    // TODO, returns nil when x has a single digit.
+}
+</code></pre>
+<p>This implementation would catch non-palindromes earlier. However, unless efficiency is of extreme concern, I think the first definition is sufficiently fast and far more clear. On the other hand, the reversing function could be improved in this sense. The process of counting the number of digits in an <code>Int</code> is about as complex as actually constructing the reverse, so we might has well simplify it using a different procedure idea: <em>remove digits from right to left and create a new <code>Int</code> from left to right</em>. This yields the following implementation which is a bit more efficient and almost as easy to follow.</p>
+<pre class="swift"><code>func reverseInt(_ x: Int) -&gt; Int {
+    assert(x &gt;= 0)
+    var curr = x
+    var accum = 0
+    while curr != 0 {
+        let d = lastDigit(of: curr)
+        accum = addDigitOnRight(d, to: accum)
+        curr = removeLastDigit(from: curr)
+    }
+    return accum
+}
+
+func lastDigit(of x: Int) -&gt; Int {
+    return abs(x) % 10
+}</code></pre>
+<h2 id="upwards-abstraction">Upwards Abstraction</h2>
+<p>Upwards Abstraction comes down to pattern recognition. If we carefully examine functions that we have written, we might notice that certain procedures look very similar, and might be useful elsewhere so we can be lazy in the future. I think this form of abstraction is the more academic and intriguing part of programming, and has connections to my own research. To see an example of how this might look, lets take the <code>reverseInt(_:)</code> function. It seems like reversing integers is not the only time we might want to reverse ordered collections of things. For example, rotating an image horizontally about its center is the same as reversing its rows of pixels. We could write a more general reverse function which works exactly the same way, but for Arrays.</p>
+<pre class="swift"><code>func reverseArrayOfInts(_ l: [Int]) -&gt; [Int] {
+    var out = [Int]()
+    for x in l {
+        out.insert(x, at: 0)
+    }
+    return out
+}</code></pre>
+<p>But this is a bit unsatisfying because the function itself does not seem to depend on the fact that we are working with <code>Int</code>s. They could just as easily be <code>Double</code>s, tuples, or even other arrays. What we need is a <em>polymorphic</em> version of the reversing function on Arrays, one which can essentially take the type within the list as a variable. Most typed languages have mechanisms for polymorphism, in Swift these are called <em>generics</em>. The generic function for reversing is as follows.</p>
+<pre class="swift"><code>func reverse&lt;T&gt;(_ l: [T]) -&gt; [T] {
+    var out = [T]()
+    for x in l {
+        out.insert(x, at: 0)
+    }
+    return out
+}</code></pre>
+<p>Here <code>T</code> is a variable for a type, which can be used in the input types and the body of the function. The changed only in swapping <code>Int</code> for <code>T</code>&#xA0;in the construction of <code>out</code>.</p>
+<p>We can take all this even one step further, which you will do in Assignment 5. For now we can use this upwards abstraction to rewrite our palindrome function.</p>
+<pre class="swift"><code>func isPalindrome&lt;T&gt;(_ l: [T]) -&gt; Bool {
+    return l == reverse(l)
+    // or return l == l.reversed()
+}
+
+func isPalindromeInt(_ x: Int) -&gt; Bool {
+    if x &lt; 0 { return false }
+    return isPalindrome(intToDigitArray(x))
+}</code></pre>
+<p>The <code>intToDigitArray(_:)</code> function is also a part of the next assignment. Again, there is a tradeoff here, it would be slightly more efficient to determine if an <code>Int</code> is a palindrome directly, but for simple functions, laziness wins out and we can write very little code (especially if we used the built in reversed method for Arrays).</p>
+<p>Again, this is an art. We could essentially go upwards and downwards in abstraction <em>ad infinitum</em>. It is up to you and the context to determine how far they should actually go.</p>
+</body>
+
+</html>
