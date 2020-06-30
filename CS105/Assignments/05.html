@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 5</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 5</h1>
+<p>This assignment is due <strong>Monday, July 6 by 6:00PM</strong>. Submit a file <code>assignment4.swift</code> with all problems to Canvas. Please include the <code>assert</code> tests in your submission, as well as any additional tests requested in each problem.</p>
+<h2 id="problem-1-integer-to-digit-array">Problem 1: Integer to Digit Array</h2>
+<p>Write a function <code>intToDigitArray(_:)</code> which converts a nonnegative integer into a list of its individual digits.</p>
+<pre class="swift"><code>func intToDigitArray(_ x: Int) -&gt; [Int] {
+    assert(x &gt;= 0)
+    // TODO
+}</code></pre>
+<p>It should pass the following tests.</p>
+<pre class="swift"><code>assert(intToDigitArray(12345) == [1, 2, 3, 4, 5])
+assert(intToDigitArray(101) == [1, 0, 1])</code></pre>
+<h2 id="problem-2-accumulate">Problem 2: Accumulate</h2>
+<p>Often, we write functions which take an array of elements and then accumulates a value by applying a binary function to the element and the accumulated value. Write a generic function <code>accumulate(_:, start:, combine:)</code> with this property. We can use this as a more general function to define reversing.</p>
+<pre class="swift"><code>func accumulate&lt;S, T&gt;(_ l: [S], start: T, combiner: (T, S) -&gt; T) -&gt; T {
+    // note we can have two type variables
+    // TODO
+}</code></pre>
+<p>It should pass the following tests.</p>
+<pre class="swift"><code>// these functions are sum, factorial, and reverse
+// here we the (+) operator on lists for concatentation
+assert(accumulate([1, 2, 3, 4, 5], start: 0, combiner: (+)) == 15)
+assert(accumulate([1, 2, 3, 4, 5], start: 1, combiner: (*)) == 120)
+assert(accumulate([1, 2, 3, 4, 5], start: [], combiner: { [$1] + $0 }) == [5, 4, 3, 2, 1])</code></pre>
+<h2 id="problem-3-map-filter">Problem 3: Map, Filter</h2>
+<p>There are a couple higher-order functions for lists that have proved very useful in practice for abstraction. One is the mapping function, which applies a given function to each element of an Array.</p>
+<pre class="swift"><code>func map&lt;S, T&gt;(_ f: (S) -&gt; T, onto l: [S]) -&gt; [T] {
+    // TODO
+}</code></pre>
+<p>Another is filtering which takes a <em>Boolean predicate</em> (fancy name for function of type <code>(t) -&gt; Bool</code>) and keeps all elements which satisfy it.</p>
+<pre class="swift"><code>func filter&lt;T&gt;(_ l: [T], with f: (T) -&gt; Bool) -&gt; [T] {
+    // TODO
+}</code></pre>
+<p>This, for example, could be used to refine searches in lists of contacts, or remove ill-formed entries from a list of data. Complete these functions. They should pass the following tests.</p>
+<pre class="swift"><code>assert(map({ $0 * $0 }, onto: [1, 2, 3, 4, 5]) == [1, 4, 9, 16, 25])
+assert(filter([1, 2, 3, 4, 5, 6], with: { $0 % 2 == 0 }) == [2, 4, 6])</code></pre>
+<p>Also include <strong>two additional assert tests for each function</strong>.</p>
+<h2 id="problem-4-reduce">Problem 4: Reduce</h2>
+<p>The last useful higher-order function for abstraction is for dictionaries. We start with a function which combines two dictionaries, merging the values with a combining function if both dictionaries contain a given key.</p>
+<pre class="swift"><code>func combineDict&lt;S, T&gt;(_ d1: [S: T], _ d2: [S: T], combiner: (T, T) -&gt; T) -&gt; [S: T] {
+    // TODO
+}
+</code></pre>
+<p>That is, if <code>k</code> is a key in both <code>d1</code> and <code>d2</code>, then the value at <code>k</code> in the output dictionary should be <code>combiner(d1[k], d2[k])</code>.</p>
+<p>The reducing function applies this to function to a list of dictionaries, accumulating from left to right.</p>
+<pre class="swift"><code>func reduce&lt;S, T&gt;(_ l: [[S: T]], combiner: (T, T) -&gt; T) -&gt; [S: T] {
+    return accumulate(l, start: [S: T](), combiner: { combineDict($0, $1, combiner: combiner) })
+}</code></pre>
+<p>Fill in the <code>combineDict(_:, _:, combiner:)</code> function. The function <code>reduce(_:, combiner:)</code> should then pass the following test.</p>
+<pre class="swift"><code>assert(reduce([[Int: Int]](), combiner: (+)) == [:])
+assert(reduce([[&quot;a&quot;: 1], [&quot;b&quot;: 1], [&quot;c&quot;: 1], [&quot;a&quot;: 1], [&quot;c&quot;: 1]], combiner: (+)) ==
+       [&quot;a&quot;: 2, &quot;b&quot;:1, &quot;c&quot;: 2])</code></pre>
+<p>Also include <strong>one additional assert test.</strong></p>
+<h2 id="problem-5-order-matters">Problem 5: Order Matters</h2>
+<pre class="swift"><code>let firstArg = { (x: Int, y: Int) in x }
+let secondArg = { (x: Int, y: Int) in y }
+
+var extraVariable = 0
+
+func i1() -&gt; Int {
+    // TODO
+}
+
+func i2() -&gt; Int {
+    // TODO
+}
+
+assert(firstArg(i1(), i2()) != secondArg(i2(), i1()))</code></pre>
+<p>Fill in the definitions of <code>i1</code> and <code>i2</code>&#xA0;so that the last <code>assert</code> statement passes. You can only add to the bodies of <code>i1</code>&#xA0;and <code>i2</code>.</p>
+</body>
+
+</html>
