@@ -27,7 +27,7 @@ assert(removeAllOccurences(of: 4, from: [3, 7, 3, 77, 2, 10]) == [3, 7, 3, 77, 2
   // TODO
 }</code></pre>
 <p>It should pass the following tests.</p>
-<pre class="swift"><code>assert(unzip([Int]()) == ([], []))   // UPDATED 7/1
+<pre class="swift"><code>assert(unzip([])) == ([], []))
 assert(unzip([0]) == ([0], []))
 assert(unzip([0, 1]) == ([0], [1]))
 assert(unzip([0, 1, 2]) == ([0, 2], [1]))
