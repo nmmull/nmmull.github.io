@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Secure SHell and Secure CoPy</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Secure SHell and Secure CoPy</h1>
+<p>If you need to use UChicago's remove linux machine through the command line, you will need to use the <code>ssh</code> and <code>scp</code> commands. In the command line,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a>$ <span class="fu">ssh</span> <span class="op">&lt;</span>cnetID<span class="op">&gt;</span>@linux.cs.uchicago.edu</span></code></pre></div>
+<p>will open a shell on the remote machine for your account. From there you can type the same sorts of commands as you would on your local machine and they will be sent to the remote machine. You will be prompted for a password, use the one you use for Canvas. The command <code>exit</code> will bring you back to your local machine's command line.</p>
+<p>If you need to get a file that you have locally on your machine to the remote machine</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="fu">scp</span> <span class="op">&lt;</span>fileName<span class="op">&gt;</span> <span class="op">&lt;</span>cnetID<span class="op">&gt;</span>@linux.cs.uchicago.edu:<span class="op">&lt;</span>pathOnRemoteMachine<span class="op">&gt;</span></span></code></pre></div>
+<p>will do this. So</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a>$ <span class="fu">scp</span> file.txt nmull@linux.cs.uchicago.edu:~</span></code></pre></div>
+<p>copies the file <code>file.txt</code> to the home directory on the remote machine. You will, again, be prompted for a password.</p>
+<p>If you want to use these commands without using their password each time, follow the instructions on [<a href="http://www.linuxproblem.org/art_9.html">this website</a>] for setting up ssh keys.</p>
+</body>
+
+</html>

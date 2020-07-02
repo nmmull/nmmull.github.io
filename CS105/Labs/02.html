@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Lab 2: Counting Words</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Lab 2: Counting Words</h1>
+<p>Writing a program to count words in a given input text is another one of these rites of passage in computer science. We will use it as an opportunity to look at a bit more practical Swift. By the end of this lab, you will have created a fully functioning program from start to finish.</p>
+<h2 id="the-goal">The Goal</h2>
+<p>You will create a Swift program called <code>Word-Counter.swift</code>. When run in the terminal, it will look like the program is running indefinitely, but it is waiting for input typed directly into the command line. If you type something (which may include more than one line) and and then press <code>control-d</code>, it should print on individual lines the words that appeared in the text you typed, together with their frequencies. The words should be completely lower cased and should appear in decreasing order of frequency. If you type</p>
+<pre><code>Laziness: The quality that makes you go to great effort to reduce
+overall energy expenditure. It makes you write labor-saving programs
+that other people will find useful and document what you wrote so
+you don&#39;t have to answer so many questions about it.</code></pre>
+<p>and press <code>control-d</code>, then it should print</p>
+<pre><code>you: 4
+to: 3
+that: 2
+so: 2
+it: 2
+makes: 2
+document: 1
+people: 1
+programs: 1
+about: 1
+have: 1
+answer: 1
+other: 1
+wrote: 1
+laziness: 1
+saving: 1
+will: 1
+the: 1
+questions: 1
+what: 1
+write: 1
+labor: 1
+energy: 1
+reduce: 1
+go: 1
+expenditure: 1
+effort: 1
+find: 1
+great: 1
+quality: 1
+and: 1
+don&#39;t: 1
+useful: 1
+overall: 1
+many: 1</code></pre>
+<p>right after what you typed.</p>
+<p>We will consider a word to be a contiguous sequence of letters (upper or lower case) possibly containing the symbols <code>-</code> and <code>'</code>. This definition includes some apparently incorrect sequences like <code>---</code> or <code>A'B''C</code>, but we won't worry about this. Also note that words like <code>LaTeX</code>&#xA0;should be displayed as <code>latex</code>&#xA0;in the output.</p>
+<p>Though input can be typed in directly as described above, it is more useful to be able to count words in a given <code>.txt</code>&#xA0;file. For this we can use <em>input redirection</em> and <em>output redirection</em> in the command line. You can redirect the text in a <code>.txt</code> file as the input to the program using the <code>&lt;</code>&#xA0;symbol.</p>
+<pre><code>$ swift Word-Counter.swift &lt; someTextFile.txt</code></pre>
+<p>If you also want to redirect the printed output into a text file, you can do this using the <code>&gt;</code>&#xA0;symbol.</p>
+<pre><code>$ swift Word-Counter.swift &lt; someTextFile.txt &gt; outputTextFile.txt</code></pre>
+<p>Once you have finished your program you can test it on the [<a href="http://www.gutenberg.org/files/100/100-0.txt">Complete Works of William Shakespeare</a>].</p>
+<h2 id="but-first...">But First...</h2>
+<p>There are a couple odds and ends in Swift that we need to discuss before getting started. They are more practically useful tools and don't naturally fall into any particular part of the course, so we will cover them in this lab.</p>
+<h3 id="type-conversion">Type Conversion</h3>
+<p>We have seen it a couple times in passing, but one important aspect of working with practical applications of Swift is type conversion. Generally speaking, type conversion is not a <em>safe</em> operation. Attempting to convert the <code>String</code> <code>"someString"</code> into an <code>Int</code> does not (and should not) actually result in an <code>Int</code>. Using a <code>Double</code> <code>2.4</code> as the input to a function of with input type <code>Int</code> means necessarily changing the value of the number being input. Because Swift is so careful about types, it requires you to do conversions explicitly.</p>
+<p>Type conversion is handled by <em>initializers</em>, also called <em>constructors</em>, which are functions for building objects of a given type. The name of an initializer for a type is the name of the type itself, e.g., <code>String(2)</code> evaluates to <code>"2"</code>, and we can imagine it as a function of type <code>(Int) -&gt; String</code>. Practically speaking, determining which types can be converted is a matter of checking the Documentation. The functions called <code>init</code> in the Documentation are initializers, and the ones for type conversion are usually labeled as such (e.g., see the page for [<a href="https://developer.apple.com/documentation/swift/double"><code>Double</code>s</a>]). Here is a short list of common type conversions.</p>
+<ul>
+<li><code>Int</code> to <code>String</code>, <code>String(23)</code> is the same as <code>"23"</code>, this can also be accomplished using <code>String</code> interpolation, <code>"\(2)"</code> is the same as <code>"2"</code></li>
+<li><code>Double</code> to <code>String</code>, works in essentially the same way as converting <code>Int</code>s to <code>String</code>s</li>
+<li><code>String</code> to <code>Int</code>/<code>Double</code>, <code>Int(someString)</code> is a value of type <code>Int?</code>. If <code>someString</code> is not in the form of an <code>Int</code> then it is <code>nil</code>. This is useful for converting inputs give as command line arguments or standard input to numeric values.</li>
+<li><code>Int</code> to <code>Double</code> conversion behave as expected. <code>Double</code> to <code>Int</code> work by floor division, so <code>Int(2.4)</code> is the same as <code>2</code>. This is useful if you need to use a numerical value for a numeric function but it is not the right type.</li>
+</ul>
+<h3 id="strings">Strings</h3>
+<p>I went back and forth on this a bit, but I've decided to include a bit more about Strings in this course, despite the somewhat modern way that Swift handles them. Part of the reason Swift strings are strange is that they are very general, they represent different languages with more complicated alphabets in a uniform way. A <code>String</code> in Swift may be thought of as a collection of objects of a type <code>Character</code>. In other languages, the <code>String</code> type is identical to the type <code>[Character]</code>. In Swift they are distinct, but it is possible to convert a <code>String</code> into this form using <code>Array("someString")</code> or <code>[Character]("someString")</code>. Furthermore, <code>String</code>s have many of the same methods as arrays.</p>
+<p>As you can probably imagine, it is often useful to access parts of a given <code>String</code>. In Swift, a part of a <code>String</code> is not another <code>String</code>, but something of a new type called a <code>Substring</code>. The literals for <code>Substring</code>s are the same as those for <code>String</code>s, but if we want to use a <code>Substring</code> as a <code>String</code>, then we have to convert it first by <code>String(someSubstring)</code>. This is actually not unique to <code>String</code>s, if we index an array by indexing with a range, we get an <code>ArraySlice&lt;T&gt;</code>, not another array, which can be converted into an array as necessary. So <code>[1, 2, 3][0...1]</code> is an <code>ArraySlice&lt;Int&gt;</code>, but <code>[Int]([1, 2, 3][0...1])</code> is a <code>[Int]</code>.</p>
+<p>The other somewhat unfortunate feature of <code>String</code>s is that they cannot be indexed by integers. So <code>someString[0]</code> does not refer to the first character of the <code>String</code>. This is because Strings store unicode, and many unicode elements may combine to represent a single character. If you want to iterate over the indices of a <code>String</code>, you have to use the <code>.indices</code> property.</p>
+<pre class="swift"><code>for i in someString.indices {
+  print(someString[i])
+}</code></pre>
+<p>There are a number of methods for <code>String</code>s and <code>Characters</code> that are useful for practical applications in the Documentation. Here is a short list of the methods from the [<a href="https://developer.apple.com/documentation/swift/string">Documentation for <code>String</code></a>] that might be useful in this lab.</p>
+<ul>
+<li><code>.drop(while:)</code></li>
+<li><code>.removeAll(where:)</code></li>
+<li><code>.split(whereSeparator:)</code></li>
+<li><code>.lowercased()</code></li>
+<li><code>.map(_:)</code></li>
+</ul>
+<p>Also take a look at the [<a href="https://developer.apple.com/documentation/swift/character">Documentation for <code>Character</code></a>] for useful functions like the <code>.isLetter()</code> function.</p>
+<h3 id="standard-input">Standard Input</h3>
+<p>The word counting program takes its input on <em>standard input</em>, meaning essentially that it takes its input by your typing directly into the command line. The command that Swift has for reading from standard input is <code>readLine()</code>, which is of type <code>() -&gt; String?</code> (see [<a href="https://developer.apple.com/documentation/swift/swift_standard_library/input_and_output">the Documentation</a>]). It returns <code>nil</code> when you type <code>command-d</code> or it reaches the end of the file when using input redirection. At the point that this function call is executed, the program will wait for input on standard input, which you can type in directly into the command line. Once you are done and press <code>enter</code>, the function outputs the line you typed as an optional string and the program continues. You can test this with a simple program</p>
+<pre class="swift"><code>if let line = readLine() {
+    print(line)
+}</code></pre>
+<p>This program prints what to you typed after you press <code>enter</code>.</p>
+<p>For the word counting program, you need to be able to get multiple lines at a time. For this you will need to used use a <code>while let</code> loop with <code>readLine()</code> and combine the outputs you get from multiple calls to <code>readLine()</code>. To combine the lines in the correct way, you need to use the <em>newline</em> character<code>"\n"</code>. This is a special character that essentially represents pressing <code>enter</code> in a word processor. Testing in the REPL,</p>
+<pre><code>&gt; print(&quot;line 1\nline 2\nline 3&quot;)
+line l
+line 2
+line 3
+&gt; </code></pre>
+<h2 id="submission">Submission</h2>
+<p>I have included a (very sparse) [<a href="../Code/Course/Word-Counter-Template.swift">template</a>] for the code. It contains a <code>main()</code> function which you should call in your program once you have completed each part of the program and are ready to test. It also includes some comments for a potential decomposition of the program. You don't have to follow it, but I do expect that using the ideas of functional abstraction/decomposition could be useful here. Given the holiday and the fact that this lab is our first complete program, it will be due <strong>Wednesday, July 8 by 6PM</strong>. You should submit a file called <code>Word-Count.swift</code> to Canvas.</p>
+</body>
+
+</html>
