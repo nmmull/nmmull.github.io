@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Recursion</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Recursion</h1>
+<p>The discussion of recursion begins with the basic observation that a function can call itself. From the perspective of syntax, this should seem reasonable. A function call is an expression which can appear as statements anywhere in a program. From the perspective of semantics, this also seems to work out, albeit with a bit more thought. When a function is called it must have already been declared, so its name appears in the environment and can be found using the lookup procedure.</p>
+<p>This is a powerful observation, but has its pitfalls. We can use this idea to produce concise and frankly elegant functions, but it also an easy way for us to introduce infinite loops in our code. The smallest such example:</p>
+<pre class="swift"><code>func dumb() {
+    dumb()
+}</code></pre>
+<p>Like with induction, we want our recursive functions to be <em>well-founded</em> which means they don't cause infinite loops, they always eventually lead to a call that will terminate, like a base case.</p>
+<p>Let's start with a very simple example. We have already seen the factorial function which, at this point of the course, we might write as</p>
+<pre class="swift"><code>func factorial(_ n: Int) -&gt; Int {
+    assert(n &gt;= 1)
+    var accum = 1
+    for i in 1...n {
+        accum *= i
+    }
+    return accum
+}</code></pre>
+<p>This code expresses the idea that <span class="math inline">\(n!\)</span> is the product of the first <span class="math inline">\(n\)</span> natural numbers. But another way of expressing the definition of factorial is that</p>
+<ul>
+<li><span class="math inline">\(1! = 1\)</span>, and</li>
+<li><span class="math inline">\(n! = n * (n - 1)!\)</span> for <span class="math inline">\(n &gt; 1\)</span>.</li>
+</ul>
+<p>We can use recursion to expression this definition in code.</p>
+<pre class="swift"><code>func factorial(_ n: Int) -&gt; Int {
+    if n == 1 { return 1 }
+    return n * factorial(n - 1)
+}
+var x = factorial(3)</code></pre>
+<p>In order to better understand what is going on here it is worth drawing the environment diagram for a call to <code>factorial(3)</code>. Each call to <code>factorial(_:)</code> on a number greater than <code>1</code> creates a new frame for a call to factorial. The first frame that is considered DONE is the one for the call on <code>1</code>. Before, this all frames are considered live.</p>
+<p><img src="../Other/Recursion-Images/factorial-env.png" style="zoom:45%;" /></p>
+<p>After this, all the frames are labeled DONE in reverse order in which they were called.</p>
+<p><img src="../Other/Recursion-Images/factorial-env-2.png" style="zoom:45%;" /></p>
+<p>Let's consider a slightly more interesting example. Suppose we want to find the smallest element in an Array of <code>Int</code>s. One way we can do this is by iterating over the elements and keeping track of the smallest element. Alternatively, we know that the smallest element in an Array is going to be the minimum of the first element and the smallest element in the rest of the array.</p>
+<pre class="swift"><code>func minInt(_ l: [Int]) -&gt; Int? {
+    if l.isEmpty { return nil }
+    if let minOfRest = minInt([Int](l[1...])) {    // this is a one-sided range, very useful
+        return min(l[0], minOfRest)
+    }
+    return l[0]
+}</code></pre>
+<p>There is a fair amount going on here, but the idea is simple: <code>minOfRest</code> is the value of the smallest <code>Int</code> in the <code>l</code> not including <code>l[0]</code>. It might be <code>nil</code> if this array is empty. But if it is not, then the minimum of the entire list has to be either <code>minOfRest</code> or <code>l[0]</code>, the smaller of the two.</p>
+<p>One more example, we can now do our operations on <code>Int</code> digits more cleanly.</p>
+<pre class="swift"><code>func sumOfDigits(_ x: Int) -&gt; Int {
+    assert(x &gt;= 0)
+    if x &lt; 10 { return x }
+    return (x % 10) + sumOfDigits(x / 10)
+}</code></pre>
+<p>The mindset behind recursion can be a bit challenging. We have to be comfortable using a function in our code that hasn't fully been written yet, and won't be fully written until we have used the function. It can feel very Catch-22, but it is actually quite similar to the technique of wishful thinking from functional abstraction. For recursion, it is often called the <em>leap of faith</em>. We have to be confident that when we recursively call a function that we have written the function correctly and that it will give us the solution that we expect. We use it as an abstraction.</p>
+<h2 id="general-recursion-on-natural-numbers">General Recursion on Natural Numbers</h2>
+<p>The general structure of a recursive function is similar to that of an induction proof. There is a recursive call which, similar to the inductive step, makes use of the output of the function on a <em>smaller</em> object, and there is a base case (e.g. the <code>n==1</code> case in <code>factorial(_:)</code>) which ensures that the recursive calls eventually lead to a terminating case. The notion of smallness depends on the type we are working with. The "smaller than" relation for <code>Int</code>s is obvious. For arrays and other collection types, it is based on the <code>.count</code> property.</p>
+<p>So far we have only seen <em>linear recursion</em>, in which the recursive steps is a single call to a function on a smaller input. To get a better sense of what is happening with recursion we are going to generalize it in the case of <code>Int</code>s. Pretty much every form of linear recursion with nonnegative <code>Int</code>s has a particular structure that can be abstracted using higher-order functions. The idea is very much in line the <code>accumulate</code> function from Assignment 5.</p>
+<pre class="swift"><code>func generalRecursionNat&lt;T&gt;(_ n: Int, base: T, step: (Int, T) -&gt; T) -&gt; T {
+    assert(n &gt;= 0)
+    if n == 0 { return base }
+    return step(n, generalRecursionNat(n - 1, base: base, step: step))
+}
+
+let factorial = { generalRecursionNat($0, base: 1, step: *) }</code></pre>
+<p>We start with a value <code>base</code> and then apply a given function which may depend on the current value of <code>n</code> a fixed number of times. That is all that recursion is, in some sense, a generalized version of function exponentiation.</p>
+<h2 id="tree-recursion">Tree Recursion</h2>
+<p><em>Tree recursion</em> is the natural analogy to strong induction to recursion. It is the observation that we can call the same function multiple times different sizes of inputs. The prototypical example of tree recursion is the recursive definition of <code>fibonacci(_:)</code></p>
+<pre class="swift"><code>func fibonacci(_ n: Int) -&gt; Int {
+    assert(n &gt;= 0)
+    if n == 0 || n == 1 { return 1 }
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}</code></pre>
+<p>This version of <code>fibonacci(_:)</code> just exactly expresses the definition of the Fibonacci numbers that is typically given.</p>
+<p>As with most (but not all) names in computer science, the name tree recursive is meant to be suggestive. We can represent a tree recursive function as a tree (in fact, we can represent a linear recursive function as a line, or a very simple kind of tree). A <em>tree</em> structure is a collection of <em>nodes</em> labeled with some information with arrows pointing to other nodes. What makes a tree a tree is that there are no loops in the collections of arrows. In this case the nodes are labeled by function calls and the arrows point to For example, we can visualize the <code>fibonacci(5)</code> as</p>
+<p><img src="../Other/Recursion-Images/fib.png" style="zoom:50%;" /></p>
+<p>Note that the circled parts of the tree are the same. This means there is duplicated work, which is not good for efficiently. We'll see in the next set of notes some ways to fix this.</p>
+<h2 id="mutual-recursion">Mutual Recursion</h2>
+<p>The last kind of recursion I will mention is strange and a bit specialized, but very cool so worth mentioning. Mutual recursion comes from the idea that we can define functions which call each other. The classic example is the <code>isEven(_:)</code> and <code>isOdd(_:)</code> functions.</p>
+<pre class="swift"><code>func isEven(_ n: Int) -&gt; Bool {
+    if n &lt; 0 {
+        return isOdd(n + 1)
+    else if n &gt; 0 {
+        return isOdd(n - 1)
+    else {
+        return true
+    }
+}
+
+func isOdd(_ n: Int) -&gt; Bool {
+    if n &lt; 0 {
+        return isEven(n + 1)
+    else if n &gt; 0 {
+        return isOdd(n - 1)
+    else {
+        return false
+    }
+}</code></pre>
+<p>This requires a great leap of faith. In some sense, neither function seems to have self-contained logic. But put together and read abstractly, they are quite clear. This is also one case in which it is very important the we are allowed to call functions before their declarations.</p>
+</body>
+
+</html>

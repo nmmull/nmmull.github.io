@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Induction</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Induction</h1>
+<p>We again find ourselves on a topic that looks to have little or nothing to do with programming. But our next topic is <em>recursion</em>, which is related to induction, and I think it is important to see both how they are similar and and how they are different. Since this is not a math class, we won't dwell on the details too much.</p>
+<p>In mathematics, we often want to prove that something is true of all natural, <em>e.g.</em>,</p>
+<blockquote>
+<p>Every natural number can be factored into a product of primes, ones and zeros.</p>
+</blockquote>
+<p>In some cases this can be done using a single argument applied to each number. The statement</p>
+<blockquote>
+<p>For every natural number <span class="math inline">\(n\)</span> there is another natural number <span class="math inline">\(m\)</span> such that <span class="math inline">\(m * n = n + n\)</span></p>
+</blockquote>
+<p>can be proved by taking <span class="math inline">\(m\)</span> to be <span class="math inline">\(2\)</span>, independent of the choice of <span class="math inline">\(n\)</span>. But there are certain facts for which this does not work. Consider this standard fact you might have learned in middle school:</p>
+<blockquote>
+<p>For every natural number <span class="math inline">\(n\)</span> , <span class="math inline">\(\sum_{i = 1}^n i = \frac{n(n + 1)}{2}\)</span>.</p>
+</blockquote>
+<p>In English, the sum of the first <span class="math inline">\(n\)</span> natural number is half of <span class="math inline">\(n\)</span> times <span class="math inline">\((n + 1)\)</span>. If we check any particular value of <span class="math inline">\(n\)</span>, we will see that this equality holds. But it is not so easy to generalize this sort of argument to an arbitrary choice of <span class="math inline">\(n\)</span> (though it is possible, and has to do with summing from the outside in...). This is when might consider another method like induction.</p>
+<p>Induction is often described in terms of dominoes. As a thought experiment suppose that you have in front of you the beginning of an infinitely long line of dominoes and you push down the first one. It is natural to believe that every domino in that line will eventually fall. <em>But how do you know this?</em> There are infinitely many, so you cannot know this by observation. Even if you could live forever, there will always be dominoes that you haven't yet seen fall (this is actually quite strange, and one of the reasons why infinity is such a bizarre topic in mathematics). You do, however, know the basic fact that any particular domino will fall <em>if</em> the one in front of it falls. Said another way, if a domino in the line never falls, then neither does the one in front of it. You also know the basic fact that the first domino fell, since you pushed it over yourself. Now suppose someone tries to convince you that some domino <span class="math inline">\(D\)</span> is the first domino in the line will not fall over. You could make the following counterargument.</p>
+<blockquote>
+<p><span class="math inline">\(D\)</span> cannot be the very first domino, because I pushed that domino over, I can see that it has fallen by observation. But this means there is a domino in front of <span class="math inline">\(D\)</span>. And since <span class="math inline">\(D\)</span> never falls, neither does the domino in front of <span class="math inline">\(D\)</span>. But then <span class="math inline">\(D\)</span> cannot be the <em>first</em> domino that never falls, there is one before it that also never falls.</p>
+</blockquote>
+<p>This is an example of an argument by contradiction. We assumed something was true even though we know it is false, that there is a domino that never falls, and showed that something absurd followed from it. This justification means that, in order to be confident that every domino will eventually fall, we simply need to know that</p>
+<ol type="1">
+<li>The first domino fell, and</li>
+<li>If any given domino falls, then the domino after it falls as well.</li>
+</ol>
+<p>We can know something about infinitely many objects from just two pieces of information.</p>
+<p>Bringing this back to mathematics, let <span class="math inline">\(P(i)\)</span> be a property that depends on natural numbers, and suppose that we want to show that <span class="math inline">\(P(i)\)</span> holds for any choice of <span class="math inline">\(i\)</span>. We can even imagine that <span class="math inline">\(P(i) =\)</span> "the <span class="math inline">\(i\)</span>th domino in an infinite line of falling dominoes will eventually fall." In order to do this, we simple have to show that</p>
+<ol type="1">
+<li>P(0) holds, and</li>
+<li>for any <span class="math inline">\(k\)</span>, if <span class="math inline">\(P(k)\)</span> holds then so does <span class="math inline">\(P(k + 1)\)</span>.</li>
+</ol>
+<p>This first step is typically called the <em>base case</em>, and ensures that we can get the process of showing <span class="math inline">\(P(i)\)</span> for any <span class="math inline">\(i\)</span> started. The next step, typically called the <em>inductive step</em>, allows the truth of <span class="math inline">\(P(0)\)</span> to <em>propagate</em>, like the falling of dominoes, to all other natural numbers.</p>
+<p>When doing the inductive step, we make the assumption that <span class="math inline">\(P(k)\)</span> already holds for a fixed value <span class="math inline">\(k\)</span>. This is called the <em>inductive hypothesis</em> and makes up the most conceptually difficult part of induction. It kind of looks like we are assuming the very thing that we are trying to prove. Take a minute to parse the difference in language. We are trying to ultimately prove</p>
+<blockquote>
+<p>For all <span class="math inline">\(i\)</span>, the property <span class="math inline">\(P(i)\)</span> holds.</p>
+</blockquote>
+<p>The inductive step, we prove,</p>
+<blockquote>
+<p>For all <span class="math inline">\(i\)</span>, if the property <span class="math inline">\(P(i)\)</span> holds then the property <span class="math inline">\(P(i + 1)\)</span> holds.</p>
+</blockquote>
+<p>So the inductive hypothesis is that <span class="math inline">\(P(k)\)</span> holds, where <span class="math inline">\(k\)</span> is an arbitrary fixed natural number, from which we want to prove <span class="math inline">\(P(k + 1)\)</span> holds.</p>
+<h2 id="sum-of-the-first-n-natural-numbers">Sum of the First <span class="math inline">\(n\)</span> Natural Numbers</h2>
+<p>Let's see this in practice and prove that <span class="math display">\[
+P(n) = \left(\sum_{i = 1}^n i = \frac{n(n + 1)}{2} \right)
+\]</span> holds for any <span class="math inline">\(n\)</span>.</p>
+<p><em>Base case.</em> First we argue that <span class="math inline">\(P(0)\)</span> holds. This should be obvious. The sum of the first <span class="math inline">\(0\)</span> numbers is <span class="math inline">\(0\)</span> and half of <span class="math inline">\(0\)</span> times <span class="math inline">\(1\)</span> is <span class="math inline">\(0\)</span>.</p>
+<p><em>Inductive step.</em> We start by assuming the inductive hypothesis, that for an arbitrary fixed value <span class="math inline">\(k\)</span>, <span class="math display">\[
+\sum_{i = 1}^k i = \frac{k(k + 1)}{2}.
+\]</span></p>
+<p>We then have to show that</p>
+<p><span class="math display">\[
+\sum_{i = 1}^{k + 1} i =
+\frac{(k + 1)(k + 2)}{2}
+\]</span></p>
+<p>We can do this by noticing that <span class="math inline">\(\sum_{i = 1}^{k + 1} i = \left(\sum_{i = 1}^ki\right) + (k + 1)\)</span>. And we know the value of <span class="math inline">\(\left(\sum_{i = 1}^k i \right)\)</span> is given by our inductive hypothesis, so we can replace it, yielding the derivation</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{i = 1}^{k + 1} i &amp;=
+\left(\sum_{i = 1}^k i\right) + (k + 1) \\ &amp;=
+\frac{k(k + 1)}{2} + (k + 1) \\ &amp;= 
+\frac{k(k + 1)}{2} + \frac{2(k + 1)}{2}  \\ &amp;=
+\frac{(k + 2)(k + 1)}{2}.
+\end{align*}
+\]</span> ## Strong Induction</p>
+<p>The kind of induction we that just described is not as powerful as it could be. In some cases, some additional power might be necessary. Let's come back an example given above.</p>
+<blockquote>
+<p>Every natural number can be factored into a product of primes, ones and zeros.</p>
+</blockquote>
+<p>Let's try to prove this using induction as described above.</p>
+<p><em>Base case.</em> This is certainly true of <span class="math inline">\(0\)</span>, since <span class="math inline">\(0\)</span> is a product of primes, ones, and zeros.</p>
+<p><em>Inductive Step.</em> Suppose <span class="math inline">\(P(k)\)</span> holds for an arbitrary <span class="math inline">\(k\)</span> (inductive hypothesis). We now aim to show <span class="math inline">\(P(k + 1)\)</span>. If <span class="math inline">\(k + 1\)</span> is prime, then <span class="math inline">\(P(k + 1)\)</span> holds automatically. Otherwise, <span class="math inline">\(k\)</span> is composite, and is the product of two values each greater than <span class="math inline">\(1\)</span>, that is <span class="math inline">\(k = l m\)</span> where <span class="math inline">\(l &gt; 1\)</span> and <span class="math inline">\(m &gt; 1\)</span>. At this point we are stuck. The relationship between <span class="math inline">\(k\)</span>, <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> is very unclear. But, if we are just thinking of <span class="math inline">\(P(k)\)</span> as something already proved, then we should also be able to think of <span class="math inline">\(P(l)\)</span> and <span class="math inline">\(P(m)\)</span> in the same way. <em>A domino falls if every domino appearing in front of it falls.</em></p>
+<p>The <em>strong induction step</em> is then</p>
+<blockquote>
+<p>For every <span class="math inline">\(k\)</span>, if <span class="math inline">\(P(0), P(1), ..., P(k)\)</span> holds, then so does <span class="math inline">\(P(k + 1)\)</span>.</p>
+</blockquote>
+<p><em>Strong Induction Step</em>. The argument is the same as above, except when we get to the fact that <span class="math inline">\(k = lm\)</span> then we can use the fact that <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> can be factored into products of primes, ones and zeros. Therefore, we can factor <span class="math inline">\(k\)</span> by combining the factors of <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span>.</p>
+<h2 id="structural-induction">Structural Induction</h2>
+<p>This is perhaps the most important form of induction in computer science, as it underlies the <em>inductive definitions</em> we have seen a couple times now in this course. Keeping with the dominos analogy, there was nothing that required the infinite collection of dominoes to be a line. It could have been one of these intricate spiraling patters that are often constructed in complex domino schemes, as long as every domino except one (or a small few) has a domino appearing in front of it that will cause it to be knocked over.</p>
+<p>The formal way to ensure that inductive definitions have this property is to use <em>levels</em>. The leveled propositional formulas can be defined as follows.</p>
+<ul>
+<li>The propositional formulas at level 0 are propositional variables by themselves.</li>
+<li>The propositional formulas at level <span class="math inline">\(i + 1\)</span> are the propositional formulas at level <span class="math inline">\(i\)</span>, together with the formulas <span class="math inline">\((\neg \phi)\)</span>, <span class="math inline">\((\phi \lor \psi)\)</span> and <span class="math inline">\((\phi \land \psi)\)</span> for every formulas <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> at level <span class="math inline">\(i\)</span>.</li>
+</ul>
+<p>We then define a propositional formula as a formula of level <span class="math inline">\(k\)</span> for some <span class="math inline">\(k\)</span>. This definition does not have the circularity that the original one does, the definition for level <span class="math inline">\(i + 1\)</span> only depends on level <span class="math inline">\(i\)</span>. What makes all this work is that <strong>they define the same collection of formulas</strong> and so we can be comfortable with the first definition, knowing that it can be presented in a way without circularities, it is said to be <em>well-founded</em>. The same can be done for expressions or statements, a definition of <em>leveled expressions</em> can be made that describes the same class of expessions as the original definition gave.</p>
+<p>With any well-founded inductively define collection of objects, we show that some property holds of every object in the collection by performing <em>structural induction</em> on the collection. This can be made more formal, but because we won't spend too much time on this, let's just look at an example. If we want to prove the property <span class="math inline">\(P(\phi)\)</span> of all propositional formulas <span class="math inline">\(\phi\)</span>, we can prove the following.</p>
+<ul>
+<li><em>Base case.</em> <span class="math inline">\(P(A)\)</span> holds for any propositional variable <span class="math inline">\(A\)</span>.</li>
+<li><em>Inductive step.</em> For any formulas <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span>, if <span class="math inline">\(P(\phi)\)</span> and <span class="math inline">\(P(\psi)\)</span> hold, then <span class="math inline">\(P(\neg \phi)\)</span>, <span class="math inline">\(P(\phi \lor \psi)\)</span>, and <span class="math inline">\(P(\phi \land \psi)\)</span> hold.</li>
+</ul>
+<p>Now we can more formally prove one of the claims in Assignment 2.</p>
+<blockquote>
+<p>For any formula <span class="math inline">\(\phi\)</span>, there is a formula <span class="math inline">\(\phi^*\)</span> which contains no appearances of <span class="math inline">\(\land\)</span> which is semantically equivalent to <span class="math inline">\(\phi\)</span>.</p>
+</blockquote>
+<p><em>Base case.</em> For any propositional variables <span class="math inline">\(A\)</span>, we can take <span class="math inline">\(A^*\)</span> to be <span class="math inline">\(A\)</span>, since it already contains no appearances of <span class="math inline">\(\land\)</span>.</p>
+<p><em>Inductive step.</em> Let <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> be arbitrary formulas and suppose we have already defined <span class="math inline">\(\phi^*\)</span> and <span class="math inline">\(\psi^*\)</span> (this is the inductive hypothesis). Then <span class="math display">\[
+\begin{align*}
+(\neg \phi)^* &amp;= \neg \phi^* \\
+(\phi \land \psi)^* &amp;= \neg(\neg \phi^* \lor \neg \psi^*) \\
+(\phi \lor \psi)^* &amp;= \phi^* \lor \psi^* \\
+\end{align*}
+\]</span> As a final note, standard induction is just structural induction on a simple structure, a line. We can define the natural numbers as levels in the obvious way, the only natural number at level <span class="math inline">\(0\)</span>&#xA0;is <span class="math inline">\(0\)</span>&#xA0;itself and the natural numbers at level <span class="math inline">\(i + 1\)</span> are the natural numbers at level <span class="math inline">\(i\)</span> together with <span class="math inline">\(n + 1\)</span> for any number <span class="math inline">\(n\)</span> at level <span class="math inline">\(i\)</span>.</p>
+</body>
+
+</html>
