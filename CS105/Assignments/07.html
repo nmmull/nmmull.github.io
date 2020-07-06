@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 7</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 7</h1>
+<p>This assignment is due <strong>Friday, July 10 by 6:00PM</strong>. Submit a file <code>assignment6.swift</code> for problems 4 and 5, and submit a file <code>assignment6.pdf</code> with problems 1, 2 and 3.</p>
+<h2 id="problem-1-sum-of-odds">Problem 1: Sum Of Odds</h2>
+<p>Use induction to show that <span class="math inline">\(\sum_{k = 1}^n (2k - 1) = k^2\)</span>.</p>
+<h2 id="problem-2-parenthesis">Problem 2: Parenthesis</h2>
+<p>Use structural induction of propositional formulas to prove that every propositional formula has the same number of left parentheses as right parentheses. This might feel a bit obvious, and in some sense it is, but to do it right we do need to use structural induction.</p>
+<h2 id="problem-3-fixpoints">Problem 3: Fixpoints</h2>
+<p>We can use induction to prove things about recursive functions. Consider the following.</p>
+<pre class="swift"><code>func fixpoint(_ f: (Int) -&gt; Int, _ x: Int) -&gt; Int {
+    if f(x) == x { return x }
+    return fixpoint(f, f(x))
+}</code></pre>
+<p>Suppose that <code>f</code> is a function with the property that <code>f(0) == 0</code> and <code>f(n) &gt;= 0 &amp;&amp; f(n) &lt; n</code> for any nonnegative <code>n</code>. Use strong induction to show that <code>fixpoint(f, x)</code> terminates an is equal to <code>0</code> for all nonnegative <code>x</code>.</p>
+<h2 id="problem-4-recursive-reverse">Problem 4: Recursive Reverse</h2>
+<p>Write a version of the <code>reverse&lt;T&gt;(_:)</code> function which uses recursion.</p>
+<h2 id="problem-5-fast-minimum">Problem 5: Fast Minimum</h2>
+<p>Write the function</p>
+<pre class="swift"><code>func minimumBetween(leftIndex: Int, rightIndex: Int, of l: [Int]) -&gt; Int? {
+    if l.isEmpty { return nil }
+    assert(leftIndex &gt;= 0 &amp;&amp; leftIndex &lt;= l.count)
+    assert(rightIndex &gt;= 0 &amp;&amp; rightIndex &lt;= l.count)
+    assert(leftIndex &lt; rightIndex)
+    // TODO: fill in code for recursive call
+    return 0 // TODO: change this line
+}
+
+let minimum : ([Int]) -&gt; Int? = { minimumBetween(leftIndex: 0, rightIndex:  
+$0.count, of: $0) }
+
+assert(minimum([Int](1...10000).shuffled()) == 1)</code></pre>
+<p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once one the left half of the index range and one on the right half of the index range. <em>Note.</em> This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
+<p>Compare the running time of this function to the recursive minimum function given in the notes. Provide a couple sentences about why you think it is faster (or slower if that, for some reason, the case for you).</p>
+</body>
+
+</html>
