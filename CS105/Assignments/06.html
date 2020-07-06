@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 6</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 6</h1>
+<p>This assignment is due <strong>Wednesday, July 8 by 6:00PM</strong>. Submit a file <code>assignment6.pdf</code> with all problems.</p>
+<h2 id="problem-1-environment-with-shadowing">Problem 1: Environment with Shadowing</h2>
+<pre class="swift"><code>func f(x: Int) -&gt; Bool {
+    return x % 3 == 1
+}
+f(x: 2)
+var y = f(x: 2)
+
+func g(x: Int) -&gt; Int {
+    func g(x: Int) -&gt; Int {
+        if f(x: x) {
+            return x
+        }
+        return -x
+    }
+    return g(x: x)
+}
+
+y = g(x: 2) &gt; 0</code></pre>
+<p>Maintain the environment diagram for the following program and provide the final state of the diagram.</p>
+<h2 id="problem-2-functions-as-data">Problem 2: Functions as Data</h2>
+<p>One interesting feature of capturing values is that functions can <em>store</em> data. We can write functions that store data like dictionaries.</p>
+<pre class="swift"><code>func makeEmptyDictionary() -&gt; (String) -&gt; String? {
+    func empty(k: String) -&gt; String? {
+        return nil
+    }
+    return empty
+}   
+
+func insertValue(_ value: String, atKey key: String, into d: @escaping (String) -&gt; String?) -&gt;
+    (String) -&gt; String? {
+    func out(k: String) -&gt; String? {
+        if k == key { return value }
+        return d(k) 
+    }   
+    return out
+}   
+
+var d = makeEmptyDictionary()
+assert(d(&quot;key1&quot;) == nil)
+d = insertValue(&quot;value1&quot;, atKey: &quot;key1&quot;, into: d)
+d = insertValue(&quot;value2&quot;, atKey: &quot;key2&quot;, into: d)
+assert(d(&quot;key1&quot;) == &quot;value1&quot;)
+</code></pre>
+<p>Maintain the environment diagram for this program, noting how the keys and values get stored in the environment. Provide the final state of the diagram.</p>
+</body>
+
+</html>
