@@ -51,7 +51,7 @@ f(x: 3)</code></pre>
 <blockquote>
 <p><strong>Lookup Procedure.</strong> If the name is in the current frame, then the value is the one corresponding to that name. If not, then the same check is done in the parent frame. If it is not in the parent frame, then this is repeated in the parent's parent frame, and so on. If this is done all the way to the global frame and the name does not appear, then the expression has no value and the program fails to execute.</p>
 </blockquote></li>
-<li><p>Given an expression of the form <code>expF(name1: exp1,..., namek: expK)</code>. Apply the this evaluation procedure to <code>expF</code> to get the value of <code>valueF</code> of <code>expF</code>. If <code>valueF</code> is a declared function, then <strong>create a new frame</strong> with the name of <code>valueF</code> (we are ignoring closures for now, so <code>valueF</code> must have a name) as its title. For each input, from left to right, evaluate the expression <code>inputJ</code> to get its value <code>valueJ</code>&#xA0;and bind it to the name <code>nameJ</code>. Once this is done, execute the statements in the body of the function from top to bottom.</p></li>
+<li><p>Given an expression of the form <code>expF(name1: exp1,..., namek: expK)</code>. Apply the this evaluation procedure to <code>expF</code> to get the value of <code>valueF</code> of <code>expF</code>. If <code>valueF</code> is a declared function, then <strong>create a new frame</strong> with the name of <code>valueF</code> (we are ignoring closures for now, so <code>valueF</code> must have a name) as its title. For each input, from left to right, evaluate the expression <code>inputJ</code> to get its value <code>valueJ</code> and bind it to the name <code>nameJ</code>. Once this is done, execute the statements in the body of the function from top to bottom.</p></li>
 </ul>
 <p>Note the circularity here. We need to know how to execute statements to evaluate expressions, but we need to know how to evaluate expressions to execute some statements! Also note that we have been a bit ambiguous about built in functions and operators. For these, we <strong>do not</strong> create new frames. We will treat their application as being understood to have the behavior we expect them to have. This is a bit of a punt, but it makes sense because we don't actually have access to the code that make ups built-in functions, and so their application should not be expressed in the environment.</p>
 <h2 id="executing-statements">Executing Statements</h2>
@@ -90,7 +90,7 @@ z.append(5)</code></pre>
     &lt;body&gt;
 }</code></pre>
 <p>The expression <code>&lt;condition&gt;</code> is evaluated in the environment diagram. If its value is <code>true</code>, then a new frame with the title WHILE is created which executes the statements in <code>&lt;body&gt;</code> from top to bottom. Once this frame as completed executing (once it is labeled DONE), then the expression <code>&lt;condition&gt;</code> is evaluated again. If its value is <code>true</code> again, then a new frame is created executes <code>&lt;body&gt;</code>. This is repeated as long as the value of <code>&lt;condition&gt;</code> evaluates to <code>true</code>.</p>
-<p>The semantics for <code>for</code>&#xA0;loops would be similar, but we won't consider them for now.</p>
+<p>The semantics for <code>for</code> loops would be similar, but we won't consider them for now.</p>
 <h3 id="if-statements"><code>if</code> Statements</h3>
 <pre><code>if &lt;condition&gt; {
     &lt;body&gt;
@@ -203,20 +203,20 @@ let z = h()                    | 4 &lt;--- |        |</code></pre>
 func f(y: Int) -&gt; Int {        | 1      |        |
     return x + 2               |        |        |
 }                              |        |        |
-                               | 2      |        |
-func g(x: Int) -&gt; Int {        |        |        |
-    if x == 3 {                | 3      |        | 0 &lt;---
+                               |        |        |
+func g(x: Int) -&gt; Int {        | 2      |        |
+    if x == 3 {                |        |        | 0 &lt;---
         let z = 3              |        |        |
         return z + 4           |        |        |
     }                          |        |        |
     return x + 10              |        |        | 1
 }                              |        |        |
                                |        |        |
-func h() {                     | 4      |        |
+func h() {                     | 3      |        |
     print(f(y: x) + g(x: 3))   |        | 0 &lt;--- |
 }                              |        |        |
                                |        |        |
-let z = h()                    | 5 &lt;--- |        |</code></pre>
+let z = h()                    | 4 &lt;--- |        |</code></pre>
 <p><img src="../Other/Environment-Images/example-4.png" style="zoom:30%;" /></p>
 <ol start="9" type="1">
 <li>Statement 0 in g is an <code>if</code> statement. First we have to evaluate the condition. We do not create a new frame for the built-in operator (==). We evaluate its first argument <code>x</code> by lookup in the current frame. This is an example <em>variable shadowing</em> in which a binding in the current frame hide bindings with the same name in its ancestor frames. We then evalute the second argument <code>3</code> to the value <code>3</code>, which means the entire condition evalutes to <code>true</code>. So we have to create another frame.</li>

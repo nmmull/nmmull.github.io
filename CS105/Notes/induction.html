@@ -11,9 +11,9 @@
 <body id="course">
 <h1>Induction</h1>
 <p>We again find ourselves on a topic that looks to have little or nothing to do with programming. But our next topic is <em>recursion</em>, which is related to induction, and I think it is important to see both how they are similar and and how they are different. Since this is not a math class, we won't dwell on the details too much.</p>
-<p>In mathematics, we often want to prove that something is true of all natural, <em>e.g.</em>,</p>
+<p>In mathematics, we often want to prove that something is true of all natural or nearly all, <em>e.g.</em>,</p>
 <blockquote>
-<p>Every natural number can be factored into a product of primes, ones and zeros.</p>
+<p>Every natural number greater than 1 can be written as a product of primes.</p>
 </blockquote>
 <p>In some cases this can be done using a single argument applied to each number. The statement</p>
 <blockquote>
@@ -74,16 +74,17 @@ P(n) = \left(\sum_{i = 1}^n i = \frac{n(n + 1)}{2} \right)
 \]</span> ## Strong Induction</p>
 <p>The kind of induction we that just described is not as powerful as it could be. In some cases, some additional power might be necessary. Let's come back an example given above.</p>
 <blockquote>
-<p>Every natural number can be factored into a product of primes, ones and zeros.</p>
+<p>Every natural number greater than 1 can be written as a product of primes.</p>
 </blockquote>
-<p>Let's try to prove this using induction as described above.</p>
-<p><em>Base case.</em> This is certainly true of <span class="math inline">\(0\)</span>, since <span class="math inline">\(0\)</span> is a product of primes, ones, and zeros.</p>
-<p><em>Inductive Step.</em> Suppose <span class="math inline">\(P(k)\)</span> holds for an arbitrary <span class="math inline">\(k\)</span> (inductive hypothesis). We now aim to show <span class="math inline">\(P(k + 1)\)</span>. If <span class="math inline">\(k + 1\)</span> is prime, then <span class="math inline">\(P(k + 1)\)</span> holds automatically. Otherwise, <span class="math inline">\(k\)</span> is composite, and is the product of two values each greater than <span class="math inline">\(1\)</span>, that is <span class="math inline">\(k = l m\)</span> where <span class="math inline">\(l &gt; 1\)</span> and <span class="math inline">\(m &gt; 1\)</span>. At this point we are stuck. The relationship between <span class="math inline">\(k\)</span>, <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> is very unclear. But, if we are just thinking of <span class="math inline">\(P(k)\)</span> as something already proved, then we should also be able to think of <span class="math inline">\(P(l)\)</span> and <span class="math inline">\(P(m)\)</span> in the same way. <em>A domino falls if every domino appearing in front of it falls.</em></p>
+<p>Let's try to prove this using induction as described above, using the property <span class="math inline">\(P(k) =\)</span>&#xA0;"<span class="math inline">\(k\)</span> can be factored into a product of primes." Note that we are not required to start at <span class="math inline">\(0\)</span>, and instead take our base case to be showing <span class="math inline">\(P(2)\)</span> holds.</p>
+<p><em>Base case.</em> <span class="math inline">\(P(2)\)</span> certainly holds since <span class="math inline">\(2\)</span> is prime.</p>
+<p><em>Inductive Step.</em> Suppose <span class="math inline">\(P(k)\)</span> holds for an arbitrary <span class="math inline">\(k\)</span> satisfying <span class="math inline">\(k &gt; 2\)</span> (inductive hypothesis). We now aim to show <span class="math inline">\(P(k + 1)\)</span>. If <span class="math inline">\(k + 1\)</span> is prime, then <span class="math inline">\(P(k + 1)\)</span> holds automatically. Otherwise, <span class="math inline">\(k\)</span> is composite, and is the product of two values each greater than <span class="math inline">\(1\)</span>, that is <span class="math inline">\(k = l m\)</span> where <span class="math inline">\(l &gt; 1\)</span> and <span class="math inline">\(m &gt; 1\)</span>. At this point we are stuck. The relationship between <span class="math inline">\(k\)</span>, <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> is very unclear. But, if we are just thinking of <span class="math inline">\(P(k)\)</span> as something already proved, then we should also be able to think of <span class="math inline">\(P(l)\)</span> and <span class="math inline">\(P(m)\)</span> in the same way. Intuitively, a domino falls if <strong>every</strong> domino appearing in front of it falls.</p>
 <p>The <em>strong induction step</em> is then</p>
 <blockquote>
-<p>For every <span class="math inline">\(k\)</span>, if <span class="math inline">\(P(0), P(1), ..., P(k)\)</span> holds, then so does <span class="math inline">\(P(k + 1)\)</span>.</p>
+<p>For every <span class="math inline">\(k\)</span>, if <span class="math inline">\(P(0), P(1), ..., P(k)\)</span> holds, then so does <span class="math inline">\(P(k + 1)\)</span></p>
 </blockquote>
-<p><em>Strong Induction Step</em>. The argument is the same as above, except when we get to the fact that <span class="math inline">\(k = lm\)</span> then we can use the fact that <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> can be factored into products of primes, ones and zeros. Therefore, we can factor <span class="math inline">\(k\)</span> by combining the factors of <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span>.</p>
+<p>(or in this case, starting at <span class="math inline">\(P(2)\)</span>).</p>
+<p><em>Strong Induction Step</em>. The argument is the same as above, except when we get to the fact that <span class="math inline">\(k = lm\)</span> then we can use the fact that <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span> can be factored into products of primes. Therefore, we can factor <span class="math inline">\(k\)</span> by combining the factors of <span class="math inline">\(l\)</span> and <span class="math inline">\(m\)</span>.</p>
 <h2 id="structural-induction">Structural Induction</h2>
 <p>This is perhaps the most important form of induction in computer science, as it underlies the <em>inductive definitions</em> we have seen a couple times now in this course. Keeping with the dominos analogy, there was nothing that required the infinite collection of dominoes to be a line. It could have been one of these intricate spiraling patters that are often constructed in complex domino schemes, as long as every domino except one (or a small few) has a domino appearing in front of it that will cause it to be knocked over.</p>
 <p>The formal way to ensure that inductive definitions have this property is to use <em>levels</em>. The leveled propositional formulas can be defined as follows.</p>
@@ -108,7 +109,7 @@ P(n) = \left(\sum_{i = 1}^n i = \frac{n(n + 1)}{2} \right)
 (\phi \land \psi)^* &amp;= \neg(\neg \phi^* \lor \neg \psi^*) \\
 (\phi \lor \psi)^* &amp;= \phi^* \lor \psi^* \\
 \end{align*}
-\]</span> As a final note, standard induction is just structural induction on a simple structure, a line. We can define the natural numbers as levels in the obvious way, the only natural number at level <span class="math inline">\(0\)</span>&#xA0;is <span class="math inline">\(0\)</span>&#xA0;itself and the natural numbers at level <span class="math inline">\(i + 1\)</span> are the natural numbers at level <span class="math inline">\(i\)</span> together with <span class="math inline">\(n + 1\)</span> for any number <span class="math inline">\(n\)</span> at level <span class="math inline">\(i\)</span>.</p>
+\]</span> As a final note, standard induction is just structural induction on a simple structure, a line. We can define the natural numbers as levels in the obvious way, the only natural number at level <span class="math inline">\(0\)</span> is <span class="math inline">\(0\)</span> itself and the natural numbers at level <span class="math inline">\(i + 1\)</span> are the natural numbers at level <span class="math inline">\(i\)</span> together with <span class="math inline">\(n + 1\)</span> for any number <span class="math inline">\(n\)</span> at level <span class="math inline">\(i\)</span>.</p>
 </body>
 
 </html>

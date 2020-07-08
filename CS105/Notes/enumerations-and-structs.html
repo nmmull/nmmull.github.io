@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Enumerations and Structs</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Enumerations and Structs</h1>
+<p>It's time to start building our own types. Like many of the things we've seen, the ability to build our own types does not increase the theoretical strength of the language, we can do everything without enumerations and structs, but our lives would be worse for it.</p>
+<h2 id="enumerations">Enumerations</h2>
+<p>An enumeration is a way to store a small collection of abstract values. Imagine that you are designing a video game in which a player moves around in a grid (I grew up on Pok&#xE9;mon Yellow) and you have to write a function like <code>movePlayer(direction:)</code>. You could make this function of type <code>(Int) -&gt; ()</code> and take <code>0</code> to mean left, <code>1</code>, to mean right, <code>2</code> to mean up and <code>3</code> to mean down. Or you could make it of type <code>(String) -&gt; ()</code> and map each direction to its representation as a <code>String</code>, e.g., take <code>"up"</code> to mean up. The issue with either of these options is that, first, the type does not clearly express the intention of the program and, second, there are a bunch of inputs that are meaningless, which has the potential of creating undefined behavior in the program. We would rather make this function have type <code>(Direction) -&gt; ()</code> where <code>Direction</code> has only four values. This is the purpose of enumerations, we can create types which have a fixed collection of cases.</p>
+<pre class="swift"><code>enum Direction {
+    case up
+    case down
+    case left
+    case right
+}</code></pre>
+<p>Now if we were to use this function to move the player left, we would call as</p>
+<pre class="swift"><code>movePlayer(direction: Direction.left)</code></pre>
+<p>The general structure for an enumeration is</p>
+<pre class="swift"><code>enum &lt;EnumName&gt; {
+    case &lt;caseName&gt;
+    case &lt;caseName&gt;
+    ...
+    case &lt;caseName&gt;
+}</code></pre>
+<p>Now within our <code>movePlayer(direction:)</code> function, we would have to check the value of <code>direction</code> and describe what should be done in each case.</p>
+<pre class="swift"><code>func movePlayer(direction: Direction) {
+    if direction == Direction.up {
+        // move player up
+    } else if direction == Direction.down {
+        // move player down
+    } else if direction == Direction.left {
+        // move player left
+    } else if direction == Direction.right {
+        // move player right
+    }
+}    </code></pre>
+<p>This is such a common pattern that it has its own control flow statement, the <code>switch</code> statement.</p>
+<pre class="swift"><code>func movePlayer(direction: Direction) {
+    switch direction {
+    case Direction.up:
+        // move player up
+    case Direction.down:
+        // move player down
+    case Direction.left:
+        // move player left
+    case Direction.right:
+        // move player right
+    }
+}</code></pre>
+<p>The syntax for a <code>switch</code> statement is</p>
+<pre class="swift"><code>switch &lt;enumValue&gt; {
+case &lt;case&gt;:
+    &lt;statements&gt;
+case &lt;case&gt;:
+    &lt;statements&gt;
+...
+case &lt;case&gt;:
+    &lt;statements&gt;
+}</code></pre>
+<p>in which <strong>every</strong> case of <code>&lt;enumValue&gt;</code> appears in one of the <code>case</code> blocks. The <code>switch</code> statement syntax is one of these unfortunate cases where legacy overrules consistency. The use of colons here was picked up from C, a language on which Swift is based. In my opinion, they should have just used brackets.</p>
+<p>There are a number of useful variations on enumerations which you will read about in the additional reading. One that I will mention here because of its importance later on is the notion of <em>associated values</em>. Let's say that in this imaginary game we are developing the player can pick up items which we decide to represent as cases of an enumeration. One kind of item might be a potion, but different potions have different healing abilities, represented by an integer value. In Swift, we can associate values with particular cases in an enumeration.</p>
+<pre class="swift"><code>enum Item {
+    case sword
+    case potion(Int)
+    case coin(Int)
+    case rock(String)
+}</code></pre>
+<p>Then when we want to want to switch on an item, we add the associated values as arguments in the header of the <code>case</code> block. Note the inclusion of the keyword <code>let</code>, which is required.</p>
+<pre class="swift"><code>func itemName(_ x: Item) -&gt; String {
+    switch x {
+    case Item.potion(let healing):
+        return &quot;Potion with healing power \(healing)&quot;
+    case Item.sword:
+        return &quot;Sword&quot;
+    case Item.coin(let value):
+        return &quot;Coin with value \(value)&quot;
+    case Item.rock(let name):
+        return &quot;Rock named \(name)&quot;
+    }
+}</code></pre>
+<h2 id="structures">Structures</h2>
+<p>Structures are ways of storing compound data and functions on that data all packaged up together. This is part of the <em>object-oriented</em> programming paradigm that included in Swift (though not an object-oriented language, Swift benefits from ideas of many different paradigms). Object-oriented programming has its origins in computer simulations and has found use in web applications and game design. What makes these domains similar is that they require managing large collections of modular objects. For simulations in physics this might mean particles with positions, velocities, forces, weights. For web applications, this means buttons, text, images, windows, all with sizes, positions, and functionalities. In object-oriented programming, each individual object keeps track of its own information. This shrinks the amount of global information that we need to maintain. Rather than trying to maintain a massive table of positions (among other things) for every particle in a simulation, each individual particle can keep track of its own position. This helps with readability and design of code. As another example, it is easier to determine the functionality of buttons in UIs when there are button objects with their functionality contained in their own code.</p>
+<p>Let's come back to this imaginary game we are developing. We currently still need a way to represent the player that is moving around. For a player, we might need to maintain information like their name, health level, and inventory. We can use a structure to combine these into a single Type.</p>
+<pre class="swift"><code>struct Player {
+    let name: String
+    var health: Int
+    var inventory: [Item]
+}</code></pre>
+<h3 id="instance-properties">Instance Properties</h3>
+<p>These variables and constants are called <em>properties</em> of instances of type <code>Player</code>. They are accessed using <em>dot notation</em>. For <code>player</code> of type <code>Player</code>, <code>player.name</code> is a <code>String</code>.</p>
+<p>At this point you might have noticed that this looks a lot like the <code>count</code> property for arrays. This is not coincidental, Arrays and dictionaries, pretty much everything that we have seen so far except functions, are structures. So we can imagine that there is some <code>struct</code> somewhere in the source code of Swift which looks like</p>
+<pre class="swift"><code>struct Array&lt;T&gt; {
+    var count: Int
+    ...
+}</code></pre>
+<p>Even <code>Int</code>s are structures in a sense. We can write</p>
+<pre><code>assert(15.nonzeroBitCount == 4)</code></pre>
+<p>where <code>nonzeroBitCount</code> is a property of <code>Int</code>s.</p>
+<p>You might have also noticed that we have not given values to these instance properties. This makes sense because we want to allow players to have different names, and if we were to give a value to <code>name</code>, which is a constant, we couldn't change it. But this is also a problem because it is not possible in Swift for a variable not to have a value. The fix: we set the name of the the character when we create one.</p>
+<h3 id="initializers">Initializers</h3>
+<p>The definition of the <code>Player</code> struct is like an outline of what a player should look like (for D&amp;D players, they code is kind of like an empty character sheet). If we want to actually use a player in a game we have to create one with a function called an <em>initializer</em>. We call initializers by using the name of the type for the function call, and the names of the properties as parameter names for the inputs. So <code>var newPlayer = Player(name: "Ava", health: 100, inventory: [])</code> is an instance of type <code>Player</code>, such that</p>
+<pre class="swift"><code>assert(newPlayer.name == &quot;Ava&quot;)
+assert(newPlayer.health == 100)
+assert(newPlayer.inventory == [])</code></pre>
+<p>When we create a new player, we are almost always going to set the health to be <code>100</code> and the inventory to be <code>[]</code>. It would be nice if we could build a <code>Player</code> without having to specify these every time. We can do this by defining our own initializer. <code>struct</code>s are allowed to have any number of initializers, as long as they are of distinct types. Unfortunately, if we define an initializer, we lose the one that we got for free, which means that, if we want to keep it, we have to define it ourself. When we define an initializer we <strong>must give values to all unassigned variables.</strong></p>
+<pre class="swift"><code>struct Player {
+    let name: String
+    var health: Int
+    var inventory: [Item]
+
+    init(name: String) {
+        self.name = name
+        health = 100
+        inventory = []
+    }
+
+    init(name: String, health: Int, inventory: [Item]) {
+        self.name = name
+        self.health = health
+        self.inventory = inventory
+    }
+}
+
+var newPlayer = Player(name: &quot;Ava&quot;)
+var secondPlayer = Player(name: &quot;Ezra&quot;, health: 90, inventory: [Item.rock(&quot;Uli&quot;)])</code></pre>
+<p>Let's parse this a bit. First note that we are now storing what look like functions inside our <code>structs</code>. This is one of the great features of <code>struct</code>s that we will explore more in a bit. Initializers use the special keywork <code>init</code> instead of <code>func</code> and have no name (they are called using the name of the type in the place of the function, so there is no need for one). There is also this new keyword <code>self</code> which, when used within a struct initializer, refers to the <code>struct</code> being created! So we can read the line <code>self.name = name</code> as "when I am created, set my name property to be the value of <code>name</code>." This was necessary for the <code>name</code> property because <code>name</code> is also the name of the input. It was not necessary for the <code>health</code> or <code>inventory</code> properties, <code>self.health = 100</code> does the same thing as <code>health = 100</code> where as <code>name = name</code> does not mean the same thing as <code>self.name = name</code>.</p>
+<p>These initializers are the same kinds of initializers that we used for collection types. We can imagine there is some initializer in the source code for the <code>Array&lt;T&gt;</code> structure that might look like</p>
+<pre class="swift"><code>init Array&lt;T&gt;(repeating val: T, count n: Int) {
+    self = Array&lt;T&gt;()
+    for _ in 1...n {
+        self.append(val)
+    }
+}</code></pre>
+<p>Note one special thing going on here, we are using an initializer inside of another initializer. At this point, it shouldn't be surprising that we can do this, but it is worth mentioning.</p>
+<h3 id="instance-methods">Instance Methods</h3>
+<p>Initializers are not the only kinds of functions that can be defined in structs, we can also define <em>methods</em>, which perform procedures based on the information in an instance of a structure, and can even change the state of a structure. For arrays, we can see the difference between these two kinds of methods in the <code>l.reversed()</code> method and the <code>l.reverse()</code> method. The first one returns the reversed version of <code>l</code> whereas <code>l.reverse()</code> actually reverses <code>l</code>, given it is not a constant.</p>
+<pre class="swift"><code>var l = [1, 2, 3, 4, 5]
+assert(l.reversed() == [5, 4, 3, 2, 1])
+assert(l == [1, 2, 3, 4, 5])
+assert(l.reverse() == ())
+assert(l == [5, 4, 3, 2, 1])</code></pre>
+<p>In our <code>Player</code> structure, we might want to determine how much money a player has. We can do this with a method. To define a method, we simply write a function in the declaration of a <code>struct</code>. This method can then be accessed using dot notation, like with arrays. The properties that are defined within the structure are available to the methods being defined, as well as the <code>self</code>&#xA0;keyword from above. We might also want to allow a player to pick up items. This can be implemented as a method of the second kind, where the <code>Player</code> instance calling it changes. In order to write such a function, we have to also include the keyword <code>mutating</code>&#xA0;in front of the function declaration. This keyword does not change the behavior our code, it is meant to improve readability, letting people who read your code know that the function changes the underlying instance.</p>
+<pre class="swift"><code>struct Player {
+    let name: String
+    var health: Int
+    var inventory: [Item]
+
+    init(name: String) {
+        self.name = name
+        health = 100
+        inventory = []
+    }
+
+    init(name: String, health: Int, inventory: [Item]) {
+        self.name = name
+        self.health = health
+        self.inventory = inventory
+    }
+
+    func amountOfMoney() -&gt; Int {
+        var total = 0
+        for item in inventory {
+            switch item {
+            case Item.coin(let value):
+                total += value
+            default:
+                break
+            }
+        }
+        return total
+    }
+
+    mutating func pickUpItem(_ x: Item) {
+        inventory.append(x)
+    }
+}
+
+var newPlayer = Player(&quot;Ava&quot;)
+assert(newPlayer.amountOfMoney() == 0)
+newPlayer.pickUpItem(Item.coin(5))
+assert(newPlayer.amountOfMoney() == 5)</code></pre>
+<p>Note the use of the <code>break</code> and <code>default</code> keywords. <code>break</code> can be used to exit the any control flow statement. This is required since <code>case</code> blocks in a <code>switch</code> statement must have at least one statement. You can use it to ignore cases. <code>default</code> can be used as the header to a <code>case</code> block to mean "every other case not considered above."</p>
+<h3 id="generic-types">Generic Types</h3>
+<p>Structures can be made generic by taking type variables in the same ways as functions can. This is what is happening with Arrays when we write <code>var x = Array&lt;Int&gt;()</code>. Array is a generic struct and we are specifying the type variable to be <code>Int</code>. The struct declaration for arrays might look like</p>
+<pre class="swift"><code>struct Array&lt;T&gt; {
+    ...
+}</code></pre>
+<p>where <code>T</code> is type variable used throughout the struct. This is particularly useful for structs that work with collections of arbitrary things, like other collection types. Here is an implementation of a very important generic type called a <em>stack</em>, which is an array that can only be accessed from the front (imagine that its elements are stacked like sheets of paper and you can only take sheets off or put sheets on the top of the pile).</p>
+<pre class="swift"><code>struct Stack&lt;T&gt; {
+    var items: [T]
+
+    init() {
+        items = []
+    }
+
+    mutating func pop() -&gt; T? {
+        if items.isEmpty { return nil }
+        let out = items[0]
+        items.remove(at: 0)
+        return out
+    }
+
+    mutating func push(_ x: T) {
+        items.insert(x, at: 0)
+    }
+}
+
+var s = Stack&lt;Int&gt;()
+s.push(1)
+s.push(2)
+assert(s.pop() == 2)
+assert(s.pop() == 1)</code></pre>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>Please read the following sections from the Swift book.</p>
+<ul>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html#ID127">Conditional Statements</a>], especially the parts on the variations of <code>switch</code> statements and their use on types other than enumerations</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html#">Enumerations</a>], the entire chapter except for the last section on recursive enumerations, which we will cover very soon.</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html#ID83">Comparing Structures and Classes</a>], ignoring for now the introduction and any mention of classes (though we will talk about classes if you want to get a head start!)</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html#ID235">Stored Properties</a>], ignoring the last two sections</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Methods.html#ID235">Instance Methods</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID184">Generic Types</a>]</li>
+</ul>
+</body>
+
+</html>

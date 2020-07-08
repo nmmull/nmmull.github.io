@@ -52,7 +52,7 @@
 <pre class="swift"><code>let &lt;name&gt;: &lt;type&gt; = &lt;value&gt;</code></pre>
 <p>and to declare a variable we use the line</p>
 <pre class="swift"><code>var &lt;name&gt;: &lt;type&gt; = &lt;value&gt;</code></pre>
-<p>where <code>&lt;name&gt;</code> is a sequence of characters naming the value in the program and <code>&lt;value&gt;</code> is the value with type <code>&lt;type&gt;</code>&#xA0;that is stored. So</p>
+<p>where <code>&lt;name&gt;</code> is a sequence of characters naming the value in the program and <code>&lt;value&gt;</code> is the value with type <code>&lt;type&gt;</code> that is stored. So</p>
 <pre class="swift"><code>var variableWithLongName: Int = 2</code></pre>
 <p>declares a variable named <code>variableWithLongName</code> with value <code>2</code> that can be used throughout the program after its declaration (<em>note:</em> this is not strictly true, they are only available within their own <em>scope</em>, but we delay this discussion for now). It is convention in Swift to use <em>camelCase</em> for long variable names and constant names (camel because the capital letters looking like humps, I guess) with the first letter lowercase.</p>
 <p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>), takes two values of the same type, and if the one on the left is a variable, then it assigns the value of that variable to the value on the right. If the left argument is <em>not</em> a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>

@@ -10,7 +10,7 @@
 
 <body id="course">
 <h1>Assignment 7</h1>
-<p>This assignment is due <strong>Friday, July 10 by 6:00PM</strong>. Submit a file <code>assignment6.swift</code> for problems 4 and 5, and submit a file <code>assignment6.pdf</code> with problems 1, 2 and 3.</p>
+<p>This assignment is due <strong>Friday, July 10 by 6:00PM</strong>. Submit a file <code>assignment7.swift</code> for problems 4 and 5, and submit a file <code>assignment7.pdf</code> with problems 1, 2 and 3.</p>
 <h2 id="problem-1-sum-of-odds">Problem 1: Sum Of Odds</h2>
 <p>Use induction to show that <span class="math inline">\(\sum_{k = 1}^n (2k - 1) = k^2\)</span>.</p>
 <h2 id="problem-2-parenthesis">Problem 2: Parenthesis</h2>
@@ -31,7 +31,7 @@
     assert(leftIndex &gt;= 0 &amp;&amp; leftIndex &lt;= l.count)
     assert(rightIndex &gt;= 0 &amp;&amp; rightIndex &lt;= l.count)
     assert(leftIndex &lt; rightIndex)
-    // TODO: fill in code for recursive call
+    // TODO: fill in code here
     return 0 // TODO: change this line
 }
 
@@ -39,7 +39,7 @@ let minimum : ([Int]) -&gt; Int? = { minimumBetween(leftIndex: 0, rightIndex:
 $0.count, of: $0) }
 
 assert(minimum([Int](1...10000).shuffled()) == 1)</code></pre>
-<p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once one the left half of the index range and one on the right half of the index range. <em>Note.</em> This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
+<p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once on the left half of the index range and once on the right half of the index range, and then taking the minimum of the outputs of those calls. Note.* This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
 <p>Compare the running time of this function to the recursive minimum function given in the notes. Provide a couple sentences about why you think it is faster (or slower if that, for some reason, the case for you).</p>
 </body>
 
