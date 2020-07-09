@@ -35,11 +35,13 @@
     return 0 // TODO: change this line
 }
 
-let minimum : ([Int]) -&gt; Int? = { minimumBetween(leftIndex: 0, rightIndex:  
-$0.count, of: $0) }
+func minimum(_ l: [Int]) -&gt; Int? {
+    return minimumBetween(leftIndex: 0, rightIndex: l.count, of: l)
+}
 
 assert(minimum([Int](1...10000).shuffled()) == 1)</code></pre>
 <p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once on the left half of the index range and once on the right half of the index range, and then taking the minimum of the outputs of those calls. <em>Note.</em> This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
+<p>Compare the running time of this function to that of the recursive minimum function from the notes. Is it faster or slower? Whichever the case, why do you think that is? This part of the question is not graded.</p>
 </body>
 
 </html>
