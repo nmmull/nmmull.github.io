@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Recursive ASCII Art</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Recursive ASCII Art</h1>
+<p>In this lab, you will be using recursion to generate fractal [<a href="https://en.wikipedia.org/wiki/ASCII_art">ASCII art</a>]. You will first build a structure for representing images, which will contain a collection of functions for manipulating images. Next, you will define functions for constructing a Sierpi&#x144;ski right triangle and a cross.</p>
+<h3 id="sierpi&#x144;ski-right-triangle">Sierpi&#x144;ski Right Triangle</h3>
+<pre><code>*                               
+**                              
+* *                             
+****                            
+*   *                           
+**  **                          
+* * * *                         
+********                        
+*       *                       
+**      **                      
+* *     * *                     
+****    ****                    
+*   *   *   *                   
+**  **  **  **                  
+* * * * * * * *                 
+****************                
+*               *               
+**              **              
+* *             * *             
+****            ****            
+*   *           *   *           
+**  **          **  **          
+* * * *         * * * *         
+********        ********        
+*       *       *       *       
+**      **      **      **      
+* *     * *     * *     * *     
+****    ****    ****    ****    
+*   *   *   *   *   *   *   *   
+**  **  **  **  **  **  **  **  
+* * * * * * * * * * * * * * * * 
+********************************</code></pre>
+<h3 id="sierpi&#x144;ski-cross">Sierpi&#x144;ski Cross</h3>
+<pre><code>             *             
+            ***            
+             *             
+          *  *  *          
+         *********         
+          *  *  *          
+             *             
+            ***            
+             *             
+    *        *        *    
+   ***      ***      ***   
+    *        *        *    
+ *  *  *  *  *  *  *  *  * 
+***************************
+ *  *  *  *  *  *  *  *  * 
+    *        *        *    
+   ***      ***      ***   
+    *        *        *    
+             *             
+            ***            
+             *             
+          *  *  *          
+         *********         
+          *  *  *          
+             *             
+            ***            
+             *                         </code></pre>
+<h2 id="the-image-structure">The <code>Image</code> Structure</h2>
+<p>The structure <code>Image</code> is used to represent ASCII images with a single kind of non-whitespace symbol, in this case <code>*</code>. They have a single property called <code>grid</code>, which is an array of arrays of <code>Pixel</code>s, where the arrays in <code>grid</code> are the rows of the pixels of the image, from top to bottom. <code>Pixel</code>s can either be <code>on</code> or <code>off</code>, representing the appearance or absence of a <code>*</code> symbol. The <code>Pixel</code> enumeration is defined inside of the <code>Image</code> structure, which means that we refer to its cases as <code>Image.Pixel.on</code> and <code>Image.Pixel.off</code>. You should fill in all the functions labeled with <code>TODO</code>. Throughout the definitions you should <strong>maintain the invariant that <code>grid</code> is a rectangle</strong>. This means you would always ensure that every array in <code>grid</code> is the same length. We will also always assume that <strong><code>Images</code> and, in particular, the <code>grid</code> property, are always nonempty.</strong></p>
+<ul>
+<li><code>init(fromString:)</code> initialized an image from a given string. <em>Note.</em> a string might not be a rectangle, you might have to add additional pixel in the image to make it a rectangle.</li>
+<li><code>.asString()</code> returns the image as a string so that it can be displayed. <code>.on</code> pixels are represented by <code>"*"</code> and <code>.off</code> pixels are represented by <code>" "</code>.</li>
+<li><code>.stack(_:, on:)</code> glues an image to the specified side. Sides are specified by the <code>Side</code> enumeration. It should be the case that the heights of the images match up when stacking to the left or right, and the widths should match up when stacking on the top or bottom.</li>
+<li><code>.trim(by:, on:)</code> removes the specified number of lines of <code>Pixel</code>s from the specified side.</li>
+<li><code>.pad(by:, on:)</code> adds the specified number of lines of whitespace (<code>.off</code> pixels) to the specified side.</li>
+</ul>
+<p>The <code>Side</code> enumeration uses <em>raw values</em>, a topic from the additional reading for the notes on enumerations. Two useful aspects of raw values are</p>
+<ul>
+<li><code>pixel.rawValue</code>, which is a property for the raw value, in this case a <code>Character</code>, and</li>
+<li><code>Pixel(rawValue:)</code>, which is an initializer for a <code>Pixel</code> from a raw value. This returns an optional because not all inputs will be valid raw values for the enumeration.</li>
+</ul>
+<h2 id="recursive-drawing">Recursive Drawing</h2>
+<p>Your next task is to implement the following functions for drawing recursive shapes.</p>
+<ul>
+<li><code>sierpinskiRightTriangle(_:)</code> makes a triangle image like the one above. When <code>n == 0</code>, this is just the same as <code>pixel</code>, an image with a single <code>.on</code> pixel.</li>
+<li><code>fractalImage(_:, depth:)</code> creates a new fractal <code>Image</code> from a given <code>Image</code>, replacing each pixel in the given image with a recursively built fractal version of the image. So if depth is <code>0</code>, it is a pixel, if depth is <code>1</code>, it is the image itself, if depth is <code>2</code>, it is the image gotten by replacing each <code>.on</code> pixel in the image with the image itself, and so on.</li>
+</ul>
+<p>The function <code>fractalImage(_:, depth:)</code> is used to define <code>sierpinskiCross(_:)</code>. The same can be done for <code>sierpinskiRightTriangle(_:)</code>, but it is useful try doing one by hand to see how the different image manipulation functions work.</p>
+<h3 id="challenge">Challenge</h3>
+<p>The reason we build a Sierpi&#x144;ski right triangle instead of the standard isosceles triangle is because it is a bit easier. One particular challenge of building the isosceles is that it does require the use of the <code>.trim</code> method. Consider the first couple instance.</p>
+<p><code>n = 1</code></p>
+<pre><code> *
+* *</code></pre>
+<p><code>n = 2</code></p>
+<pre><code>  *
+ * *
+* * *</code></pre>
+<p><code>n = 3</code></p>
+<pre><code>    *
+   * *
+  * * *
+ * * * *
+* * * * *</code></pre>
+<p><code>n = 4</code></p>
+<pre><code>        *
+       * *
+      * * *
+     * * * *
+    * * * * *
+   * *     * *
+  * * *   * * * 
+ * * * * * * * *
+* * * * * * * * *</code></pre>
+<p>Some of the points of the triangles are shared with neighboring triangles.</p>
+<p>I leave the exercise of building this as a challenge problem. For another challenge, try to design your own fractal artwork, either using the functions we have or using different functions.</p>
+<h2 id="submission">Submission</h2>
+<p>This lab is due <strong>Monday, July 13 by 6PM.</strong>&#xA0;Submit a single file <code>lab-3.swift</code>&#xA0;with your entire solution. I have made some [<a href="Code/Course/lab-3-template.swift">template code</a>] which you can start with.</p>
+</body>
+
+</html>
