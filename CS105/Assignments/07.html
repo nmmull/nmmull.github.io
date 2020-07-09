@@ -24,7 +24,7 @@
 <p>Suppose that <code>f</code> is a function with the property that <code>f(0) == 0</code> and <code>f(n) &gt;= 0 &amp;&amp; f(n) &lt; n</code> for any nonnegative <code>n</code>. Use strong induction to show that <code>fixpoint(f, x)</code> terminates an is equal to <code>0</code> for all nonnegative <code>x</code>.</p>
 <h2 id="problem-4-recursive-reverse">Problem 4: Recursive Reverse</h2>
 <p>Write a version of the <code>reverse&lt;T&gt;(_:)</code> function which uses recursion.</p>
-<h2 id="problem-5-fast-minimum">Problem 5: Fast Minimum</h2>
+<h2 id="problem-5-another-recursive-minimum-function">Problem 5: Another Recursive Minimum Function</h2>
 <p>Write the function</p>
 <pre class="swift"><code>func minimumBetween(leftIndex: Int, rightIndex: Int, of l: [Int]) -&gt; Int? {
     if l.isEmpty { return nil }
@@ -39,8 +39,7 @@ let minimum : ([Int]) -&gt; Int? = { minimumBetween(leftIndex: 0, rightIndex:
 $0.count, of: $0) }
 
 assert(minimum([Int](1...10000).shuffled()) == 1)</code></pre>
-<p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once on the left half of the index range and once on the right half of the index range, and then taking the minimum of the outputs of those calls. Note.* This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
-<p>Compare the running time of this function to the recursive minimum function given in the notes. Provide a couple sentences about why you think it is faster (or slower if that, for some reason, the case for you).</p>
+<p>which finds minimum value in <code>l[leftIndex..&lt;rightIndex]</code>. Do this by recursively calling the function twice, once on the left half of the index range and once on the right half of the index range, and then taking the minimum of the outputs of those calls. <em>Note.</em> This might require converting an <code>ArraySlice</code> into an <code>Array</code> using the <code>Array</code> initializer, as well as optional unwrapping. See the recursive minimum function in the notes.</p>
 </body>
 
 </html>
