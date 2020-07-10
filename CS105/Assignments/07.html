@@ -21,7 +21,7 @@
     if f(x) == x { return x }
     return fixpoint(f, f(x))
 }</code></pre>
-<p>Suppose that <code>f</code> is a function with the property that <code>f(0) == 0</code> and <code>f(n) &gt;= 0 &amp;&amp; f(n) &lt; n</code> for any nonnegative <code>n</code>. Use strong induction to show that <code>fixpoint(f, x)</code> terminates an is equal to <code>0</code> for all nonnegative <code>x</code>.</p>
+<p>Suppose that <code>f</code> is a function with the property that <code>f(0) == 0</code> and <code>f(n) &gt;= 0 &amp;&amp; f(n) &lt; n</code> for any positive <code>n</code>. Use strong induction to show that <code>fixpoint(f, x)</code> terminates an is equal to <code>0</code> for all nonnegative <code>x</code>.</p>
 <h2 id="problem-4-recursive-reverse">Problem 4: Recursive Reverse</h2>
 <p>Write a version of the <code>reverse&lt;T&gt;(_:)</code> function which uses recursion.</p>
 <h2 id="problem-5-another-recursive-minimum-function">Problem 5: Another Recursive Minimum Function</h2>

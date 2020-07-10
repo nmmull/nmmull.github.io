@@ -54,10 +54,10 @@ useful: 1
 overall: 1
 many: 1</code></pre>
 <p>right after what you typed.</p>
-<p>We will consider a word to be a contiguous sequence of letters (upper or lower case) possibly containing the symbols <code>-</code> and <code>'</code>. This definition includes some apparently incorrect sequences like <code>---</code> or <code>A'B''C</code>, but we won't worry about this. Also note that words like <code>LaTeX</code>&#xA0;should be displayed as <code>latex</code>&#xA0;in the output.</p>
-<p>Though input can be typed in directly as described above, it is more useful to be able to count words in a given <code>.txt</code>&#xA0;file. For this we can use <em>input redirection</em> and <em>output redirection</em> in the command line. You can redirect the text in a <code>.txt</code> file as the input to the program using the <code>&lt;</code>&#xA0;symbol.</p>
+<p>We will consider a word to be a contiguous sequence of letters (upper or lower case) possibly containing the symbols <code>-</code> and <code>'</code>. This definition includes some apparently incorrect sequences like <code>---</code> or <code>A'B''C</code>, but we won't worry about this. Also note that words like <code>LaTeX</code> should be displayed as <code>latex</code> in the output.</p>
+<p>Though input can be typed in directly as described above, it is more useful to be able to count words in a given <code>.txt</code> file. For this we can use <em>input redirection</em> and <em>output redirection</em> in the command line. You can redirect the text in a <code>.txt</code> file as the input to the program using the <code>&lt;</code> symbol.</p>
 <pre><code>$ swift Word-Counter.swift &lt; someTextFile.txt</code></pre>
-<p>If you also want to redirect the printed output into a text file, you can do this using the <code>&gt;</code>&#xA0;symbol.</p>
+<p>If you also want to redirect the printed output into a text file, you can do this using the <code>&gt;</code> symbol.</p>
 <pre><code>$ swift Word-Counter.swift &lt; someTextFile.txt &gt; outputTextFile.txt</code></pre>
 <p>Once you have finished your program you can test it on the [<a href="http://www.gutenberg.org/files/100/100-0.txt">Complete Works of William Shakespeare</a>].</p>
 <h2 id="but-first...">But First...</h2>
@@ -86,7 +86,7 @@ many: 1</code></pre>
 <li><code>.lowercased()</code></li>
 <li><code>.map(_:)</code></li>
 </ul>
-<p>Also take a look at the [<a href="https://developer.apple.com/documentation/swift/character">Documentation for <code>Character</code></a>] for useful functions like the <code>.isLetter()</code> function.</p>
+<p>Also take a look at the [<a href="https://developer.apple.com/documentation/swift/character">Documentation for <code>Character</code></a>] for useful things like the <code>.isLetter</code>&#xA0;property.</p>
 <h3 id="standard-input">Standard Input</h3>
 <p>The word counting program takes its input on <em>standard input</em>, meaning essentially that it takes its input by your typing directly into the command line. The command that Swift has for reading from standard input is <code>readLine()</code>, which is of type <code>() -&gt; String?</code> (see [<a href="https://developer.apple.com/documentation/swift/swift_standard_library/input_and_output">the Documentation</a>]). It returns <code>nil</code> when you type <code>command-d</code> or it reaches the end of the file when using input redirection. At the point that this function call is executed, the program will wait for input on standard input, which you can type in directly into the command line. Once you are done and press <code>enter</code>, the function outputs the line you typed as an optional string and the program continues. You can test this with a simple program</p>
 <pre class="swift"><code>if let line = readLine() {
