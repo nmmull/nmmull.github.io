@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 9</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 9</h1>
+<p>This assignment is due <strong>Monday, July 20 by 6:00PM</strong>. Submit a file <code>assignment9.swift</code>.</p>
+<h2 id="problem-1-argmax-and-argmin">Problem 1: <code>argMax</code> and <code>argMin</code></h2>
+<p>Write an extension for <code>Array</code> including the following methods.</p>
+<ul>
+<li><code>argMax&lt;T&gt;(_:, by: )</code> of generic type <code>((Element) -&gt; T, (T, T) -&gt; Bool) -&gt; Element?</code>, which returns the element in <code>self</code> that maximizes the first input function according to the less-than function given by the second input function. It should return <code>nil</code> if <code>self</code> is empty.</li>
+<li><code>argMin&lt;T&gt;(_:, by: )</code> of generic type <code>((Element) -&gt; T, (T, T) -&gt; Bool) -&gt; Element?,</code> which returns the element in <code>self</code> that <strong>minimizes</strong> the first input function according to the less-than given by the second input function. It should return <code>nil</code> if <code>self</code> is empty. Try to write this function in one line.</li>
+<li><code>argMax&lt;T&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
+<li><code>argMin&lt;T&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
+</ul>
+</body>
+
+</html>
