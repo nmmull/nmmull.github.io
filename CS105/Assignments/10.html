@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Assignment 10</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Assignment 10</h1>
+<p>This assignment is due <strong>Wednesday, July 22 by 6:00PM</strong>. Submit a file <code>assignment10.swift</code>.</p>
+<h2 id="problem-1-insert-into-binary-search-tree">Problem 1: Insert into Binary Search Tree</h2>
+<p>A binary search tree (BST) with integers is a binary tree with the following property: the value at any node in the tree is greater than the value at any node in its left subtree and less than the value at any node in its right subtree. In particular, no elements are repeated. This is most easily demonstrated by a picture (stolen from wikipedia).</p>
+<p><img src="../Other/Binary_search_tree.png" style="zoom:15%;" /></p>
+<p>Fill in the method for the following enumeration, which inserts an element in the binary search tree and maintains the order invariant.</p>
+<pre class="swift"><code>indirect enum BinarySearchTree {
+    case empty
+    case node(Int, BinarySearchTree, BinarySearchTree)
+
+    mutating func insert(_ x: Int) {
+        switch self {
+        case .empty:
+            self = .node(x, .empty, .empty)
+        case .node(let value, var leftTree, var rightTree):
+            // TODO: fill in code
+        }
+    }
+}</code></pre>
+<h2 id="problem-2-multiplying-natural-numbers">Problem 2: Multiplying Natural Numbers</h2>
+<p>Write a function <code>multiply(_:, _:)</code> of type <code>(NaturalNumber, NaturalNumber) -&gt; NaturalNumbers</code> which multiplies two natural numbers. You may use the <code>add(_:, _:)</code> function from the notes. Also implement to functions <code>toInt(_:)</code> of type <code>(NaturalNumber) -&gt; Int</code> and <code>fromInt(_:)</code> of types <code>(Int) -&gt; NaturalNumber</code> which converts between the two representations of numbers. Your functions should pass the following tests.</p>
+<pre class="swift"><code>assert(toInt(fromInt(42)) == 42)
+assert(toInt(multiply(fromInt(7), fromInt(8)) == 56)</code></pre>
+</body>
+
+</html>

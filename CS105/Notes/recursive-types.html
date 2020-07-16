@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Recursive Data Types</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Recursive Data Types</h1>
+<p>A type (or structure) is recursive if it refers to itself in its own declaration. This should feel somewhat familiar; we can use recursive types to represent inductive definitions. So we've actually seen a few things that look like recursive types, now we will build them in Swift.</p>
+<h2 id="recursive-enumerations">Recursive Enumerations</h2>
+<p>The simplest way to build recursive types is to use enumerations, which is possible since the <em>associated values</em> of the cases of an enumeration can have the same type as the enumeration itself. We can use this to build a very simple recursive type for representing natural numbers.</p>
+<h3 id="example-natural-numbers">Example: Natural Numbers</h3>
+<pre class="swift"><code>indirect enum NaturalNumber {
+    case zero
+    case succ(NaturalNumber)
+}</code></pre>
+<p>The only new piece of syntax that we need to make recursive enumerations is the keyword <code>indirect</code> which appears at the beginning of the declaration. Translating this definition into English, a natural can come in one of two forms, either the number is <span class="math inline">\(0\)</span> or one larger than (i.e., the <code>succ</code>essor of) another natural number. More concretely, any number is represented by the number of <code>.succ</code>'s which appear in its definition.</p>
+<pre class="swift"><code>let three: NaturalNumber = .succ(.succ(.succ(.zero)))</code></pre>
+<p>If we want to use <code>NaturalNumber</code>s in functions, we then have to use <code>switch</code> statements. We can, for example, write a function for adding two <code>NaturalNumber</code>s, which works by adding <code>n</code> many <code>.succ</code>'s to the front of <code>m</code> using recursion.</p>
+<pre class="swift"><code>func add(_ n: NaturalNumber, _ m: NaturalNumber) -&gt; NaturalNumber {
+    switch n {
+    case .zero:
+        return m
+    case .succ(let nMinusOne):
+        return .succ(add(nMinusOne, m))
+    }
+}</code></pre>
+<p>In the case that <span class="math inline">\(n = 0\)</span>, we just return <span class="math inline">\(m\)</span>. Otherwise, we return one more than <span class="math inline">\((n - 1) + m\)</span>. This might seem a bit overcomplicated, but this is how we actually formally define addition, a fact we normally take for granted. We define all arithmetic in terms of the [<a href="https://en.wikipedia.org/wiki/Peano_axioms">Peano axioms</a>], a collection of formal rules that is very important in logic and mathematics.</p>
+<p>Consider the slightly more complicated task of finding the sum of the first <span class="math inline">\(k\)</span> natural numbers. The approach is similar, we switch on the input and then recursively build the sum.</p>
+<pre class="swift"><code>func sum(_ n: NaturalNumber) -&gt; NaturalNumber {
+    switch n {
+    case .zero:
+        return .zero
+    case .succ(let nMinusOne):
+        return add(n, sum(nMinusOne))
+    }
+}</code></pre>
+<p>It is worthwhile to compare this to the recursive version of the summation function for <code>Int</code>s.</p>
+<pre class="swift"><code>func sum(_ n: Int) -&gt; Int {
+    assert(n &gt;= 0)
+    if n == 0 {
+        return 0
+    } else {
+        return n + sum(n - 1)
+    }
+}</code></pre>
+<p>Just the visual similarity is quite striking. The cases that we consider in the <code>switch</code> on the <code>naturalNumber</code> value <code>n</code> are the same as the base case and the recursive call for the <code>Int</code> value <code>n</code>. The <code>switch</code> statement is a way to do <em>structural recursion</em> and is analogous to structural induction in the same way that recursion on <code>Int</code>s is analogous to standard or strong induction. And just as we can think of standard induction as a form of structural induction, we see here that standard recursion is a form of structural recursion (at least is behaves in roughly the same way as a simple form of structural recursion).</p>
+<h3 id="example-propositional-formulas">Example: Propositional Formulas</h3>
+<pre class="swift"><code>indirect enum Formula {
+    case variable(Int)
+    case not(Formula)
+    case and(Formula, Formula)
+    case or(Formula, Formula)
+}</code></pre>
+<p>As a reminder we defined propositional formulas as follows.</p>
+<ul>
+<li>Every propositional variable <span class="math inline">\(P_i\)</span> is a formula, where <span class="math inline">\(i\)</span> is any natural number (in the enumeration above, we are just going to use <code>Int</code>s).</li>
+<li>If <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> are propositional formulas, then so are <span class="math inline">\((\neg \phi)\)</span>, <span class="math inline">\((\phi \lor \psi)\)</span>, and <span class="math inline">\((\phi \land \psi)\)</span>.</li>
+</ul>
+<p>For each of these cases, we include a case in our enumeration, using <code>Formula</code>s as associated values for the "inductive" parts of the definition.</p>
+<p>The values of this enumeration are the <em>tree representations</em> of the formulas. The connectives are treated as <em>prefix</em> operations (appearing in front like a function call) instead of <em>infix</em> operations (appearing between the two arguments like an arithmetic operation). So the formula <span class="math inline">\((P_0 \lor P_1) \land (\neg P_1)\)</span> is represented by</p>
+<pre class="swift"><code>var phi: Formula = .and(.or(.variable(0), .variable(1)), .not(.variable(1)))</code></pre>
+<p>We can define an <em>assignment</em> as a function of type <code>(Int) -&gt; Bool</code> which maps each <code>Int</code>, corresponding to a propositional variable, to a Boolean value. We can then extend an assignment to formulas just like we did in the notes on propositional logic.</p>
+<pre class="swift"><code>func extend(_ f: @escaping (Int) -&gt; Bool) -&gt; (Formula) -&gt; Bool {
+    func extended(_ phi: Formula) -&gt; Bool {
+        switch phi {
+        case .variable(let index):
+            return f(index)
+        case .not(let psi):
+            return !extended(psi)
+        case .and(let psi, let tau):
+            return extended(psi) &amp;&amp; extended(tau)
+        case .or(let psi, let tau):
+            return extended(psi) || extended(tau)
+        }
+    }
+    return extended
+}
+
+let assignment: (Int) -&gt; Bool = { x in
+    if x == 0 { return true }
+    if x == 1 { return false }
+    return false
+}
+
+assert(extend(assignment)(phi))</code></pre>
+<h3 id="example-recursive-lists">Example: Recursive Lists</h3>
+<p>It is often useful to think of arrays constructed recursively, as is done in this enumeration. There are two kinds (cases) of recursive lists: either a recursive list is empty, or it is an element added to another recursive list (the name [<a href="https://en.wikipedia.org/wiki/Cons"><code>cons</code></a>] is historical). Here we also see that we can make enumerations generic just like we can make structures generic, and we can give methods to enumerations. We can even replace the <code>let</code> label with <code>var</code> to get a mutable version of <code>rest</code> in the second case.</p>
+<pre class="swift"><code>indirect enum RList&lt;Element&gt; {
+    case empty
+    case cons(Element, RList)
+
+    mutating func append(_ element: Element) {
+        switch self {
+        case .empty:
+            self = .cons(element, .empty)
+        case .cons(let first, var rest):
+            rest.append(element)
+            self = .cons(first, rest)
+        }
+    }
+}</code></pre>
+<p>We will see more recursive lists later. For now, note that recursive enumerations are still treated as value types. The variables <code>rest</code> in the second case block refers to a copy of rest. If we remove the line <code>self = .cons(first, rests)</code>, this function would not actual mutate <code>self</code>, the <code>RList</code> for which the method is called.</p>
+<p>It is also worth noting the similarity between recursive lists and natural numbers. The only difference is an additional <code>Element</code> being stored. I will leave this as simply a curiosity, but this has deep implications in other realms of programming.</p>
+<h3 id="example-trees">Example : Trees</h3>
+<p>Trees are a very general form of recursive type. In fact all recursive enumerations are essentially versions of trees. The simplest kind of tree is a <em>binary tree</em>. A binary tree is either empty or it is a node with an element and two subtrees.</p>
+<pre class="swift"><code>indirect enum BinaryTree&lt;Element&gt; {
+    case empty
+    case node(Element, BinaryTree, BinaryTree)
+}</code></pre>
+<p>We can check if an element appears in a binary tree by checking if its at the top node and recursively checking its subtrees.</p>
+<pre class="swift"><code>func contains(_ element: Int, in tree: BinaryTree&lt;Int&gt;) -&gt; Bool {
+    switch tree {
+    case .empty:
+        return false
+    case .node(let valueAtNode, let leftSubtree, let rightSubtree):
+        return valueAtNode == element ||
+               contains(element, in: leftSubtree) ||
+               contains(element, in: rightSubtree)
+    }
+}</code></pre>
+<h2 id="no-recursive-structures-or-value-types">No Recursive Structures (or Value Types)</h2>
+<p>Recursive enumerations are a great way to build simple recursive structures, but they are a bit awkward for more complicated structures. They also are missing some potentially useful capabilities. What if we want to make a circular array, one that can loop back on itself? This is not possible with recursive enumerations.</p>
+<p>Part of the difficulty of recursive enumerations is that they still behave like value types. We saw some of the awkwardness of this when defining the <code>append(_:)</code> function for recursive lists. We had to essentially rebuild the list and then reassign <code>self</code>. But to see why we cannot really have recursive value types let's think about a potential definition of recursive lists using structures.</p>
+<p>One way we might do this is by creating a structure called <code>Cons&lt;Element&gt;</code> which stores a value and a <code>Cons?</code> for the rest of the list. We use an optional here so that we can represent the empty list as <code>nil</code>.</p>
+<pre class="swift"><code>struct Cons&lt;Element&gt; {
+    var value: Element
+    var rest: Cons?
+}</code></pre>
+<p>If you try this, the Swift compiler will complain about a structure recursively storing itself. This is not an arbitrary choice. If we could build this structure, then we could construct the following list.</p>
+<pre class="swift"><code>var infintyOnes = Cons(1, nil)
+infinityOnes = Cons(1, infinityOnes)</code></pre>
+<p><code>infinityOnes</code> would then list which contains infinitely many ones. This issue is not that this is possible, but that, by virtue of being a structure, <code>Cons</code> has to behave like a value type, and so is <strong>copied on reassignment</strong>. To copy the value <code>infinityOnes</code> we have to copy a <code>1</code> for its value and then a copy of <code>infinityOnes</code>, which requires copying a <code>1</code> for its values and then a copy of <code>infinityOnes</code>, which requires copying a <code>1</code> for its values and then a copy of <code>infinityOnes</code>, and so on.</p>
+<p>In order to maintain the value type semantics of structures while allowing recursive structures, we would have to be able to store infinite objects. The reason we are allowed recursive enumerations is because their syntax explicitly disallows for these sorts of circularities. In formal speak, they are <em>well-founded</em> by construction and so they maintain their value type semantics while still allowing for a restricted form of recursion.</p>
+<h2 id="recursive-classes">Recursive Classes</h2>
+<p>The solution to this problem is to introduce <em>classes</em>, a different type-building construction. Classes have nearly the same syntax as structures except that they use the keyword <code>class</code> in place of <code>struct</code>. But the absolute most important difference between classes and structures is that <strong>classes are reference types</strong>. This means that if we initialize a class object to a variable, that variable stores a reference (arrow, if we're thinking in terms of environment diagrams) and reassignment means copying of the reference, not the object itself.</p>
+<pre class="swift"><code>class X {
+    var x: Int
+
+    init() {
+        x = 0
+    }
+
+    func addOne() {
+        x += 1
+    }
+}
+
+var y = X()
+assert(y.x == 0)
+var z = y
+z.addOne()
+assert(y.x == 1)</code></pre>
+<p>Assigning <code>z</code> to the value of <code>y</code> means assigning it the <em>reference</em> which <code>y</code> is assigned, so calling <code>.addOne()</code> on <code>z</code> affects the same object as the one that <code>y</code> references, they point to the same object.</p>
+<p>There are other minor syntax differences, most of which we won't get into, but one that we will immediately run into is that we don't get a free initializer. So when defining a class, <strong>always include an initializer.</strong> Also, there is no more need to use the keyword <code>mutating</code> since classes are mutating by default.</p>
+<h3 id="example-circular-lists">Example: Circular Lists</h3>
+<p>At this point, if we want to make <code>Cons</code> work, we just have to make it a class.</p>
+<pre class="swift"><code>class Cons&lt;Element&gt; {
+    var value: Element
+    var rest: Cons?
+
+    init(_ value: Element, _ rest: Cons?) {
+        self.value = value
+        self.rest = rest
+    }
+}</code></pre>
+<p>However, this is a bit unsatisfying because we can't represent the empty list as a <code>Cons</code> only a <code>Cons?</code>, and so we can have a property like <code>isEmpty</code>. One common trick it fix this is to build a <em>wrapper class</em>, which contains the <code>Cons</code> type and helps organize it.</p>
+<pre class="swift"><code>class RList&lt;Element&gt; {
+    struct Cons {
+        var value: Element
+        var rest: RList&lt;Element&gt;
+    }
+
+    var head: Cons?
+
+    init() {
+        head = nil
+    }
+
+    init(_ value: Element, _ rest: RList&lt;Element&gt;) {
+        head = Cons(value: value, rest: rest)
+    }
+
+    var isEmpty: Bool {
+        get {
+            return head == nil
+        }
+    }
+
+    func append(_ x: Element) {
+        if isEmpty {
+            head = Cons(value: x, rest: RList())
+        } else {
+            head!.rest.append(x)
+        }
+    }
+}</code></pre>
+<p>These structures are also sometimes called <em>linked lists</em>. They are often drawn using <em>box-pointer diagrams</em>, where arrows refer to references.</p>
+<p><img src="../Other/RList-Images/rlist.png" style="zoom:15%;" /></p>
+<p>One import of all of this is, of course, this that we can build circular lists! We can include the methods</p>
+<pre class="swift"><code>func concatenate(_ l: RList) {
+    if isEmpty {
+        head = l.head
+    } else {
+        head!.rest.concatenate(l)
+    }
+}
+
+func makeCircular() {
+    self.concatenate(self)
+}</code></pre>
+<p>in our <code>RList</code> class. This last method is very bizarre, but again, is possible because we are simply working with references. The line <code>self.concatenate(self)</code> has the affect of making the reference to the next <code>RList</code> object at the end of <code>self</code> the same as <code>self</code>.</p>
+<p><img src="../Other/RList-Images/circular.png" style="zoom:15%;" /></p>
+<p>We won't say much else about classes. For the most part, Swift will always prefer that structures are used, though there are some exceptions, one of which is we will see a bit in iOS development.</p>
+</body>
+
+</html>
