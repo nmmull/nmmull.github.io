@@ -30,6 +30,24 @@
     }
 }</code></pre>
 <p>In the case that <span class="math inline">\(n = 0\)</span>, we just return <span class="math inline">\(m\)</span>. Otherwise, we return one more than <span class="math inline">\((n - 1) + m\)</span>. This might seem a bit overcomplicated, but this is how we actually formally define addition, a fact we normally take for granted. We define all arithmetic in terms of the [<a href="https://en.wikipedia.org/wiki/Peano_axioms">Peano axioms</a>], a collection of formal rules that is very important in logic and mathematics.</p>
+<p>We can better see the relationship between <code>NaturalNumber</code>s and <code>Int</code>s by writing the conversions between them.</p>
+<pre class="swift"><code>func natToInt(_ n: NaturalNumber) -&gt; Int {
+    switch n {
+    case .zero:
+        return 0
+    case .succ(let nMinusOne):
+        return 1 + natToInt(nMinusOne)
+    }
+}
+
+func intToNat(_ x: Int) -&gt; NaturalNumber {
+    assert(x &gt;= 0)
+    var accum: NaturalNumber = .zero
+    for _ in 0..&lt;x {
+        accum = .succ(accum)
+    }
+    return accum
+}</code></pre>
 <p>Consider the slightly more complicated task of finding the sum of the first <span class="math inline">\(k\)</span> natural numbers. The approach is similar, we switch on the input and then recursively build the sum.</p>
 <pre class="swift"><code>func sum(_ n: NaturalNumber) -&gt; NaturalNumber {
     switch n {
@@ -215,7 +233,7 @@ func makeCircular() {
 }</code></pre>
 <p>in our <code>RList</code> class. This last method is very bizarre, but again, is possible because we are simply working with references. The line <code>self.concatenate(self)</code> has the affect of making the reference to the next <code>RList</code> object at the end of <code>self</code> the same as <code>self</code>.</p>
 <p><img src="../Other/RList-Images/circular.png" style="zoom:15%;" /></p>
-<p>We won't say much else about classes. For the most part, Swift will always prefer that structures are used, though there are some exceptions, one of which is we will see a bit in iOS development.</p>
+<p>We won't say much else about classes. For the most part, Swift will almost always prefer that structures are used.</p>
 </body>
 
 </html>
