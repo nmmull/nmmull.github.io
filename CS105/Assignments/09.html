@@ -16,8 +16,8 @@
 <ul>
 <li><code>argMax&lt;T&gt;(_:, by: )</code> of generic type <code>((Element) -&gt; T, (T, T) -&gt; Bool) -&gt; Element?</code>, which returns the element in <code>self</code> that maximizes the first input function according to the less-than function given by the second input function. It should return <code>nil</code> if <code>self</code> is empty.</li>
 <li><code>argMin&lt;T&gt;(_:, by: )</code> of generic type <code>((Element) -&gt; T, (T, T) -&gt; Bool) -&gt; Element?,</code> which returns the element in <code>self</code> that <strong>minimizes</strong> the first input function according to the less-than given by the second input function. It should return <code>nil</code> if <code>self</code> is empty. Try to write this function in one line.</li>
-<li><code>argMax&lt;T&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
-<li><code>argMin&lt;T&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
+<li><code>argMax&lt;T: Comparable&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
+<li><code>argMin&lt;T: Comparable&gt;(_:)</code>, a type constrained version of the above function in which <code>T</code> is comparable.</li>
 </ul>
 </body>
 
