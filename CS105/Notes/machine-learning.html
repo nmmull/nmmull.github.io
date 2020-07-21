@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>A Machine Learning Primer</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>A Machine Learning Primer</h1>
+<p>The last two times I taught this course, I offered a couple options for our last topic, and each time machine learning was the most popular option by far. This is not surprising, it's everywhere, and it seems like every employer now expects <em>some</em> familiarity with basic machine learning techniques. I will do my best to provide a <em>sense</em> of what's going on with these basic techniques, but I have to add an important disclaimer: truly understanding machine learning requires some pretty heavy mathematics (<em>e.g.</em>, calculus, linear algebra, statistics, even information theory). We can't cover these things, but hopefully we can see enough to make clear what machine learning really is and why it is an interesting problem.</p>
+<h2 id="a-thought-experiment">A Thought Experiment</h2>
+<p>Imagine that you are working for a restaurant and you are tasked with guessing the amount of time that a group will have to wait for a table based on their arrival time. You are not physically at the restaurant, so you can't use real-time data, you are simply given an arrival time and you have to respond with a wait time (you can imagine you trying to put approximate wait times on the website of the restaurant). How would you do this?</p>
+<p>One approach is to look at past waiting times and plot them against arrival time. Your graph might look something like this</p>
+<p><img src="../Other/ml/drawing519475.png" style="zoom:40%;" /></p>
+<p>You can only respond with a single wait time, so you need to produce a <em>line</em> in this graph based on the data. Naturally, you want this line to match the data you have as well as possible, but you quickly realize that it's impossible to match it perfectly. There may be many groups that waited different amounts time in the past, even though they have the same arrival times. And even if you could match the data perfectly, it seems like you wouldn't want to do this anyway.</p>
+<p><img src="../Other/ml/drawing125082.png" style="zoom:40%;" /></p>
+<p>Your graph would have too much variation, it would capture too much information about the particular data that you have. Instead, you want a line that is somewhat <em>smooth</em>, that averages out some of the behavior of the data.</p>
+<p><img src="../Other/ml/drawing547274.png" style="zoom:40%;" /></p>
+<p>You try using this line to make your guesses for while, and it works <em>okay</em>, but you tend to underestimate the wait time for large groups and overestimate the wait time for small groups.</p>
+<p>To fix this you try to build a different graph for different groups sizes. This works a bit better, but you then realize that your guesses tend to be way off on weekends.</p>
+<p>If you were to also create different graphs to also consider what day of the week it is, you would have (maybe 10 groups sizes times 7 days a week) roughly 70 different graphs. The more things you consider the more graphs you need.</p>
+<p>Getting to the point, with machine learning we are try to do this automatically. We are trying to guess something, sometimes based on previous experience, using a large amount of data and taking into consideration many features of each datum. But the approaches and the considerations made along the way in both cases.</p>
+<h2 id="what-is-machine-learning-really">What is Machine Learning Really?</h2>
+<p>Machine Learning is becoming ubiquitous, there are the examples we see in the news and Twitter like</p>
+<ul>
+<li>AlphaGo,</li>
+<li>self-driving cars,</li>
+<li>computers which play Mario Brothers,</li>
+<li><a href="https://www.technologyreview.com/2020/07/20/1005454/openai-machine-learning-language-generator-gpt-3-nlp/">GPT-3</a>,</li>
+</ul>
+<p>but there are also less exotic examples like</p>
+<ul>
+<li>spam filters,</li>
+<li>language translation, and</li>
+<li>stock market prediction.</li>
+</ul>
+<p>In order to understand what is happening in these examples, and what is similar about them, we need to understand what machine learning actually is. All it takes is a quick browse of the Wikipedia page for machine learning to find this nice definition attributed to Tom Mitchell, a machine learning specialist from CMU:</p>
+<blockquote>
+<p>A computer program is said to learn from experience <span class="math inline">\(E\)</span> with respect to some class of tasks <span class="math inline">\(T\)</span> and performance measure <span class="math inline">\(P\)</span> if its performance at tasks in <span class="math inline">\(T\)</span>, as measured by <span class="math inline">\(P\)</span>, improves with experience <span class="math inline">\(E\)</span>.</p>
+</blockquote>
+<p>So if we take</p>
+<ul>
+<li><span class="math inline">\(T =\)</span> determining wait time</li>
+<li><span class="math inline">\(E =\)</span> the data on previous wait times, and</li>
+<li><span class="math inline">\(P =\)</span> how much the guess overestimates or underestimates the wait time</li>
+</ul>
+<p>then we have the setup for a machine learning program that solves the problem from the thought experiment above.</p>
+<p>This is a very good general definition, but it is, in some sense, too general, we can't do very much with it. We will consider a more specific definition by looking at particular kind of machine learning called <strong>supervised classification</strong>, for which we take</p>
+<ul>
+<li><span class="math inline">\(T =\)</span> determining the classification of a of a piece of data,</li>
+<li><span class="math inline">\(E =\)</span> a large collection of data, all labeled with correct classifications</li>
+<li><span class="math inline">\(P =\)</span> whether a piece of data is correctly classified.</li>
+</ul>
+<p>Breaking down the name "supervised classification," the "classification" part comes from the fact that there is a fixed set of possible classifications or <em>labels</em> for any datum. In the next section, we will focus on <em>binary</em> classification in which there are only two kinds of labels. This is in contrast with <em>regression</em> in which the labels may come from a spectrum of values. The thought experiment above is an example of a regression problem. The "supervised" part comes from the fact that our collection of data <strong>comes with the labels</strong>. This is in contrast with <em>unsupervised</em> learning, in which the labels are not included or only partially included.</p>
+<h2 id="supervised-binary-classification">Supervised Binary Classification</h2>
+<p>In the set up of supervised binary classification, we are given a data set, and each datum in the set is also assigned a <em>label</em> or <em>classification</em>, of which there are two choices. For example, we can think of the data set as a collection emails represented as <code>.txt</code> files, each labeled as with a <code>Bool</code>, where <code>true</code> means "is spam."</p>
+<p>Data are almost always abstractly represented as <em>vectors</em> of <code>Doubles</code>. Vectors come from linear algebra, and are basically arrays with fixed lengths. We will ignore this in these notes and just use arrays, and occasionally use assert statements to enforce length restrictions.</p>
+<p>We use <code>Double</code>s for convenience, as we can encode any different complex data in this way. For example, we can can represent a text file as a a vector of <code>Double</code>s by mapping each character to a <code>Double</code> and just listing all the character encodings in the order they appear. But to remain somewhat general we can use type aliases.</p>
+<pre><code>typealias Datum = [Double]
+typealias Classification = Bool
+typealias Dataset = [(Datum, Classification)]</code></pre>
+<p>A <strong>classifier</strong> is a function of type <code>(Data) -&gt; Classification</code> and the <strong>supervised classification problem</strong> is to define a function which builds a classifier from a data set.</p>
+<pre><code>func buildClassifier(from data: Dataset) -&gt; Classifier {
+    // TODO
+}</code></pre>
+<p>Ideally, the classifier should do fairly well when classifying data from the dataset. That is, the <strong>error rate</strong> of the classifier, the fraction of the data that it incorrectly classifies, should be low on the data from which it is built.</p>
+<pre><code>func error(of c: Classifier, on data: Dataset) -&gt; Double {
+    var numberOfErrors = 0
+    for (datum, label) in data {
+        numberOfErrors += c(datum) != label ? 1 : 0
+    }
+    return Double(numberOfErrors) / Double(data.count)
+}</code></pre>
+<p>But it is not required to be correct on <em>every</em> element of the data set. Like we noted in the thought experiment, this would be too restrictive.</p>
+<p>This is a very general statement of the supervised binary classification problem, which I think makes clear our goal, but it is still a bit too general. This is primarily because classifiers are very unrestricted objects, there are so many Swift functions that are considered classifiers. So what is usually done in machine learning is we build a <em>model</em>&#xA0;of the data, which is a classifier that usually comes from a particular (usually simple) collection of classifiers. We can represent a model as a structure with</p>
+<ul>
+<li>a method <code>.classify(:_)</code> of type <code>(Dataum) -&gt; Classification</code>, and</li>
+<li>a mutating method <code>.train(_:)</code> of type <code>(Dataset) -&gt; Void</code></li>
+</ul>
+<p>We can then define the classifer building function as</p>
+<pre><code>func buildClassifier(from data: Dataset) -&gt; (Datum) -&gt; Classifiction {
+    var m = model() // or another reasonable initializer
+    m.train()
+    return { datum in m.classify(datum) }
+}</code></pre>
+<p>The problem of training models is the hard part of machine learning. The more complicated the class of models, the harder they are to train. We can't reasonably look at training in these notes, so instead we'll just look at a couple basic models and how they are use for classification.</p>
+<h3 id="linear-separators">Linear Separators</h3>
+<p>In two dimensions, we can think of the data set in the binary classification problem as being a collection of points in the plane, each labeled either <code>+</code> or <code>-</code></p>
+<p><img src="../Other/ml/drawing557094.png" style="zoom:40%;" /></p>
+<p>The goal of binary classification is then to find a line that separates the <code>+</code>'s from the <code>-</code>'s. And if you're lucky, this can be done with a straight line. A <strong>linear separator</strong> is a line (or in higher dimensions, a so-called <em>hyperplane</em>) which classifies points based what side of the line they fall. In two dimensions, a line is determined by two <em>coefficients</em>, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and an <em>threshold</em> <span class="math inline">\(c\)</span>, which describe the line <span class="math inline">\(ax + by = c\)</span>. To determine the point <span class="math inline">\((x, y)\)</span> appears above the line, we simply have to check if <span class="math inline">\(ax + by &gt; c\)</span> and for below, we check <span class="math inline">\(ax + by &lt; c\)</span>. In more dimensions, we simply need more coefficients. A <em>plane</em> in three dimensions given by <span class="math inline">\(ax + by + cz = d\)</span>,</p>
+<p>One quick trick, keeping track of the threshold can be a bit annoying, so what is typically done is we just add a <code>1</code> to all our data.</p>
+<pre><code>data = data.map({ (datum, label) in (datum + [1], label) })</code></pre>
+<p>Determining the separator <span class="math inline">\(ax + by + c(1) = 0\)</span> of points of this form in three dimensions is equivalent to finding a separator <span class="math inline">\(ax + by = -c\)</span> is two dimensions. The take away is that we can always assume the threshold is <span class="math inline">\(0\)</span>.</p>
+<p>In the general case, an <span class="math inline">\((n - 1)\)</span>-dimensional plane in <span class="math inline">\(n\)</span> dimensions is determined by a collection of coefficients <span class="math inline">\(a_1, \dots, a_n\)</span> and is given by</p>
+<p><span class="math display">\[
+\sum_{i = 1}^n a_i x_i = 0
+\]</span></p>
+<p>Determining if a point is on one side or the other is, again, simply replacing the '<span class="math inline">\(=\)</span>' with '<span class="math inline">\(&lt;\)</span>' or '<span class="math inline">\(&gt;\)</span>'. This operation of taking the sum of the products of elements is very common, it is called a <em>dot product</em> in linear algebra, and is worth adding to <code>Array</code> as an extension.</p>
+<pre><code>extension Array where Element == Double {
+    func dot(_ l: [Element]) -&gt; Double {
+        assert(count == l.count)
+        var accum = 0.0
+        for i in 0..&lt;count {
+            accum += self[i] * l[i]
+        }
+        return accum
+    }
+}</code></pre>
+<p>We can then define the linear separator model as the following structure with a classifying method that determines on which side of the plane specified by the <code>coefficients</code>&#xA0;the datum appears on.</p>
+<pre><code>struct LinearSeparator {
+    var coefficients: [Double]
+
+    func classify(_ datum: Datum) -&gt; Classification {
+        return coefficients.dot(datum) &gt; 0
+    }
+}</code></pre>
+<p>The primary benefit of linear separators is that they are very simple and so easier to train than other models. But this simplicity comes at a price, it cannot separate some data with very obvious but nonlinear separators.</p>
+<p><img src="../Other/ml/drawing697785.png" style="zoom:40%;" /></p>
+<p>This is a typical tradeoff in machine learning. Simple models are easier to train but less powerful.</p>
+<h3 id="decision-trees">Decision Trees</h3>
+<p>Decision Trees are the fancy machine-learning representations of the game <em>20 questions</em>. A <strong>decision tree</strong> a tree-like enumeration where the <em>leaves</em> of the tree (then ends without recursive data) contain classifications, while the nodes have questions in the forms of functions which choose which branch to take.</p>
+<p><img src="../Other/ml/dt.png" style="zoom:40%;" /></p>
+<p>Classifying using a decision tree is done by traversing down the tree using the functions at each node on the input datum to guide the path until a leaf with the output classification is reached.</p>
+<pre><code>indirect enum DecisionTree {
+    case leaf(Classification)
+    case node((Datum) -&gt; Int, [DecisionTree])
+
+    func classify(_ datum: Datum) -&gt; Classification {
+        switch self {
+        case .leaf(let classification):
+            return classification
+        case .node(let childChooser, let children):
+            return children[childChooser(datum)].classify(datum)
+        }
+    }
+}</code></pre>
+<p>Training a decision tree is about determining the functions to place at each node. Usually these are also restricted to be of a particular form to make training easier.</p>
+<h3 id="neural-networks">Neural Networks</h3>
+<p>This last model is the most complicated and the most powerful. Neural networks are inspired by neurons in the brain. I know nothing about neuroscience, but as it has been described to me, neurons in the the brain send electrical signals across a long section called the <em>axon</em>, but only do so if the receive a strong enough combined signal from the neurons connected to the head of the axon via the <em>dendrites</em>.</p>
+<p><img src="../Other/ml/2-whyareneuron.jpg" style="zoom:40%;" /></p>
+<p>Neural networks in machine learning are made of up collections of structures called usually called <code>Neuron</code>s. Every <code>Neuron</code> in the network has a collection of inputs, which come from the data or from other <code>Neuron</code>s. This is supposed to simulate the connections of neurons in the brain. The inputs feed values into the <code>Neuron</code> and the <code>Neuron</code> takes the dot product of these inputs with a collection of coefficient or <em>weights</em> which the <code>Neuron</code> stores internally. The output of a <code>Neuron</code> is then this value with an <em>function</em> <span class="math inline">\(\mathsf{activation}\)</span> applied, <em>i.e.</em>,</p>
+<p><span class="math display">\[
+\mathsf{output} = \mathsf{activation}\left( \sum_{i = 1}^k \mathsf{weight}_i * \mathsf{input}_i\right)
+\]</span></p>
+<p>The activation function is usually a <em>threshold function</em></p>
+<p><span class="math display">\[
+\mathsf{threshold}(x) =
+\begin{cases}
+1 &amp; x &gt; 0 \\
+0 &amp; x \leq 0
+\end{cases}
+\]</span></p>
+<p>which mimics the head of the axon receiving sufficient charge to fire.</p>
+<p><img src="../Other/ml/drawing694708.png" style="zoom:40%;" /></p>
+<p><code>Neuron</code>s can be arranged in any number of ways, but we will be looking at a particular simple kind of network called the <em>single-layered neural networks</em>. This is comprised of a single <em>hidden layer</em> of nodes which take in input values from the data and a single <em>output nueron</em> which is fed the outputs of the hidden layer.</p>
+<p><img src="../Other/ml/drawing688155.png" style="zoom:40%;" /></p>
+<p>To classify using a neural network we feed each input to every node in the hidden layer, determine the outputs, and then feed all these outputs input the ouput neuron, and determine its output. Finally we return <code>true</code> if this value is greater than <span class="math inline">\(0\)</span> and <code>false</code> otherwise, to get a binary classification.</p>
+<pre><code>struct SingleLayerNeuralNetwork {
+    struct Neuron {
+        var inputWeights: [Double]
+        var activation: (Double) -&gt; Double
+
+        func output(_ inputs: [Double]) -&gt; Double {
+            return activation(inputWeights.dot(inputs))
+        }
+    }
+
+    var hiddenLayer : [Neuron]
+    var outputNeuron: Neuron
+
+    func classify(_ datum: Datum) -&gt; Classification {
+        let outputsOfHiddenLayer = hiddenLayer.map({ $0.output(datum) })
+        return outputNeuron.output(outputsOfHiddenLayer) &gt; 0
+    }
+}</code></pre>
+<p>Training a neural network is about figuring out what input weights to use and what activation function to use. This is pretty complicated, but there are some methods that work very well and very fast. Part of the reason you've probably heard of neural networks before today is because they are used <em>everywhere</em>. They work extremely well in practice, but is is still a wide open question of why this is the case.</p>
+<h2 id="a-note-on-practical-machine-learning">A Note on Practical Machine Learning</h2>
+<p>Machine learning is a popular enough fields that there are a ton of prebuilt algorithms for training the models above. If you are just interested in <em>using</em> machine learning, you could get pretty far without knowing how any of these work. In fact, there are machine learning programs for determining which machine learning models you should use in different cases! In the meeting, we will see how easy it is to set up and test models in a different language called Python.</p>
+<p>This begs the question: why understand the technical details at all? This is a fair question. Here are a couple possible answers.</p>
+<ul>
+<li>We will see in the meeting that different models work better in different settings. The best way to understand which model will work well based in your field will depend on your knowledge of your field and your knowledge of how the models work.</li>
+<li>All of these models have parameters that get can be set to make them more accurate or more efficient. The only way these parameters make sense is if you know what the models are doing.</li>
+<li>Machine learning can have unfortunate consequences if used carelessly. Using machine learning in sensitive settings without knowing what is actually going on is exactly where we get racists and sexist AI's.</li>
+<li>Honestly, the math is interesting (to me, maybe more interesting than the machine learning itself).</li>
+</ul>
+</body>
+
+</html>
