@@ -1,5 +1,7 @@
 //
 // A possible outline for the TicTacToeView
+// NOTE: IF YOU WANT TO USE THIS AS ACTUAL STARTER CODE, YOU
+// HAVE TO CHANGE THE NAME ContentView TO TicTacToeView.
 //
 
 import SwiftUI
@@ -38,6 +40,6 @@ struct PositionView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TicTacToeView()
     }
 }
