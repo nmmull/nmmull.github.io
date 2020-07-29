@@ -1,13 +1,16 @@
 /* This is the CSS stylesheet of Nathan Mull. */
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,500;1,500&family=Inconsolata&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,400;1,700&display=swap');
+
 body {
     /* Home background color */
     background-color: #eeeedd;
 
     /* Primary body font */
-    font-family: 'Roman', 'Helvetica', 'Arial', sans-serif;
-    font-size: 18pt;
-    font-weight: lighter;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16pt;
+    font-weight: 400;
 
     /* Primary margin setting */
     margin-left: auto;
@@ -16,7 +19,12 @@ body {
     max-width: 1000px;
 
     /* Global line height */
-    line-height: 160%;
+    line-height: 150%;
+
+}
+
+p {
+    text-transform: lowercase;
 }
 
 /* Course background color */
@@ -30,28 +38,31 @@ body#course {
 h1,
 h2,
 h3 {
-    font-family: 'Palatino', 'Times New Roman', 'Times', serif;
-    font-weight: lighter;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
 }
 
 /* Header styles */
 
 h1 {
-    font-size: 38pt;
-    text-align: center;
+    font-size: 40pt;
     margin-top: 50px;
+    margin-bottom: 50px;
+    line-height: 110%;
 }
 
 h2 {
-    font-size: 24pt;
+    font-size: 20pt;
     font-style: italic;
+    text-transform: uppercase;
     text-align: center;
     margin-top: 40px;
 }
 
 h3 {
-    font-size: 20pt;
+    font-size: 22pt;
     font-style: italic;
+    text-transform: lowercase;
 }
 
 /* Code style */
@@ -59,12 +70,13 @@ h3 {
 code {
     background-color: #eee;
     border-radius: 3px;
+    font-family: 'Inconsolata', 'Monaco', monospace;
 }
 
 pre code {
-    font-family: 'Monaco', 'New Courier', 'Courier', monospace;
-    font-size: 12pt;
-    line-height: normal;
+    font-family: 'Inconsolata', 'Monaco', 'New Courier', 'Courier', monospace;
+    font-size: 14pt;
+    line-height: 120%;
     display: block;
     padding: 20px;
 }
@@ -79,7 +91,7 @@ hr {
 /* Link behavior */
 
 a:link {
-    text-decoration: none;
+    text-decoration: underline;
     color:black;
 }
 
