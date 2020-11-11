@@ -3,29 +3,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
 
 body {
-    /* Home background color */
-    background-color: #eeeedd;
-
-    /* Primary body font */
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16pt;
-    font-weight: 400;
-
-    /* Primary margin setting */
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    max-width: 1000px;
-
-    /* Global line height */
-    line-height: 150%;
-
+  /* Home background color */
+  background-color: #eeeedd;
+  
+  /* Primary body font */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16pt;
+  font-weight: 400;
+  
+  /* Primary margin setting */
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-width: 700px;
+  
+  /* Global line height */
+  line-height: 175%;
 }
 
 /* Course background color */
 
 body#course {
-    background-color: #c6d6ec;
+  background-color: #c6d6ec;
 }
 
 /* Header font*/
@@ -33,74 +32,74 @@ body#course {
 h1,
 h2,
 h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
 
 /* Header styles */
 
 h1 {
-    font-size: 40pt;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    line-height: 110%;
+  font-size: 38pt;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  line-height: 110%;
 }
 
 h2 {
-    font-size: 20pt;
-    font-style: italic;
-    text-transform: uppercase;
-    text-align: center;
-    margin-top: 40px;
+  font-size: 20pt;
+  font-style: italic;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 40px;
 }
 
 h3 {
-    font-size: 22pt;
-    font-style: italic;
-    text-transform: lowercase;
+  font-size: 22pt;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 /* Code style */
 
 code {
-    background-color: #eee;
-    border-radius: 3px;
-    font-family: 'Inconsolata', 'Monaco', monospace;
+  background-color: #eee;
+  border-radius: 3px;
+  font-family: 'Inconsolata', 'Monaco', monospace;
 }
 
 pre code {
-    font-family: 'Inconsolata', 'Monaco', 'New Courier', 'Courier', monospace;
-    font-size: 14pt;
-    line-height: 120%;
-    display: block;
-    padding: 20px;
+  font-family: 'Inconsolata', 'Monaco', 'New Courier', 'Courier', monospace;
+  font-size: 14pt;
+  line-height: 120%;
+  display: block;
+  padding: 20px;
 }
 
 /* Horizontal Line */
 
 hr {
-    size: 3px;
-    border: 1px solid black;
+  size: 3px;
+  border: 1px solid black;
 }
 
 /* Link behavior */
 
 a:link {
-    text-decoration: underline;
-    color:black;
+  text-decoration: underline;
+  color:black;
 }
 
 a:visited {
-    text-decoration: none;
-    color:black;
+  text-decoration: none;
+  color:black;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Tables */
