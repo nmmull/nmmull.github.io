@@ -2,15 +2,16 @@
 <html>
 
 <head>
-<title>An Overview of Swift</title>
+<title>An Overview of Swift: Learning by Doing</title>
 <link rel="stylesheet" href="../../globalStyle.css">
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body id="course">
-<h1>An Overview of Swift</h1>
-<p>Swift was introduced in 2014 to replace Objective-C as the language for developing Apple applications. Despite its association with Apple, Swift is [<a href="https://github.com/apple/swift">open-source</a>] and can be used as a standalone language. We'll be carefully studying the structure and interpretation of Swift programs throughout this quarter, but one great feature of modern languages like Swift is that they are fairly intuitive. The goal of this note is to cover some basic constructions in Swift and see just how easy it is to get up-and-running. You should hopefully be able to use some internal pattern-matching to get a sense of how more complicated programs look by seeing some of these simple examples.</p>
+<h1>An Overview of Swift: Learning by Doing</h1>
+<p>Swift was introduced in 2014 to replace Objective-C as the language for developing Apple applications. Despite its association with Apple, Swift is [<a href="https://github.com/apple/swift">open-source</a>] and can be used as a standalone language. We'll be carefully studying the structure and interpretation of Swift programs throughout this quarter, but one great feature of modern languages like Swift is that they are fairly intuitive. The goal of this note is to cover some basic constructions in Swift and see just how easy it is to get up-and-running.</p>
+<p>As a general note, there is a great deal of forward referencing when learning to program. We quickly run into a chicken-egg problem: we'd like to talk about programs in order to understand their structure and interpretation, but can we interpret these programs before we've done that? The hope is that you'll be able to use some internal pattern-matching, mimicry, and a bit of learning-by-doing to get a sense of how to program before we <em>really</em> learn what's going on with our programs. In other words, right now you should try to intuit a model of execution before we've described one.</p>
 <h2 id="compared-to-urm-programs">Compared to URM Programs</h2>
 <p>Though I personally find writing URM programs quite satisfying, they don't scale well with difficulty. A couple issues (among the many):</p>
 <ul>
@@ -20,11 +21,11 @@
 </ul>
 <p>In what follows we'll see how Swift (and most modern languages) address these issues.</p>
 <h2 id="primitive-types-and-literals">Primitive Types and Literals</h2>
-<p>First off, more kinds of data, or as the computer scientists say: <em>types</em>. Swift is a <em>strongly typed</em> language. This means all data that appear in a Swift program have attributed types that are fixed throughout the execution of the program. The type of a value is information about what kind of data it is, and how it should be interpreted. URM programs can be thought of as working with a single type <code>Nat</code> for natural numbers. Swift has many more types, along with mechanisms for creating new types. The <em>primitive types</em> are those that are built into Swift and are common among most full-scale languages. Because they are built-in and fundamental, there is special syntax for constructing fixed values of primitive types. Objects constructed this way are called <em>literals</em>.</p>
+<p>First off, more kinds of data, or as the computer scientists say: <em>types</em>. All data that appear in a Swift program have attributed types. The type of a value is information about what kind of data it is, how it should be interpreted. URM programs can be thought of as working with a single type <code>Nat</code> for natural numbers. Swift has many more types, along with mechanisms for creating new types. The <em>primitive types</em> are those that are built into Swift and are common among most full-scale languages. Because they are built-in and fundamental, there is special syntax for constructing fixed values of primitive types. Objects constructed this way are called <em>literals</em>.</p>
 <h3 id="a-couple-primitive-types">A Couple Primitive Types</h3>
 <ul>
-<li><code>Int</code>. Values of type <code>Int</code> are whole numbers that can be negative, exactly as you saw them in grade school. <code>Int</code> literals are as expected, we can write numbers like <code>1</code>, <code>27</code>, <code>-2001</code> in Swift programs.</li>
-<li><code>Double</code>. Values of type <code>Double</code> are decimal numbers. The name comes from the fact that they are "double" the precision of a different common data type for decimal numbers, the <code>Float</code> data type, which we will not use in this course. <code>Double</code> literals are also as expected: <code>1.23</code>, <code>2.001</code>, <code>-27.0</code>.</li>
+<li><code>Int</code>. Values of type <code>Int</code> are whole numbers, as you saw them in grade school. <code>Int</code> literals are as expected, we can write numbers like <code>1</code>, <code>27</code>, <code>-2001</code> in Swift programs.</li>
+<li><code>Double</code>. Values of type <code>Double</code> are decimal numbers. The name comes from the fact that they are "double" the precision of a different common data type for decimal numbers, the <code>Float</code> data type. <code>Double</code> literals are also as expected: <code>1.23</code>, <code>2.001</code>, <code>-27.0</code>.</li>
 <li><code>String</code>. Values of type <code>String</code> are representations of text. The way that Swift handles strings is admittedly a bit complicated, so we'll only be using them in a fairly basic capacity. The literals for <code>String</code> are sequences of characters surrounded by quotations: <code>"This is a string."</code>, <code>"1.23"</code>, <code>"&amp;())"</code>.</li>
 <li><code>Bool</code>. There are only two values of type <code>Bool</code> given by the literals <code>true</code> and <code>false</code>. They are used for conditional statements and will be the focus of our later Module on Propositional Logic.</li>
 </ul>
@@ -36,34 +37,37 @@
 <li><em>Subtraction</em> (<code>a - b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Multiplication</em> (<code>a * b</code>) applied to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Division</em> (<code>a / b</code>) applies to <code>Int</code>s as floor division (<code>10/3</code> is <code>3</code>) and <code>Double</code>s as expected.</li>
-<li><em>Equals</em> (<code>a == b</code>) applies to any two values of the same primitive type. It is <code>true</code> if they are the same, and <code>false</code> otherwise.</li>
+<li><em>Remainder</em> (<code>a % b</code>) applies to <code>Int</code>s (e.g., <code>10 % 3</code> is <code>1</code>).</li>
+<li><em>Equals</em> (<code>a == b</code>) applies to any two values of the same primitive types from above. It is <code>true</code> if they are the same, and <code>false</code> otherwise.</li>
 <li><em>Not equals</em> (<code>a != b</code>) is the opposite of <code>==</code>.</li>
 <li><em>Greater than</em> (<code>a  &gt; b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Less than</em> (<code>a &lt; b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Greater than or equal to</em> (<code>a  &gt;= b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 <li><em>Less than or equal to</em> (<code>a &lt;= b</code>) applies to <code>Int</code>s and <code>Double</code>s as expected.</li>
 </ul>
-<p>This is not an exhaustive list, see the Swift book (linked below) for more operators that make your life a little easier.</p>
+<p>This is not an exhaustive list, see the Swift book (linked below) for more operators. Committing them to memory will make your life a little easier.</p>
 <h2 id="constants-and-variables">Constants and Variables</h2>
 <p>Issue two of URM programs was storing values more conveniently. Swift actually has two mechanisms for storing values: <em>constants</em> and <em>variables</em>. This syntax is simple, to declare, say, a constant integer, we can write the line</p>
 <pre class="swift"><code>let x: Int = 3</code></pre>
 <p>and to declare it as a variable we use the line</p>
 <pre class="swift"><code>var x: Int = 3</code></pre>
 <p>Both of these lines will make <code>x</code> refer to the value <code>2</code> throughout the program. It is convention in Swift to use <em>camelCase</em> for long constant and variable names, e.g., <code>variableWithLongName</code>. Note that the first letter is lower-case.</p>
-<p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>) takes two values of the same type and the one on the left must be a variable. The line</p>
+<p>Note that both constant and variable declarations have <em>type annotations</em>. Swift is a <em>statically typed</em>&#xA0;language, which, in essence means that variables and constants are given a type that cannot change throughout the execution of a program. More on this in the next module.</p>
+<p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>) takes two values of the same type and the one on the left <strong>must</strong> be a variable. The line</p>
 <pre class="swift"><code>y = 5</code></pre>
-<p>changes the value of <code>y</code> to <code>5</code>. If the left argument is <em>not</em> a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>
+<p>changes the value of <code>y</code> to <code>5</code>. If the left argument is not a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>
 <pre class="swift"><code>let z = 2
 z = 5</code></pre>
 <p>is not valid Swift code.</p>
-<p>Having both variables and constants is not strictly necessary, many other languages have just variables. What we get is greater expressibility, readability and safety; it becomes clear which values are fixed throughout the execution of a program. As a silly example, we could declare</p>
+<p>Having both variables and constants is not strictly necessary, many other languages have just variables. What we get is greater expressibility, readability and safety; it becomes clear which values are fixed throughout the execution of a program. As a (silly) example, we could declare</p>
 <pre class="swift"><code>let numberOfSidesOfTriangle: Int = 3</code></pre>
 <p>since we know that the number of sides of a triangle should never change.</p>
+<h3 id="an-aside-reassignment">An Aside: Reassignment</h3>
 <p>One tricky but ultimately powerful fact about the assignment operator is that it determines the value of the right argument <em>before</em> assigning it to the variable on the left. This means that we can write</p>
 <pre class="swift"><code>x = x + 1</code></pre>
-<p>to mean "assign the value of <code>x</code> one greater than its current value." The role of reassignment in programming is another one of those hotly debated topics in computer science. Swift is an <em>imperative language</em>, which means that its programs use statements to change some underlying state. Thus, reassignment is fundamental to imperative languages, but it also complicates their semantics (as we will see). The idea of writing programs without reassignment might seem a bit stiffling, but so-called <em>functional languages</em>, designed to eliminate all reassignments, make up a large part of the programming language landscape (e.g., Scheme, Haskell, Elm, among others).</p>
+<p>to mean "assign the value of <code>x</code> one greater than its current value." The role of reassignment in programming is one of those hotly debated topics in computer science. Swift is an <em>imperative language</em>, which means that its programs use statements to change some underlying state. Thus, reassignment is fundamental to imperative languages, but it also complicates their semantics (as we will see). The idea of writing programs without reassignment might seem a bit stiffling, but so-called <em>functional languages</em>, which eliminate the need for reassignments, make up a large part of the programming language landscape (e.g., Scheme, Haskell, Elm, among others).</p>
 <h2 id="functions">Functions</h2>
-<p>To address the subroutine problem of URMs, we have a mechanism for declaring functions, which are named blocks of reusable code that can depend on values that are passed as <em>arguments</em> and can return a value called the function's <em>output</em>. Here is a simple function which outputs the surface area of a rectangular prism with given its <code>length</code>, <code>width</code> and <code>height</code>.</p>
+<p>To address the subroutine problem of URMs, we have a mechanism for declaring functions, which are named blocks of reusable code that can depend on values that are passed as <em>arguments</em> and can return a value called the function's <em>output</em>. Here is a simple function which outputs the surface area of a rectangular prism with given its length, width and height.</p>
 <pre class="swift"><code>func surfaceAreaOfRectangularPrism(length: Double, width: Double, height: Double) -&gt; Double {
   let side1 = length * width
   let side2 = width * height
@@ -73,10 +77,10 @@ z = 5</code></pre>
 <p>A couple things:</p>
 <ul>
 <li>We use the same camelCase for function names.</li>
-<li>The arguments (given in the parenthesis after the function name) are all named and typed. The output type (given after the <code>-&gt;</code> symbol) is typed as well. This is required by the strong typing of Swift. There will be more on types in our next module.</li>
+<li>The arguments (given in the parenthesis after the function name) are all named and typed. The output type (given after the <code>-&gt;</code> symbol) is typed as well. This is required by the static typing of Swift. There will be more on types in our next module.</li>
 <li>The named inputs should appear in the body of the function, where they are treated as constants.</li>
 <li>It is convention in Swift (and elsewhere) to indent the body of a function one level greater than its declaration.</li>
-<li>The body should also contain one or more lines with the <code>return</code> keyword, which specify the output of the function and terminate the execution of the code in the body of the function, should that line be reached.</li>
+<li>The body should also contain one or more lines with the <code>return</code> keyword, which specify the output of the function and terminate the execution of the code in the body of the function, should that line be reached. In particular, the return statement does not need to be the last line of the body of the function.</li>
 </ul>
 <p>We can use a function after it is declared by <em>calling</em> it:</p>
 <pre class="swift"><code>let x = surfaceOfRectangularPrism(length: 5.0, width: 5.0, height: 5.0) </code></pre>
@@ -88,27 +92,26 @@ z = 5</code></pre>
 <pre class="swift"><code>var x = power(2.0, toThe: 4.0)</code></pre>
 <p>which I think is pretty neat.</p>
 <h2 id="conditionals">Conditionals</h2>
-<p>So we have some nice mechanisms for organizing code, but now in order to have language that is more than a beefed-up calculator, we need a way to perform conditional computations. For URM programs, this was accomplished by the jump operator. Swift has much more convenient ways of doing this.</p>
-<h3 id="if-statements">If Statements</h3>
-<p>The If-statement has quite a few forms but for now we'll look at one's like this:</p>
+<p>So far we have some nice mechanisms for organizing code, but in order to have language that is more than a beefed-up calculator, we need a way to perform logically complex, conditional computations. For URM programs, this was accomplished by the jump operator. Swift has much more convenient ways of doing this.</p>
+<h3 id="if-statements"><code>if</code> Statements</h3>
+<p>The <code>if</code> statement has quite a few forms but for now we'll look at one's like this:</p>
 <pre class="swift"><code>if x == 2 {
   x = x + 1
 }</code></pre>
-<p>After the <code>if</code> keyword and the condition is a pair of curly brackets enclosing lines of code that are run if the condition is satisfied.</p>
-<p>If we think of <code>x</code> as the first register of a URM, this if-statement is encompassed by the following URM program.</p>
+<p>After the <code>if</code> keyword and the condition, an expression of type <code>Bool</code>, is a pair of curly brackets enclosing lines of code that are run if the condition is satisfied. If we think of <code>x</code> as the first register of a URM, this if-statement is encompassed by the following URM program.</p>
 <pre><code>Z(1)
 S(1)
 S(1)
 J(0, 1, 5)
 J(0, 0, 100)
 S(0)</code></pre>
-<p>So we can already see benefits of a more expressive language; the intention of the Swift code is much clearer than that of the URM program.</p>
-<p>For a slightly more complicated example, we can use if-statements to perform an action if a number is even.</p>
+<p>So we can see the obvious benefits of a more expressive language; the intention of the Swift code is much clearer than that of the URM program.</p>
+<p>For a slightly more complicated example, we can use <code>if</code>&#xA0;statements to perform an action if a number is even.</p>
 <pre class="swift"><code>if x % 2 == 0 {
   x = x / 2
 }</code></pre>
-<h3 id="while-statements">While Statements</h3>
-<p>If-statements are useful if we want to perform collection of actions one time conditioned on some value. But there were several cases in our URM programs where we wanted to repeat a collection of actions a number of times depending on the state of some value over time. For example, in the program for addition, we implemented a counter to keep track of how many times we incremented the first argument. In Swift, we can accomplish this using a <em>while-statement</em> (also called a <em>while-loop</em>):</p>
+<h3 id="while-statements"><code>while</code> Statements</h3>
+<p><code>if</code> statements are useful if we want to perform collection of actions one time conditioned on some value. But there were several cases in our URM programs where we wanted to repeat a collection of actions a number of times depending on the state of some value over time. For example, in the program for addition, we implemented a counter to keep track of how many times we incremented the first argument. In Swift, we can accomplish this using a <em><code>while</code> statement</em> (also called a <em><code>while</code> loop</em>):</p>
 <pre class="swift"><code>var counter: Int = 0
 var sum: Int = 0
 while counter != 10 {
@@ -116,7 +119,7 @@ while counter != 10 {
     counter = counter + 1
 }</code></pre>
 <p>This bit of code assigns the sum of the first ten positive integers to the variable <code>sum</code>. It would be far more difficult to implement the analog of this as a URM program.</p>
-<p>Here is another example, in which we combine if-statements and while-statements by nesting:</p>
+<p>Here is another example, in which we combine <code>if</code> statements and <code>while</code> statements by <em>nesting</em> (i.e., putting one inside the other):</p>
 <pre class="swift"><code>func smallestDivisor(of n: Int) -&gt; Int {
   var i: Int = 1
   while i != n {
@@ -127,9 +130,10 @@ while counter != 10 {
   }
 }</code></pre>
 <p>(You should verify that this function is aptly named)</p>
-<h2 id="a-note-on-style">A Note on Style</h2>
-<p>Throughout this note, I've mentioned a couple conventions for how to write Swift code. The truth is I'm not going to be about to write down every convention (I don't know every convention). But as you work through my notes and the Swift book sections I include in the reading, look at the code there for stylistic choices as well as content. This is how most people start, mimicking code they read. Overtime, your style might change, or simply become more refined.</p>
-<p>I'll also say that style is not just about choices in white space and naming, it can be about the choice of code used. In some of the above code, I've used while-statements where I might use a different construction in my own work. Over time you'll see variations on these constructions in the Swift book and in documentation. Try your best to experiment with these, to find the expressions that you like most.</p>
+<p>We'll see much more on conditional in the coming module on control flow.</p>
+<h2 id="a-closing-note-on-style">A Closing Note on Style</h2>
+<p>Throughout this note, I've mentioned a couple conventions for how to write Swift code. The truth is I'm not going to be about to cover every convention (I don't even know every convention). But as you work through my notes and the sections of the Swift book I include in the reading, look at the code there for both content and stylistic choices. This is how most people start off, mimicking code they read. Overtime, your style will become more refined.</p>
+<p>I'll also say that style is not just about choices in white space and naming, it can be about the choice of code content as well. In some of the above code, I've used <code>while</code> statements where, in practice, I might use a different construction that we haven't covered yet. Over time you'll see variations on these constructions in the Swift book and in documentation. I recommend experimenting with these to find the idioms you like most.</p>
 <h2 id="additional-reading">Additional Reading</h2>
 <p>These are the sections in the Swift book covering the material in these notes.</p>
 <ul>
