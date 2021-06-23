@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Types, Expressions, Evaluation (Oh My)</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Types, Expressions, Evaluation (Oh My)</h1>
+<p>We begin our careful analysis of Swift from the bottom, with the <em>things</em> that appear in a program. In the last module we noted that all things in our program have types. We're now going to make this statement more formal. We'll replace the informal notion of "things" with the formal notation of expressions. Then we'll look at how a type is associated with an expression, and how an expression is connected to data by the process of <em>evaluation</em>.</p>
+<h2 id="types">Types</h2>
+<p>So: All expressions have types. But what is a type exactly? This is actually a somewhat deep question, and is the basis of an area research called <em>type theory</em>. Let's try on one possible definition: types are annotations on expressions in our program, sometimes explicit and sometimes implicit, that indicate what kind of data they refer to. So when we write</p>
+<pre class="swift"><code>var x: Int = 10</code></pre>
+<p>we're expressing that everywhere we use <code>x</code>, regardless of how it changes throughout the program, it should be understood to refer to an <code>Int</code>. This kind of information can be useful for the compiler, .e.g., it specifies how much space to allot in memory for a given value; the storage of an <code>Int</code> has to be handled differently than the storage of a <code>String</code>.</p>
+<p>We've also seen that the types of the inputs and the output of a function are specified. In fact, functions themselves have types. Take, for example, this function that computes the sum of the squares of two <code>Double</code>s.</p>
+<pre class="swift"><code>func sumOfSquares(_ x: Double, _ y: Double) -&gt; Double {
+    return x * x + y * y
+}</code></pre>
+<p>The type of <code>sumOfSquares</code> is written <code>(Double, Double)  -&gt; Double</code> and expresses that <code>sumOfSquares</code> is required to take two <code>Double</code>s as arguments and return a <code>Double</code>. So not only do types help the compiler interpret data instantiated in your code, they also help the programmer by enforcing constraints on the applications of functions.</p>
+<p>This notion is generally called <em>type safety</em>. Since the compiler can check <em>before</em> running a program that a function is applied only to objects on which it is well behaved, we as programmers can have more confidence that, if the program compiles, it is well behaved as a whole. This all contrasts with languages like Python, in which a variable can at one point store an integer, and at another point a string.</p>
+<p>You might be thinking: isn't this a bit restrictive? Well, yes, but this restriction has proven to be more beneficial than hurtful. Code written in languages with strong type systems tend to have fewer bugs since it's not possible for a function to have unintended consequences by virtue of being applied to arguments the programmer didn't consider.</p>
+<p>Swift also does its best to mitigate some of the verbosity of dealing with types through its powerful <em>type inference</em>. In nearly all cases where the type of an expression is obvious to the programmer, it's also obvious to Swift. For example, we can write</p>
+<pre class="swift"><code>let name = &quot;Johnny&quot;</code></pre>
+<p>without the type annotation because it is obvious that it's a <code>String</code>. Discussing type inference in depth is beyond the scope of this course. It's pretty clear for cases like this but it can become complicated.</p>
+<h3 id="an-inductive-definition-of-types">An Inductive Definition of Types</h3>
+<p>We can define the possible types in Swift in two parts:</p>
+<ul>
+<li>Obviously the primitive types are types. So far we have seen <code>Int</code>, <code>Double</code>, <code>String</code>, and <code>Bool</code>, but there are more. These things are types by virtue of us saying they are.</li>
+<li>Then for any collection of types, <code>I_1</code>,..., <code>I_k</code>, <code>O</code> we have that <code>(I_1,..., I_k) -&gt; O</code> is a (function) type. This is a way of produces new types from old ones.</li>
+</ul>
+<p>This is an example of an <em>inductive definition</em>. We'll talk more about induction later in the course, but hopefully the idea is clear: we build up types from the ground up, starting with primitive types, and iteratively producing more and more types ad infinitum. So <code>Int</code> is a type, but so is <code>(Int, Int) -&gt; Int</code> and <code>(Int, String) -&gt; Double</code> and even <code>(Int) -&gt; (Int) -&gt; Int</code>. A function of this last type is an example of a <em>higher order function</em>. Functions in Swift are <em>first class citizens</em> in that they can by treated like any other piece of data like <code>Int</code>s or <code>String</code>s. In particular, they can be returned by other functions. More on that in our module on higher-order functions.</p>
+<p>One edge case of this definition: the collection of input types may be empty, i.e., <code>() -&gt; Int</code> is a type. This type describes a function that returns an <code>Int</code> that does not depend on any input values. If you're asking yourself <em>why would you want to do this, why not just use an <code>Int</code>?</em> then you should consider learning a functional language, because then your intuition would be correct. A function of this type seems to be no different than an <code>Int</code> itself. But then we have to realize: a function can change variables it did not define. Consider</p>
+<pre><code>var counter = 0
+
+func incrementCounter() -&gt; Int {
+    counter += 1
+    return counter
+}</code></pre>
+<p>Every call to <code>incrementCounter</code> returns a <em>different</em> <code>Int</code>. In jargon, the variable <code>counter</code> is in the <em>global scope</em> of the program, and functions inherit the variables from the global scope, but it is not in the <em>local scope</em> of <code>incrementCounter</code>. This ability of functions to change variables outside of their local scope is going to be one complication we'll have to consider when formally describing a model of execution for Swift.</p>
+<h3 id="an-aside-the-unit-type">An Aside: The Unit Type</h3>
+<p>This last example begs the question: if we can have functions with no inputs can we have a function with no output? The answer to this question is more subtle than it appears. On the surface, the answer is yes. To write a function with no output type, we simply don't include an output type or a return statement.</p>
+<pre class="swift"><code>func printIntro(name: String) {
+    print(&quot;Hello my name is &quot; + name + &quot;.&quot;)
+}</code></pre>
+<p>But then, if all functions have types of the form given above, what is the type of this function? In the definition above, a function type just have a specified output type. So this function does have an output type, the <em>unit type</em> <code>()</code>, and the function itself has type <code>(String) -&gt; ()</code>.</p>
+<p>The unit type has a single literal: <code>()</code> is of type <code>()</code> (which personally I think is unfortunate, but I guess programmers like minimality). Swift treats the unit type as if it's nothing, so the compiler will never refer to an object of type <code>()</code>, and will say that a function returns nothing when it really returns <code>()</code>. If we wanted to be explicit, we could write the above function as</p>
+<pre class="swift"><code>func printIntro(name: String) -&gt; () {
+    print(&quot;Hello my name is &quot; + name + &quot;.&quot;)
+    return ()
+}</code></pre>
+<p>So we can't actually define functions with no outputs because of the way the type system is set up, but Swift has a type which acts as shorthand for nothing.</p>
+<p>Another strange example of this: according to what we've said so far, since the assignment operator is a function, it must have an output type. And naturally, the expression <code>x = 2</code> has type <code>()</code>. Again, one would rarely say this, more likely you will see something like <code>x = 2</code> <em>has no value</em>. But this means you can write code like</p>
+<pre class="swift"><code>var x = 2
+let y = x = 3</code></pre>
+<p>where <code>x</code> is set to <code>3</code> and <code>y</code> is set to <code>()</code>.</p>
+<h2 id="expressions">Expressions</h2>
+<p>We've been dancing around the idea that expressions are the "things" of our programs. Let's try to make this formal. An <em>expression</em> is a syntactic object (a collection of symbols in our code) that refers to a value, i.e., that can be evaluated. Expressions are usually on the right hand sides of assignment operators, but they can also stand on their own (e.g., <code>printIntro(name: "Leah")</code> can be written as a line of code) or may appear in statements (e.g., the Boolean expression in an <code>if</code> statement). Again, every expression in Swift has a type, but the opposite is true as well: everything with a type in Swift is an expression. In fact, the definition of an expression has to be given in tandem with its type. So if you're ever unclear on whether something is an expression, you simply have to ask <em>does it have a type?</em> The number <code>2</code> has type <code>Int</code> so <code>2</code> is an expression. The line <code>var x = 2</code> does not have a type so it is not an expression.</p>
+<p>Describing expressions in terms of typability is a top-down definition. We can also define expressions from the bottom-up via another inductive definition.</p>
+<ul>
+<li>Literals of type <code>t</code> are expressions of type <code>t</code>.</li>
+<li>Declared constants, variables and functions of type <code>t</code> are expressions of type <code>t</code>.</li>
+<li>If <code>f</code> is an expression of type <code>(I_1,...,I_k) -&gt; O</code> and <code>e_1,..., e_k</code> are expressions of type <code>I_1,..., I_k</code>, respectively, then <code>f(e_1,..., e_k)</code> is an expression of type <code>O</code> (here I am ignoring parameter names).</li>
+</ul>
+<p>It might seem like we've forgot about operators, but operators are just special functions. In fact, infix notation is just shorthand for prefix notation: <code>2 + 3</code> is shorthand for <code>(+)(2, 3)</code>. We'll also later see another way of defining expressions by what are called <em>initializers</em>.</p>
+<h3 id="an-aside-expressions-are-syntactic">An Aside: Expressions are Syntactic</h3>
+<p>I'd like to dwell on this point a bit. Expressions only exist on the level of syntax. When we define a model of computation of Swift, there will be no reference to expressions. Expressions simply <em>refer</em> to values. This aligns with our thinking of syntax and semantics as separate. The connection between the two is made via evaluation; when an expression is evaluated and given a value an association is drawn between syntax and semantics.</p>
+<p>Things start to get a bit subtle when we then ask <em>what is a value?</em> It turns out that, for the purposes of programming, it actually doesn't matter, and in some sense shouldn't matter. It only matters that such values exist. To be concrete, we say that the value of the expression <code>2</code> is the number <span class="math inline">\(2\)</span>. I am using a typographical difference here to highlight that the syntactic object <code>2</code> is distinct from the semantic object <span class="math inline">\(2\)</span> to which it refers. But it doesn't matter what <span class="math inline">\(2\)</span> actually is, our understanding of the program's behavior is agnostic to this because it's dependent on the computational context, and we want to be able to understand our programs in any computational context. Case in point: Apple recently changed the processors of the MacBooks, and this inevitably meant changing things as innocuous as how the number <span class="math inline">\(2\)</span> is represented internally. As a programmer, we don't want to concern ourself with this level of detail.</p>
+<p>For all intents and purposes we can think of the value of <code>2</code> as the literal <code>2</code> itself, and we often will do this because it is convenient. But even when we do this, we are thinking of these two things as distinct, the first is <code>2</code> as a syntactic object and the second is <code>2</code> as a semantic object.</p>
+<h2 id="evaluation">Evaluation</h2>
+<p>Finally, we need to describe how to evaluate expressions. Like many imperative programming languages, Swift uses an <em>eager</em> evaluation strategy. The procedure is given in terms of a <em>recursive</em> definition. Note the similarity to the inductive definitions above. We will explore the relationship between recursion and induction later in the course.</p>
+<ul>
+<li>The value of a literal the value that it refers to, e.g., the value of <code>2</code> is the number <span class="math inline">\(2\)</span>.</li>
+<li>The value of a constant or variable is determined by looking up what value the constant or variable refers to.</li>
+<li>The value of an expression of the form <code>f(e_1,..., e_k)</code> is determined by first determining the value <code>v_0</code> of <code>f</code>, and then determining the values <code>v_1</code>,..., <code>v_k</code> of <code>e_1</code>,..., <code>e_K</code>, respectively, from left to right, and then applying <code>v_0</code> to <code>v_1</code>,..., <code>v_K</code>.</li>
+</ul>
+<p>This is an incomplete description because I haven't specified what it means to <em>look up</em> a value or <em>apply</em> a function to its arguments. You'll have to (again) suspend disbelief a bit longer.</p>
+<p>The choice to evaluate to the functional subexpression <code>f</code> before is inputs is reasonable: there is no use evaluating each input if the program will ultimately crash or stall when trying to evaluate <code>f</code>. Using print statements, we can write Swift code to verify that this is the order in which expressions are evaluated.</p>
+<pre class="swift"><code>func makeSoS() -&gt; (Double, Double) -&gt; Double {
+    print(&quot;evaluating makeSoS...&quot;)
+    return sumOfSquares
+}
+
+func makeDouble(_ x: Double) -&gt; Double {
+    print(&quot;evaluating makeDouble(\(x))...&quot;)
+    return x
+}
+
+print(makeSoS()(makeDouble(2.0), makeDouble(3.0)))</code></pre>
+<p>Note the basic use of a higher-order function. This code prints the following when run.</p>
+<pre><code>evaluating makeSoS...
+evaluating makeDouble(2.0)...
+evaluating makeDouble(3.0)...
+13.0</code></pre>
+<p>Now that we have distinguished expressions as distinct from their values, we can observe a key feature of assignment. When we write</p>
+<pre class="swift"><code>var x = &lt;expression&gt;</code></pre>
+<p>we're not assigning the expression itself to <code>x</code>, we assigning the <em>value</em> of that expression after evaluation to <code>x</code>. This is important when analyzing code like</p>
+<pre class="swift"><code>var y = 3
+var x = y + 1
+y = y + 2</code></pre>
+<p>The third line does not affect the value of <code>x</code>; the variable <code>x</code> doesn't carry any information about <code>y</code>, even though it was defined in terms of <code>y</code>, because it only depends on the value of <code>y</code> at the time of its assignment. And this is not a universal feature of programming languages. Some languages do behave so that the value of <code>x</code> would change when the value of <code>y</code> changed. This is why it's so important to know the semantics of the language you're working in.</p>
+<hr />
+<p>So we're getting closer to a working model of execution of Swift. If we didn't run into the issue with <code>incrementCounter</code> above (among others), we could get pretty far in defining such a model based on evaluation. In fact, one of the key features of pure functional languages like Haskell is that evaluation is the <em>only</em> thing you have to consider in the model of execution. But this should indicate what our model needs: some form of bookkeeping for maintaining variables created and modified by different functions in their evaluation process.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>From the Swift Book:</p>
+<ul>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID322">Type Safety and Type Inference</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID329">Tuples</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID160">Function Parameters and Return Values</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID174">Function Types</a>], through the first section</li>
+</ul>
+<p>These ideas underly the actual implementation of the Swift compiler, albeit in a much more complicated form. [<a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#">This section</a>] of the Swift Language Reference (which is different from the Language Guide) provides the actual grammar of expressions in Swift. I don't expect you to read this, but I think it's cool to see that this isn't just theoretical nonsense, it plays a role in the way Swift works. The parts that we considered were the <code>literal-expression</code>, <code>identifier</code>&#xA0;(for variables) and <code>function-call-expression</code>.</p>
+</body>
+
+</html>
