@@ -52,7 +52,7 @@
 <p>and to declare it as a variable we use the line</p>
 <pre class="swift"><code>var x: Int = 3</code></pre>
 <p>Both of these lines will make <code>x</code> refer to the value <code>2</code> throughout the program. It is convention in Swift to use <em>camelCase</em> for long constant and variable names, e.g., <code>variableWithLongName</code>. Note that the first letter is lower-case.</p>
-<p>Note that both constant and variable declarations have <em>type annotations</em>. Swift is a <em>statically typed</em>&#xA0;language, which, in essence means that variables and constants are given a type that cannot change throughout the execution of a program. More on this in the next module.</p>
+<p>Note that both constant and variable declarations have <em>type annotations</em>. Swift is a <em>statically typed</em> language, which, in essence means that variables and constants are given a type that cannot change throughout the execution of a program. More on this in the next module.</p>
 <p>The obvious question at this point: <strong>What is the difference between a variable and a constant?</strong> The names are not accidental, it has to do with <em>assignment</em>. The <em>assignment operator</em> (<code>a = b</code>) takes two values of the same type and the one on the left <strong>must</strong> be a variable. The line</p>
 <pre class="swift"><code>y = 5</code></pre>
 <p>changes the value of <code>y</code> to <code>5</code>. If the left argument is not a variable, if it is a constant or something else, then Swift will complain and tell you that you are trying to assign a value to something that is not assignable. So</p>
@@ -106,7 +106,7 @@ J(0, 1, 5)
 J(0, 0, 100)
 S(0)</code></pre>
 <p>So we can see the obvious benefits of a more expressive language; the intention of the Swift code is much clearer than that of the URM program.</p>
-<p>For a slightly more complicated example, we can use <code>if</code>&#xA0;statements to perform an action if a number is even.</p>
+<p>For a slightly more complicated example, we can use <code>if</code> statements to perform an action if a number is even.</p>
 <pre class="swift"><code>if x % 2 == 0 {
   x = x / 2
 }</code></pre>
@@ -124,10 +124,11 @@ while counter != 10 {
   var i: Int = 1
   while i != n {
     i += 1
-    if n % i = 0 {
+    if n % i == 0 {
       return i
     }
   }
+  return n
 }</code></pre>
 <p>(You should verify that this function is aptly named)</p>
 <p>We'll see much more on conditional in the coming module on control flow.</p>
