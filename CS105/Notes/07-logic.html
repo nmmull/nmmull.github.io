@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Introduction to Propositional Logic</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Introduction to Propositional Logic</h1>
+<p>"Symbolic logic is a mathematical model of deductive thought." This is the first sentence of Herbert B. Enderton's book <em>A Mathematical Introduction to Logic</em>. There are a number of different definitions of logic, each logician seems to have their own take (the state of affairs is very similar to that of programming). I've included Enderton's definition because its also not far from a reasonable definition of programming. When we program, we construct complex systems by formally modeling, and ultimately mechanizing, human reasoning: <em>programming is applied logic</em>.</p>
+<p>Everyday we make statements about the world or about particular parts of the world. They may be true or false depending on the context in which they are made. The truth of the statement "it is raining" depends on where you are in the world and, naturally, the weather. But some statements seem to be true no matter the context, or even the appreciable content. The statement "if it is raining and it is cold, then it is raining" seems to be irrefutable, and, more generally, "if <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span>, then <span class="math inline">\(R\)</span>" seems to be irrefutable no matter the interpretation of <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span>. One goal of the logician is to formalize this phenomenon, to create a system for building abstract statements and understand when such statements are true. We will focus on a particular form of logic called <em>propositional logic</em> as it most resembles the kind of logic we'll be using in Swift.</p>
+<p>Like with URMs, the presentation of any logic has two components: syntax and semantics. In propositional logic, syntax refers to those rules for determining what collections of symbols are well-formed statements, and semantics refers to those rules for determining the truth of well-formed statements. We'll look at both of these formally, and then see one result in propositional logic called <em>functional completeness</em> which says that propositional logic, as we present it, is as powerful as possible. Finally, we'll look at how all this connects with Swift.</p>
+<h2 id="syntax">Syntax</h2>
+<p>The basic syntactic objects of propositional logic are <em>propositional variables</em>, which are placeholders for unanalyzed atomic statements, like <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span> above. We usually assume that are countably infinitely many such variables; formally, for every natural number <span class="math inline">\(i\)</span>, there is a corresponding propositional variable denoted by <span class="math inline">\(P_i\)</span>.</p>
+<p>The "unanalyzed" and "atomic" descriptors for propositional variables should be understood as meaning that they stand for simple non-compound statements. But in the end, we don't actually care what constitutes a statement that a propositional variable can stand for, we only care about the relationship between propositional variables that we're going to outline below. This is similar to our indifference about what values actually are in evaluating expressions. We can, however, at this point draw an analogy to Swift: a proposition variable is a variable (or constant) of type <code>Bool</code>.</p>
+<p>From propositional variables, we can then build <em>formulas</em>, the well-formed statements in propositional logic. Like URM programs, formulas are just collections of symbols.</p>
+<ul>
+<li>Every propositional variable <span class="math inline">\(P_i\)</span> by itself is a formula.</li>
+<li>If <span class="math inline">\(\phi\)</span> is a formula, then <span class="math inline">\((\neg\phi)\)</span> is a formula.</li>
+<li>If <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> are formulas, then <span class="math inline">\((\phi \land \psi)\)</span> and <span class="math inline">\((\phi \lor \psi)\)</span> are formulas.</li>
+<li>No other collection of symbols is a formula.</li>
+</ul>
+<p>To be clear, in addition to the propositional variables and the <em>logical connectives</em> <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\land\)</span> and <span class="math inline">\(\lor\)</span>, we also consider the left parenthesis '<span class="math inline">\((\)</span>' and the right parenthesis '<span class="math inline">\()\)</span>' to be additional <em>nonlogical</em> symbols of our syntax. So <span class="math inline">\(((\neg P_7) \lor P_2) \land (\neg (\neg P_{10})))\)</span> is a formula, whereas <span class="math inline">\(((\neg \lor P_{10}))))\)</span> is not.</p>
+<p>The definition of formulas is yet another example of an inductive definition. It uses the notion of a formula within itself, before it is fully defined. Such definitions abound in computer science.</p>
+<p>This presentation of propositional syntax is nice because it's simple, but it has its costs. For example, <span class="math inline">\(P_1 \lor P_2\)</span> is technically not a formula because it doesn't have surrounding parentheses. We could change our syntax to better keep track parentheses, but this is quite burdensome. Instead, it's more common to introduce a <em>meta-syntax</em> for describing formulas using cleaner shorthand syntax.</p>
+<ul>
+<li>We will let any capital letter can stand for a propositional variable in a formula, so that we can write formulas like <span class="math inline">\((R \land C)\)</span>.</li>
+<li>To eliminate some of the parentheses around formulas with starting with <span class="math inline">\(\neg\)</span>, we give <span class="math inline">\(\neg\)</span> <em>higher precedence</em> than <span class="math inline">\(\land\)</span> and <span class="math inline">\(\lor\)</span>, meaning it binds more strongly. So the statement <span class="math inline">\((\neg A \lor B)\)</span> is considered syntactically equivalent to <span class="math inline">\(((\neg A) \lor B)\)</span> and not <span class="math inline">\((\neg(A \lor B))\)</span>.</li>
+<li>To eliminate some of the parentheses around formulas with <span class="math inline">\(\land\)</span> and <span class="math inline">\(\lor\)</span>, we make them <em>left-associative</em>. This means <span class="math inline">\(P_0 \lor P_1 \lor P_2 \dots \lor P_{k-1}\)</span> is syntactically equivalent to <span class="math inline">\(( \dots ((P_0 \lor P_1) \lor P_2) \lor \dots \lor P_{k - 1})\)</span> and <span class="math inline">\(P_0 \land P_1 \land P_2 \dots \land P_{k-1}\)</span> is syntactically equivalent to <span class="math inline">\(( \dots ((P_0 \land P_1) \land P_2) \land \dots \land P_{k - 1})\)</span>.</li>
+<li>We give <span class="math inline">\(\land\)</span> higher precedence than <span class="math inline">\(\lor\)</span> so that <span class="math inline">\(A \lor B \land C\)</span> is syntactically equivalent to <span class="math inline">\(A \lor (B \land C)\)</span>.</li>
+</ul>
+<p>We still need some parenthesis to, for example, write the formula <span class="math inline">\(A \land (B \lor C)\)</span>, but this meta-syntax makes formulas far more human-readable. The notion of precedence is something you've actually already learned: the PEMDAS rule describes the precedence of different arithmetical operations.</p>
+<h2 id="semantics">Semantics</h2>
+<p>Propositional variables are analogous to variables in algebra or calculus, but instead of standing for numeric values, they stand for the <em>Boolean values</em> <code>true</code> or <code>false</code>. The namesake here is George Boole, a founder of modern logic. The context in which we determine the truth or falsity of well-formed formulas is modeled by an <em>assignment</em>, a function that maps every propositional variables to a Boolean value. If we think of all propositional variables as standing for the totality of the basic statements that can be made about the world, then an assignment is a representation of the state of the world. An assignment <span class="math inline">\(\alpha\)</span> can be extended to a function <span class="math inline">\(\overline\alpha\)</span> that then assigns a Boolean value to every formula. <span class="math display">\[
+\begin{align*}
+    \overline\alpha(P_i) &amp;= \alpha(P_i) \\
+    \overline\alpha(\neg \phi) &amp;=
+        \begin{cases}
+            \texttt{true} &amp; \overline\alpha(\phi) = \texttt{false} \\
+            \texttt{false} &amp; \overline\alpha(\phi) = \texttt{true}
+        \end{cases} \\
+    \overline\alpha(\phi \land \psi) &amp;=
+        \begin{cases}
+            \texttt{true} &amp; \text{$\overline\alpha(\phi) = \texttt{true}$ and $\overline\alpha(\phi) = \texttt{true}$}\\
+            \texttt{false} &amp; \text{otherwise}
+        \end{cases} \\
+    \overline\alpha(\phi \lor \psi) &amp;=
+        \begin{cases}
+            \texttt{true} &amp; \text{$\overline\alpha(\phi) = \texttt{true}$ or $\overline\alpha(\phi) = \texttt{true}$}\\
+            \texttt{false} &amp; \text{otherwise.}
+        \end{cases}
+\end{align*}
+\]</span></p>
+<p>In words, <span class="math inline">\(\neg \phi\)</span> is true exactly when <span class="math inline">\(\phi\)</span> is not true, <span class="math inline">\(\phi \land \psi\)</span> is true exactly when <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\psi\)</span> are true, and <span class="math inline">\(\phi \lor \psi\)</span> is true exactly when at least one of <span class="math inline">\(\phi\)</span> or <span class="math inline">\(\psi\)</span> is true. You might have noticed that <span class="math inline">\(\overline\alpha\)</span> is also defined recursively...</p>
+<p>More generally, any logical connective is defined in terms of a <em>Boolean function</em>. An <span class="math inline">\(n\)</span>-variate boolean function is a function which maps all possibilities of <span class="math inline">\(n\)</span> Booleans values to a single Boolean value. They can be represented by <span class="math inline">\(2^n \times (n + 1)\)</span> <em>truth tables</em>, where each row contains a possible choice of <span class="math inline">\(n\)</span> Boolean values plus one output Boolean value. The truth table for <span class="math inline">\(\land\)</span> is</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(A\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A \land B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>false</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>false</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>false</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="functional-completeness">Functional Completeness</h2>
+<p>We could, in principle, include new logical connectives based on different Boolean functions in our language. One common example is the <em>exclusive or</em> <span class="math inline">\(\otimes\)</span>, where <span class="math inline">\(A \otimes B\)</span> represents "exactly one of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is true" and its truth table is</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(A\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A \otimes B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>false</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>true</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>false</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>true</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>true</code></td>
+<td style="text-align: center;"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Functional completeness says doing this doesn't make our logic stronger. For any formula constructed using <span class="math inline">\(\otimes\)</span>, there is formula constructed using only <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\land\)</span> and <span class="math inline">\(\lor\)</span> which is <em>semantically equivalent</em>; both formulas have the same truth value under any assignment, they are indistinguishable with respect to semantics. In the case of <span class="math inline">\(\otimes\)</span>, we have that <span class="math inline">\(A \otimes B\)</span> is equivalent to <span class="math inline">\(A \land \neg B \lor \neg A \land B\)</span>.</p>
+<p>An <span class="math inline">\(n\)</span>-variate Boolean function <span class="math inline">\(f\)</span> is <em>represented</em> by a formula <span class="math inline">\(\phi\)</span> if, under any assignment <span class="math inline">\(\alpha\)</span>, its value is the same as the corresponding value of <span class="math inline">\(f\)</span>. In symbols, for any assignment <span class="math inline">\(\alpha\)</span>, <span class="math display">\[
+f(\alpha(P_0), \dots, \alpha(P_{n - 1})) = \overline\alpha(\phi).
+\]</span> Functional completeness says that <em>every</em> boolean formula is represented by a propositional formula using the connectives <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\land\)</span> and <span class="math inline">\(\lor\)</span>.</p>
+<p>Let's look at an informal version of the argument. Consider first a simple Boolean function <span class="math inline">\(Z\)</span> which is <code>true</code> only when its inputs are all <code>false</code>. A formula that represents <span class="math inline">\(Z\)</span> is one which expresses the idea <span class="math inline">\(P_0\)</span> is not true, and <span class="math inline">\(P_1\)</span> is not true, and <span class="math inline">\(P_2\)</span> is not true, and so on, all the way to <span class="math inline">\(P_{n -1}\)</span> is not true. This is just the formula <span class="math display">\[
+\neg P_0 \land \neg P_1 \land \neg P_2 \land \dots \land \neg P_{n -1}.
+\]</span> We can more generally find formulas in this way for any function which has only one <code>true</code> output. The function which is true only on <span class="math inline">\((\texttt{false}, \texttt{true}, \texttt{false}, \texttt{false}, \dots, \texttt{false})\)</span> is represented by the formula <span class="math display">\[
+\neg P_0 \land P_1 \land \neg P_2 \land \dots \land \neg P_{n - 1}.
+\]</span> For any input <span class="math inline">\(i\)</span> of the form <span class="math inline">\((b_1, \dots, b_n)\)</span>, we can define an analogous formula <span class="math inline">\(F_i\)</span> which reads "<span class="math inline">\(P_0,\dots,P_{n - 1}\)</span> are assigned according to <span class="math inline">\(i\)</span>." So if we want to represent a function <span class="math inline">\(f\)</span> that is true on inputs <span class="math inline">\(i_0, \dots, i_{m - 1}\)</span>, we need to express "<span class="math inline">\(P_0, \dots, P_{n-1}\)</span> are assigned according to one of <span class="math inline">\(i_0, \dots, i_{m - 1}\)</span>." We can do this; <span class="math inline">\(f\)</span> is represented by the formula <span class="math display">\[
+F_{i_0} \lor \dots \lor F_{i_{m - 1}}.
+\]</span> We are almost done. This construction allows us to represent functions with at least one <code>true</code> output. But how do we represent the function which is <code>false</code> on all inputs? I'll leave that as an exercise.</p>
+<h2 id="propositional-logic-in-swift">Propositional Logic in Swift</h2>
+<p>We've already mentioned that we can think of propositional variables in Swift as variables of type <code>Bool</code>, as they can only stand for the values <code>true</code> or <code>false</code>. We also have operators in Swift for the logical connectives.</p>
+<ul>
+<li><em>negation</em> a.k.a. "not" is <code>!a</code></li>
+<li><em>conjunction</em> a.k.a. "and" is <code>a &amp;&amp; b</code></li>
+<li><em>disjunction</em> a.k.a. "or" is = <code>a || b</code>.</li>
+</ul>
+<p>The precedence levels we described above are the same as the ones use in Swift. So the Boolean expression <code>!a || b &amp;&amp; c</code> has the same value as <code>((!a) || (b &amp;&amp; c))</code>. The notion of assignment is also exactly the one used by Swift to determine the value of a Boolean expression.</p>
+<p>Just to give an example, now we can express in Swift that some number appears between two others.</p>
+<pre class="swift"><code>if -2 &lt;= x &amp;&amp; x &lt;= 2 {
+    print(&quot;x is close to 0&quot;)
+}</code></pre>
+<p>One feature of conjunction and disjunction worth mentioning is that they are <em>short circuiting</em>.&#xA0;Note that if <code>a</code>&#xA0;is <code>false</code>, you know automatically that <code>a &amp;&amp; b</code> is <code>false</code> without even checking <code>b</code>.&#xA0;Likewise, if <code>a</code> is <code>true</code>, you know <code>a || b</code> is true before looking at <code>b</code>. Swift takes advantage of this, and doesn't compute the second argument of the operator if it doesn't have to. This means if you have two conditions <code>C1</code> and <code>C2</code>,&#xA0;but <code>C1</code>&#xA0;takes a <em>really</em>&#xA0;long time to evaluate, then it's better to use the condition <code>C2 &amp;&amp; C1</code>&#xA0;instead of <code>C1 &amp;&amp; C2</code>, just in case <code>C2</code> is <code>false</code> and <code>C1</code> doesn't need to be evaluated at all.</p>
+<p>And how does functional completeness fit into all this? It justifies the fact that Swift doesn't have any additional built in logical operators; any other operators can be implemented. So we can sleep soundly knowing there's nothing we can add to Swift's <code>Bool</code> type that would allow us to write programs we couldn't already write.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>From the Swift Book:</p>
+<ul>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID328">Booleans</a>]</li>
+<li>[<a href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID76">Logical Operators</a>]</li>
+</ul>
+<p>From elsewhere:</p>
+<ul>
+<li>[<a href="http://intrologic.stanford.edu/chapters/chapter_02.html">Here</a>] is another note on propositional logic from a logic course taught at Stanford. It is a bit more in depth, but not too far from what we have here. Personally, I think it is useful to see the same material presented in different ways. Part of our goal in this course is to learn how to program in a way that allows us to apply the ideas in many different programming languages. In order to do this, we need to get used to the syntactic static that arises from seeing something familiar presented in a different way.</li>
+<li>Logic is a wide ranging field. Take a brief look at the [<a href="https://en.wikipedia.org/wiki/Mathematical_logic">Wikipedia page</a>] for mathematical logic. One of my favorite results, due to Alan Turing: it's impossible to write a program that can determine if another program given as input (as, say, a text file) will terminate. This is the so-called <em>halting problem</em>.</li>
+</ul>
+</body>
+
+</html>
