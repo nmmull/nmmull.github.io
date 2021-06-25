@@ -2,14 +2,14 @@
 <html>
 
 <head>
-<title>Introduction to Propositional Logic</title>
+<title>A Primer on Propositional Logic</title>
 <link rel="stylesheet" href="../../globalStyle.css">
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body id="course">
-<h1>Introduction to Propositional Logic</h1>
+<h1>A Primer on Propositional Logic</h1>
 <p>"Symbolic logic is a mathematical model of deductive thought." This is the first sentence of Herbert B. Enderton's book <em>A Mathematical Introduction to Logic</em>. There are a number of different definitions of logic, each logician seems to have their own take (the state of affairs is very similar to that of programming). I've included Enderton's definition because its also not far from a reasonable definition of programming. When we program, we construct complex systems by formally modeling, and ultimately mechanizing, human reasoning: <em>programming is applied logic</em>.</p>
 <p>Everyday we make statements about the world or about particular parts of the world. They may be true or false depending on the context in which they are made. The truth of the statement "it is raining" depends on where you are in the world and, naturally, the weather. But some statements seem to be true no matter the context, or even the appreciable content. The statement "if it is raining and it is cold, then it is raining" seems to be irrefutable, and, more generally, "if <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span>, then <span class="math inline">\(R\)</span>" seems to be irrefutable no matter the interpretation of <span class="math inline">\(R\)</span> and <span class="math inline">\(C\)</span>. One goal of the logician is to formalize this phenomenon, to create a system for building abstract statements and understand when such statements are true. We will focus on a particular form of logic called <em>propositional logic</em> as it most resembles the kind of logic we'll be using in Swift.</p>
 <p>Like with URMs, the presentation of any logic has two components: syntax and semantics. In propositional logic, syntax refers to those rules for determining what collections of symbols are well-formed statements, and semantics refers to those rules for determining the truth of well-formed statements. We'll look at both of these formally, and then see one result in propositional logic called <em>functional completeness</em> which says that propositional logic, as we present it, is as powerful as possible. Finally, we'll look at how all this connects with Swift.</p>
