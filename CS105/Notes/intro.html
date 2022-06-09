@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Waxing Poetic: An Introduction of Sorts</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body id="course">
+<h1>Waxing Poetic: An Introduction of Sorts</h1>
+<p>So you've enrolled in a programming course. Maybe you want to make it
+building iOS apps, maybe you're a budding futurist, maybe you're
+fascinated by the nature of programming and computation, maybe you're a
+third year and realized you're low on credits. Programming in general,
+and this course in particular, draws a wide range of students, so it's
+hard to tailor an introduction to any particular audience. This note is
+my (biased) attempt to distill what I think is important to have in mind
+before (and while) learning to program.</p>
+<p>An introductory programming course like this one customarily begins
+with some highfalutin remarks about the awesome power of computers and
+those who exercise power over them (a.k.a. programmers). I might throw
+around terms like <em>artificial intelligence</em>, <em>cloud
+computing</em>, <em>deep learning</em>, <em>IoT</em>...- names of fields
+that have seeped into the collective consciousness and have a kind of
+occult, techo-optimisitic quality - without saying much about what they
+really mean. Even in the (relatively) short time I've been doing
+computer science, these kinds of introductions seem to me no longer
+impactful or even all that necessary. Everyone already knows - witnesses
+daily - the effects of the computing on their lives. We've all seen the
+videos of the robotic cheetahs (if you haven't, <a
+href="https://www.youtube.com/watch?v=chPanW0QWhA">here</a> you go), or
+computers playing Tetris, or the insane amounts of money companies pay
+to ransomware hackers. We've felt the invasions of privacy when we
+gotten creepy targeted ads, or realized that our Spotify playlists are
+becoming more and more homogenous. The dramas of silicon valley are
+played out on public stages, so that computing terminology has found its
+way into the general lexicon (even though, again, most people don't know
+what they're talking about). The point is: computing is just about
+everywhere. Now, I can't completely quell my own need to wax poetic
+about programming, but I think a new kind of introduction is in
+order.</p>
+<p>It's difficult to define programming as an enterprise. This is, in
+part, what makes it so compelling. Throughout this course, we'll try on
+a couple definitions, see how they feel, see if they capture what it
+really means to program. In pursuit of this theme, I'll kick off the
+course with some of my thoughts - in the form of <del>cliche</del> broad
+epithets - about what programming is and is not.</p>
+<p><em>Programming is challenging.</em> I feel I should say this right
+off the bat. Programming requires immense technical skill, constant
+practice, and a bit of obsession. When programming, one has to
+simultaneously manage a not-so-small collection of considerations -
+efficiency, usability, reusability, scalability, safety, security... -
+while using complex (often mathematical) ideas to produce what amount to
+massive instructions sets for extremely fast but ultimately fickle
+machines. It's a wonder that this even works, and then not at all
+surprising when we find that it often doesn't. We'll see in this course
+how to <em>try</em> to manage some of these considerations, but most of
+your real know-how will come from experience and exposure (not to
+mention, some of the technologies we'll talk about may be obsolete in
+the next decade).</p>
+<p>Big companies (Apple, Google, Microsoft, etc.) like to push the
+narrative that programming is <em>easy</em> and <em>infinitely
+rewarding</em>. They create games that claim to teach programming and
+week-long bootcamps that promise increased job prospects. But it's
+important to remember who's selling these ideas; they're not interested
+in teaching you, they're interested in increasing their user base, their
+workforce, and their profits (maybe this has a bit of a
+conspiracy-theorist vibe, but I stand by it). I'm not trying to
+discourage anyone; in fact, I'm trying to do the opposite. Calling
+programming <em>easy</em> devalues the time and frustration you will
+inevitably put into it over then next five weeks, and beyond.</p>
+<p><em>Programming is ethically complex, even dangerous.</em> If you
+ever code professionally, you'll likely at some point experience tension
+between your career and your personal ethics. This is just the reality,
+and I think it's irresponsible not to address this early on. Programmers
+often work with sensitive data, not all of which is ethically obtained.
+Some programs make decisions about life and death of other human beings,
+and not just in the case of, say, military research; consider automated
+transportation, medical software, or aeronautics control systems. What
+would you do if you were pressured to release your code prematurely?</p>
+<p>Programs have been known to be racist, sexist, to promote
+gentrification, to enforce prejudices. And this really matters,
+especially when software is used to determine things like need for
+healthcare or approval for a loan. <em>Of course programs can be
+anything, do anything</em>, someone might argue, and of course only
+those with malice intentions design malicious software. Okay...but
+what's terrifying is that many of the programs that do cause harm are
+not specifically designed to do so. Programmers with good intentions can
+create software with entirely disastrous consequences, and this
+disparity is even used to justify the consequences and obfuscate
+accountability.</p>
+<p>So it's not enough to have good intentions. Everyone has their
+biases, and these don't just go away with the complexity of the code.
+Programming as not an isolated endeavor, it isn't "just engineering,"
+independent of its use and context. Recognizing this means having a
+robust, nuanced, and thoughtful set of personal morals regarding
+programming; it is the duty of the programmer to combat <em>all</em> bad
+software, not just their own, and the consequences of bad software, even
+those unintentional, always fall to the programmer.</p>
+<p><em>Programming is an art.</em> I mean this more literally than as an
+empty analogy. Computer science as a whole has little to do with
+science. Programmers don't really apply the scientific method. There are
+no rules for how to program, and there are few restrictions on what can
+be accomplished. Programs are judged aesthetically on their composition
+and effects. Programmers have personal styles, and strong opinions about
+the style of others. These are attributes of an art. The upshot: there
+is no correct way to program, only principles that have proved useful
+and successful. We must be wary of both the rule-followers and
+renegades. In this course, we'll learn how to use some of these
+principles, but more importantly, we'll try to understand <em>why</em>
+we use them. It'll then be up to you to determine if they fit into your
+personal aesthetic, which you'll develop throughout your entire lifetime
+as a programmer.</p>
+<p><em>Programming is maintenance</em>. This one is a personal favorite
+of mine. There's a distinct lack of appreciation for maintenance in
+American culture. Just look at the dismal salaries of maintenance
+workers (and teachers, who, in my opinion, perform a sort of social
+maintenance). In software design, there's a heavy emphasis rapid
+development, getting things working fast. It is, of course, good when
+software works, but great software is manageable, readable, up to date,
+well-documented, clear, correct. Many professional programmers spend far
+more time reading and writing documentation, reading existing code,
+testing code, and planning code than they do producing code. I have a
+personal theory (another conspiracy??) about all this: one reason why
+programmers are paid so well is that they produce so much unmaintained
+code that they inflate the difficultly of their tasks by an order of
+magnitude. Whether or not this is true, all programmers know deep down
+that maintenance, organization, clarity, these are what make a project
+successful in the long-term.</p>
+<p>Finally, <em>programming is beautiful.</em> After all those serious
+remarks, I have to add that programming is truly intellectually
+satisfying. I've always been fascinated by the fact that people get so
+much joy out of programming but have a hard time describing what it is
+that makes it so enjoyable. Yes, there is the joy of building things,
+seeing your work do what it's supposed to do, but it seems to be more
+than that. The process itself scratches my itch for logic building and
+pattern matching and problem solving and so many other things. I hope to
+convey that programming really is rewarding, despite its difficulty and
+its potential ethical weightiness. (And if you really want to avoid the
+scary serious stuff I mentioned above, you can stay in intellectual Eden
+of Academia like I have! It is not immune to problems, it just has
+different problems.)</p>
+<p>Waxing poetic, done. Now, a note on CS105: this course is strange by
+its own nature. It's not a prerequisite for the major in computer
+science in the University, so it doesn't have the same requirements on
+coverage. I hope to cover a lot of what is typically covered in an
+introductory programming course, but my focus is to foster a mode of
+thinking, not to teach you how to write Swift code. I also hope to cover
+things you might not see in a typical introductory course because I find
+them interesting and because we do have that freedom to explore a bit
+more. And what I find important/interesting, you might find boring or
+difficult (<em>e.g.</em>, my training as a theoretician gives this
+course a notably theoretical bent). So please make sure to give me
+feedback if something is not working for you. This course can be fairly
+malleable, and we all need to collaborate to make this a valuable
+experience for everyone.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<ul>
+<li>I stole many ideas for this note from <a
+href="https://aeon.co/ideas/coding-is-not-fun-it-s-technically-and-ethically-complex">this
+article</a> and <a
+href="https://www.stilldrinking.org/programming-sucks">this article</a>
+(warning: the second one is a bit more liberal with language).</li>
+<li>It doesn't take much internet searching to find examples of racist
+and sexist programs. This <a
+href="https://www.nature.com/articles/d41586-019-03228-6">nature
+article</a> details discrimination against black people in healthcare by
+way of software.</li>
+<li>It also doesn't take much internet searching to find instances of
+software failures having dire consequences. <a
+href="https://techtrends.com/2019/04/19/a-software-bug-caused-boeings-new-plane-to-crash-twice/">Here</a>
+is an example of a more recent event.</li>
+<li><a
+href="https://www.quantamagazine.org/computing-expert-says-programmers-need-more-math-20220517/">Here</a>
+is a recent article about computer guru Leslie Lamport, who argues that
+more programmers need to think mathematically.</li>
+</ul>
+</body>
+
+</html>
