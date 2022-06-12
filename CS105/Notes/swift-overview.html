@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>An Overview of Swift: Learning by Doing</title>
+<link rel="stylesheet" href="../../globalStyle.css">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<h1>An Overview of Swift: Learning by Doing</h1>
+<p>Swift was introduced in 2014 to replace Objective-C as the language
+for developing Apple applications. Despite its association with Apple,
+Swift is <a href="https://github.com/apple/swift">open-source</a> and
+can be used as a standalone language. We'll be carefully studying the
+structure and interpretation of Swift programs throughout this quarter,
+but one great feature of modern languages like Swift is that they are
+fairly intuitive. The goal of this note is to cover some basic
+constructions in Swift and see just how easy it is to get
+up-and-running.</p>
+<p>As a general note, there is a great deal of forward referencing when
+learning to program. We quickly run into a chicken-egg problem: we'd
+like to talk about programs in order to understand their structure and
+interpretation, but can we interpret these programs before we've done
+that? The hope is that you'll be able to use some internal
+pattern-matching, some mimicry, and a bit of learning-by-doing to get a
+sense of how to program before we <em>really</em> learn what's going on
+with our programs. In other words, right now you should be trying to
+intuit a model of execution before we've described one.</p>
+<h2 id="compared-to-urm-programs">Compared to URM Programs</h2>
+<p>Though I personally find writing URM programs quite satisfying, they
+don't scale well with difficulty. A couple issues (among the many):</p>
+<ul>
+<li>The only kind of data in URM programs is natural numbers. This is
+sufficient for theoretical purposes; any data can be encoded using
+natural numbers (it's worth taking a moment to think about how wild that
+actually is). But a usable language should be <em>expressive</em>. It
+should be possible to write programs that are (somewhat) easy to read,
+even at the expense of making the language itself more complicated (this
+is a trade-off, one of many in the enterprise of programming). This is
+easier to do if we have different kinds of data.</li>
+<li>When we computed a value for later use, we had to store it in some
+register, remember that register, and then be careful not to
+accidentally write to that register in some other part of the program.
+This is clearly bad.</li>
+<li>When we wanted to use one program as a subroutine, or combine
+multiple programs, we had to rewrite the code each time and change some
+of the instructions. Beyond being irritating, this contradicts the first
+<a href="http://thethreevirtues.com">great virtue of a programmer</a>:
+laziness.</li>
+</ul>
+<p>In what follows we'll see how Swift (and most modern languages)
+address these issues.</p>
+<h2 id="primitive-types-and-literals">Primitive Types and Literals</h2>
+<p>First off, more kinds of data, or as the computer scientists say:
+<strong>types</strong>. All data that appear in a Swift program have
+attributed types. The type of a value is information about what kind of
+data it is, how it should be interpreted. URM programs can be thought of
+as working with a single type <code>Nat</code> for natural numbers.
+Swift has many more types, along with mechanisms for creating new types.
+The <strong>primitive types</strong> are those that are built into Swift
+and are common among most languages. Because they are built-in and
+fundamental, there is special syntax for constructing fixed values of
+primitive types. Objects constructed this way are called
+<strong>literals</strong>.</p>
+<h3 id="a-couple-primitive-types">A Couple Primitive Types</h3>
+<ul>
+<li><code>Int</code>. Values of type <code>Int</code> are whole numbers,
+as you saw them in grade school. <code>Int</code> literals are as
+expected, we can write numbers like <code>1</code>, <code>27</code>,
+<code>-2001</code> in Swift programs.</li>
+<li><code>Double</code>. Values of type <code>Double</code> are decimal
+numbers. The name comes from the fact that they are "double" the
+precision of a different common data type for decimal numbers, the
+<code>Float</code> data type. <code>Double</code> literals are also as
+expected: <code>1.23</code>, <code>2.001</code>,
+<code>-27.0</code>.</li>
+<li><code>String</code>. Values of type <code>String</code> are
+representations of text. The way that Swift handles strings is
+admittedly a bit complicated, so we'll only be using them in a fairly
+basic capacity. The literals for <code>String</code> are sequences of
+characters surrounded by quotations: <code>"This is a string."</code>,
+<code>"1.23"</code>, <code>"&amp;())"</code>.</li>
+<li><code>Bool</code>. There are only two values of type
+<code>Bool</code> given by the literals <code>true</code> and
+<code>false</code>. They are used for conditional statements and will be
+the focus of our later section on propositional logic.</li>
+</ul>
+<h3 id="an-aside-testing-things-out-on-your-own">An Aside: Testing
+things out on your own</h3>
+<p>When learning to program, just reading notes like this isn't going to
+cut it. You should consider always have a REPL open when going through
+notes, or even a code editor, just to test out the things that you read.
+See <a href="../Labs/lab-1.html">Lab 1</a> for more information about
+the REPL if you haven't already. For this section, if you open up the
+Terminal application and type <code>swift</code>, you'll start the Swift
+REPL and you can type in literals and see that they are correctly
+interpreted.</p>
+<pre><code>nathan@Nathans-MacBook-Air ~ % swift
+Welcome to Swift version 5.5.2-dev.
+Type :help for assistance.
+  1&gt; 2
+$R0: Int = 2
+  2&gt; &quot;Testing&quot;
+$R1: String = &quot;Testing&quot;
+  3&gt; 1.234
+$R2: Double = 1.234</code></pre>
+<h2 id="primitive-operators">Primitive Operators</h2>
+<p>All of the above primitive types have a <strong>primitive
+operators</strong> (functions) written for them. Binary operators are
+usually written with <em>infix</em> notation, where the operator name
+appears between its two arguments.</p>
+<h3 id="some-useful-operators">Some useful operators</h3>
+<ul>
+<li><em>Addition</em> (<code>a + b</code>) can be applied can be applied
+to <code>Int</code>s, <code>Double</code>s and, interestingly,
+<code>String</code>s as concatenation (<code>"one" + "two"</code> =
+<code>"onetwo"</code>).</li>
+<li><em>Subtraction</em> (<code>a - b</code>) applies to
+<code>Int</code>s and <code>Double</code>s as expected.</li>
+<li><em>Multiplication</em> (<code>a * b</code>) applied to
+<code>Int</code>s and <code>Double</code>s as expected.</li>
+<li><em>Division</em> (<code>a / b</code>) applies to <code>Int</code>s
+as floor division (<code>10/3</code> is <code>3</code>) and
+<code>Double</code>s as expected.</li>
+<li><em>Remainder</em> (<code>a % b</code>) applies to <code>Int</code>s
+(e.g., <code>10 % 3</code> is <code>1</code>).</li>
+<li><em>Equals</em> (<code>a == b</code>) applies to any two values of
+the same primitive types from above. It is <code>true</code> if they are
+the same, and <code>false</code> otherwise.</li>
+<li><em>Not equals</em> (<code>a != b</code>) is the opposite of
+<code>==</code>.</li>
+<li><em>Greater than</em> (<code>a  &gt; b</code>) applies to
+<code>Int</code>s and <code>Double</code>s as expected.</li>
+<li><em>Less than</em> (<code>a &lt; b</code>) applies to
+<code>Int</code>s and <code>Double</code>s as expected.</li>
+<li><em>Greater than or equal to</em> (<code>a  &gt;= b</code>) applies
+to <code>Int</code>s and <code>Double</code>s as expected.</li>
+<li><em>Less than or equal to</em> (<code>a &lt;= b</code>) applies to
+<code>Int</code>s and <code>Double</code>s as expected.</li>
+</ul>
+<p>This is not an exhaustive list, see the Swift book (linked below) for
+more operators. Committing them to memory will make your life a little
+easier.</p>
+<h2 id="constants-and-variables">Constants and Variables</h2>
+<p>Issue two of URM programs was storing values more conveniently. Swift
+actually has two mechanisms for storing values: <em>constants</em> and
+<em>variables</em>. To declare a constant integer, we write the line</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">x</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+<p>and to declare it as a variable we write the line</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="va">x</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+<p>Both of these lines will make <code>x</code> refer to the value
+<code>2</code> throughout the program. It is convention in Swift to use
+<em>camelCase</em> for long constant and variable names, e.g.,
+<code>variableWithLongName</code>. Note that the first letter is
+lower-case.</p>
+<p>Note that both constant and variable declarations have <strong>type
+annotations</strong>. Swift is a <strong>statically typed</strong>
+language, which, in essence means that variables and constants are given
+a type that cannot change throughout the execution of a program. More on
+this in the notes on types and expressions.</p>
+<p>The obvious question at this point is: <em>What is the difference
+between a variable and a constant?</em> The names are not accidental, it
+has to do with <em>assignment</em>. The <em>assignment operator</em>
+(<code>a = b</code>) takes two values of the same type and the one on
+the left <strong>must</strong> be a variable. The line</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span></span></code></pre></div>
+<p>changes the value of <code>y</code> to <code>5</code>. If the left
+argument is not a variable (if it is a constant or something else) then
+Swift will complain and tell you that you are trying to assign a value
+to something that is not assignable. So</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">z</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="dv">5</span></span></code></pre></div>
+<p>is not valid Swift code.</p>
+<p>Having both variables and constants is not strictly necessary, many
+other languages have just variables. What we get is greater
+expressibility, readability and safety; it becomes clear which values
+are fixed throughout the execution of a program. As a (silly) example,
+we could declare</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">numberOfSidesOfTriangle</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+<p>since we know that the number of sides of a triangle should never
+change.</p>
+<h3 id="an-aside-reassignment">An Aside: Reassignment</h3>
+<p>One tricky but ultimately powerful fact about the assignment operator
+is that it determines the value of the right argument <em>before</em>
+assigning it to the variable on the left. This means that we can
+write</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>to mean "assign the value of <code>x</code> one greater than its
+current value." The role of reassignment in programming is one of those
+hotly debated topics in computer science. Swift is an <em>imperative
+language</em>, which means that its programs use statements to change
+some underlying state. Thus, reassignment is fundamental to imperative
+languages, but it also complicates their semantics (as we will see). The
+idea of writing programs without reassignment might seem a bit
+stiffling, but so-called <em>functional languages</em>, which eliminate
+the need for reassignments, make up a large part of the programming
+language landscape (e.g., Scheme, Haskell, Elm, among others).</p>
+<h2 id="functions">Functions</h2>
+<p>To address the subroutine problem of URMs, we have a mechanism for
+declaring <strong>functions</strong>, which are named blocks of reusable
+code that can depend on values that are passed as
+<strong>arguments</strong> and can return a value called the function's
+<strong>output</strong>. Here is a simple function which outputs the
+surface area of a rectangular prism with given its length, width and
+height.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">surfaceAreaOfRectangularPrism</span><span class="op">(</span><span class="va">length</span><span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> <span class="va">width</span><span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> <span class="va">height</span><span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> -&gt; <span class="fu">Double</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="va">side1</span> <span class="op">=</span> length <span class="op">*</span> width</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="va">side2</span> <span class="op">=</span> width <span class="op">*</span> height</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="va">side3</span> <span class="op">=</span> length <span class="op">*</span> height</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> side1<span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> side2<span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="dv">2</span> <span class="op">*</span> side3<span class="op">)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>A couple things:</p>
+<ul>
+<li>We use the same camelCase for function names.</li>
+<li>The arguments (given in the parenthesis after the function name) are
+all named and typed. The output type (given after the <code>-&gt;</code>
+symbol) is typed as well. This is required by the static typing of
+Swift. There will be more on types in our next section.</li>
+<li>The named inputs should appear in the body of the function, where
+they are treated as constants.</li>
+<li>It is convention in Swift (and elsewhere) to indent the body of a
+function one level greater than its declaration.</li>
+<li>The body should also contain one or more lines with the
+<code>return</code> keyword, which specify the output of the function
+and terminate the execution of the code in the body of the function,
+should that line be reached. In particular, the return statement does
+not need to be the last line of the body of the function.</li>
+</ul>
+<p>We can use a function after it is declared by
+<strong>calling</strong> it:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="va">x</span> <span class="op">=</span> surfaceOfRectangularPrism<span class="op">(</span>length<span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> width<span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> height<span class="op">:</span> <span class="fl">5.0</span><span class="op">)</span></span></code></pre></div>
+<p>Note that we had to include the names of the parameters. This can be
+tedious. Fortunately, Swift has an interesting mechanism for using more
+readable parameters in function calls. For every parameter in a function
+declaration we can actually supply <em>two</em> names. The <strong>outer
+name</strong>, also called an <strong>argument label</strong>, is the
+name that used when calling the function. The <strong>inner
+name</strong>, also called the <strong>parameter name</strong>, is used
+in the body of the function. Supplying only one is equivalent to
+supplying both with the same name. Supplying <code>_</code> (underscore)
+as the argument label allows you to call the function without an
+argument label. It is in Swift style to try to write argument labels so
+that function calls almost read like sentences. The function</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">power</span><span class="op">(</span><span class="va">_</span> <span class="va">x</span><span class="op">:</span> <span class="dt">Double</span><span class="op">,</span> <span class="va">toThe</span> <span class="va">y</span><span class="op">:</span> <span class="dt">Double</span><span class="op">)</span> -&gt; <span class="fu">Double</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;</span>WE DONT KNOW HOW TO WRITE THIS YET<span class="op">!&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>can be called by</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="va">x</span> <span class="op">=</span> power<span class="op">(</span><span class="fl">2.0</span><span class="op">,</span> toThe<span class="op">:</span> <span class="fl">4.0</span><span class="op">)</span></span></code></pre></div>
+<p>which I think is pretty neat.</p>
+<h2 id="conditionals">Conditionals</h2>
+<p>So far we have some nice mechanisms for organizing code, but in order
+to have language that is more than a beefed-up calculator, we need a way
+to perform logically complex, conditional computations. For URM
+programs, this was accomplished by the jump operator. Swift has much
+more convenient ways of doing this.</p>
+<h3 id="if-statements"><code>if</code> Statements</h3>
+<p>The <code>if</code> statement has quite a few forms but for now we'll
+look at one's like this:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">2</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>After the <code>if</code> keyword and the condition, an expression of
+type <code>Bool</code>, is a pair of curly brackets enclosing lines of
+code that are run if the condition is satisfied. If we think of
+<code>x</code> as the first register of a URM, this <code>if</code>
+statement is encompassed by the following URM program.</p>
+<pre class="text"><code>Z(1)
+S(1)
+S(1)
+J(0, 1, 5)
+J(0, 0, 100)
+S(0)</code></pre>
+<p>So we can see the obvious benefits of a more expressive language; the
+intention of the Swift code is much clearer than that of the URM
+program.</p>
+<p>For a slightly more complicated example, we can use <code>if</code>
+statements to perform an action if a number is even.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="while-statements"><code>while</code> Statements</h3>
+<p><code>if</code> statements are useful if we want to perform
+collection of actions one time conditioned on some value. But there were
+several cases in our URM programs where we wanted to repeat a collection
+of actions a number of times depending on the state of some value over
+time. For example, in the program for addition, we implemented a counter
+to keep track of how many times we incremented the first argument. In
+Swift, we can accomplish this using a <code>while</code> statement (also
+called a <code>while</code> loop):</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="va">counter</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> <span class="va">sum</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> counter <span class="op">!=</span> <span class="dv">10</span> <span class="op">{</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    sum <span class="op">=</span> sum <span class="op">+</span> counter</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> counter <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This bit of code assigns the sum of the first ten positive integers
+to the variable <code>sum</code>. It would be far more difficult to
+implement the analog of this as a URM program.</p>
+<p>Here is another example, in which we combine <code>if</code>
+statements and <code>while</code> statements by <em>nesting</em> (i.e.,
+putting one inside the other):</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode swift"><code class="sourceCode swift"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">func</span> <span class="fu">smallestDivisor</span><span class="op">(</span><span class="va">of</span> <span class="va">n</span><span class="op">:</span> <span class="dt">Int</span><span class="op">)</span> -&gt; <span class="fu">Int</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">var</span> <span class="va">i</span><span class="op">:</span> Int <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> i <span class="op">!=</span> n <span class="op">{</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> i <span class="op">==</span> <span class="dv">0</span> <span class="op">{</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">return</span> i</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">return</span> n</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>You should verify that this function is aptly named. In particular,
+you should try to think about how you might have come up with this
+function yourself. What is the underlying idea of the code? A rough
+estimate: Check if <code>2</code> divides <code>n</code>, then
+<code>3</code>, then <code>4</code>, and so on. The first number of
+divide <code>n</code> in this order is the smallest (positive) divisor
+of <code>n</code>.</p>
+<p>We'll see much more on conditional in the coming module on control
+flow.</p>
+<h2 id="a-closing-note-on-style">A Closing Note on Style</h2>
+<p>Throughout this note, I've mentioned a couple conventions for how to
+write Swift code. The truth is I'm not going to cover every convention
+(I don't even know every convention). But as you work through my notes
+and the sections of the Swift book, look at the code there for both
+content and stylistic choices. This is how most people start off,
+mimicking code they read. Over time, your style will become more
+refined.</p>
+<p>I'll also say that style is not just about choices in white space and
+naming, it can be about the content as well. In some of the above code,
+I've used <code>while</code> statements where, in practice, I might use
+a different construction that we haven't covered yet. Over time you'll
+see variations on these constructions in the Swift book and in
+documentation. I recommend experimenting with these to find the idioms
+you like most.</p>
+<h2 id="additional-reading">Additional Reading</h2>
+<p>These are the sections in the Swift book covering the material in
+these notes.</p>
+<ul>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID63">Arithmetic
+Operators</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID70">Comparison
+Operators</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID62">Assignment
+Operator</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID310">Constants
+and Variables</a>, note the section on printing, which is not covered in
+these notes.</li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID159">Defining
+and Calling Functions</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID160">Function
+Parameters and Return Values</a>, you can ignore the last two
+subsections, there is also a section on returning no values and
+returning multiple values not covered in these notes.</li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html#ID166">Function
+Argument Labels and Parameter Names</a>, you can ignore the last three
+subsections.</li>
+</ul>
+<p>There are a few basic topics not covered in these notes that I expect
+you to read on your own.</p>
+<ul>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID315">Comments</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID69">Compound
+Assignment Operators</a></li>
+<li><a
+href="https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html#ID292">String
+Interpolation</a></li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<ol type="1">
+<li>Declare and write a function that computes factorials. It should
+pass the following tests. You may ignore negative inputs.</li>
+</ol>
+<pre><code>assert(factorial(0) == 1)
+assert(factorial(1) == 1)
+assert(factorial(5) == 120)</code></pre>
+<ol start="2" type="1">
+<li>Declare and write a function for determining the <span
+class="math inline">\(n\)</span>th fibonacci number. It should pass the
+following tests. You may ignore negative inputs.</li>
+</ol>
+<pre><code>assert(fibonacci(0) == 0)
+assert(fibonacci(1) == 1)
+assert(fibonacci(2) == 1)
+assert(fibonacci(6) == 7)</code></pre>
+<ol start="3" type="1">
+<li>Write a function that, given an integer <span
+class="math inline">\(n\)</span>, for determining the largest <span
+class="math inline">\(k\)</span> such that <span
+class="math inline">\(2^k\)</span> divides <span
+class="math inline">\(n\)</span>. It should pass the following
+tests.</li>
+</ol>
+<pre><code>assert(largestPowerOfTwoDiv(10) == 1)
+assert(largestPowerOfTwoDiv(15) == 0)
+assert(largestPowerOfTwoDiv(20) == 2)
+assert(largestPowerOfTwoDiv(16) == 4)</code></pre>
+<ol start="4" type="1">
+<li>One of the early method for approximating <span
+class="math inline">\(\pi\)</span> is due to Archimedes, who used a pair
+of clever geometric formulas for determining the perimeters of regular
+polygons that are inscribed and circumscribed by the same circle. See
+this
+<a href="https://en.wikipedia.org/wiki/Approximations_of_&#x3C0;#Polygon_approximation_to_a_circle">Wikipedia
+page</a> for more information. Write a function that, given a
+non-negative integer <span class="math inline">\(n\)</span>, computes
+the average of <span class="math inline">\(P_{3 * 2^n}\)</span> and
+<span class="math inline">\(p_{3 * 2^n}\)</span> where <span
+class="math display">\[
+P_{2n} = \frac{2p_nP_n}{p_n + P_n} \qquad p_{2n} = \sqrt{p_n P_{2n}}
+\]</span> You may use the fact that <span class="math inline">\(p_3 =
+\frac{3\sqrt{3}}{2}\)</span> and <span class="math inline">\(P_3 =
+3\sqrt{3}\)</span>.</li>
+</ol>
+</body>
+
+</html>
