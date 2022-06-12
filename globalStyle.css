@@ -1,8 +1,9 @@
-/* This is the CSS stylesheet of Nathan Mull. For some reason it doesn't work. */
+/* This is the CSS stylesheet of Nathan Mull. */
 
 body {
   /* Home background color */
-  background-color: #eeeedd;
+  /* background-color: #eeeedd; */ /* Old background color */
+  background-color: #f5f4f0;
 
   /* Primary body font */
   font-family: 'Monaco', monospace;
@@ -17,12 +18,6 @@ body {
 
   /* Global line height */
   line-height: 175%;
-}
-
-/* Course background color */
-
-body#course {
-  background-color: #f5f4f0;
 }
 
 /* Header font*/
@@ -61,12 +56,12 @@ h3 {
 
 code {
   background-color: #eee;
-  border-radius: 3px;
-  font-family: 'Inconsolata', 'Monaco', monospace;
+  outline: 0.5px solid black;
+  font-family: 'Courier', monospace;
 }
 
 pre code {
-  font-family: 'Inconsolata', 'Monaco', monospace;
+  font-family: 'Courier', monospace;
   font-size: 14pt;
   line-height: 120%;
   display: block;
