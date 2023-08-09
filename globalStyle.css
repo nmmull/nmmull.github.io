@@ -1,55 +1,40 @@
-/* This is the CSS stylesheet of Nathan Mull. */
+/* This is my CSS stylesheet. */
 
 body {
   /* Home background color */
-  /* background-color: #eeeedd; */ /* Old background color */
   background-color: #f5f4f0;
 
   /* Primary body font */
   font-family: 'Monaco', monospace;
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: 400;
 
   /* Primary margin setting */
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  max-width: 750px;
+  margin-top: 50;
+  margin-left: 50;
+  max-width: 900;
 
   /* Global line height */
-  line-height: 175%;
-}
-
-/* Header font*/
-
-h1,
-h2,
-h3 {
-  font-family: 'Monaco', monospace;
-  font-weight: 300;
+  line-height: 150%;
 }
 
 /* Header styles */
 
 h1 {
-  font-size: 38pt;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  line-height: 110%;
+  font-size: 32pt;
+  margin-bottom: 10;
 }
 
 h2 {
   font-size: 20pt;
-  font-style: italic;
-  text-transform: uppercase;
-  text-align: center;
-  margin-top: 40px;
+  line-height: 120%;
+  margin-top: 0;
 }
 
 h3 {
-  font-size: 22pt;
-  font-style: italic;
-  text-transform: lowercase;
+  font-size: 18pt;
+  margin-top: 40;
+  margin-bottom: 10;
 }
 
 /* Code style */
@@ -97,7 +82,7 @@ a:active {
 
 /* Tables */
 
-table {
+/* table {
   border-collapse: collapse;
   width: 90%;
 }
@@ -106,12 +91,11 @@ th, td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid black;
-}
+  }
+*/
 
 /* Images */
 
 img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
