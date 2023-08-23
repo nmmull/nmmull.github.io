@@ -1,0 +1,54 @@
+#+title: Course Schedule
+
+** [[file:index.org][←]]
+
+|-------+------------------------------------+-----------------+------+----------------------|
+| Date  | Topic                              | Material        | HW   | Notes                |
+|-------+------------------------------------+-----------------+------+----------------------|
+| 09/05 | Linear Equations                   | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][reading]], slides |      | read course policies |
+| 09/07 | Numerics                           | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][reading]], slides | HW01 |                      |
+| ---   |                                    |                 |      |                      |
+| 09/12 | Gaussian Elimination               | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html][reading]], slides |      |                      |
+| 09/14 | Vector Equations                   | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L04VectorEquations.html][reading]], slides | HW02 | HW01 due             |
+| ---   |                                    |                 |      |                      |
+| 09/19 | Matrix-Vector Equations            | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L05Axb.html][reading]], slides |      |                      |
+| 09/21 | Linear Independence                | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L06LinearIndependence.html][reading]], slides | HW03 | HW02 due             |
+| ---   |                                    |                 |      |                      |
+| 09/26 | Linear Transformations             | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L07LinearTransformations.html][reading]], slides |      |                      |
+| 09/28 | Matrices of Linear Transformations | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L08MatrixofLinearTranformation.html][reading]], slides | HW04 | HW03 due             |
+| ---   |                                    |                 |      |                      |
+| 10/03 | Matrix Algebra                     | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L09MatrixOperations.html][reading]], slides |      |                      |
+| 10/05 | Matrix Inverse                     | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html][reading]], slides |      | HW04 due             |
+| ---   |                                    |                 |      |                      |
+| 10/10 | *Substitute Monday*                |                 |      |                      |
+| 10/12 | Midterm Review                     |                 | HW05 | good luck!           |
+|       | *MIDTERM (TBD)*                    |                 |      |                      |
+| ---   |                                    |                 |      |                      |
+| 10/17 | Markov Chains                      | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html][reading]], slides |      |                      |
+| 10/19 | Matrix Factorization               | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html][reading]], slides | HW06 | HW05 due             |
+| ---   |                                    |                 |      |                      |
+| 10/24 | Computer Graphics                  | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L13ComputerGraphics.html][reading]], slides |      |                      |
+| 10/26 | Subspaces                          | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L14Subspaces.html][reading]], slides | HW07 | HW06 due             |
+| ---   |                                    |                 |      |                      |
+| 10/31 | Dimension and Rank                 | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L15DimensionRank.html][reading]], slides |      |                      |
+| 11/02 | Eigenvectors and Eigenvalues       | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L16Eigenvectors.html][reading]], slides | HW08 | HW07 due             |
+| ---   |                                    |                 |      |                      |
+| 11/07 | The Characteristic Equation        | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L17CharacteristicEqn.html][reading]], slides |      |                      |
+| 11/09 | Diagonalization                    | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L18Diagonalization.html][reading]], slides | HW09 | HW08 due             |
+| ---   |                                    |                 |      |                      |
+| 11/14 | PageRank                           | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L19PageRank.html][reading]], slides |      |                      |
+| 11/16 | Orthogonality                      | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L20Orthogonality.html][reading]], slides | HW10 | HW09 due             |
+| ---   |                                    |                 |      |                      |
+| 11/21 | Orthogonal Sets and Projections    | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L21OrthogonalSets.html][reading]], slides |      |                      |
+| 11/23 | *Thanksgiving*                     |                 |      |                      |
+| ---   |                                    |                 |      |                      |
+| 11/28 | Least Squares                      | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L22LeastSquares.html][reading]], slides |      |                      |
+| 11/30 | Linear Models                      | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L23LinearModels.html][reading]], slides | HW11 | HW10 due             |
+| ---   |                                    |                 |      |                      |
+| 12/05 | Symmetric Matrices                 | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L24SymmetricMatrices.html][reading]], slides |      |                      |
+| 12/07 | Singular Value Decomposition (SVD) | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L25SVD.html][reading]], slides | HW12 |                      |
+| ---   |                                    |                 |      |                      |
+| 12/12 | Applications of SVD                | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L26ApplicationsOfSVD.html][reading]], slides |      | HW11 due             |
+| ---   |                                    |                 |      |                      |
+| 12/?? | *FINAL EXAM (TBD)*                 |                 |      | good luck!           |
+|-------+------------------------------------+-----------------+------+----------------------|

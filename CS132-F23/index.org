@@ -1,0 +1,44 @@
+#+title: CAS CS 132
+
+* CAS CS 132
+** Geometric Algorithms
+** Boston University
+** Fall 2023
+
+|--------------------+--------------------------------------------|
+| Course Information | [[file:info.org][→]]                                          |
+| Course Schedule    | [[file:schedule.org][→]]                                          |
+| Piazza             | [[https://piazza.com/class/lln46z61vsx7km][link]]                                       |
+| Gradescope         | [[https://www.gradescope.com/courses/584313][link]]                                       |
+| ---                |                                            |
+| Online Text        | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][link]]                                       |
+| Programming        | Required: [[https://www.python.org][python]], [[https://numpy.org][numpy]], [[https://scipy.org][scipy]], [[https://matplotlib.org][matplotlib]] |
+|                    | Optional: [[https://jupyter.org][jupyter]]                          |
+| ---                |                                            |
+| Location           | CAS B12                                    |
+| Time               | TR 3:30-4:45PM (B1)                        |
+|                    | TR 5:00-6:15PM (A1)                        |
+| ---                |                                            |
+| Grading            | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+| ---                |                                            |
+| Instructor         | [[https://nmmull.github.io][Nathan Mull]]                                |
+| Teaching Fellows   | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+| Course Assistants  | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|                    | TBD                                        |
+|--------------------+--------------------------------------------|
+
+This course is based on (and depends heavily on the material of) the
+version taught by [[https://www.cs.bu.edu/fac/crovella/][Mark Crovella]].
