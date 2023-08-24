@@ -8,10 +8,10 @@
 |--------------------+--------------------------------------------|
 | Course Information | [[file:info.org][→]]                                          |
 | Course Schedule    | [[file:schedule.org][→]]                                          |
-| Piazza             | [[https://piazza.com/class/lln46z61vsx7km][link]]                                       |
-| Gradescope         | [[https://www.gradescope.com/courses/584313][link]]                                       |
+| Piazza             | [[https://piazza.com/class/lln46z61vsx7km][→]]                                          |
+| Gradescope         | [[https://www.gradescope.com/courses/584313][→]]                                          |
 | ---                |                                            |
-| Online Text        | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][link]]                                       |
+| Online Text        | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][→]]                                          |
 | Programming        | Required: [[https://www.python.org][python]], [[https://numpy.org][numpy]], [[https://scipy.org][scipy]], [[https://matplotlib.org][matplotlib]] |
 |                    | Optional: [[https://jupyter.org][jupyter]]                          |
 | ---                |                                            |
@@ -19,10 +19,9 @@
 | Time               | TR 3:30-4:45PM (B1)                        |
 |                    | TR 5:00-6:15PM (A1)                        |
 | ---                |                                            |
-| Grading            | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
+| Grading            | *55%* Homework (top 10 of 12 scores)       |
+|                    | *20%* Midterm Exam                         |
+|                    | *25%* Final Exam                           |
 | ---                |                                            |
 | Instructor         | [[https://nmmull.github.io][Nathan Mull]]                                |
 | Teaching Fellows   | TBD                                        |
