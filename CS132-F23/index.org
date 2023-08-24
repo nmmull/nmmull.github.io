@@ -1,6 +1,6 @@
 #+title: CAS CS 132
 
-* CAS CS 132
+* CAS CS 132 (UNDER CONSTRUCTION)
 ** Geometric Algorithms
 ** Boston University
 ** Fall 2023
@@ -19,9 +19,9 @@
 | Time               | TR 3:30-4:45PM (B1)                        |
 |                    | TR 5:00-6:15PM (A1)                        |
 | ---                |                                            |
-| Grading            | *55%* Homework (top 10 of 12 scores)       |
+| Grading            | *50%* Homework (top 10 of 12 scores)       |
 |                    | *20%* Midterm Exam                         |
-|                    | *25%* Final Exam                           |
+|                    | *30%* Final Exam                           |
 | ---                |                                            |
 | Instructor         | [[https://nmmull.github.io][Nathan Mull]]                                |
 | Teaching Fellows   | TBD                                        |
