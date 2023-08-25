@@ -1,7 +1,6 @@
 #+title: CAS CS 132
 
-* CAS CS 132 (UNDER CONSTRUCTION)
-
+* CAS CS 132
 #+BEGIN_EXPORT html
   <p class="subhead">
     Geometric Algorithms<br>
@@ -9,53 +8,49 @@
     Fall 2023
   </p>
 #+END_EXPORT
+This course is an introduction to linear algebra with an bent towards
+applications in computer science. One of its primary goals is to
+prepare students for courses in the CS cirriculum at BU which require
+some degree of linear algebra. It is based on (and depends heavily on
+the material of) the version of the course taught by [[https://www.cs.bu.edu/fac/crovella/][Mark Crovella]].
 
-|--------------------+--------------------------------------------|
-| Course Information | [[file:info.org][→]]                                          |
-| Course Policies    | [[file:../policies.html][→]]                                          |
-| Course Schedule    | [[file:schedule.org][→]]                                          |
-| ---                |                                            |
-| Piazza             | [[https://piazza.com/class/lln46z61vsx7km][→]]                                          |
-| Gradescope         | [[https://www.gradescope.com/courses/584313][→]]                                          |
-| ---                |                                            |
-| Online Text        | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][→]]                                          |
-| Programming        | Required: [[https://www.python.org][python]], [[https://numpy.org][numpy]], [[https://scipy.org][scipy]], [[https://matplotlib.org][matplotlib]] |
-|                    | Optional: [[https://jupyter.org][jupyter]]                          |
-| ---                |                                            |
-| Location           | CAS B12                                    |
-| Time               | TR 3:30-4:45PM (B1)                        |
-|                    | TR 5:00-6:15PM (A1)                        |
-| ---                |                                            |
-| Grading            | *50%* Homework (top 10 of 12 scores)       |
-|                    | *20%* Midterm Exam                         |
-|                    | *30%* Final Exam                           |
-| ---                |                                            |
-| Instructor         | [[https://nmmull.github.io][Nathan Mull]]                                |
-| Teaching Fellows   | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-| Course Assistants  | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|                    | TBD                                        |
-|--------------------+--------------------------------------------|
-
+** Links
++ [[file:info.org][Course Information]]
++ [[file:../policies.org][Course Policies]]
++ [[file:schedule.org][Course Schedule]]
++ [[https://piazza.com/class/lln46z61vsx7km][Piazza]]
++ [[https://www.gradescope.com/courses/584313][Gradescope]]
++ [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][Online Text]]
++ Programming:
+  + [[https://www.python.org][python]]
+  + [[https://numpy.org][numpy]]
+  + [[https://scipy.org][scipy]]
+  + [[https://matplotlib.org][matplotlib]]
+  + [[https://jupyter.org][jupyter]] (optional)
+** Minutiae
++ Location: CAS B12
++ Time:
+  + TR 3:30-4:45PM (B1)
+  + TR 5:00-6:15PM (A1)
++ Grading:
+  + *50%* Homework (top 10 of 12 scores)
+  + *20%* Midterm Exam
+  + *30%* Final Exam
+** Course Staff
++ Instructor: [[https://nmmull.github.io][Nathan Mull]]
++ Teaching Fellows:
+  + TBD
+  + TBD
+  + TBD
+  + TBD
++ Course Assistants:
+  + TBD
+  + TBD
+  + TBD
+  + TBD
 ** Log
 
 *2023-08-25* ⟪ IMPORTANT ⟫ If you require disability accomodations,
 please talk to me as soon as possible
 
 *2023-08-25* Site is live
-
-#+BEGIN_EXPORT html
-  <p class="footnote">
-    This course is based on (and depends heavily on the material of)
-    the version taught by <a href="https://www.cs.bu.edu/fac/crovella/">Mark Crovella</a>.
-  </p>
-#+END_EXPORT
