@@ -1,0 +1,27 @@
+#+title: Nathan Mull
+
+* Nathan Mull
+
+#+BEGIN_EXPORT html
+  <p class="subhead">
+    Lecturer<br>
+    Boston University<br>
+    CDS 907, Office Hours: TBD<br>
+    (++ @bu.edu) nmmull
+  </p>
+#+END_EXPORT
+
+I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at [[https://www.bu.edu][Boston
+University]]. Outside of teaching, I'm interested generally in logic and
+computing. I've spent some time thinking about [[https://en.wikipedia.org/wiki/Proof_complexity#SAT_solvers][proof complexity and
+SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type systems and normalization]]. Check my [[file:pdfs/CV.pdf][CV]] for
+more information.
+
+** Teaching
+
+*CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.html][Fall 2023]]
+
+** Log
+
+*2023-08-24* I'm acting as a supervisor for a [[https://cra.org/ur2phd/][UR2PhD]] project on
+[[https://www.bu.edu/urop/opportunity/computer-science-3/][correct-by-construction code design]]. Apply if you're interested!

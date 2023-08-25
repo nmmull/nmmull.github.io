@@ -1,16 +1,23 @@
-/* This is my CSS stylesheet. */
+/*
+	Global CSS stylesheet
+
+	 //\\    //\\    //\\    //\\    //\\    Nathan M. Mull
+	//  \\  //  \\  //  \\  //  \\  //  \\   Copyright 2023
+       //    \\//    \\//    \\//    \\//    \\  All rights reserved
+*/
 
 body {
     /* Home background color */
     background-color: #f5f4f0;
 
     /* Primary body font */
-    font-family: 'Monaco', monospace;
-    font-size: 14pt;
+    font-family: 'Menlo', monospace;
+    font-size: 12pt;
     font-weight: 400;
 
     /* Primary margin setting */
     margin-top: 50;
+    margin-bottom: 20;
     margin-left: 50;
     max-width: 850;
 
@@ -22,26 +29,42 @@ body {
 
 h1 {
     font-size: 32pt;
-    margin-bottom: 0;
-    margin-bottom: 10;
+    margin-top: 0;
+    margin-bottom: 15;
+}
+
+.subhead {
+    font-size: 22pt;
+    font-weight: 600;
+    line-height: 110%;
+    margin-top: 0;
+    margin-bottom: 15;
 }
 
 h2 {
     font-size: 20pt;
-    line-height: 120%;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 30;
+    margin-bottom: 15;
 }
 
 h3 {
-    font-size: 18pt;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 16pt;
     margin-top: 40;
-    margin-bottom: 10;
+    margin-bottom:10;
 }
 
+/* body style */
+
 p {
-    margin-top: 10;
-    margin-bottom: 30;
+    margin-top: 0;
+    margin-bottom: 15;
+}
+
+.footnote{
+    margin-top: 80;
+    font-size: 10pt;
 }
 
 /* Code style */
@@ -51,10 +74,11 @@ pre{
     margin-bottom:30;
 }
 
+/* a hack for highlighting text without html export in org */
 code {
     padding:2px;
     background-color: #F7A9AF;
-    font-family: 'Monaco', monospace;
+    font-family: 'Menlo', monospace;
 }
 
 pre code {
@@ -76,12 +100,12 @@ hr {
 
 a:link {
     text-decoration: underline;
-    color: black;
+    color: #005b9e;
 }
 
 a:visited {
     text-decoration: none;
-    color: black;
+    color: #005b9e;
 }
 
 a:hover {
@@ -96,10 +120,10 @@ a:active {
 
 table {
     font-family: 'Courier', monospace;
-    font-size:14pt;
+    font-size:12pt;
     border-collapse: collapse;
-    margin-top: 20;
-    margin-bottom: 20;
+    margin-top: 30;
+    margin-bottom: 30;
 }
 
 th, td {
@@ -108,21 +132,6 @@ th, td {
     vertical-align: top;
     line-height: 140%;
 }
-
-td.empty:after {
-  content: 'Empty cell';
-  visibility: hidden;
-  speak: none;
-}
-
-.blank_row {
-    height: 20;
-}
-/* th, td { */
-/*   padding: 8px; */
-/*   text-align: left; */
-/*   border-bottom: 1px solid black; */
-/*   } */
 
 /* Images */
 
