@@ -1,6 +1,12 @@
-#+title: Course Information
-
-* [[file:index.org][←]]
+#+title: Information
+* Information
+#+BEGIN_EXPORT html
+  <p class="subhead">
+    Geometric Algorithms<br>
+    Boston University<br>
+    Fall 2023
+  </p>
+#+END_EXPORT
 
 ** Course Description
 

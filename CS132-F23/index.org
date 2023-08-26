@@ -1,5 +1,4 @@
 #+title: CAS CS 132
-
 * CAS CS 132
 #+BEGIN_EXPORT html
   <p class="subhead">
@@ -13,11 +12,12 @@ applications in computer science. One of its primary goals is to
 prepare students for courses in the CS cirriculum at BU which require
 some degree of linear algebra. It is based on (and depends heavily on
 the material of) the version of the course taught by [[https://www.cs.bu.edu/fac/crovella/][Mark Crovella]].
-
+** Pages
++ [[file:info.org][Information]]
++ [[file:policies.org][Policies and Guidelines]]
++ [[file:schedule.org][Schedule]]
++ [[file:material.org][Schedule + Material]]
 ** Links
-+ [[file:info.org][Course Information]]
-+ [[file:../policies.org][Course Policies]]
-+ [[file:schedule.org][Course Schedule]]
 + [[https://piazza.com/class/lln46z61vsx7km][Piazza]]
 + [[https://www.gradescope.com/courses/584313][Gradescope]]
 + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][Online Text]]
@@ -49,7 +49,6 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
   + TBD
   + TBD
 ** Log
-
 *2023-08-25* ⟪ IMPORTANT ⟫ If you require disability accomodations,
 please talk to me as soon as possible
 
