@@ -10,7 +10,7 @@ body {
     background-color: #f5f4f0;
 
     font-family: 'Menlo', monospace;
-    font-size: 1rem;
+    font-size: medium;
 
     margin-top: 3em;
     margin-bottom: 3em;
@@ -108,4 +108,8 @@ li {
 
 ul {
     margin-top: 0px;
+}
+
+@media only screen and (max-width:1000px) {
+    font-size: large;
 }
