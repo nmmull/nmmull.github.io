@@ -49,7 +49,7 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
   + TBD
   + TBD
 ** Log
-*2023-08-25* ⟪ IMPORTANT ⟫ If you require disability accomodations,
+*2023-08-25* /*!!! IMPORTANT !!!*/ If you require disability accomodations,
 please talk to me as soon as possible
 
 *2023-08-25* Site is live

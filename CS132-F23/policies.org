@@ -8,6 +8,8 @@
   </header>
 #+END_EXPORT
 
+⟨ [[file:index.org][back]] ⟩
+
 There are a number of university policices and course guidelines you
 should be aware of. /Read them carefully and completely./ Also keep in
 mind that, though I am required to use specific language in some
