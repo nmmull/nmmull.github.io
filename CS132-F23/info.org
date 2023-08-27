@@ -9,7 +9,7 @@
 #+END_EXPORT
 
 *CAS CS 132 (Geometric Algorithms)* is an introduction to ~linear
-algebra~ with an bent towards applications in computer science. One of
+algebra~ with a bent towards applications in computer science. One of
 its primary goals is to prepare students (you) for courses in the CS
 cirriculum at BU which require some degree of linear algebra. Due to
 the fundamentality of linear algebra, in machine learning, in graph

@@ -110,8 +110,8 @@ ul {
     margin-top: 0px;
 }
 
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 1000px) {
     body {
-	font-size: large;
+	font-size: 20pt;
     }
 }

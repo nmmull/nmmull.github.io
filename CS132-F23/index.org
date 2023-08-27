@@ -7,7 +7,7 @@
     <p class="subhead">Fall 2023</p>
   </header>
 #+END_EXPORT
-This course is an introduction to linear algebra with an bent towards
+This course is an introduction to linear algebra with a bent towards
 applications in computer science. One of its primary goals is to
 prepare students for courses in the CS cirriculum at BU which require
 some degree of linear algebra. It is based on (and depends heavily on
