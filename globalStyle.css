@@ -109,9 +109,3 @@ li {
 ul {
     margin-top: 0px;
 }
-
-@media screen and (max-width: 1000px) {
-    body {
-	font-size: 20pt;
-    }
-}
