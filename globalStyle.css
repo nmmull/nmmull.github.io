@@ -1,102 +1,74 @@
 /*
-	Global CSS stylesheet
 
-	 //\\    //\\    //\\    //\\    //\\    Nathan M. Mull
-	//  \\  //  \\  //  \\  //  \\  //  \\   Copyright 2023
-       //    \\//    \\//    \\//    \\//    \\  All rights reserved
+  //\\    //\\    //\\    //\\    //\\    Nathan M. Mull
+ //  \\  //  \\  //  \\  //  \\  //  \\   Copyright 2023
+//    \\//    \\//    \\//    \\//    \\  All rights reserved
+
 */
 
 body {
-    /* Home background color */
     background-color: #f5f4f0;
 
-    /* Primary body font */
     font-family: 'Menlo', monospace;
-    font-size: 12pt;
-    font-weight: 400;
+    font-size: medium;
 
-    /* Primary margin setting */
-    margin-top: 50;
-    margin-bottom: 20;
-    margin-left: 50;
-    max-width: 850;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    margin-left: 3em;
+    margin-right:3em;
+    max-width: 800px;
 
-    /* Global line height */
-    line-height: 150%;
+    line-height: 1.5;
 }
 
-/* Header styles */
-
 h1 {
-    font-size: 32pt;
-    margin-top: 0;
-    margin-bottom: 15;
+    font-size: 3em;
+    line-height: normal;
+}
+
+.titlehead {
+    margin-bottom: 0px;
 }
 
 .subhead {
-    font-size: 22pt;
-    font-weight: 600;
-    line-height: 110%;
-    margin-top: 0;
-    margin-bottom: 15;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+header {
+    margin-bottom:0.5em;
 }
 
 h2 {
-    font-size: 20pt;
-    margin-top: 30;
-    margin-bottom: 15;
+    font-size: 1.8em;
+    margin-bottom:0.1em;
 }
 
 h3 {
     text-transform: uppercase;
     font-style: italic;
-    font-size: 16pt;
-    margin-top: 40;
-    margin-bottom:10;
+    margin-bottom:0.1em;
 }
 
-/* body style */
-
 p {
-    margin-top: 0;
-    margin-bottom: 15;
+    margin-top:0px;
+    margin-bottom: 1em;
 }
 
 .footnote{
-    margin-top: 80;
-    font-size: 10pt;
-}
-
-/* Code style */
-
-pre{
-    font-family: 'Courier', monospace;
-    margin-bottom:30;
+    margin-top: 5em;
+    font-size: 0.8em;
 }
 
 /* a hack for highlighting text without html export in org */
 code {
-    padding:2px;
+    padding:0.2em;
+    font-size: medium;
     background-color: #F7A9AF;
-    font-family: 'Menlo', monospace;
 }
-
-pre code {
-    font-family: 'Courier', monospace;
-    font-size: 14pt;
-    line-height: 120%;
-    display: block;
-    padding: 20px;
-}
-
-/* Horizontal Line */
-
-hr {
-    size: 3px;
-    border: 1px solid black;
-}
-
-/* Link behavior */
 
 a:link {
     text-decoration: underline;
@@ -109,6 +81,7 @@ a:visited {
 }
 
 a:hover {
+    background-color: yellow;
     text-decoration: underline;
 }
 
@@ -116,25 +89,23 @@ a:active {
     text-decoration: underline;
 }
 
-/* Tables */
-
 table {
     font-family: 'Courier', monospace;
-    font-size:12pt;
+    font-size:1em;
     border-collapse: collapse;
-    margin-top: 30;
-    margin-bottom: 30;
 }
 
 th, td {
-    padding-right: 20;
+    padding-right: 1.25em;
     text-align: left;
     vertical-align: top;
-    line-height: 140%;
+    line-height: 1.25;
 }
 
-/* Images */
+li {
+    list-style-type:"≫ ";
+}
 
-img {
-    display: block;
+ul {
+    margin-top: 0px;
 }
