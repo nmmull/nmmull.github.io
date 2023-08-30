@@ -72,7 +72,7 @@ information and tutorials.
 ** Evaluation
 
 ⟪ /*Homework*/ ⟫ Problem sets are ~assigned each Thursday~ and are ~due the
-following Thursday~ by ~7PM~. You can discuss assignments during
+following Thursday~ by ~2PM~. You can discuss assignments during
 sections on Mondays, but TFs not go into details of the problems.
 
 Each assignment will consist of two parts, one part /analytical/
