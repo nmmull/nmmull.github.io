@@ -1,5 +1,4 @@
 #+title: Nathan Mull
-
 #+BEGIN_EXPORT html
   <header>
     <h1 class="titlehead">Nathan Mull</h1>
@@ -17,10 +16,9 @@ SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type s
 more information.
 
 ** Teaching
-
-*CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.html][Fall 2023]]
-
+*CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
+** Links
++ [[https://outlook.office365.com/owa/calendar/e48e922430b341019118f0f8db733eac@bu.edu/cb5b844eb94240efac93f6609f7036b83685496131320490138/calendar.html][Calendar]]
 ** Log
-
 *2023-08-24* I'm acting as a supervisor for a [[https://cra.org/ur2phd/][UR2PhD]] project on
 [[https://www.bu.edu/urop/opportunity/computer-science-3/][correct-by-construction code design]]. Apply if you're interested!

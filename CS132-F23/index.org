@@ -21,6 +21,7 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 + [[https://piazza.com/class/lln46z61vsx7km][Piazza]]
 + [[https://www.gradescope.com/courses/584313][Gradescope]]
 + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][Online Text]]
++ [[file:index.org][Office Hours Calendar]]
 + Programming:
   + [[https://www.python.org][python]]
   + [[https://numpy.org][numpy]]
@@ -39,15 +40,19 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 ** Course Staff
 + Instructor: [[https://nmmull.github.io][Nathan Mull]]
 + Teaching Fellows:
-  + TBD
-  + TBD
-  + TBD
-  + TBD
+  + [[https://rahulmitra.xyz][Rahul Mitra]]
+  + Ryan Yu
++ Teaching Assistants:
+  + Vishesh Jain
+  + Jincheng Zhang
 + Course Assistants:
-  + TBD
-  + TBD
-  + TBD
-  + TBD
+  + Reshab Chhabra
+  + Rachel Du
+  + Eugene Jung
+  + Chris Min
+  + Ieva Sagaitis
+  + Aparna Singh
+  + Kevin Wrenn
 ** Log
 *2023-08-25* /*!!! IMPORTANT !!!*/ If you require disability accomodations,
 please talk to me as soon as possible
