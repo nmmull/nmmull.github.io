@@ -48,6 +48,7 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 + Course Assistants:
   + Reshab Chhabra
   + Rachel Du
+  + Yi Du
   + Eugene Jung
   + Chris Min
   + Ieva Sagaitis
