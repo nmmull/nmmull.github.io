@@ -21,6 +21,8 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 + [[https://piazza.com/class/lln46z61vsx7km][Piazza]]
 + [[https://www.gradescope.com/courses/584313][Gradescope]]
 + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][Online Text]]
++ [[https://www.bu.edu/academics/cas/courses/cas-cs-132/][Registrar Page]]
+  + notes: See for up-to-date locations and times
 + [[file:index.org][Office Hours Calendar]]
 + Programming:
   + [[https://www.python.org][python]]
@@ -29,8 +31,8 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
   + [[https://matplotlib.org][matplotlib]]
   + [[https://jupyter.org][jupyter]] (optional)
 ** Minutiae
-+ Location: CAS B12
-+ Time:
++ Lecture Location: CAS B12
++ Lecture Times:
   + TR 3:30-4:45PM (B1)
   + TR 5:00-6:15PM (A1)
 + Grading:
