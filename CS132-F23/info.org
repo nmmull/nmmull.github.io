@@ -97,11 +97,15 @@ Expect to commit some time each week to these assignments.
 
 ⟪ /*Exams*/ ⟫ There will be ~one midterm~ and a ~cumulative final~.
 
+⟪ /*Participation*/ ⟫ Part of your grade will be determined by your
+participation in weekly polls on Piazza.
+
 ⟪ /*Grading*/ ⟫ Your final grade will be determined by
 
 + *50%* homework (top 10 of 12 scores)
 + *20%* midterm exam
 + *30%* final exam
++ *05%* participation
 
 Cut-offs for letter grades will be determined at the end of the
 course. I cannot guarantee what the cut-off will be, but you will not

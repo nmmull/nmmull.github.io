@@ -36,7 +36,8 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 + Grading:
   + *50%* Homework (top 10 of 12 scores)
   + *20%* Midterm Exam
-  + *30%* Final Exam
+  + *25%* Final Exam
+  + *05%* Participation
 ** Course Staff
 + Instructor: [[https://nmmull.github.io][Nathan Mull]]
 + Teaching Fellows:
