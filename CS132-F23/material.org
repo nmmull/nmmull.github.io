@@ -14,15 +14,23 @@
 :PROPERTIES:
 :CUSTOM_ID: 09-05
 :END:
-+ Topic: *Linear Equations*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][reading]]
-+ Reminders: read [[file:policies.org][course policies]]
++ topic: *Linear Equations*
++ material:
+   + reading:
+    + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][required]]
+    + optional: Linear Algebra and its Applications (LAA) 1.1
++ reminders:
+  + read [[file:policies.org][course policies]]
+  + install python + libraries
+  + get on piazza and gradscope
+  + no office hours this week
 ** 09-07
 :PROPERTIES:
 :CUSTOM_ID: 09-07
 :END:
 + Topic: *Numerics*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][reading]]
++ Material:
+  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][reading]]
   + homework 1
 + Reminders: homework 1 assigned
 ** 09-12
