@@ -44,7 +44,9 @@ Much of the matrial in this online text is based on the textbook
 *Linear Algebra and its Applications* by David Lay, Steven Lay and
 Judi McDonald. When possible I will include optional readings of the
 associated sections. This is also a great resource for practice
-problems.
+problems. I will also occasionally refer to [[https://textbooks.math.gatech.edu/ila/index.html][Interactive Linear
+Algebra]], a beautiful textbook out of Georgia Tech by Dan Margalit
+and Joseph Rabinoff.
 
 ⟪ /*Programming*/ ⟫ The programming assignments for this course (and the
 examples in the text) are written in ~python~ with the libraries, numpy,
@@ -104,7 +106,7 @@ Expect to commit some time each week to these assignments.
 ⟪ /*Exams*/ ⟫ There will be ~one midterm~ and a ~cumulative final~.
 
 ⟪ /*Participation*/ ⟫ Part of your grade will be determined by your
-participation in weekly polls on Piazza.
+participation in a weekly Google form.
 
 ⟪ /*Grading*/ ⟫ Your final grade will be determined by
 

@@ -16,11 +16,16 @@
 :END:
 + topic: *Linear Equations*
 + material:
-   + reading:
+  + reading:
     + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][required]]
-    + optional: Linear Algebra and its Applications (LAA) 1.1
+    + optional:
+      + Linear Algebra and its Applications (LAA) 1.1: Systems of Linear Equations
+      + Interactive Linear Algebra (ILL) 1.1: [[https://textbooks.math.gatech.edu/ila/systems-of-eqns.html][Systems of Linear Equations]]
+  + [[file:Slides/01-linear-equations-html/index.html][slides]]:
+    + [[file:Slides/01-linear-equations.key][keynote]]
+    + [[file:Slides/01-linear-equations.pdf][pdf]]
 + reminders:
-  + read [[file:policies.org][course policies]]
+  + read [[file:info.org][course information]] and [[file:policies.org][course policies]]
   + install python + libraries
   + get on piazza and gradscope
   + no office hours this week
