@@ -8,7 +8,7 @@
   </header>
 #+END_EXPORT
 
-⟨ [[file:index.org][back]] ⟩
+⟨ [[file:index.org][home]] ⟩
 
 *CAS CS 132 (Geometric Algorithms)* is an introduction to ~linear
 algebra~ with a bent towards applications in computer science. One of

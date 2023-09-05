@@ -8,7 +8,7 @@
   </header>
 #+END_EXPORT
 
-⟨ [[file:index.org][back]] ⟩
+⟨ [[file:index.org][home]] ⟩
 
 ** 09-05
 :PROPERTIES:
