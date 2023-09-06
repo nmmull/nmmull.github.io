@@ -109,7 +109,7 @@
 ** 10-10
 + *Substitute Monday*
 ** 10-12
-+ Topic: Miterm Review
++ *MIDTERM (LOCATION: TBD)*
 ** 10-17
 :PROPERTIES:
 :CUSTOM_ID: 10-17

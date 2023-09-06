@@ -29,8 +29,7 @@
 | [[file:material.org::#10-05][10-05]] | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html][Matrix Inverse]]                     | HW04 due, HW05 assigned |
 | ---   |                                    |                         |
 | 10-10 | *Substitute Monday*                |                         |
-| 10-12 | Midterm Review                     |                         |
-|       | *MIDTERM (TBD)*                    | good luck!              |
+| 10-12 | *MIDTERM (LOCATION: TBD)*          | good luck!              |
 | ---   |                                    |                         |
 | [[file:material.org::#10-17][10-17]] | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html][Markov Chains]]                      |                         |
 | [[file:material.org::#10-19][10-19]] | [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html][Matrix Factorization]]               | HW05 due, HW06 assigned |

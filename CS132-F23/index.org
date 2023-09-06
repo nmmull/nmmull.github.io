@@ -23,7 +23,7 @@ the material of) the version of the course taught by [[https://www.cs.bu.edu/fac
 + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/landing-page.html][Online Text]]
 + [[https://www.bu.edu/academics/cas/courses/cas-cs-132/][Registrar Page]]
   + see for up-to-date locations and times
-+ [[file:index.org][Office Hours Calendar]]
++ [[https://calendar.google.com/calendar/u/0/embed?src=c_117ca65747f38ed9a0282cd11a933bbb3aa5c1500a74b74a54e3e5a3e5520df8@group.calendar.google.com&ctz=America/New_York][Office Hours Calendar]]
 + Programming:
   + [[https://www.python.org][python]]
   + [[https://numpy.org][numpy]]
