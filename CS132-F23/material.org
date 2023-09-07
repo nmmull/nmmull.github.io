@@ -10,10 +10,7 @@
 
 ⟨ [[file:index.org][home]] ⟩
 
-** 09-05
-:PROPERTIES:
-:CUSTOM_ID: 09-05
-:END:
+** 09-05 <<09-05>>
 + topic: *Linear Equations*
 + material:
   + reading:
@@ -32,12 +29,9 @@
   + install python + libraries
   + get on piazza and gradscope
   + no office hours this week
-** 09-07
-:PROPERTIES:
-:CUSTOM_ID: 09-07
-:END:
-+ Topic: *Numerics*
-+ Material:
+** 09-07 <<09-07>>
++ topic: *Numerics*
++ material:
   + reading:
     + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][required]]
     + optional:
@@ -46,8 +40,13 @@
     + [[file:Slides/02-numerics.key][keynote]]
     + [[file:Slides/02-numerics.pdf][pdf]]
   + [[https://www.h-schmidt.net/FloatConverter/IEEE754.html][IEEE 754 Converter]]
-  + homework 1
-+ Reminders: homework 1 assigned
+  + homework 1:
+    + [[file:Assignments/01/hw01.pdf][pdf (worksheet)]]
+    + [[file:Assignments/01/hw01.tex][tex]]
+    + starter code: [[file:Assignments/01/hw01prog.py][hw01prog.py]]
++ reminders:
+  + homework 1 assigned
+  + impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801
 ** 09-12
 :PROPERTIES:
 :CUSTOM_ID: 09-12
