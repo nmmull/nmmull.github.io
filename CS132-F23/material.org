@@ -24,6 +24,9 @@
   + slides:
     + [[file:Slides/01-linear-equations.key][keynote]]
     + [[file:Slides/01-linear-equations.pdf][pdf]]
+  + administrivia:
+    + [[file:Slides/00-administrivia.key][keynote]]
+    + [[file:Slides/00-administrivia.pdf][pdf]]
 + reminders:
   + read [[file:info.org][course information]] and [[file:policies.org][course policies]]
   + install python + libraries
@@ -35,7 +38,14 @@
 :END:
 + Topic: *Numerics*
 + Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][reading]]
+  + reading:
+    + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][required]]
+    + optional:
+      + [[https://docs.python.org/3/tutorial/floatingpoint.html][Floating-Point Arithmetic: Issues and Limitations]]
+  + slides:
+    + [[file:Slides/02-numerics.key][keynote]]
+    + [[file:Slides/02-numerics.pdf][pdf]]
+  + [[https://www.h-schmidt.net/FloatConverter/IEEE754.html][IEEE 754 Converter]]
   + homework 1
 + Reminders: homework 1 assigned
 ** 09-12
