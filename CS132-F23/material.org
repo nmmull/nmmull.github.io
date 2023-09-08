@@ -10,7 +10,7 @@
 
 ⟨ [[file:index.org][home]] ⟩
 
-** 09-05 <<09-05>>
+** <<09-05>> 09-05
 + topic: *Linear Equations*
 + material:
   + reading:
@@ -29,7 +29,7 @@
   + install python + libraries
   + get on piazza and gradscope
   + no office hours this week
-** 09-07 <<09-07>>
+** <<09-07>> 09-07
 + topic: *Numerics*
 + material:
   + reading:
@@ -47,6 +47,10 @@
 + reminders:
   + homework 1 assigned
   + impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801
++ errata:
+  + I messed up the formula for calculating the value of an IEEE 754
+    floating point representation, the slides have the correct formula
+    now
 ** 09-12
 :PROPERTIES:
 :CUSTOM_ID: 09-12
