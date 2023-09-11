@@ -1,357 +1,478 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="courseStyle.css">
-    <title>Schedule + Material</title>
-  </head>
-  <body>
-    <header>
-      <h1 class="titlehead">Schedule + Material</h1>
-      <p class="subhead">Geometric Algorithms</p>
-      <p class="subhead">Boston University</p>
-      <p class="subhead">Fall 2023</p>
-    </header>
-
-    <p>⟨ <a href="index.html">home</a> ⟩</p>
-    <h2 id="section"><span id="09-05"></span>09-05</h2>
-    <ul>
-    <li>topic: <strong>Linear Equations</strong></li>
-    <li>material:
-    <ul>
-    <li>reading:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html">required</a></li>
-    <li>optional:
-    <ul>
-    <li>Linear Algebra and its Applications (LAA) 1.1: Systems of Linear
-    Equations</li>
-    <li>Interactive Linear Algebra (ILL) 1.1: <a
-    href="https://textbooks.math.gatech.edu/ila/systems-of-eqns.html">Systems
-    of Linear Equations</a></li>
-    </ul></li>
-    </ul></li>
-    <li>slides:
-    <ul>
-    <li><a href="Slides/01-linear-equations.key">keynote</a></li>
-    <li><a href="Slides/01-linear-equations.pdf">pdf</a></li>
-    </ul></li>
-    <li>administrivia:
-    <ul>
-    <li><a href="Slides/00-administrivia.key">keynote</a></li>
-    <li><a href="Slides/00-administrivia.pdf">pdf</a></li>
-    </ul></li>
-    </ul></li>
-    <li>reminders:
-    <ul>
-    <li>read <a href="info.html">course information</a> and <a
-    href="policies.html">course policies</a></li>
-    <li>install python + libraries</li>
-    <li>get on piazza and gradscope</li>
-    <li>no office hours this week</li>
-    </ul></li>
-    </ul>
-    <h2 id="section-1"><span id="09-07"></span>09-07</h2>
-    <ul>
-    <li>topic: <strong>Numerics</strong></li>
-    <li>material:
-    <ul>
-    <li>reading:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html">required</a></li>
-    <li>optional:
-    <ul>
-    <li><a
-    href="https://docs.python.org/3/tutorial/floatingpoint.html">Floating-Point
-    Arithmetic: Issues and Limitations</a></li>
-    </ul></li>
-    </ul></li>
-    <li>slides:
-    <ul>
-    <li><a href="Slides/02-numerics.key">keynote</a></li>
-    <li><a href="Slides/02-numerics.pdf">pdf</a></li>
-    </ul></li>
-    <li><a
-    href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">IEEE
-    754 Converter</a></li>
-    <li>homework 1:
-    <ul>
-    <li><a href="Assignments/01/hw01.pdf">pdf (worksheet)</a></li>
-    <li><a href="Assignments/01/hw01.tex">tex</a></li>
-    <li>starter code: <a
-    href="Assignments/01/hw01prog.py">hw01prog.py</a></li>
-    </ul></li>
-    </ul></li>
-    <li>reminders:
-    <ul>
-    <li>homework 1 assigned</li>
-    <li>impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801</li>
-    </ul></li>
-    <li>errata:
-    <ul>
-    <li>I messed up the formula for calculating the value of an IEEE 754
-    floating point representation, the slides have the correct formula
-    now</li>
-    </ul></li>
-    <li><a
-    href="https://docs.google.com/forms/d/e/1FAIpQLSf9BHqVCBbnkFA_IVtNXkGF01xNp2ezOnNs5Jjh5odpBwluSg/viewform?usp=sf_link">end
-    of week 1 survey</a></li>
-    </ul>
-    <h2 id="09-12">09-12</h2>
-    <ul>
-    <li>Topic: <strong>Gaussian Elimination</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html">reading</a></li>
-    </ul>
-    <h2 id="09-14">09-14</h2>
-    <ul>
-    <li>Topic: <strong>Vector Equations</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L04VectorEquations.html">reading</a></li>
-    <li>homework 2</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 1 due</li>
-    <li>homework 2</li>
-    </ul></li>
-    </ul>
-    <h2 id="09-19">09-19</h2>
-    <ul>
-    <li>Topic: <strong>Matrix-Vector Equations</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L05Axb.html">reading</a></li>
-    </ul>
-    <h2 id="09-21">09-21</h2>
-    <ul>
-    <li>Topic: <strong>Linear Independence</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L06LinearIndependence.html">reading</a></li>
-    <li>homework 3</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 2 due</li>
-    <li>homework 3 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="09-26">09-26</h2>
-    <ul>
-    <li>Topic: <strong>Linear Transformations</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L07LinearTransformations.html">reading</a></li>
-    </ul>
-    <h2 id="09-28">09-28</h2>
-    <ul>
-    <li>Topic: <strong>Matrices of Linear Transformations</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L08MatrixofLinearTranformation.html">reading</a></li>
-    <li>homework 4</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 3 due</li>
-    <li>homewokr 4 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="10-03">10-03</h2>
-    <ul>
-    <li>Topic: <strong>Matrix Algebra</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L09MatrixOperations.html">reading</a></li>
-    </ul>
-    <h2 id="10-05">10-05</h2>
-    <ul>
-    <li>Topic: <strong>Matrix Inverse</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html">reading</a></li>
-    <li>homework 5</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 4 due</li>
-    <li>homework 5 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="section-2">10-10</h2>
-    <ul>
-    <li><strong>Substitute Monday</strong></li>
-    </ul>
-    <h2 id="section-3">10-12</h2>
-    <ul>
-    <li><strong>MIDTERM (LOCATION: TBD)</strong></li>
-    </ul>
-    <h2 id="10-17">10-17</h2>
-    <ul>
-    <li>Topic: <strong>Markov Chains</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html">reading</a></li>
-    </ul>
-    <h2 id="10-19">10-19</h2>
-    <ul>
-    <li>Topic: <strong>Matrix Factorization</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html">reading</a></li>
-    <li>homework 6</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 5 due</li>
-    <li>homework 6 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="10-24">10-24</h2>
-    <ul>
-    <li>Topic: <strong>Computer Graphics</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L13ComputerGraphics.html">reading</a></li>
-    </ul>
-    <h2 id="10-26">10-26</h2>
-    <ul>
-    <li>Topic: <strong>Subspaces</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L14Subspaces.html">reading</a></li>
-    <li>homework 7</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 6 due</li>
-    <li>homework 7 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="10-31">10-31</h2>
-    <ul>
-    <li>Topic: <strong>Dimension and Rank</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L15DimensionRank.html">reading</a></li>
-    </ul>
-    <h2 id="11-02">11-02</h2>
-    <ul>
-    <li>Topic: <strong>Eigenvalues and Eigenvectors</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L16Eigenvectors.html">reading</a></li>
-    <li>homework 8</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 7 due</li>
-    <li>homework 8 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="11-07">11-07</h2>
-    <ul>
-    <li>Topic: <strong>The Characteristic Equation</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L17CharacteristicEqn.html">reading</a></li>
-    </ul>
-    <h2 id="11-09">11-09</h2>
-    <ul>
-    <li>Topic: <strong>Diagonalization</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L18Diagonalization.html">reading</a></li>
-    <li>homework 9</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 8 due</li>
-    <li>homework 9 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="11-14">11-14</h2>
-    <ul>
-    <li>Topic: <strong>PageRank</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L19PageRank.html">reading</a></li>
-    </ul>
-    <h2 id="11-16">11-16</h2>
-    <ul>
-    <li>Topic: <strong>Orthogonality</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L20Orthogonality.html">reading</a></li>
-    <li>homework 10</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homeowrk 9 due homework 10 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="11-21">11-21</h2>
-    <ul>
-    <li>Topic: <strong>Orthogonal Sets and Projections</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L21OrthogonalSets.html">reading</a></li>
-    </ul>
-    <h2 id="section-4">11-23</h2>
-    <ul>
-    <li><strong>Thanksgiving</strong></li>
-    </ul>
-    <h2 id="11-28">11-28</h2>
-    <ul>
-    <li>Topic: <strong>Least Squares</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L22LeastSquares.html">reading</a></li>
-    </ul>
-    <h2 id="11-30">11-30</h2>
-    <ul>
-    <li>Topic: <strong>Linear Models</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L23LinearModels.html">reading</a></li>
-    <li>homework 11</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 10 due</li>
-    <li>homework 11 assigned</li>
-    </ul></li>
-    </ul>
-    <h2 id="12-05">12-05</h2>
-    <ul>
-    <li>Topic: <strong>Symmetric Matrices</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L24SymmetricMatrices.html">reading</a></li>
-    </ul>
-    <h2 id="12-07">12-07</h2>
-    <ul>
-    <li>Topic: <strong>Singular Value Decomposition</strong></li>
-    <li>Material:
-    <ul>
-    <li><a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L25SVD.html">reading</a></li>
-    <li>homework 12</li>
-    </ul></li>
-    <li>Reminders:
-    <ul>
-    <li>homework 11 due</li>
-    <li>homework 12 assigned</li>
-    <li>homework 12 is short but is worth the same amount</li>
-    </ul></li>
-    </ul>
-    <h2 id="12-12">12-12</h2>
-    <ul>
-    <li>Topic: <strong>Applications of SVD</strong></li>
-    <li>Material: <a
-    href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L26ApplicationsOfSVD.html">reading</a></li>
-    </ul>
-  </body>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-09-11 Mon 09:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schedule + Material</title>
+<meta name="author" content="Nathan  Mull" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="courseStyle.css">
+</head>
+<body>
+<div id="org-div-home-and-up">⟨ <a href="index.html">home</a> ⟩</div><div id="content" class="content">
+<h1 class="title">Schedule + Material
+<br />
+<span class="subtitle">Geometric Algorithms<br> Boston University<br> Fall 2023</span>
+</h1>
+<div id="outline-container-org32fc5e0" class="outline-2">
+<h2 id="org32fc5e0">09-05</h2>
+<div class="outline-text-2" id="text-org32fc5e0">
+</div>
+<ul class="org-ul">
+<li><a id="org53a0199"></a>topic: <b>Linear Equations</b><br /></li>
+<li><a id="org32b8918"></a>material:<br />
+<ul class="org-ul">
+<li><a id="org354e5af"></a>reading:<br />
+<ul class="org-ul">
+<li><a id="org45cd44d"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html">required</a><br /></li>
+<li><a id="orgd0ebba0"></a>optional:<br />
+<ul class="org-ul">
+<li><a id="org5561d7c"></a>Linear Algebra and its Applications (LAA) 1.1: Systems of Linear Equations<br /></li>
+<li><a id="orgc650e05"></a>Interactive Linear Algebra (ILL) 1.1: <a href="https://textbooks.math.gatech.edu/ila/systems-of-eqns.html">Systems of Linear Equations</a><br /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a id="org760a01a"></a>slides:<br />
+<ul class="org-ul">
+<li><a id="org48ae6a4"></a><a href="Slides/01-linear-equations.key">keynote</a><br /></li>
+<li><a id="orgecc1c50"></a><a href="Slides/01-linear-equations.pdf">pdf</a><br /></li>
+</ul>
+</li>
+<li><a id="org5a65f32"></a>administrivia:<br />
+<ul class="org-ul">
+<li><a id="orgd7c7ab9"></a><a href="Slides/00-administrivia.key">keynote</a><br /></li>
+<li><a id="org3ce6942"></a><a href="Slides/00-administrivia.pdf">pdf</a><br /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a id="org5f1889c"></a>reminders:<br />
+<ul class="org-ul">
+<li><a id="orgd06c2ef"></a>read <a href="info.html">course information</a> and <a href="policies.html">course policies</a><br /></li>
+<li><a id="org5f48c64"></a>install python + libraries<br /></li>
+<li><a id="org30937eb"></a>get on piazza and gradscope<br /></li>
+<li><a id="org646ca29"></a>no office hours this week<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd75dd25" class="outline-2">
+<h2 id="orgd75dd25">09-07</h2>
+<div class="outline-text-2" id="text-orgd75dd25">
+</div>
+<ul class="org-ul">
+<li><a id="orge339642"></a>topic: <b>Numerics</b><br /></li>
+<li><a id="orgf803f09"></a>material:<br />
+<ul class="org-ul">
+<li><a id="org1e0543a"></a>reading:<br />
+<ul class="org-ul">
+<li><a id="org62a936c"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html">required</a><br /></li>
+<li><a id="orgec0a6df"></a>optional:<br />
+<ul class="org-ul">
+<li><a id="orgb0c9c34"></a><a href="https://docs.python.org/3/tutorial/floatingpoint.html">Floating-Point Arithmetic: Issues and Limitations</a><br /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a id="org0c052f4"></a>slides:<br />
+<ul class="org-ul">
+<li><a id="org5f643da"></a><a href="Slides/02-numerics.key">keynote</a><br /></li>
+<li><a id="org8da035f"></a><a href="Slides/02-numerics.pdf">pdf</a><br /></li>
+</ul>
+</li>
+<li><a id="orgd316525"></a><a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">IEEE 754 Converter</a><br /></li>
+<li><a id="org8b2c6f7"></a>homework 1:<br />
+<ul class="org-ul">
+<li><a id="org06047a7"></a><a href="Assignments/01/hw01.pdf">pdf (worksheet)</a><br /></li>
+<li><a id="org5f908ab"></a><a href="Assignments/01/hw01.tex">tex</a><br /></li>
+<li><a id="orga294dc5"></a>starter code: <a href="Assignments/01/hw01prog.py">hw01prog.py</a><br /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a id="org933aef1"></a>reminders:<br />
+<ul class="org-ul">
+<li><a id="orgba57de6"></a>homework 1 assigned<br /></li>
+<li><a id="org711f42a"></a>impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801<br /></li>
+</ul>
+</li>
+<li><a id="orgfe311c9"></a>errata:<br />
+<div class="outline-text-3" id="text-orgfe311c9">
+<ul class="org-ul">
+<li>I messed up the formula for calculating the value of an IEEE 75
+floating point representation, the slides have the correct now</li>
+</ul>
+</div>
+</li>
+<li><a id="orgfc4e4fc"></a><a href="https://docs.google.com/forms/d/e/1FAIpQLSf9BHqVCBbnkFA_IVtNXkGF01xNp2ezOnNs5Jjh5odpBwluSg/viewform?usp=sf_link">end of week 1 survey</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org1853394" class="outline-2">
+<h2 id="org1853394">09-12</h2>
+<div class="outline-text-2" id="text-org1853394">
+</div>
+<ul class="org-ul">
+<li><a id="orgb5cb104"></a>Topic: <b>Gaussian Elimination</b><br /></li>
+<li><a id="org6e18286"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org1218add" class="outline-2">
+<h2 id="org1218add">09-14</h2>
+<div class="outline-text-2" id="text-org1218add">
+</div>
+<ul class="org-ul">
+<li><a id="orga1a849c"></a>Topic: <b>Vector Equations</b><br /></li>
+<li><a id="orgf8917d1"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org99b75f1"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L04VectorEquations.html">reading</a><br /></li>
+<li><a id="orga508c98"></a>homework 2<br /></li>
+</ul>
+</li>
+<li><a id="orgea99e5a"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org016520b"></a>homework 1 due<br /></li>
+<li><a id="orgc36ee27"></a>homework 2<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgd9e645b" class="outline-2">
+<h2 id="orgd9e645b">09-19</h2>
+<div class="outline-text-2" id="text-orgd9e645b">
+</div>
+<ul class="org-ul">
+<li><a id="orgac84f1a"></a>Topic: <b>Matrix-Vector Equations</b><br /></li>
+<li><a id="orge689e14"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L05Axb.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org5fbff75" class="outline-2">
+<h2 id="org5fbff75">09-21</h2>
+<div class="outline-text-2" id="text-org5fbff75">
+</div>
+<ul class="org-ul">
+<li><a id="org13190c5"></a>Topic: <b>Linear Independence</b><br /></li>
+<li><a id="orgf777ea0"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org4ad12e3"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L06LinearIndependence.html">reading</a><br /></li>
+<li><a id="org6c552c9"></a>homework 3<br /></li>
+</ul>
+</li>
+<li><a id="orgead0e63"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="orgb4e9d2c"></a>homework 2 due<br /></li>
+<li><a id="org37e9e52"></a>homework 3 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org35c20fb" class="outline-2">
+<h2 id="org35c20fb">09-26</h2>
+<div class="outline-text-2" id="text-org35c20fb">
+</div>
+<ul class="org-ul">
+<li><a id="org9f27a4a"></a>Topic: <b>Linear Transformations</b><br /></li>
+<li><a id="orgf40afc5"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L07LinearTransformations.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org75ee985" class="outline-2">
+<h2 id="org75ee985">09-28</h2>
+<div class="outline-text-2" id="text-org75ee985">
+</div>
+<ul class="org-ul">
+<li><a id="org6902d84"></a>Topic: <b>Matrices of Linear Transformations</b><br /></li>
+<li><a id="orge9b2d7f"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org4b5130e"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L08MatrixofLinearTranformation.html">reading</a><br /></li>
+<li><a id="orge50ebea"></a>homework 4<br /></li>
+</ul>
+</li>
+<li><a id="org0b973f0"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org7c9c1da"></a>homework 3 due<br /></li>
+<li><a id="org013ce1d"></a>homewokr 4 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org45fe52f" class="outline-2">
+<h2 id="org45fe52f">10-03</h2>
+<div class="outline-text-2" id="text-org45fe52f">
+</div>
+<ul class="org-ul">
+<li><a id="orgc16941c"></a>Topic: <b>Matrix Algebra</b><br /></li>
+<li><a id="orge21bc98"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L09MatrixOperations.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org6bd0e58" class="outline-2">
+<h2 id="org6bd0e58">10-05</h2>
+<div class="outline-text-2" id="text-org6bd0e58">
+</div>
+<ul class="org-ul">
+<li><a id="org959c7ed"></a>Topic: <b>Matrix Inverse</b><br /></li>
+<li><a id="orgaeeeab4"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org9a4a9d1"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html">reading</a><br /></li>
+<li><a id="org73dc711"></a>homework 5<br /></li>
+</ul>
+</li>
+<li><a id="org40a70c5"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org80fd663"></a>homework 4 due<br /></li>
+<li><a id="org2d38356"></a>homework 5 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgc3594a7" class="outline-2">
+<h2 id="orgc3594a7">10-10</h2>
+<div class="outline-text-2" id="text-orgc3594a7">
+</div>
+<ul class="org-ul">
+<li><a id="orgd96d049"></a><b>Substitute Monday</b><br /></li>
+</ul>
+</div>
+<div id="outline-container-org6f405b6" class="outline-2">
+<h2 id="org6f405b6">10-12</h2>
+<div class="outline-text-2" id="text-org6f405b6">
+</div>
+<ul class="org-ul">
+<li><a id="orgdabf6fe"></a><b>MIDTERM (LOCATION: TBD)</b><br /></li>
+</ul>
+</div>
+<div id="outline-container-org04a6103" class="outline-2">
+<h2 id="org04a6103">10-17</h2>
+<div class="outline-text-2" id="text-org04a6103">
+</div>
+<ul class="org-ul">
+<li><a id="org5bd642b"></a>Topic: <b>Markov Chains</b><br /></li>
+<li><a id="orga96d49e"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-orgfe40fad" class="outline-2">
+<h2 id="orgfe40fad">10-19</h2>
+<div class="outline-text-2" id="text-orgfe40fad">
+</div>
+<ul class="org-ul">
+<li><a id="org63588dc"></a>Topic: <b>Matrix Factorization</b><br /></li>
+<li><a id="orgdddf8c2"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org7d35eb5"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html">reading</a><br /></li>
+<li><a id="org98b5402"></a>homework 6<br /></li>
+</ul>
+</li>
+<li><a id="orgc79b5d2"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org392bceb"></a>homework 5 due<br /></li>
+<li><a id="org0a0e96a"></a>homework 6 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org8b03e18" class="outline-2">
+<h2 id="org8b03e18">10-24</h2>
+<div class="outline-text-2" id="text-org8b03e18">
+</div>
+<ul class="org-ul">
+<li><a id="org78a404a"></a>Topic: <b>Computer Graphics</b><br /></li>
+<li><a id="orga689f5b"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L13ComputerGraphics.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org7e23705" class="outline-2">
+<h2 id="org7e23705">10-26</h2>
+<div class="outline-text-2" id="text-org7e23705">
+</div>
+<ul class="org-ul">
+<li><a id="org383b604"></a>Topic: <b>Subspaces</b><br /></li>
+<li><a id="org6572977"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="orgfd33292"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L14Subspaces.html">reading</a><br /></li>
+<li><a id="org9567892"></a>homework 7<br /></li>
+</ul>
+</li>
+<li><a id="org1148df7"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org0b54dd8"></a>homework 6 due<br /></li>
+<li><a id="org181c851"></a>homework 7 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org2b37976" class="outline-2">
+<h2 id="org2b37976">10-31</h2>
+<div class="outline-text-2" id="text-org2b37976">
+</div>
+<ul class="org-ul">
+<li><a id="org34383cd"></a>Topic: <b>Dimension and Rank</b><br /></li>
+<li><a id="org1bd4a57"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L15DimensionRank.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org29297d8" class="outline-2">
+<h2 id="org29297d8">11-02</h2>
+<div class="outline-text-2" id="text-org29297d8">
+</div>
+<ul class="org-ul">
+<li><a id="orgee02392"></a>Topic: <b>Eigenvalues and Eigenvectors</b><br /></li>
+<li><a id="orgc17377c"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="orgf348757"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L16Eigenvectors.html">reading</a><br /></li>
+<li><a id="org38f001c"></a>homework 8<br /></li>
+</ul>
+</li>
+<li><a id="org3079df7"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="orgcc23d1d"></a>homework 7 due<br /></li>
+<li><a id="orgb9172c9"></a>homework 8 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orgb22505d" class="outline-2">
+<h2 id="orgb22505d">11-07</h2>
+<div class="outline-text-2" id="text-orgb22505d">
+</div>
+<ul class="org-ul">
+<li><a id="orgbfde2e4"></a>Topic: <b>The Characteristic Equation</b><br /></li>
+<li><a id="orga4c30ab"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L17CharacteristicEqn.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org140c2e3" class="outline-2">
+<h2 id="org140c2e3">11-09</h2>
+<div class="outline-text-2" id="text-org140c2e3">
+</div>
+<ul class="org-ul">
+<li><a id="org2b30246"></a>Topic: <b>Diagonalization</b><br /></li>
+<li><a id="org59b3c4b"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org3b0e054"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L18Diagonalization.html">reading</a><br /></li>
+<li><a id="org7f8d35a"></a>homework 9<br /></li>
+</ul>
+</li>
+<li><a id="org1163752"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org812cafa"></a>homework 8 due<br /></li>
+<li><a id="orgd7f2eb3"></a>homework 9 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org69bffae" class="outline-2">
+<h2 id="org69bffae">11-14</h2>
+<div class="outline-text-2" id="text-org69bffae">
+</div>
+<ul class="org-ul">
+<li><a id="org6cf1897"></a>Topic: <b>PageRank</b><br /></li>
+<li><a id="org533b61e"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L19PageRank.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org5327979" class="outline-2">
+<h2 id="org5327979">11-16</h2>
+<div class="outline-text-2" id="text-org5327979">
+</div>
+<ul class="org-ul">
+<li><a id="orgd92eede"></a>Topic: <b>Orthogonality</b><br /></li>
+<li><a id="org989155b"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="orgb2236f3"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L20Orthogonality.html">reading</a><br /></li>
+<li><a id="orge0a7dc6"></a>homework 10<br /></li>
+</ul>
+</li>
+<li><a id="orgff6aafd"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org2ffb580"></a>homeowrk 9 due<br /></li>
+<li><a id="orgf1cfdac"></a>homework 10 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orga205d1d" class="outline-2">
+<h2 id="orga205d1d">11-21</h2>
+<div class="outline-text-2" id="text-orga205d1d">
+</div>
+<ul class="org-ul">
+<li><a id="org9f2b1cf"></a>Topic: <b>Orthogonal Sets and Projections</b><br /></li>
+<li><a id="org0c36bf3"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L21OrthogonalSets.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org8e20697" class="outline-2">
+<h2 id="org8e20697">11-23</h2>
+<div class="outline-text-2" id="text-org8e20697">
+</div>
+<ul class="org-ul">
+<li><a id="orgc2395e3"></a><b>Thanksgiving</b><br /></li>
+</ul>
+</div>
+<div id="outline-container-org4e9dc37" class="outline-2">
+<h2 id="org4e9dc37">11-28</h2>
+<div class="outline-text-2" id="text-org4e9dc37">
+</div>
+<ul class="org-ul">
+<li><a id="orgf64a5c7"></a>Topic: <b>Least Squares</b><br /></li>
+<li><a id="org11c5fcd"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L22LeastSquares.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org25229f7" class="outline-2">
+<h2 id="org25229f7">11-30</h2>
+<div class="outline-text-2" id="text-org25229f7">
+</div>
+<ul class="org-ul">
+<li><a id="org585bea3"></a>Topic: <b>Linear Models</b><br /></li>
+<li><a id="org57b5262"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="org5c5348e"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L23LinearModels.html">reading</a><br /></li>
+<li><a id="orgc4ff869"></a>homework 11<br /></li>
+</ul>
+</li>
+<li><a id="orgf50652d"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org664b4f0"></a>homework 10 due<br /></li>
+<li><a id="org494753e"></a>homework 11 assigned<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-orge274999" class="outline-2">
+<h2 id="orge274999">12-05</h2>
+<div class="outline-text-2" id="text-orge274999">
+</div>
+<ul class="org-ul">
+<li><a id="orgaef3d31"></a>Topic: <b>Symmetric Matrices</b><br /></li>
+<li><a id="org7f7513b"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L24SymmetricMatrices.html">reading</a><br /></li>
+</ul>
+</div>
+<div id="outline-container-org2e8c35a" class="outline-2">
+<h2 id="org2e8c35a">12-07</h2>
+<div class="outline-text-2" id="text-org2e8c35a">
+</div>
+<ul class="org-ul">
+<li><a id="org55a4aec"></a>Topic: <b>Singular Value Decomposition</b><br /></li>
+<li><a id="orgbbb4fd7"></a>Material:<br />
+<ul class="org-ul">
+<li><a id="orgb50c1bb"></a><a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L25SVD.html">reading</a><br /></li>
+<li><a id="orgdb60e8c"></a>homework 12<br /></li>
+</ul>
+</li>
+<li><a id="org3f16fa7"></a>Reminders:<br />
+<ul class="org-ul">
+<li><a id="org2aacebe"></a>homework 11 due<br /></li>
+<li><a id="org886ed04"></a>homework 12 assigned<br /></li>
+<li><a id="orga8866d2"></a>homework 12 is short but is worth the same amount<br /></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-org9725019" class="outline-2">
+<h2 id="org9725019">12-12</h2>
+<div class="outline-text-2" id="text-org9725019">
+</div>
+<ul class="org-ul">
+<li><a id="org57b8c1c"></a>Topic: <b>Applications of SVD</b><br /></li>
+<li><a id="org9b21b7a"></a>Material: <a href="http://mcrovella.github.io/CS132-Geometric-Algorithms/L26ApplicationsOfSVD.html">reading</a><br /></li>
+</ul>
+</div>
+</div>
+</body>
 </html>

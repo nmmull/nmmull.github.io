@@ -1,260 +1,179 @@
 #+title: Schedule + Material
-#+BEGIN_EXPORT html
-  <header>
-    <h1 class="titlehead">Schedule + Material</h1>
-    <p class="subhead">Geometric Algorithms</p>
-    <p class="subhead">Boston University</p>
-    <p class="subhead">Fall 2023</p>
-  </header>
-#+END_EXPORT
-
-⟨ [[file:index.org][home]] ⟩
-
-** <<09-05>> 09-05
-+ topic: *Linear Equations*
-+ material:
-  + reading:
-    + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][required]]
-    + optional:
-      + Linear Algebra and its Applications (LAA) 1.1: Systems of Linear Equations
-      + Interactive Linear Algebra (ILL) 1.1: [[https://textbooks.math.gatech.edu/ila/systems-of-eqns.html][Systems of Linear Equations]]
-  + slides:
-    + [[file:Slides/01-linear-equations.key][keynote]]
-    + [[file:Slides/01-linear-equations.pdf][pdf]]
-  + administrivia:
-    + [[file:Slides/00-administrivia.key][keynote]]
-    + [[file:Slides/00-administrivia.pdf][pdf]]
-+ reminders:
-  + read [[file:info.org][course information]] and [[file:policies.org][course policies]]
-  + install python + libraries
-  + get on piazza and gradscope
-  + no office hours this week
-** <<09-07>> 09-07
-+ topic: *Numerics*
-+ material:
-  + reading:
-    + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][required]]
-    + optional:
-      + [[https://docs.python.org/3/tutorial/floatingpoint.html][Floating-Point Arithmetic: Issues and Limitations]]
-  + slides:
-    + [[file:Slides/02-numerics.key][keynote]]
-    + [[file:Slides/02-numerics.pdf][pdf]]
-  + [[https://www.h-schmidt.net/FloatConverter/IEEE754.html][IEEE 754 Converter]]
-  + homework 1:
-    + [[file:Assignments/01/hw01.pdf][pdf (worksheet)]]
-    + [[file:Assignments/01/hw01.tex][tex]]
-    + starter code: [[file:Assignments/01/hw01prog.py][hw01prog.py]]
-+ reminders:
-  + homework 1 assigned
-  + impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801
-+ errata:
-  + I messed up the formula for calculating the value of an IEEE 754
-    floating point representation, the slides have the correct formula
-    now
-+ [[https://docs.google.com/forms/d/e/1FAIpQLSf9BHqVCBbnkFA_IVtNXkGF01xNp2ezOnNs5Jjh5odpBwluSg/viewform?usp=sf_link][end of week 1 survey]]
-** 09-12
-:PROPERTIES:
-:CUSTOM_ID: 09-12
-:END:
-+ Topic: *Gaussian Elimination*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html][reading]]
-** 09-14
-:PROPERTIES:
-:CUSTOM_ID: 09-14
-:END:
-+ Topic: *Vector Equations*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L04VectorEquations.html][reading]]
-  + homework 2
-+ Reminders:
-  + homework 1 due
-  + homework 2
-** 09-19
-:PROPERTIES:
-:CUSTOM_ID: 09-19
-:END:
-+ Topic: *Matrix-Vector Equations*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L05Axb.html][reading]]
-** 09-21
-:PROPERTIES:
-:CUSTOM_ID: 09-21
-:END:
-+ Topic: *Linear Independence*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L06LinearIndependence.html][reading]]
-  + homework 3
-+ Reminders:
-  + homework 2 due
-  + homework 3 assigned
-** 09-26
-:PROPERTIES:
-:CUSTOM_ID: 09-26
-:END:
-+ Topic: *Linear Transformations*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L07LinearTransformations.html][reading]]
-** 09-28
-:PROPERTIES:
-:CUSTOM_ID: 09-28
-:END:
-+ Topic: *Matrices of Linear Transformations*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L08MatrixofLinearTranformation.html][reading]]
-  + homework 4
-+ Reminders:
-  + homework 3 due
-  + homewokr 4 assigned
-** 10-03
-:PROPERTIES:
-:CUSTOM_ID: 10-03
-:END:
-+ Topic: *Matrix Algebra*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L09MatrixOperations.html][reading]]
-** 10-05
-:PROPERTIES:
-:CUSTOM_ID: 10-05
-:END:
-+ Topic: *Matrix Inverse*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html][reading]]
-  + homework 5
-+ Reminders:
-  + homework 4 due
-  + homework 5 assigned
-** 10-10
-+ *Substitute Monday*
-** 10-12
-+ *MIDTERM (LOCATION: TBD)*
-** 10-17
-:PROPERTIES:
-:CUSTOM_ID: 10-17
-:END:
-+ Topic: *Markov Chains*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html][reading]]
-** 10-19
-:PROPERTIES:
-:CUSTOM_ID: 10-19
-:END:
-+ Topic: *Matrix Factorization*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html][reading]]
-  + homework 6
-+ Reminders:
-  + homework 5 due
-  + homework 6 assigned
-** 10-24
-:PROPERTIES:
-:CUSTOM_ID: 10-24
-:END:
-+ Topic: *Computer Graphics*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L13ComputerGraphics.html][reading]]
-** 10-26
-:PROPERTIES:
-:CUSTOM_ID: 10-26
-:END:
-+ Topic: *Subspaces*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L14Subspaces.html][reading]]
-  + homework 7
-+ Reminders:
-  + homework 6 due
-  + homework 7 assigned
-** 10-31
-:PROPERTIES:
-:CUSTOM_ID: 10-31
-:END:
-+ Topic: *Dimension and Rank*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L15DimensionRank.html][reading]]
-** 11-02
-:PROPERTIES:
-:CUSTOM_ID: 11-02
-:END:
-+ Topic: *Eigenvalues and Eigenvectors*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L16Eigenvectors.html][reading]]
-  + homework 8
-+ Reminders:
-  + homework 7 due
-  + homework 8 assigned
-** 11-07
-:PROPERTIES:
-:CUSTOM_ID: 11-07
-:END:
-+ Topic: *The Characteristic Equation*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L17CharacteristicEqn.html][reading]]
-** 11-09
-:PROPERTIES:
-:CUSTOM_ID: 11-09
-:END:
-+ Topic: *Diagonalization*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L18Diagonalization.html][reading]]
-  + homework 9
-+ Reminders:
-  + homework 8 due
-  + homework 9 assigned
-** 11-14
-:PROPERTIES:
-:CUSTOM_ID: 11-14
-:END:
-+ Topic: *PageRank*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L19PageRank.html][reading]]
-** 11-16
-:PROPERTIES:
-:CUSTOM_ID: 11-16
-:END:
-+ Topic: *Orthogonality*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L20Orthogonality.html][reading]]
-  + homework 10
-+ Reminders:
-  + homeowrk 9 due
-    homework 10 assigned
-** 11-21
-:PROPERTIES:
-:CUSTOM_ID: 11-21
-:END:
-+ Topic: *Orthogonal Sets and Projections*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L21OrthogonalSets.html][reading]]
-** 11-23
-+ *Thanksgiving*
-** 11-28
-:PROPERTIES:
-:CUSTOM_ID: 11-28
-:END:
-+ Topic: *Least Squares*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L22LeastSquares.html][reading]]
-** 11-30
-:PROPERTIES:
-:CUSTOM_ID: 11-30
-:END:
-+ Topic: *Linear Models*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L23LinearModels.html][reading]]
-  + homework 11
-+ Reminders:
-  + homework 10 due
-  + homework 11 assigned
-** 12-05
-:PROPERTIES:
-:CUSTOM_ID: 12-05
-:END:
-+ Topic: *Symmetric Matrices*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L24SymmetricMatrices.html][reading]]
-** 12-07
-:PROPERTIES:
-:CUSTOM_ID: 12-07
-:END:
-+ Topic: *Singular Value Decomposition*
-+ Material:
-  + [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L25SVD.html][reading]]
-  + homework 12
-+ Reminders:
-  + homework 11 due
-  + homework 12 assigned
-  + homework 12 is short but is worth the same amount
-** 12-12
-:PROPERTIES:
-:CUSTOM_ID: 12-12
-:END:
-+ Topic: *Applications of SVD*
-+ Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L26ApplicationsOfSVD.html][reading]]
+#+subtitle: Geometric Algorithms@@html:<br>@@
+#+subtitle: Boston University@@html:<br>@@
+#+subtitle: Fall 2023
+* 09-05
+** topic: *Linear Equations*
+** material:
+*** reading:
+**** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L01LinearEquations.html][required]]
+**** optional:
+***** Linear Algebra and its Applications (LAA) 1.1: Systems of Linear Equations
+***** Interactive Linear Algebra (ILL) 1.1: [[https://textbooks.math.gatech.edu/ila/systems-of-eqns.html][Systems of Linear Equations]]
+*** slides:
+**** [[file:Slides/01-linear-equations.key][keynote]]
+**** [[file:Slides/01-linear-equations.pdf][pdf]]
+*** administrivia:
+**** [[file:Slides/00-administrivia.key][keynote]]
+**** [[file:Slides/00-administrivia.pdf][pdf]]
+** reminders:
+*** read [[file:info.org][course information]] and [[file:policies.org][course policies]]
+*** install python + libraries
+*** get on piazza and gradscope
+*** no office hours this week
+* 09-07
+** topic: *Numerics*
+** material:
+*** reading:
+**** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L02Numerics.html][required]]
+**** optional:
+***** [[https://docs.python.org/3/tutorial/floatingpoint.html][Floating-Point Arithmetic: Issues and Limitations]]
+*** slides:
+**** [[file:Slides/02-numerics.key][keynote]]
+**** [[file:Slides/02-numerics.pdf][pdf]]
+*** [[https://www.h-schmidt.net/FloatConverter/IEEE754.html][IEEE 754 Converter]]
+*** homework 1:
+**** [[file:Assignments/01/hw01.pdf][pdf (worksheet)]]
+**** [[file:Assignments/01/hw01.tex][tex]]
+**** starter code: [[file:Assignments/01/hw01prog.py][hw01prog.py]]
+** reminders:
+*** homework 1 assigned
+*** impromptu office hours: Friday (9/8) 1:30-3:30PM in CDS 801
+** errata:
++ I messed up the formula for calculating the value of an IEEE 75
+  floating point representation, the slides have the correct now
+** [[https://docs.google.com/forms/d/e/1FAIpQLSf9BHqVCBbnkFA_IVtNXkGF01xNp2ezOnNs5Jjh5odpBwluSg/viewform?usp=sf_link][end of week 1 survey]]
+* 09-12
+** Topic: *Gaussian Elimination*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html][reading]]
+* 09-14
+** Topic: *Vector Equations*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L04VectorEquations.html][reading]]
+*** homework 2
+** Reminders:
+*** homework 1 due
+*** homework 2
+* 09-19
+** Topic: *Matrix-Vector Equations*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L05Axb.html][reading]]
+* 09-21
+** Topic: *Linear Independence*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L06LinearIndependence.html][reading]]
+*** homework 3
+** Reminders:
+*** homework 2 due
+*** homework 3 assigned
+* 09-26
+** Topic: *Linear Transformations*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L07LinearTransformations.html][reading]]
+* 09-28
+** Topic: *Matrices of Linear Transformations*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L08MatrixofLinearTranformation.html][reading]]
+*** homework 4
+** Reminders:
+*** homework 3 due
+*** homewokr 4 assigned
+* 10-03
+** Topic: *Matrix Algebra*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L09MatrixOperations.html][reading]]
+* 10-05
+** Topic: *Matrix Inverse*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L10MatrixInverse.html][reading]]
+*** homework 5
+** Reminders:
+*** homework 4 due
+*** homework 5 assigned
+* 10-10
+** *Substitute Monday*
+* 10-12
+** *MIDTERM (LOCATION: TBD)*
+* 10-17
+** Topic: *Markov Chains*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L11MarkovChains.html][reading]]
+* 10-19
+** Topic: *Matrix Factorization*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L12MatrixFactorizations.html][reading]]
+*** homework 6
+** Reminders:
+*** homework 5 due
+*** homework 6 assigned
+* 10-24
+** Topic: *Computer Graphics*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L13ComputerGraphics.html][reading]]
+* 10-26
+** Topic: *Subspaces*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L14Subspaces.html][reading]]
+*** homework 7
+** Reminders:
+*** homework 6 due
+*** homework 7 assigned
+* 10-31
+** Topic: *Dimension and Rank*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L15DimensionRank.html][reading]]
+* 11-02
+** Topic: *Eigenvalues and Eigenvectors*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L16Eigenvectors.html][reading]]
+*** homework 8
+** Reminders:
+*** homework 7 due
+*** homework 8 assigned
+* 11-07
+** Topic: *The Characteristic Equation*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L17CharacteristicEqn.html][reading]]
+* 11-09
+** Topic: *Diagonalization*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L18Diagonalization.html][reading]]
+*** homework 9
+** Reminders:
+*** homework 8 due
+*** homework 9 assigned
+* 11-14
+** Topic: *PageRank*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L19PageRank.html][reading]]
+* 11-16
+** Topic: *Orthogonality*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L20Orthogonality.html][reading]]
+*** homework 10
+** Reminders:
+*** homeowrk 9 due
+*** homework 10 assigned
+* 11-21
+** Topic: *Orthogonal Sets and Projections*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L21OrthogonalSets.html][reading]]
+* 11-23
+** *Thanksgiving*
+* 11-28
+** Topic: *Least Squares*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L22LeastSquares.html][reading]]
+* 11-30
+** Topic: *Linear Models*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L23LinearModels.html][reading]]
+*** homework 11
+** Reminders:
+*** homework 10 due
+*** homework 11 assigned
+* 12-05
+** Topic: *Symmetric Matrices*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L24SymmetricMatrices.html][reading]]
+* 12-07
+** Topic: *Singular Value Decomposition*
+** Material:
+*** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L25SVD.html][reading]]
+*** homework 12
+** Reminders:
+*** homework 11 due
+*** homework 12 assigned
+*** homework 12 is short but is worth the same amount
+* 12-12
+** Topic: *Applications of SVD*
+** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L26ApplicationsOfSVD.html][reading]]

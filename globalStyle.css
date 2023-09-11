@@ -21,25 +21,16 @@ body {
     line-height: 1.5;
 }
 
-h1 {
+.title {
     font-size: 3em;
     line-height: normal;
+    margin-bottom: 0.2em;
 }
 
-.titlehead {
-    margin-bottom: 0px;
-}
-
-.subhead {
-    font-size: 2em;
-    font-weight: bold;
-    line-height: 1;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-header {
-    margin-bottom:0.5em;
+.subtitle {
+    line-height:1;
+    font-size: 0.67em;
+    display:block
 }
 
 h2 {
@@ -108,4 +99,8 @@ li {
 
 ul {
     margin-top: 0px;
+}
+
+.footnotes {
+    display: none;
 }

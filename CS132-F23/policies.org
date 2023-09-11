@@ -1,14 +1,7 @@
 #+title: Course Policies
-#+BEGIN_EXPORT html
-  <header>
-    <h1 class="titlehead">Policies and Guidelines</h1>
-    <p class="subhead">Geometric Algorithms</p>
-    <p class="subhead">Boston University</p>
-    <p class="subhead">Fall 2023</p>
-  </header>
-#+END_EXPORT
-
-⟨ [[file:index.org][home]] ⟩
+#+subtitle: Geometric Algorithms@@html:<br>@@
+#+subtitle: Boston University@@html:<br>@@
+#+subtitle: Fall 2023
 
 There are a number of university policices and course guidelines you
 should be aware of. /Read them carefully and completely./ Also keep in
@@ -16,9 +9,11 @@ mind that, though I am required to use specific language in some
 cases, I stand behind these policies sincerely and seriously, and I
 hope you feel comfortable reaching out to me about any of them if you
 need to. See the [[https://www.bu.edu/policies/][BU Policies]] page for a complete collection of
-university's policies.
+university's policies.[fn:: This page is based on a syllabus for CAS
+CS 132 provided to me by Mark Crovella, and on the course website of
+[[https://www.classes.cs.uchicago.edu/archive/2023/summer/19911-1/info.html][CMSC 19911]] by Ravi Chugh, Andrew McNutt and Sam Cohen.]
 
-** Academic Integrity
+* Academic Integrity
 
 Please read the BU's [[https://www.bu.edu/academics/policies/academic-conduct-code/][academic conduct code]]. This is taken very
 seriously at BU and I take it seriously in the courses I teach.
@@ -79,7 +74,7 @@ up. Use your best judgment and remember:
 + We build in safe-guards (like dropped homework assignments) in the
   case you are unable to complete an assignment
 
-** Disability Statement
+* Disability Statement
 
 If you require disability accomodations, please contact me as soon as
 possible. You should provide me with the appropriate documentation,
@@ -90,7 +85,7 @@ existing services or policies, feel free to contact me and we can see
 what we can do. I want everyone to feel able to fully participate in
 the course.
 
-** Diversity Statement
+* Diversity Statement
 
 My aim is to present material in a way that respects the diversity of
 the student body. If I fail to do this, please make me aware. Any
@@ -98,7 +93,7 @@ suggestions are welcomed and appreciated. I also expect students
 taking any course of mine to appreciate and respect the unique
 opportunity they have to participate in a diverse student body.
 
-** Sexual Misconduct
+* Sexual Misconduct
 
 Please read BU's [[https://www.bu.edu/policies/sexual-misconduct-title-ix-hr/][Sexual Misconduct Policy]] and review the entire page
 for information about talking to someone confidentially about
@@ -115,7 +110,7 @@ sexual misconduct and ~cannot guarantee confidentiality~. I must provide
 our Title IX coordinator with relevant details such as the names of
 those involved in the incident.
 
-** A Comment on Generative AI
+* A Comment on Generative AI
 
 We're going to be talking about the role of AI assistants in education
 for the next decade, and the truth is that no one knows at this moment
@@ -142,9 +137,3 @@ it's possible to use these tools in productive ways. Remember, ~they're
 not perfect~, they can be wrong, it can sometimes be easy to tell when
 a solution was produced by an AI assistant, and you won't have access
 to them in exams.
-
-#+BEGIN_EXPORT html
-  <p class="footnote">
-    This page is based on a syllabus for CAS CS 132 provided to me by Mark Crovella, and on the course website of <a href="https://www.classes.cs.uchicago.edu/archive/2023/summer/19911-1/info.html">CMSC 19911</a> by Ravi Chugh, Andrew McNutt and Sam Cohen.
-  </p>
-#+END_EXPORT

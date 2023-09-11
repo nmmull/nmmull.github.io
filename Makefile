@@ -1,10 +1,2 @@
-global_deps=.deps
-
-build:
-	pandoc index.org -o index.html --template=.deps/home-template.html --lua-filter=.deps/links-org-to-html.lua
-
-home: build
+home:
 	open index.html
-
-run: build
-	open $(file)
