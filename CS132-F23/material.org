@@ -45,7 +45,17 @@
 ** [[https://docs.google.com/forms/d/e/1FAIpQLSf9BHqVCBbnkFA_IVtNXkGF01xNp2ezOnNs5Jjh5odpBwluSg/viewform?usp=sf_link][end of week 1 survey]]
 * 09-12
 ** Topic: *Gaussian Elimination*
-** Material: [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html][reading]]
+** Material:
+*** reading:
+**** [[http://mcrovella.github.io/CS132-Geometric-Algorithms/L03RowReductions.html][required]]
+*** optional:
+**** LAA 1.2: Row Reductions and Echelon Forms
+**** ILL 1.2: [[https://textbooks.math.gatech.edu/ila/row-reduction.html][Row Reductions]]
+*** slides:
+**** [[file:Slides/03-Gaussian-Elimination.key][keynote]]
+**** [[file:Slides/03-Gaussian-Elimination.pdf][pdf]]
+** reminders:
+*** office hours start this week, see the [[https://calendar.google.com/calendar/u/0/embed?src=c_117ca65747f38ed9a0282cd11a933bbb3aa5c1500a74b74a54e3e5a3e5520df8@group.calendar.google.com&ctz=America/New_York][OH calendar]], linked on the course website
 * 09-14
 ** Topic: *Vector Equations*
 ** Material:
