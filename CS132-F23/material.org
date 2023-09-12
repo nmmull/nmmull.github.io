@@ -55,7 +55,7 @@
 **** [[file:Slides/03-Gaussian-Elimination.key][keynote]]
 **** [[file:Slides/03-Gaussian-Elimination.pdf][pdf]]
 ** reminders:
-*** office hours start this week, see the [[https://calendar.google.com/calendar/u/0/embed?src=c_117ca65747f38ed9a0282cd11a933bbb3aa5c1500a74b74a54e3e5a3e5520df8@group.calendar.google.com&ctz=America/New_York][OH calendar]], linked on the course website
+*** office hours start this week, see the [[https://calendar.google.com/calendar/u/0/embed?src=c_117ca65747f38ed9a0282cd11a933bbb3aa5c1500a74b74a54e3e5a3e5520df8@group.calendar.google.com&ctz=America/New_York][OH calendar]] linked on the course website
 * 09-14
 ** Topic: *Vector Equations*
 ** Material:
