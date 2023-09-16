@@ -15,6 +15,7 @@ def leftmost_nonzero_index(a, row_index):
 
     """
     nonzeros = np.transpose(np.nonzero(a[row_index:]))
+    nonzeros.sort(key=lambda x: x[1])
     if len(nonzeros) != 0:
         l_r, l_c = nonzeros[0]
         return l_r + row_index, l_c
@@ -154,7 +155,7 @@ def elimination_phase(a):
 
     returns:
 
-    True if A represents an inconsistent system, and False otherwise
+    True if A represents an CONSISTENT system, and False otherwise
 
     A is mutated so that if A is consistent, it is converted into
     echelon form
