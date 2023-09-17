@@ -15,16 +15,15 @@ def leftmost_nonzero_index(a, row_index):
 
     """
     nonzeros = np.transpose(np.nonzero(a[row_index:]))
-    nonzeros.sort(key=lambda x: x[1])
     if len(nonzeros) != 0:
-        l_r, l_c = nonzeros[0]
+        l_r, l_c = min(nonzeros, key=lambda x: x[1])
         return l_r + row_index, l_c
     return None
 
 def is_inconsistent_row(row):
     """checks if a row represents an inconsistent equation
 
-    paramaters:
+    parameters:
 
     row: 1D numpy array
 
@@ -168,7 +167,7 @@ def elimination_phase(a):
     return True
 
 def back_substitution_phase(a):
-    """converts a matrix in echlon form into one in reduced echelon
+    """converts a matrix in echelon form into one in reduced echelon
     form
 
     parameters:
@@ -205,7 +204,7 @@ def gaussian_elimination(a):
         back_substitution_phase(a)
 
 # small test case
-# a = np.array([[3., -4, 3, -9], [6, 7, -3, 0], [1, 0, 10, -21]])
+# a = np.array([[0., -4, 3, -9], [6, 7, -3, 0], [1, 0, 10, -21]])
 # print("before elimination:")
 # print(a)
 # gaussian_elimination(a)
@@ -214,6 +213,7 @@ def gaussian_elimination(a):
 # print(a)
 
 # larger test case
+#
 # matrix in reduced echelon form
 # Y = np.array(
 #     [[1., 0, 0, 0, 2, 3,  0, 0, -9.1],
