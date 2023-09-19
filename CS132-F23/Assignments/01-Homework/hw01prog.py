@@ -7,7 +7,7 @@ def sub_error(n):
 
 def next_error(start):
     # TODO
-    return 1.0 # CHANGE THIS LINE TOO0
+    return 1.0 # CHANGE THIS LINE TODO
 
 R = np.arange(15)
 X = 10.0 ** R

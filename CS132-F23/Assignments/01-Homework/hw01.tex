@@ -65,6 +65,7 @@
 \end{itemize}
 Graders have license to dock points if either of the above instructions are not properly followed.
 
+
 \section*{Practice Problems}
 
 The following list of problems comes from \textit{Linear Algebra and its Application 5th Ed} by David C.\ Lay, Steven R.\ Lay, and Judi J.\ McDonald.
@@ -88,10 +89,11 @@ Consider the following system of linear equations.
   x + 10z &= -21
 \end{align*}
 \begin{enumerate}
-\item (2 pts) Write down the augmented matrix for this system.
-\item (8 pts)
+\item (5 pts) Write down the augmented matrix for this system.
+\item (10 pts)
+  Write down a solution to this system.
   Solve the system using elementary row operations.
-  Write down the row operations you used as we did in lecture.
+  Show your work by writing down the row operations you used as well as the intermediate matrices.
 \end{enumerate}
 
 
@@ -131,7 +133,7 @@ Consider the following pair of systems
   dx + ey - fz = 0
 \end{align*}
 \begin{enumerate}
-\item (5 pts) Show that if the first system has a solution, then so does the second homogeneous one.
+\item (5 pts) Show that if the first system has a solution, then so does the second one.
 \item (5 pts) Give \textbf{nonzero} values to $a$ through $f$ such that the second system has a solution, but the first does not. Present your solution as an augmented matrix for the first system, i.e., of the form
   \begin{displaymath}
     \begin{bmatrix}
@@ -158,7 +160,7 @@ Consider the following pair of systems of linear equations.
 \end{align*}
 \begin{enumerate}
 \item (5 pts) Solve the first system of linear equations (in $x_1$ and $x_2$) and write down the augmented matrix of the second system with the solutions of $x_1$ and $x_2$ substituted in.
-\item (5 pts) Write the augmented matrix of a \textit{single} system of linear equations in the variables $x_1$, $x_2$, $x_3$, $x_4$ (in that order). Discuss the relationship between this matrix and the one in the previous part. (Hint. Move around $x_1$ and $x_2$ in the second system.)
+\item (5 pts) Write the augmented matrix of a \textit{single} system of linear equations \textit{with all four equations} in the variables $x_1$, $x_2$, $x_3$, $x_4$. Discuss the relationship between this matrix and the one in the previous part. (Hint. Move around $x_1$ and $x_2$ in the second system.)
 \end{enumerate}
 
 \begin{solution}
@@ -183,8 +185,8 @@ such that the system is inconsistent, but each pair of equations forms a consist
 \end{displaymath}
 (Hint. Make the third equation inconsistent with the sum of the first and second equation)
 \begin{enumerate}
-\item (5 pts) Achieve this with no more than 5 nonzero values for $a$ through $l$.
-\item (5 pts) Achieve this with all nonzero values for $a$ through $l$.
+\item (7 pts) Achieve this with no more than 5 nonzero values for $a$ through $l$.
+\item (8 pts) Achieve this with all nonzero values for $a$ through $l$.
 \end{enumerate}
 
 \begin{solution}
@@ -205,15 +207,15 @@ Show that if $(s_x, s_y, s_z)$ and $(t_x, t_y, t_z)$ are solutions to the above 
   \left(\frac{s_x + t_x}{2}, \frac{s_y + t_y}{2}, \frac{s_z + t_z}{2} \right)
 \end{displaymath}
 is also a solution.
-Discuss why this implies the system has infinitely many solutions.
+Discuss why if $(s_x, s_y, s_z) \not = (t_x, t_y, t_z)$, this implies the system has infinitely many solutions.
 
 \begin{solution}
 \end{solution}
 
 \pagebreak
-\section{Lines in 3 Dimensions}
+\section{Lines in 3 Dimensions (Extra Credit)}
 
-(10 pts) As we discussed in lecture, a 3 dimensional linear equation does not describe a line, but a plane.
+(5 pts) As we discussed in lecture, a 3 dimensional linear equation does not describe a line, but a plane.
 One way to describe a line in 3 dimensions is to use a parameter $t$.
 That is, after fixing values $a_x$, $b_x$, $a_y$, $b_y$, $a_z$, and $b_z$, a line can be described as all points of the form
 \begin{displaymath}
@@ -246,9 +248,8 @@ We will be looking at the way this error varies as $x$ increases.
 \begin{lstlisting}
 def next_error(start):
   # TODO
-  return 0.0
 \end{lstlisting}
-which returns the returns \texttt{sub\_error(x')} where \texttt{x'} is the first value greater than or equal to \texttt{x} out of \texttt{x, x + 1, x + 2,...} such that \texttt{sub\_error(x')} is nonzero.
+which returns the returns \texttt{sub\_error(x')} where \texttt{x'} is the smallest value greater than or equal to \texttt{start}, taken from the set of possibilities \texttt{start, start + 1, start + 2,...}, such that \texttt{sub\_error(x')} is nonzero.
 \textbf{Please reproduce your function in your submission to the analytic part of the assignment.}
 
 \item (3 pts) Plot \texttt{next\_error} on a log scale graph using \texttt{matplotlib} (you don't have to write any code for this part, its included in the starter code). And include a copy of the image produced in your solution.
