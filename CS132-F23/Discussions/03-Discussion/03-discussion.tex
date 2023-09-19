@@ -1,0 +1,276 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{Week 3 Discussion}
+\author{CAS CS 132: Geometric Algorithms}
+\date{September 18, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item The first will be a warm-up question, to help you verify your understanding of the material.
+\item The second will be a solution to a problem on the assignment of the previous week. \textbf{Note. Due to the extension, we won't be doing this today, but this document will be made available.}
+\item The third will be a problem similar to one on the assignment of the following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{Creating Inconsistent Systems (Warm-up)}
+
+Find values $b_1$, $b_2$ and $b_3$ such that the system
+\begin{align*}
+  x_1 + x_2 + x_3 &= b_1 \\
+  2x_1 + 2x_2 - x_3 &= b_2 \\
+  x_1 + x_2 - 2x_3 &= b_3
+\end{align*}
+is inconsistent.
+
+\begin{solution}
+  The augmented matrix of this system is
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 1 & 1 & b_1 \\
+      2 & 2 & -1 & b_2 \\
+      1  & 1 & -2 & b_3
+    \end{bmatrix}
+  \end{displaymath}
+  In order for this system to be inconsistent, it must be row equivalent to a matrix with a row of the form $[0 \ 0 \ \dots \ 0 \ a]$ where $a \not = 0$.
+  So the first thing we need to do is row-reduce this matrix so that it has such a row.
+  We then need to choose $b_1$, $b_2$, and $b_3$ so that row is inconsistent.
+  In particular, it must be that its last entry is nonzero.
+
+  By the row operation $R_2 \gets R_2 - R_1$ we get the matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 1 & 1 & b_1 \\
+      1 & 1 & -2 & b_2 - b_1 \\
+      1 & 1 & -2 & b_3
+    \end{bmatrix}
+  \end{displaymath}
+  Then by the row operation $R_3 \gets R_3 - R_2$, we get the matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 1 & 1 & b_1 \\
+      1 & 1 & -2 & b_2 - b_1 \\
+      0 & 0 & 0 & b_3 - b_2 + b_1\\
+    \end{bmatrix}
+  \end{displaymath}
+  So we need to chose $b_1$, $b_2$, and $b_3$ such that $b_3 - b_2 + b_1 \not = 0$.
+  There are many choices, one simple choice is $b_1 = 0$, $b_2 = 0$ and $b_3 = 1$
+\end{solution}
+
+\pagebreak
+\section{Pairwise Consistency (from HW 1)}
+
+Given an example of a system of linear equations in 3 variables such that every pair of equations is consistent, but the system as a whole is inconsistent. That is, give values for $a$ through $l$ in the system
+\begin{align*}
+  ax + by + cz = d \\
+  ex + fy + gz = h \\
+  ix + jy + kz = l
+\end{align*}
+such that the system is inconsistent, but each pair of equations forms a consistent system. Present your solution to each part as the an augmented matrix, i.e., of the form
+\begin{displaymath}
+  \begin{bmatrix}
+    a & b & c & d \\
+    e & f & g & h \\
+    i & j & k & l \\
+  \end{bmatrix}
+\end{displaymath}
+(Hint. Make the third equation inconsistent with the sum of the first and second equation)
+\begin{enumerate}
+\item (5 pts) Achieve this with no more than 5 nonzero values for $a$ through $l$.
+\item (5 pts) Achieve this with all nonzero values for $a$ through $l$.
+\end{enumerate}
+
+\begin{solution}
+  Let's break down what this question is asking.
+  To say that every pair of equations forms a consistent system, we require that each augmented matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      a & b & c & d \\
+      e & f & g & h
+    \end{bmatrix}
+    \qquad
+    \begin{bmatrix}
+      e & f & g & h \\
+      i & j & k & l
+    \end{bmatrix}
+    \qquad
+    \begin{bmatrix}
+      a & b & c & d \\
+      i & j & k & l
+    \end{bmatrix}
+  \end{displaymath}
+  represents a consistent system.
+  It then must also be the case that the augmented matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      a & b & c & d \\
+      e & f & g & h \\
+      i & j & k & l
+    \end{bmatrix}
+  \end{displaymath}
+  represents an inconsistent system.
+
+  Now let's break down what this question means geometrically.
+  If each pair of equations is consistent, then the planes they represent intersect.
+  But if the entire is inconsistent, there is no point where all three planes intersect.
+
+  This means that we cannot choose the planes so that two of them are parallel, since every plane needs to intersect every other plane at least once.
+  What would such an orientation of planes look like?
+
+  Finally, let's break down what this question means algebraically.
+  Per the hint, we can choose a pair of consistent equations, and then find a third equation which is inconsistent with their sum.
+  We also need to verify that this equation is consistent with the first two we wrote down.
+
+  For part (a), since we're trying to minimize the number of nonzero values we use, we can start with the consistent system.
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0
+    \end{bmatrix}
+  \end{displaymath}
+  Geometrically, this is the $yz$-plane and the $xz$-plane (why?).
+  If we take their sum, we get the equation: $x + y = 0$.
+  The easiest way to write down an equation which is inconsistent with another is to write down an equation with the same coefficients but equal to a different value, e.g., $x + y = 1$ (it cannot possibly be the case that $x + y = 0$ and $x + y = 1$ simultaneously).
+  This given us the entire system
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 \\
+      1 & 1 & 0 & 1
+    \end{bmatrix}
+  \end{displaymath}
+  By a cursory check, we see that each pair of systems is consistent.
+  One tip: the only way that a pair of linear equations can be inconsistent is if they have the same coefficients up to scaling but are equal to a different value after scaling, e.g.,
+  \begin{align*}
+    x + 2y - z &= 1 \\
+    2x + 4y - 2z &= 3 \\
+  \end{align*}
+\  This system has the augmented matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 2 & -1 & 1 \\
+      2 & 4 & -2 & 3
+    \end{bmatrix}
+  \end{displaymath}
+  and the row-operation $R_2 \gets R_2 - 2R_1$ produces a matrix with an inconsistent row.
+
+  This is not the case for any pair of rows in the solution above so each pair must be consistent.
+
+  For the second part, we do the same thing, but we start with a pair of consistent equations without any zero values, e.g.,
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 1 & 1 & 1 \\
+      1 & 2 & 1 & 1
+    \end{bmatrix}
+  \end{displaymath}
+  The sum of the these two equations is: $2x + 3y + 2z = 2$.
+  And an equation which is inconsistent with this is: $2x + 3y + 2z = 3$.
+  This gives us the system
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 1 & 1 & 1\\
+      1 & 2 & 1 & 1\\
+      2 & 3 & 2 & 3
+    \end{bmatrix}
+  \end{displaymath}
+  To verify, no pair of equations has the same coefficients up to scaling, so each pair is consistent.
+  Also, the row-operations $R_3 = R_3 - R_2$ and $R_3 = R_3 - R_1$ produces a matrix with the row $[0 \ 0 \ \dots \ 0 \ 1]$.
+\end{solution}
+
+\pagebreak
+\section{General Form Solutions (based on HW 2)}
+Consider the following matrix in reduced echelon form.
+\begin{displaymath}
+  \begin{bmatrix}
+    1 & 2 & 0 & 2 \\
+    0 & 0 & 1 & 1
+  \end{bmatrix}
+\end{displaymath}
+\begin{enumerate}
+\item Write down the solution to this system in general form.
+\item\label{b} Rewrite the solution in general form so that $x_1$ is free.
+\item\label{c} Write down the solution from part \ref{b} as an augmented matrix (that is, your general form solution from part \ref{b} should have two linear equations, you should rearrange these equations and write them as an augmented matrix).
+  Write down the row operation which converts the matrix from this part to the one above.
+\end{enumerate}
+
+\begin{solution}
+  As we talked about in lecture, we have to identify the pivot positions of the matrix, as well as the basic and free variables.
+  For each pivot column, we write down the equation for the variable of that column.
+  For the non-pivot columns, we write that the variable is free.
+  For this system we have
+  \begin{align*}
+    x_1 &= 2 - 2x_2 \\
+    x_2 &\text{ is free} \\
+    x_3 &= 1
+  \end{align*}
+
+  We can then rewrite this solution so $x_1$ is free.
+  This means solving for $x_2$ in terms of $x_1$, which gives us $x_2 = 1 - (0.5)x_1$, and then rewriting the solution with $x_1$ as the free variable.
+  \begin{align*}
+    x_1 &\text{ is free} \\
+    x_2 &= 1 - (0.5)x_1 \\
+    x_3 &= 1
+  \end{align*}
+  Reading these two equations as a system of linear equations (note that we have to move the variables to the LHS of the equation) we get the augmented matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      0.5 & 1 & 0 & 1 \\
+      0 & 0 & 1 & 1 \\
+    \end{bmatrix}
+  \end{displaymath}
+  This differs from our original matrix by the operation $R_1 \gets 2R_1$.
+\end{solution}
+\end{document}
