@@ -156,13 +156,10 @@ def elimination_phase(a):
 
     returns:
 
-    True if A represents an CONSISTENT system, and False otherwise
+    True if A represents an consistent system, and False otherwise
 
     A is mutated so that if A is consistent, it is converted into
     echelon form
-
-    NOTE: this should short circuit and return False if a row
-    operation ever creates an inconsistent row
 
     """
     for row_index in range(num_of_rows(a)):
@@ -170,12 +167,10 @@ def elimination_phase(a):
         if lm_index is None:
             return True
         swap_rows(a, row_index, lm_index[0])
-        if is_inconsistent_row(a[row_index]):
-            return False
         for lower_row_index in range(row_index + 1, num_of_rows(a)):
-            if zero_in_pivot_column(a, lower_row_index, row_index, lm_index[1]):
-                return False
-    return True
+            zero_in_pivot_column(a, lower_row_index, row_index, lm_index[1])
+    return not any(map(is_inconsistent_row, list(a)))
+
 
 def back_substitution_phase(a):
     """converts a matrix in echelon form into one in reduced echelon
