@@ -2,3 +2,7 @@ Makefile
 *~
 *.aux
 *.log
+*solution.tex
+02-Discussion
+Autograder
+extra-problems.tex

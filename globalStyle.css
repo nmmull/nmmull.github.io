@@ -93,12 +93,14 @@ th, td {
     line-height: 1.25;
 }
 
-li {
+ul {
+    margin-top: 0px;
     list-style-type:"≫ ";
 }
 
-ul {
+ol{
     margin-top: 0px;
+    margin-left:1em;
 }
 
 .footnotes {
