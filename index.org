@@ -1,7 +1,7 @@
 #+title: Nathan Mull
 #+subtitle: Lecturer@@html:<br>@@
 #+subtitle: Boston University@@html:<br>@@
-#+subtitle: CDS 907
+#+subtitle: CDS 907@@html:<br>@@
 #+subtitle: (++ @bu.edu) nmmull
 I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at [[https://www.bu.edu][Boston
 University]]. Outside of teaching, I'm interested generally in logic and
