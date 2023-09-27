@@ -165,7 +165,7 @@ def elimination_phase(a):
     for row_index in range(num_of_rows(a)):
         lm_index = leftmost_nonzero_index(a, row_index)
         if lm_index is None:
-            return True
+            break
         swap_rows(a, row_index, lm_index[0])
         for lower_row_index in range(row_index + 1, num_of_rows(a)):
             zero_in_pivot_column(a, lower_row_index, row_index, lm_index[1])
