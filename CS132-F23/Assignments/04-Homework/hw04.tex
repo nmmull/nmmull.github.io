@@ -1,0 +1,295 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Homework 4
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{Due: \textbf{Thursday October 5, 2023 at 11:59PM}}
+
+\begin{document}
+\maketitle
+
+\subsection*{Submission Instructions}
+\begin{itemize}
+\item Make the answer in your solution to each problem abundantly clear (e.g., put a box around your answer or used a colored font if there is a lot of text which is not part of the answer).
+\item Choose the correct pages corresponding to each problem in Gradescope. Note that Gradescope registers your submission as soon as you submit it, so you don't need to rush to choose corresponding pages.
+  \textbf{For multipart questions, please make sure each part is accounted for.}
+\end{itemize}
+Graders have license to dock points if either of the above instructions are not properly followed.
+
+
+\section*{Practice Problems}
+
+The following list of problems comes from \textit{Linear Algebra and its Application 5th Ed} by David C.\ Lay, Steven R.\ Lay, and Judi J.\ McDonald.
+They may be useful for solidifying your understanding of the material and for studying in general.
+\textbf{They are optional, so please don't submit anything for them}.
+
+\begin{itemize}
+\item 1.8.3, 1.8.7, 1.8.9, 1.8.17, 1.8.31
+\item 1.9.1-10, 1.9.15, 1.9.22
+\end{itemize}
+
+\pagebreak
+\section{Zero Rows in Echelon Forms}
+(10 points) Consider an arbitrary system of linear equations with $n$ unknowns and $m$ equations.
+Further suppose that
+\begin{itemize}
+\item it has a unique solution;
+\item it has at least as many equations as unknowns ($m \geq n$).
+\end{itemize}
+Write down an expression in terms of $m$ and $n$ for the number of all-zero rows which appear in its reduced echelon form.
+Justify your answer.
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Non-Linear Transformation}
+(10 points) Show that the transformation $T: \mathbb R^4 \to \mathbb R^4$ given by
+\begin{displaymath}
+  T\left(
+  \begin{bmatrix}
+    v_1 \\ v_2 \\ v_3 \\ v_4
+  \end{bmatrix}
+  \right)
+  =
+  \begin{bmatrix}
+    \min(v_1, 100) \\
+    \min(v_2, 100) \\
+    \min(v_3, 100) \\
+    \min(v_4, 100) \\
+  \end{bmatrix}
+\end{displaymath}
+is \textbf{not} linear.
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Affine Hyperplanes}
+(10 points) Consider the following linear equation.
+\begin{displaymath}
+  x + y + z = 5
+\end{displaymath}
+The plane represented by this equation does not include the origin (such a plane is called \textit{affine}).
+Write down vectors $\mathbf b$, $\mathbf v_1$, and $\mathbf v_2$ such that every point in the plane represented by the above equation (that is, every point $(a, b, c)$ such that $a + b + c = 5$) can be written as $\mathbf b + \mathbf v$ where $\mathbf v$ is in $\mathsf{span} \{\mathbf v_1, \mathbf v_2\}$. In set notation,
+\begin{displaymath}
+  \{(x, y, z) : x + y + z = 5\} = \{\mathbf b + \mathbf v : \mathbf v \in \mathsf{span}\{\mathbf v_1, \mathbf v_2\}\}.
+\end{displaymath}
+\textit(Hint. Choose $\mathbf b$ to be a solution to the equation $x + y + z = 5$ and then find vectors spanning the plane given by $x + y + z = 0$. Also note that
+vectors which span a plane given by a linear equation must also be solutions to that equation.)
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Matrix of a Transformation (Algebraic)}
+
+(10 points) Let $T : \mathbb R^3 \to \mathbb R^3$ be a linear transformation such that
+\begin{displaymath}
+  T\left(
+  \begin{bmatrix}
+    2 \\ 1 \\ 0
+  \end{bmatrix}
+  \right)
+  =
+  \begin{bmatrix}
+    3 \\ -3 \\ 4
+  \end{bmatrix}
+  \qquad
+  T\left(
+  \begin{bmatrix}
+    1 \\ 1 \\ 0
+  \end{bmatrix}
+  \right)
+  =
+  \begin{bmatrix}
+    8 \\ 0 \\ 2
+  \end{bmatrix}
+  \qquad
+  T\left(
+  \begin{bmatrix}
+    2 \\ 1 \\ 2
+  \end{bmatrix}
+  \right)
+  =
+  \begin{bmatrix}
+    -1 \\ -1 \\ -1
+  \end{bmatrix}
+\end{displaymath}
+Find the matrix implementing $T$.
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Matrix of a Transformation (Geometric)}
+
+\begin{enumerate}
+\item (5 points) Find the $(3 \times 3)$ matrix for the linear transformation which reflects vectors through the $x_1 x_2$-plane. (Hint. The $x_3$-coordinate should be negated.)
+\item (10 points) Find the $(3 \times 3)$ matrix for the linear transformation which rotates vectors about the line generated by span of the vector $\begin{bmatrix}1 \\ 1 \\ 1\end{bmatrix}$ by 120 degrees. You can choose which direction you want to rotate by, we will accept either answer. (Hint. Graph the span as a line. Think carefully about the way this transformation affects the standard basis vectors.)
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Grade Breakdown}
+
+Let $A$ be a matrix with $n$ rows and 6 columns.
+Each row of $A$ contains the \textbf{unweighted} percentage scores (out of 100) of one student on 4 homework assignments (columns 1 through 4) a midterm (column 5) and a final (column 6).
+\begin{displaymath}
+  \begin{matrix}
+    H_1 & H_2 & H_3 & H_4 & M & F
+  \end{matrix}
+\end{displaymath}
+\begin{displaymath}
+  \begin{bmatrix}
+    p_{11} & p_{12} & p_{13} & p_{14} & p_{15} & p_{16} \\
+    p_{21} & p_{22} & p_{23} & p_{24} & p_{25} & p_{26} \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+    p_{n1} & p_{n2} & p_{n3} & p_{n4} & p_{n5} & p_{n6} \\
+  \end{bmatrix}
+\end{displaymath}
+All homework assignments are worth the same amount.
+Consider the transformation $T$ for this matrix.
+\begin{enumerate}
+\item (5 points)
+  Suppose that homework assignments account for \textbf{50} percent of the final grade, the midterm accounts for \textbf{20} percent and the final accounts for \textbf{30} percent.
+  Find a vector $\mathbf v$ such that $T(\mathbf v)$ is the vector whose $i$-th entry is the final percentage grade of the $i$-th student.
+  So, for example, if the $i$-th student recieved $90$ percent on every homework assignment, $85$ percent on the midterm, and $92$ percent on the final, then the $i$-th entry of the output vector should be $90 * 0.5 + 85 * 0.2 + 92 * 0.3$.
+\item (5 points)
+  Find a vector $\mathbf v$ such that $T(\mathbf v)$ is the vector whose $i$-th entry is the unweighted homework grade for student $i$. For the same example as above, the $i$-th entry would be $90$.
+\end{enumerate}
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Defining Matrix-Vector Multiplication Yourself (Programming)}
+
+(15 points) This week you will be writing your own definition of matrix-vector multiplication in Python.
+This will give you the opportunity to work with numpy arrays directly if you haven't already (all your previous assignments have only required indirect use of numpy arrays).
+\textbf{Read through the docstring of each function carefully.}
+
+You are given starter code in the file \texttt{hw04prog.py}.
+\textbf{Don't change the name of this file when you submit.}
+Also don't change the names of the functions included in the starter code.
+\textbf{The only changes you should make are to fill in the TODO items in the starter code.}
+There are three functions you need to fill in.
+\begin{itemize}
+\item \texttt{inner\_product}, which computes the inner product of two vectors.
+  Recall that the inner product, also called the \textit{dot product}, is defined as
+  \begin{displaymath}
+    \begin{bmatrix}
+      u_1 \\ u_2 \\ \vdots \\ u_n
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+      v_1 \\ v_1 \\ \vdots \\ v_n
+    \end{bmatrix}
+    =
+    u_1 v_1 + u_2 v_2 + \dots + u_nv_n =
+    \sum_{i = 1}^n u_i v_i
+  \end{displaymath}
+\item \texttt{mat\_vec\_mult\_ip}, which computes matrix-vector multiplication using the row-column rule and inner products:
+  \begin{displaymath}
+    \begin{bmatrix}
+      a_{11} & a_{12} & \dots & a_{1n} \\
+      a_{21} & a_{22} & \dots & a_{2n} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{m1} & a_{m2} & \dots & a_{mn}
+    \end{bmatrix}
+    \begin{bmatrix}
+      v_1 \\ v_2 \\ \vdots \\ v_n
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \sum_{i = 1}^n a_{1i} v_i \\
+      \sum_{i = 1}^n a_{2i} v_i \\
+      \vdots \\
+      \sum_{i = 1}^n a_{mi} v_i
+    \end{bmatrix}
+  \end{displaymath}
+  Recall that the rows of a numpy array are themselves numpy arrays, so you should be able to use your \texttt{inner\_product} function directly here.
+\item \texttt{mat\_vec\_mult\_vs}, which computes matrix-vector multiplication, but using the definition we gave in class:
+  \begin{displaymath}
+    \begin{bmatrix}
+      \mathbf a_1 & \mathbf a_2 & \dots & \mathbf a_n
+    \end{bmatrix}
+    \begin{bmatrix}
+      v_1 \\ v_2 \\ \vdots \\ v_n
+    \end{bmatrix}
+    =
+    v_1\mathbf a_1 + v_2 \mathbf a_2 + \dots + v_n \mathbf a_n
+  \end{displaymath}
+\end{itemize}
+
+Of course, the last two functions will compute the same vector, but they will do so in different ways.
+The first should compute each entry of the output vector individually, whereas the second should compute a linear combination of the columns of the given matrix using addition and scaling of numpy arrays.
+For this assignment \textbf{you are not allowed use built in numpy functions for inner products or matrix-vector multiplication, like \texttt{np.inner} or \texttt{np.dot} or \texttt{@}.}
+The point is for you to implement your own.
+
+You will upload the single python file \texttt{hw04prog.py} to Gradescope with your implementations of the required functions.
+We will be running autograder tests on your submission to determine its correctness.
+\textbf{You will not have access to the autograder tests.}
+
+
+\end{document}
