@@ -14,6 +14,11 @@ aid = np.hstack([a, np.eye(3)])
 
 # row reductions
 # TODO
+aid[2] -= aid[0]
+aid[2] += 2 * aid[1]
+aid[1] -= 3 * aid[2]
+aid[0] -= 5 * aid[2]
+aid[0] -= 2 * aid[1]
 
 print()
 print(aid)
