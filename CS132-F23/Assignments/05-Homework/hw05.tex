@@ -1,0 +1,395 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Homework 5
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{Due: \textbf{Thursday October 19, 2023 at 11:59PM}}
+
+\begin{document}
+\maketitle
+
+\subsection*{Submission Instructions}
+\begin{itemize}
+\item Make the answer in your solution to each problem abundantly clear (e.g., put a box around your answer or used a colored font if there is a lot of text which is not part of the answer).
+\item Choose the correct pages corresponding to each problem in Gradescope. Note that Gradescope registers your submission as soon as you submit it, so you don't need to rush to choose corresponding pages.
+  \textbf{For multipart questions, please make sure each part is accounted for.}
+\end{itemize}
+Graders have license to dock points if either of the above instructions are not properly followed.
+
+
+\section*{Practice Problems}
+
+The following list of problems comes from \textit{Linear Algebra and its Application 5th Ed} by David C.\ Lay, Steven R.\ Lay, and Judi J.\ McDonald.
+They may be useful for solidifying your understanding of the material and for studying in general.
+\textbf{They are optional, so please don't submit anything for them}.
+
+\begin{itemize}
+\item 2.1.2, 2.1.4, 2.1.10, 2.1.22, 2.1.27, 2.1.34
+\item 2.2.1, 2.2.7, 2.3.31
+\end{itemize}
+
+\pagebreak
+\section{Matrix Multiplications}
+Compute the following matrix multiplications.
+\begin{enumerate}
+\item (3 points)
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & -1 & 4 \\
+      3 & 0 & 1 \\
+      0 & 1 & 1 \\
+      -3 & 1 & 2
+    \end{bmatrix}
+    \begin{bmatrix}
+      2 & 0 & 1 & 1 \\
+      0 & 0 & 2 & 3 \\
+      1 & 1 & 3 & 5
+    \end{bmatrix}
+  \end{displaymath}
+\item (3 points)
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 \\ 2 \\ 3 \\ -1
+    \end{bmatrix}
+    \begin{bmatrix}
+      2 & -1 & 2 & 2
+    \end{bmatrix}
+  \end{displaymath}
+\item (4 points)
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1
+    \end{bmatrix}^T
+    \begin{bmatrix}
+      1 & 0 & 1 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 1 & 0 & 1 \\
+      1 & 0 & 1 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 1 & 0 & 1 \\
+      1 & 0 & 1 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 1 & 0 & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 \\ 1 \\ 1 \\ 1 \\ 1 \\ 1
+    \end{bmatrix}
+  \end{displaymath}
+\item (4 points)
+  \begin{displaymath}
+    \begin{bmatrix}
+      \mathbf a_1 & \mathbf a_2 & \mathbf a_3 & \mathbf a_4 & \mathbf a_5
+    \end{bmatrix}
+    \begin{bmatrix}
+      0 & 0 & 1 & 0 & 0 \\
+      0 & 1 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 & 0 \\
+      1 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1
+    \end{bmatrix}
+  \end{displaymath}
+  where $\mathbf a_1$, $\mathbf a_2$, $\mathbf a_3$, $\mathbf a_4$, $\mathbf a_5$ are vectors in $\mathbb R^n$.
+\end{enumerate}
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{One-to-One and Onto Transformations}
+
+For each matrix, determine the corresponding matrix transformation is (1) one-to-one but not onto, (2) onto but not one-to-one, (3) both, or (4) neither. Justify your answer in each part.
+
+\begin{enumerate}
+\item (3 points)
+  $
+  \begin{bmatrix}
+    1 & 2 & 1 & 3 \\
+    1 & 3 & 1 & 3 \\
+    1 & 5 & 1 & 4
+  \end{bmatrix}
+  $
+\item (3 points)
+  $
+  \begin{bmatrix}
+    5 & 0 & 5 \\
+    0 & 0 & 0 \\
+    4 & 0 & 7
+  \end{bmatrix}
+  $
+\item (3 points)
+  $
+  \begin{bmatrix}
+    2 & 0 & 0 \\
+    0 & 1 & 3 \\
+    0 & 0 & 3 \\
+    0 & 0 & 3
+  \end{bmatrix}
+  $
+\item (3 points)
+  $
+  \begin{bmatrix}
+    1 & -2 & 3 & -4 \\
+    0 & 5 & -6 &  7 \\
+    0 & 0 & -8 & 9 \\
+    0 & 0 & 0 & -10
+  \end{bmatrix}
+  $
+\end{enumerate}
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Inverses}
+For each of the following matrices, compute its inverse.
+\begin{enumerate}
+\item (3 points) $\begin{bmatrix} 1 & 3 \\ -3 & -2 \end{bmatrix}$
+\item (4 points) $\begin{bmatrix} 0 & 0 & 1 \\ 0 & 2 & 0 \\ 3 & 0 & 0 \end{bmatrix}$
+\item (5 points) the matrix implementing the transformation
+  \begin{displaymath}
+    \begin{bmatrix}
+      x_1 \\ x_2 \\ x_3
+    \end{bmatrix}
+    \mapsto
+    \begin{bmatrix}
+      x_1 + x_2 \\
+      -2x_1 - x_3 \\
+      x_1 + x_3
+    \end{bmatrix}
+  \end{displaymath}
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Matrix Powers}
+Compute the following matrix powers.
+Your solutions must be reduced as much as possible, and must be exact.
+
+\begin{enumerate}
+\item (4 point)
+  $
+  \begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{bmatrix}^{2023}
+  $
+\item (4 points)
+  $
+  \begin{bmatrix}
+    2 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+  \end{bmatrix}^{2023}
+  \begin{bmatrix}
+    0.5 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & -1
+  \end{bmatrix}^{2024}
+  $
+\item (5 points)
+  $
+  \begin{bmatrix}
+    \cos2 & -\sin2 & 0 \\
+    \sin2 & \cos2 & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}^{2023}
+  $
+  \hfill
+
+  \noindent\textit{Hint.} Remember that multiplying matrices composes their corresponding matrix transformations.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Composing Rotations}
+Consider the following $\mathbb R^3$ rotation matrices.
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    \cos 45^\circ & -\sin 45^\circ & 0 \\
+    \sin 45^\circ & \cos 45^\circ & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+  \qquad
+  B =
+  \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \cos 180^\circ & -\sin 180^\circ \\
+    0 & \sin 180^\circ & \cos 180^\circ
+  \end{bmatrix}
+\end{displaymath}
+The matrix $A$ rotates vectors around the $x_3$-axis by 45 degrees, and $B$ rotates vectors around the $x_1$-axis by 180 degrees.
+Also remember that
+\begin{align*}
+  \cos 45^\circ &= \frac{\sqrt{2}}{2} \\
+  \sin 45^\circ &= \frac{\sqrt{2}}{2} \\
+  \cos 180^\circ &= -1 \\
+  \sin 180^\circ &= 0 \\
+  \cos(-\theta) &= \cos(\theta) \text{ for any $\theta$} \\
+  \sin(-\theta) &= -\sin(\theta) \text{ for any $\theta$} \\
+\end{align*}
+\begin{enumerate}
+\item (4 points) Determine $A^{-1}$.
+  Every entry should be a scalar multiple of $1$, $\cos 45^\circ$ or $\sin 45^{\circ}$.
+  In particular, don't include any trigonometric functions applied to negative angles.
+  \textit{Hint.} You don't have to do any calculations for this.
+  Think about what it means to ``undo'' a rotation.
+\item (6 points)Calculate $ABA^{-1}$.
+  Your solutions should be as reduced as possible, and should not contain any trigonometric functions.
+\item (5 points) Describe what the transformation implemented by $ABA^{-1}$ does geometrically. Your answer should be of the form ``rotation by [NUMBER] degrees around the span of [VECTOR].'' \textit{Hint.} We've seen this transformation before.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+  % TODO
+\end{solution}
+
+\pagebreak
+\section{Mini Hill Cipher (Programming)}
+
+(15 points)
+You will be filling in an implementation of a simplified version of a classical cipher called the \textit{Hill Cipher}.
+
+Generally speaking, a cipher is a process for encrypting information; if you want to send information to someone in a secure way, you may want to transform it so that it is difficult for an eavesdropper to interpret, but easy for the receiver to \textit{decode} into the intended message.
+
+The cipher we will be working with is based on a classical cipher invented by Lester Hill in 1929, and uses properties of matrix inverses.
+The sender and receiver share an invertible matrix $A$ called a \textit{key}.
+In the case of this assignment, it is a $4 \times 4$ matrix.
+We will be encrypting strings\textemdash which we will call \textit{messages}\textemdash made up entirely of capital English letters (in particular, no spaces or punctuation).
+The encryption of a message $m$ goes as follows:
+\begin{itemize}
+\item Convert the string $m$ into a list of numbers between 0 and 25, inclusive, where A goes to 0, B goes to 1, C goes to 2, and so on.
+  So the message ABBAB goes to [0, 1, 1, 0, 1].
+  This is implemented for you by \texttt{message\_to\_nums}.
+\item Add 26s to the end of this list of numbers until its length is a multiple of 4.
+  So the list [0, 0, 1, 0, 1] becomes [0, 0, 1, 0, 1, 26, 26, 26].
+  This is called \textit{padding} and is implemented for you in the function \texttt{pad}.
+\item Convert this list of numbers into a matrix $M$ so that every 4 numbers is a \textbf{column from top to bottom} in $M$.
+  So the list [0, 0, 1, 0, 1, 26, 26, 26] becomes the matrix
+  \begin{displaymath}
+    \begin{bmatrix}
+      0 & 1 \\
+      0 & 26 \\
+      1 & 26 \\
+      0 & 26
+    \end{bmatrix}
+  \end{displaymath}
+  \textbf{You need to implement this in the function \texttt{nums\_to\_matrix}.}
+  You should assume that the length of the list is a multiple of 4.
+
+  There is a long and a short way to do this.
+  For the short way, note that
+  \begin{itemize}
+  \item
+    \texttt{a.T} will give you the transpose of \texttt{a}
+  \item
+    by changing the value of \texttt{a.shape}, a 1D array can be made into a 2D array of a particular shape.
+  \end{itemize}
+  Experiment with these.
+  The long way is to solve this like a standard problem on python lists and then build a numpy array out of your solution.
+
+  Once you've completed this, the function \texttt{message\_to\_matrix}, which combines everything so far into a single step, is implemented for you.
+\item Encrypt the information in $M$ as $AM$, the product of $A$ and $M$.
+  Remember that matrix multiplication in numpy is \texttt{A @ M}.
+\item Convert this new matrix $AM$ back into a string of numbers, and then into a message over a new collection of symbols.
+  This is implemented for you in \texttt{matrix\_to\_code}.
+\end{itemize}
+
+Decoding an encrypted message $c$ is exactly the same process, but in reverse.
+In particular, rather than multiplying by $A$, we multiply by $A^{-1}$.
+\begin{itemize}
+\item Convert $c$ a list of numbers, and then into a matrix $C$ in the same way as above.
+  This is implemented for you in \texttt{code\_to\_matrix}.
+\item Decrypt the information as $A^{-1}C$, the product of $A^{-1}$ and $C$.
+  Remember that matrix inversion in numpy is \texttt{np.linalg.inv(A)}.
+\item Convert this new matrix $A^{-1}C$ back into a string of numbers, and then into the original message by flattening the matrix and unpadding it.
+  This is implemented for you in \texttt{matrix\_to\_message}.
+\end{itemize}
+This all works because if $M$ is the matrix representing a message and $C = AM$ is the matrix representing the encrypted message, then $A^{-1}C = A^{-1}(AM) = IM = M$, the matrix of the original message.
+
+\bigskip
+
+\noindent You are given starter code in the file \texttt{hw05prog.py}.
+\textbf{Don't change the name of this file when you submit.}
+Also don't change the names of the functions included in the starter code.
+\textbf{The only changes you should make are to fill in the TODO items in the starter code.}
+All together you have to fill in three functions:
+\begin{itemize}
+\item \texttt{nums\_to\_matrix} which converts a list of numbers, whose length is $4k$ into a $4 \times k$ matrix as described above
+\item \texttt{encode}, which implements the above encoding procedure
+\item \texttt{decode}, which implements the above decoding procedure
+\end{itemize}
+You will upload a single file \texttt{hw05prog.py} to Gradescope with your implementations of the required functions.
+You may use any functionality from numpy for your implementation.
+Please read the code carefully, much of this assignment is understanding what the given code does.
+
+\bigskip
+
+\noindent\textit{Note.}
+This is not a secure cipher.
+Because it's based on linear algebra, the techniques that we've been developing in this course can be used figure out the key matrix, often from a single message-code pair.
+It's also worth noting that the actual implementation of the Hill cipher is much more general and uses modular arithmetic.
+If you're interested, I highly recommend looking into it.
+It is a good weekend project to implement the actual Hill cipher in your favorite programming language.
+
+\end{document}
