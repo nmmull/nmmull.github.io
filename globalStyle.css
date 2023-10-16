@@ -61,6 +61,13 @@ code {
     background-color: #F7A9AF;
 }
 
+pre{
+    background-color: #eee;
+    font-family: 'Courier', monospace;
+    padding: 20px;
+    display: block;
+}
+
 a:link {
     text-decoration: underline;
     color: #005b9e;

@@ -1,0 +1,197 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{enumitem}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\vspan}{\mathsf{span}}
+\newcommand{\ran}{\mathsf{ran}}
+\newcommand{\cod}{\mathsf{cod}}
+\newcommand{\R}{\mathbb R}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Week 7 Discussion
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{October 16, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item The first will be a warm-up question, to help you verify your understanding of the material.
+\item The second will be a solution to a problem on the assignment of the previous week.
+\item The third will be a problem similar to one on the assignment of the following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{Matrix Inverses (Warm Up)}
+For each matrix $A$, determine if it is invertible. If it is, compute its inverse $A^{-1}$ and demonstrate that it is an inverse by computing $A^{-1}A$ and $AA^{-1}$.
+
+\begin{enumerate}
+\item
+  \begin{displaymath}
+    A =
+    \begin{bmatrix}
+      2 & 3 & -1 \\
+      0 & -1 & 1 \\
+      2 & 1 & 1
+    \end{bmatrix}
+  \end{displaymath}
+\item
+  \begin{displaymath}
+    A =
+    \begin{bmatrix}
+      1 & 2 & 0 \\
+      0 & -1 & 1 \\
+      2 & 2 & 0
+    \end{bmatrix}
+  \end{displaymath}
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Span and Linear Independence (Midterm)}
+Consider the following vectors in $\mathbb R^4$.
+\begin{displaymath}
+  \mathbf v_1 =
+  \begin{bmatrix}
+    -3 \\
+    4 \\
+    3 \\
+    7
+  \end{bmatrix}
+  \mathbf v_2 =
+  \begin{bmatrix}
+    -1 \\
+    0 \\
+    0 \\
+    2
+  \end{bmatrix}
+  \mathbf v_3 =
+  \begin{bmatrix}
+    0 \\
+    -2 \\
+    -1 \\
+    -1
+  \end{bmatrix}
+  \mathbf v_4 =
+  \begin{bmatrix}
+    1 \\
+    1 \\
+    1 \\
+    -2
+  \end{bmatrix}
+\end{displaymath}
+\begin{enumerate}
+\item Determine if $\vv v_1$ is in $\vspan\{\vv v_2, \vv v_3, \vv v_4\}$.
+  Justify your answer.
+  In particular, if $\vv v_1$ is in $\vspan\{\vv v_2, \vv v_3, \vv v_4\}$, then write $\vv v_1$ as a linear combination of $\vv v_2$, $\vv v_3$, and $\vv v_4$.
+\item Determine if the vectors $\vv v_2$, $\vv v_3$, and $\vv v_4$ are linearly independent.
+  Justify your answer.
+  In particular, if they are linearly dependent, then write a dependence relation for them (that is, write the zero vector $\vv 0$ as a linear combination of the vectors $\vv v_2$, $\vv v_3$, and $\vv v_4$).
+\item Determine if the vectors $\vv v_1$, $\vv v_2$, and $\vv v_3$ are linearly independent.
+  Justify your answer.
+  In particular, if they are linearly dependent, then write a dependence relation for them.
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+
+
+\pagebreak
+\section{3D Rotation Matrices}
+
+The matrices used for rotating counter-clockwise by $\theta$ around the $x$-, $y$-, and $z$-axes are
+\begin{displaymath}
+  R_{x, \theta} =
+  \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \cos\theta & -\sin\theta \\
+    0 & \sin\theta & \cos\theta
+  \end{bmatrix}
+  \quad
+  R_{y, \theta} =
+  \begin{bmatrix}
+    \cos\theta & 0 & \sin\theta \\
+    0 & 1 & 0 \\
+    -\sin\theta & 0 & \cos\theta
+  \end{bmatrix}
+  \quad
+  R_{z, \theta} =
+  \begin{bmatrix}
+    \cos\theta & -\sin \theta & 0 \\
+    \sin\theta & \cos\theta & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{displaymath}
+Note that difference in sign for $R_{y, \theta}$.
+This is due to a convention called the \textit{right-hand rule} which says that the orientation of the positive directions of each axis is given by thinking of the index finger, middle finger, and thumb of our right hand as the $x$-, $y$-, and $z-$axes (and that when we talk about counter-clockwise around an axis, we mean counter-clockwise when the positive axis is pointing towards us).
+
+\medskip
+
+\begin{enumerate}
+\item Compute $\vv v = R_{z, 45^\circ} [1 \ (-1) \ \sqrt{2}]^T$. Recall that $\cos45^\circ = \sin45^\circ = \frac{\sqrt{2}}{2}$.
+\item Computer $R_{y, 45^\circ}\vv v$, where $\vv v$ is the vector from the previous part.
+\end{enumerate}
+Try to draw, to the best of your ability, what is happening to this vector after each transformation.
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\end{document}
