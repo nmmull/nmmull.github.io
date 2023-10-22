@@ -66,7 +66,7 @@ def random_walk(a, i, length):
 try:
     text_file = open('sonnets.txt')
 except:
-    Print("Make sure sonnets.txt is in the same directory as hw06.py")
+    print("Make sure sonnets.txt is in the same directory as hw06.py")
     exit()
 text = text_file.read()[1:].split()
 # delete duplicates
