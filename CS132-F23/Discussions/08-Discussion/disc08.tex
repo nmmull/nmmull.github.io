@@ -1,0 +1,196 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{enumitem}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\vspan}{\mathsf{span}}
+\newcommand{\ran}{\mathsf{ran}}
+\newcommand{\cod}{\mathsf{cod}}
+\newcommand{\R}{\mathbb R}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Week 8 Discussion
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{October 23, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item The first will be a warm-up question, to help you verify your understanding of the material.
+\item The second will be a solution to a problem on the assignment of the previous week.
+\item The third will be a problem similar to one on the assignment of the following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{Warm up}
+Consider the following matrices in echelon form and reduced echelon form.
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    2 & -3 & 0 & 0\\
+    0 & 0 & 1 & 2 \\
+    0 & 0 & 0 & 10
+  \end{bmatrix}
+  \quad
+  B =
+  \begin{bmatrix}
+    1 & 0 & 2 & 0 & 3 \\
+    0 & 1 & 3 & 0 & -1 \\
+    0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0
+  \end{bmatrix}
+  \quad
+  C =
+  \begin{bmatrix}
+    10 & 1 & 3 \\
+    0 & 1 & -3 \\
+    0 & 0 & 6
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item If $D \sim A$ (that is $D$ is row equivalent to $A$) and $D$ is the augmented matrix of a system of linear equations, what can we say about the solutions of the system? (e.g., general form, number of solutions)
+\item If $D \sim C$, then what can we say about the columns of $A$? (e.g., linearly independence, span)
+\item If $D \sim C$, then what can we say about the solutions to the equation $D\mathbf x = \mathbf 0$?
+\item If $D \sim B$, then what can we say about the columns of $D$?
+\item If $D \sim B$ and $D$ represents the augmented matrix of a system of linear equations of $B$, what can we say about the columns of the coefficient matrix for the system?
+\item If $D \sim A$ and $D$ is the augmented matrix of a system of linear equations, what can we say about the solutions of the system for which $x_1 = 0$.
+
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Composing Rotations}
+Consider the following $\mathbb R^3$ rotation matrices.
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    \cos 45^\circ & -\sin 45^\circ & 0 \\
+    \sin 45^\circ & \cos 45^\circ & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+  \qquad
+  B =
+  \begin{bmatrix}
+    1 & 0 & 0 \\
+    0 & \cos 180^\circ & -\sin 180^\circ \\
+    0 & \sin 180^\circ & \cos 180^\circ
+  \end{bmatrix}
+\end{displaymath}
+The matrix $A$ rotates vectors around the $x_3$-axis by 45 degrees, and $B$ rotates vectors around the $x_1$-axis by 180 degrees.
+Also remember that
+\begin{align*}
+  \cos 45^\circ &= \frac{\sqrt{2}}{2} \\
+  \sin 45^\circ &= \frac{\sqrt{2}}{2} \\
+  \cos 180^\circ &= -1 \\
+  \sin 180^\circ &= 0 \\
+  \cos(-\theta) &= \cos(\theta) \text{ for any $\theta$} \\
+  \sin(-\theta) &= -\sin(\theta) \text{ for any $\theta$} \\
+\end{align*}
+\begin{enumerate}
+\item (4 points) Determine $A^{-1}$.
+  Every entry should be a scalar multiple of $1$, $\cos 45^\circ$ or $\sin 45^{\circ}$.
+  In particular, don't include any trigonometric functions applied to negative angles.
+  \textit{Hint.} You don't have to do any calculations for this.
+  Think about what it means to ``undo'' a rotation.
+\item (6 points) Calculate $ABA^{-1}$.
+  Your solutions should be as reduced as possible, and should not contain any trigonometric functions.
+\item (4 points) Describe what the transformation implemented by $ABA^{-1}$ does geometrically. Your answer should be of the form ``rotation by [NUMBER] degrees around the span of [VECTOR].'' \textit{Hint.} We've seen this transformation before.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Regular Stochastic Matrices}
+
+For each of the following stochastic matrices:
+\begin{itemize}
+\item Determine if it is regular.
+\item Write down a solution to the homogeneous equation $(A - I)\mathbf x = \mathbf 0$.
+\item If it is possible, find a steady-state vector from this solution.
+\end{itemize}
+
+\begin{enumerate}
+\item
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & 0.5 \\
+      0 & 0.5
+    \end{bmatrix}
+  \end{displaymath}
+\item
+  \begin{displaymath}
+    \begin{bmatrix}
+      0.2 & 1 \\
+      0.8 & 0
+    \end{bmatrix}
+  \end{displaymath}
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+\end{document}
