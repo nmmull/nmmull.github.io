@@ -35,12 +35,12 @@ def random_step(a, i):
 
     Returns
 
-    An int which is one step away, chosen according to the
-    distribution given by a
+    An int which is one step away from I, chosen according to the
+    distribution given by A
 
     """
     rng = np.random.default_rng()
-    return rng.choice(n, p=a[:, i])
+    return rng.choice(a.shape[0], p=a[:, i])
 
 def random_walk(a, i, length):
     """performs a random walk
@@ -48,7 +48,7 @@ def random_walk(a, i, length):
     Parameters:
 
     a: 2D numpy array, representing a (square) stochastic matrix
-    i: int, index of rows
+    i: int, index of columns
     length: int, the number of steps of the random walk
 
     Returns:
@@ -64,7 +64,7 @@ def random_walk(a, i, length):
 
 # read in txt file at stdin and split into words
 try:
-    text_file = open('sonnets.txt')
+    text_file = open('sonnets.txt', 'r', encoding='utf-8')
 except:
     print("Make sure sonnets.txt is in the same directory as hw06.py")
     exit()
