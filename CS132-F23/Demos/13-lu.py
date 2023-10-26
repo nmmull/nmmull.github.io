@@ -1,5 +1,4 @@
 import numpy as np
-from scipy.linalg import lu
 
 a = np.array(
     [[3., -7, -2, 2],
@@ -16,14 +15,27 @@ a = np.array(
 l = np.eye(4)
 u = np.copy(a)
 
+u[1] += u[0]
+l[1, 0] = -1
+
+u[2] -= 2 * u[0]
+l[2, 0] = 2
+
+u[3] += 3 * u[0]
+l[3, 0] = -3
+
+u[2] += 5 * u[1]
+l[2, 1] = -5
+
+u[3] -= 8 * u[1]
+l[3, 1] = 8
+
+u[3] -= 3 * u[2]
+l[3, 2] = 3
+
+
+
 # Row operations
-# TODO
-
-
-
-
-
-
 
 
 
