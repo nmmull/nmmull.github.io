@@ -1,0 +1,293 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\vspan}{\mathsf{span}}
+\newcommand{\ran}{\mathsf{ran}}
+\newcommand{\cod}{\mathsf{cod}}
+\newcommand{\R}{\mathbb R}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Midterm
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{October 12, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent Name:
+
+\bigskip
+
+\noindent BUID:
+
+\bigskip
+
+\noindent Location:
+
+\bigskip
+
+\begin{itemize}
+\item You will have approximately 70 minutes to complete this exam.
+\item Make sure to read every question, some are easier than others.
+\item Please write your name and BUID \textbf{on every page}.
+\item Your work will only be seens on the \textbf{front facing pages}.
+  You may write on the backs of pages if you are using a pencil, but you will not be evaluated on what is written there.
+\end{itemize}
+
+\pagebreak
+\section{Span and Linear Independence}
+Consider the following vectors in $\mathbb R^4$.
+\begin{displaymath}
+  \mathbf v_1 =
+  \begin{bmatrix}
+    -1 \\
+    -6 \\
+    0 \\
+    -7
+  \end{bmatrix}
+  \mathbf v_2 =
+  \begin{bmatrix}
+    1 \\
+    -2 \\
+    -3 \\
+    -1
+  \end{bmatrix}
+  \mathbf v_3 =
+  \begin{bmatrix}
+    1 \\
+    -1 \\
+    -2 \\
+    0
+  \end{bmatrix}
+  \mathbf v_4 =
+  \begin{bmatrix}
+    0 \\
+    -1 \\
+    0 \\
+    -1
+  \end{bmatrix}
+\end{displaymath}
+\begin{enumerate}
+\item (6 points) Determine if $\vv v_1$ is in $\vspan\{\vv v_2, \vv v_3, \vv v_4\}$.
+  Justify your answer.
+  In particular, if $\vv v_1$ is in $\vspan\{\vv v_2, \vv v_3, \vv v_4\}$, then write $\vv v_1$ as a linear combination of $\vv v_2$, $\vv v_3$, and $\vv v_4$.
+\item (6 points) Determine if the vectors $\vv v_2$, $\vv v_3$, and $\vv v_4$ are linearly independent.
+  Justify your answer.
+  In particular, if they are linearly dependent, then write a dependence relation for them (that is, write the zero vector $\vv 0$ as a linear combination of the vectors $\vv v_2$, $\vv v_3$, and $\vv v_4$).
+\item (6 points) Determine if the vectors $\vv v_1$, $\vv v_2$, and $\vv v_3$ are linearly independent.
+  Justify your answer.
+  In particular, if they are linearly dependent, then write a dependence relation for them.
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\noindent\textit{Extra Page.}
+
+\pagebreak
+\section{True/False Questions}
+
+For each of the following statements, determine if they are true or false.
+You do not have to show your work or justify your answer. You just have to write ``true'' or ``false.''
+
+\begin{enumerate}
+\item (2 points) For any $20 \times 24$ matrix $A$, the equation $A\vv x = \vv 0$ has a nontrivial solution.
+\item (2 points) For any $m \times n$ matrix $A$, if $m > n$ then the columns of $A$ must be linearly independent.
+\item (2 points) Every matrix has a unique echelon form.
+\item (2 points) For any nonzero real values $a$ and $b$, the matrix
+  $
+  \begin{bmatrix}
+    a & 2a \\
+    b & 3b
+  \end{bmatrix}
+  $
+  has a pivot in every column and every row.
+\item (2 points) If $A$ is the augmented matrix of an inconsistent system, then $A$ has a pivot in its last (rightmost) column.
+\item (2 points) To show that a transformation $T: \R^m \to \R^n$ is linear, it is enough to show that $T(\vv x + \vv y) = T(\vv x) + T(\vv y)$ for any two vectors $\vv x$ and $\vv y$ in $\R^m$.
+\item (2 points) For any vectors $\vv v_1$, $\vv v_2$, and $\vv v_3$ in $\R^n$, if $\{\vv v_1, \vv v_2, \vv v_3\}$ is linearly independent, then so is $\{\vv v_1, \vv v_2\}$.
+\item (2 points) Any set of distinct standard basis vectors in $\mathbb R^n$ is linearly independent.
+\end{enumerate}
+
+\begin{solution}
+  \hfill
+  \begin{enumerate}
+  \item
+  \item
+  \item
+  \item
+  \item
+  \item
+  \item
+  \item
+  \end{enumerate}
+\end{solution}
+
+\pagebreak
+\noindent\textit{Extra Page.}
+
+\pagebreak
+\section{Inner Products and Matrix Equations}
+
+Consider the following matrix and vector.\footnote{Credit to Vishesh Jain for suggesting a version of this problem.}
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    1 & -1 & 1 \\
+    -1 & 2 & -1 \\
+    1 & -2 & 1
+  \end{bmatrix}
+  \qquad
+  \vv b =
+  \begin{bmatrix}
+    1 \\ 0 \\ 0
+  \end{bmatrix}
+\end{displaymath}
+\begin{enumerate}
+\item (3 points) Compute the following matrix-vector multiplications.
+  \begin{displaymath}
+    \begin{bmatrix}
+      1 & -1 & 1
+    \end{bmatrix}
+    \left(
+    A
+    \begin{bmatrix}
+      1 \\ -1 \\ 1
+    \end{bmatrix}
+    \right)
+  \end{displaymath}
+\item (6 points) Write down a general form solution for the solution set of the  matrix equation $A \vv x = \vv b$.
+\item (6 points) Use your solution to the previous part to find a \textbf{nonzero} vector $\begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$ such that
+  \begin{displaymath}
+    \begin{bmatrix}
+      v_1 & v_2 & v_3
+    \end{bmatrix}
+    \left(A
+    \begin{bmatrix}
+      v_1 \\ v_2 \\ v_3
+    \end{bmatrix}\right)
+    = 0
+  \end{displaymath}
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+\vfill
+
+\pagebreak
+\noindent\textit{Extra Page.}
+
+\pagebreak
+\section{Linear Transformations}
+
+(5 points) Consider the following linear transformation $T$.
+\begin{displaymath}
+  \begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{bmatrix}
+  \mapsto
+  \begin{bmatrix}
+    x_1 + 2x_2 - x_3 \\
+    x_3 \\
+    2x_3
+  \end{bmatrix}
+\end{displaymath}
+Find a set of linearly independent vectors which span the range of $T$. \textit{Hint.} First find the matrix implementing $T$.
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Matrix Equations}
+Consider the following matrices.
+\begin{displaymath}
+  B =
+  \begin{bmatrix}
+    1 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 1 \\
+    0 & 0 & 0 & 0 & 0 & 1
+  \end{bmatrix}
+  \quad
+  C =
+  \begin{bmatrix}
+    1 & 1 & 0 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 1 & 1 & 1 \\
+    0 & 0 & 0 & 0 & 1 & 1
+  \end{bmatrix}
+  \quad
+  \vv e_6 =
+  \begin{bmatrix}
+    0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item (3 points) Explain why the columns of $B$ span $\R^6$.
+\item (7 points) Find a solution to the equation $B \vv x = \vv e_6$.
+\item \textbf{(3 points, Extra Credit)} Find a solution to the equation $C \vv x = \vv e_6$.
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\noindent\textit{Extra Page.}
+\end{document}
