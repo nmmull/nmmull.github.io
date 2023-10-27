@@ -15,7 +15,8 @@ a = np.array(
 l = np.eye(4)
 u = np.copy(a)
 
-u[1] += u[0]
+# Row Operations
+u[1] += 1 * u[0]
 l[1, 0] = -1
 
 u[2] -= 2 * u[0]
@@ -32,25 +33,6 @@ l[3, 1] = 8
 
 u[3] -= 3 * u[2]
 l[3, 2] = 3
-
-
-
-# Row operations
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 print()
 print("Original matrix:")
