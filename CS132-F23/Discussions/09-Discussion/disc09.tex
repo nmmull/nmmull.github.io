@@ -1,0 +1,143 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{enumitem}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\vspan}{\mathsf{span}}
+\newcommand{\ran}{\mathsf{ran}}
+\newcommand{\cod}{\mathsf{cod}}
+\newcommand{\R}{\mathbb R}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Week 9 Discussion
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{October 30, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item The first will be a warm-up question, to help you verify your understanding of the material.
+\item The second will be a solution to a problem on the assignment of the previous week.
+\item The third will be a problem similar to one on the assignment of the following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{LU Factorization by Hand (Warm Up)}
+
+Compute the LU factorization of the following matrix.
+Then verify that your factorization is correct by carrying out the matrix multiplication $LU$.
+
+\begin{displaymath}
+  \begin{bmatrix}
+    1 & 2 & -3 \\
+    -1 & -1 & 4 \\
+    2 & 3 & -6
+  \end{bmatrix}
+\end{displaymath}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Matrix Algebra}
+
+\begin{enumerate}
+\item Suppose $A$ and $B$ are invertible matrices and $AB^TXA^{-1}B = I$. Solve for $X$ in terms of $A$ and $B$.
+\item Show that $A + A^T$ is symmetric for any square matrix $A$. That is, show that $(A + A^T)^T = A + A^T$.
+\item Show that if $A$ and $B$ are symmetric and $AB = BA$ then $AB$ is symmetric.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{NumPy and SciPy}
+
+\begin{enumerate}
+\item
+  Construct a random $10 \times 10$ matrix and a random vector in $\R^{10}$ using
+  \begin{lstlisting}
+import numpy
+import scipy
+
+a = numpy.random.rand(10, 10)
+b = numpy.random.rand(10)\end{lstlisting}
+
+  Then construct its inverse and its LU factoration using \texttt{numpy.linalg.inv} and \texttt{scipy.linalg.lu\_factor}, respectively.
+  Finally, solve equation \texttt{ax = b} in three ways:
+  \begin{lstlisting}
+s1 = numpy.linalg.solve(a, b)
+s2 = a_inv @ b
+s3 = scipy.lu_solve(lu) # where lu is the result of lu_factor\end{lstlisting}
+  Verify that these three solutions are the same.
+  Note, this process is not guaranteed to succeed since not all square matrices are invertible, but it is incredibly unlikely that a random $10 \times 10$ matrix is not invertible.
+\item
+  Construct a random integer matrix with entries between 1 and 10 as follows:
+  \begin{lstlisting}
+a = numpy.random.randint(1, 11, (10, 10))\end{lstlisting}
+  Write a function called \texttt{norm\_col} which divides a NumPy vector by the sum of its entries (you don't need to consider the case in which the input is the zero vector).
+  Then read about the function \texttt{numpy.apply\_along\_axis} in the NumPy documentation.
+  Check the value of
+  \begin{lstlisting}
+numpy.apply_along_axis(norm_col, 0, a)\end{lstlisting}
+\end{enumerate}
+\end{document}
