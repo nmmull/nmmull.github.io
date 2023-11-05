@@ -1,0 +1,166 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{enumitem}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\R}{\mathbb R}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\col}{Col}
+\DeclareMathOperator{\nul}{Nul}
+\DeclareMathOperator{\rank}{rank}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Week 10 Discussion
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{November 6, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item The first will be a warm-up question, to help you verify your understanding of the material.
+\item The second will be a solution to a problem on the assignment of the previous week.
+\item The third will be a problem similar to one on the assignment of the following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{Column Space and Null Space (Warm Up)}
+
+Consider the following matrix
+
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    1 & -2 & 0 \\
+    0 & 1 & -1 \\
+    -3 & 1 & 5
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item Find the reduced echelon form of $A$.
+\item Write down a general form solution for the equation $A\vv x = \vv 0$.
+\item Find a basis for $\col A$.
+\item Find a basis for $\nul A$.
+\item Find a linear equation whose solution set (i.e., those points in the plane represented by the linear equation) is $\col A$.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Order of Matrix Multiplcation}
+
+The matrices for the 2D transformations (on homogeneous coordinates) of translation and counterclockwise rotation about the origin are
+\begin{displaymath}
+  T_{x,y} =
+  \begin{bmatrix}
+    1 & 0 & x \\
+    0 & 1 & y \\
+    0 & 0 & 1
+  \end{bmatrix}
+  \qquad
+  R_{\theta} =
+  \begin{bmatrix}
+    \cos \theta & -\sin \theta & 0 \\
+    \sin \theta & \cos \theta & 0 \\
+    0 & 0 & 1
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item Show that $T_{1, 1} R_{\pi / 4} \not = R_{\pi / 4} T_{1, 1}$.
+  Recall that $\pi / 4$ in radians is $45^\circ$ and $\cos(\pi / 4) = \sin(\pi / 4) = \sqrt{2} / 2$.
+\item If we want to do rotation \textit{and then} translation, which of the two matrices in the previous part do we want to use?
+\item Draw the effects $T_{1, 1} R_{
+  \pi / 4}$ and $R_{\pi / 4} T_{1, 1}$ on the unit square on two separate graphs.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Intersections and Unions of Subspaces}
+
+Let $H_1$ and $H_2$ be arbitrary subspaces of $\R^n$.
+
+\begin{enumerate}
+\item The \textit{intersection} of $H_1$ and $H_2$, written $H_1 \cap H_2$, is the set of vectors which appear in \textit{both} $H_1$ and $H_2$:
+  \begin{displaymath}
+    H_1 \cap H_2 = \{ \vv v : \vv v \in H_1 \text{ and } \vv v \in H_2 \}
+  \end{displaymath}
+  Show that $H_1 \cap H_2$ is a subspace. (In other words, the intersection of two spans is a span).
+\item The \textit{union} of $H_1$ and $H_2$, written $H_1 \cup H_2$, is the set of vectors which appear in \textit{at least one of} $H_1$ and $H_2$:
+  \begin{displaymath}
+    H_1 \cup H_2 = \{\vv v : \vv v \in H_1 \text{ or } \vv v \in H_2 \}
+  \end{displaymath}
+  Give an explicit example of two subspaces $\R^2$ whose union is \textit{not} a subspace of $\mathbb R^2$.
+  \textit{Hint.} Pick pretty much any two vectors $\vv u$ and $\vv v$ in $\R^2$ and take the two subspaces to be $\vspan\{\vv u\}$ and $\vspan \{ \vv v \}$.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\end{document}
