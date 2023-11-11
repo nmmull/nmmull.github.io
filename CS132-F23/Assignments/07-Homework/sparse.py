@@ -10,6 +10,8 @@ def test_matrix(k):
     d += np.diag(a, k=-1) + np.diag(a, k=1)
     return d
 
+print(test_matrix(4))
+
 # n = 20 ** 3
 # print("building test matrix...")
 # m = test_matrix(n)
