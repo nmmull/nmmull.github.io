@@ -124,7 +124,7 @@ Consider the following matrix.
   Show that $-3$ is an eigenvalue of $A$ \textit{without doing any row operations}.
   Use the invertible matrix theorem to justify your answer.
 \item (6 points)
-  Find a basis for the eigenspace of $A$ corresponding to the eigenvalue $3$.
+  Find a basis for the eigenspace of $A$ corresponding to the eigenvalue $-3$.
 \end{enumerate}
 
 \medskip
@@ -166,8 +166,6 @@ Consider the following matrix.
   What is $\det A$ from the previous part if $\rank A = 4$?
 \end{enumerate}
 
-% TODO
-
 \medskip
 
 \begin{solution}
@@ -184,7 +182,7 @@ All matrices are assumed to be square.
 \item (3 points) $\det(5A) = 5\det A$
 \item (3 points) $\det(A^TA) \geq 0$
 \item (3 points) $\det(A + B) = \det(A) + \det(B)$
-\item (3 points) $\det(ABA^{-1}) = \det(B)$
+\item (3 points) If $A$ is invertible, then $\det(ABA^{-1}) = \det(B)$.
 \end{enumerate}
 
 \medskip
@@ -206,6 +204,7 @@ All matrices are assumed to be square.
   and factor it in order to determine the eigenvalues $A$.
 \item (4 points) Find the characteristic polynomial of
   \begin{displaymath}
+    A =
     \begin{bmatrix}
       1 & 0 & 0 & 0 & 0 \\
       -1 & 5 & 0 & 0 & 0 \\
@@ -238,7 +237,6 @@ All matrices are assumed to be square.
   \textit{Hint.} Try to row reduce $A - \lambda I$ as usual, scaling rows before zeroing out entries.
   At the end, the scalings you performed will divide the final polynomial.
 \end{enumerate}
-
 
 \medskip
 
