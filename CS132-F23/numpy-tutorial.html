@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-11-02 Thu 13:24 -->
+<!-- 2023-11-29 Wed 16:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A Short Supplementary NumPy Tutorial</title>
@@ -21,17 +21,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc67330c">Importing the Library</a></li>
-<li><a href="#org634849b">NumPy Arrays</a>
+<li><a href="#orgcddd8b3">Importing the Library</a></li>
+<li><a href="#org89c6d7f">NumPy Arrays</a>
 <ul>
-<li><a href="#orgdea25c8">Shape</a></li>
-<li><a href="#org1a0690e">Operations</a></li>
-<li><a href="#orgd147bfe">Indexing</a></li>
-<li><a href="#org17c2a0b">Stacking</a></li>
-<li><a href="#orgb2668ec">Closing Remarks on Arrays</a></li>
+<li><a href="#org0066993">Shape</a></li>
+<li><a href="#orgd1f744b">Operations</a></li>
+<li><a href="#org1e35b59">Indexing</a></li>
+<li><a href="#orgde3439d">Stacking</a></li>
+<li><a href="#org5af6e48">Closing Remarks on Arrays</a></li>
 </ul>
 </li>
-<li><a href="#orgd71061b">Cheat Sheet</a></li>
+<li><a href="#orgd6f3fe5">Cheat Sheet</a></li>
 </ul>
 </div>
 </div>
@@ -62,9 +62,9 @@ implementations would almost certainly not be as fast as the ones in
 the NumPy library.</li>
 <li>Its a useful skill to have since its a widely used library.</li>
 </ul>
-<div id="outline-container-orgc67330c" class="outline-2">
-<h2 id="orgc67330c">Importing the Library</h2>
-<div class="outline-text-2" id="text-orgc67330c">
+<div id="outline-container-orgcddd8b3" class="outline-2">
+<h2 id="orgcddd8b3">Importing the Library</h2>
+<div class="outline-text-2" id="text-orgcddd8b3">
 <p>
 Regardless, let's start from the beginning. As with any Python
 library, we access the functions in it using an <code>import</code> statement.
@@ -92,9 +92,9 @@ code via dot notation: <code>np.useful_lin_alg_function()</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-org634849b" class="outline-2">
-<h2 id="org634849b">NumPy Arrays</h2>
-<div class="outline-text-2" id="text-org634849b">
+<div id="outline-container-org89c6d7f" class="outline-2">
+<h2 id="org89c6d7f">NumPy Arrays</h2>
+<div class="outline-text-2" id="text-org89c6d7f">
 <p>
 The fundamental object of NumPy is the <code>ndarray</code>. The <code>nd</code> part refers
 to "n-dimensional." We will only ever consider 1D or 2D arrays, but
@@ -174,9 +174,9 @@ something we have to come to terms with.
 </p>
 </div>
 
-<div id="outline-container-orgdea25c8" class="outline-3">
-<h3 id="orgdea25c8">Shape</h3>
-<div class="outline-text-3" id="text-orgdea25c8">
+<div id="outline-container-org0066993" class="outline-3">
+<h3 id="org0066993">Shape</h3>
+<div class="outline-text-3" id="text-org0066993">
 <p>
 NumPy arrays have a property called <code>shape</code> which tells us the number
 of entries of an array, in the case of a 1D arrays, and the number of
@@ -217,9 +217,9 @@ assert(num_of_cols(a) == 2)
 </div>
 </div>
 
-<div id="outline-container-org1a0690e" class="outline-3">
-<h3 id="org1a0690e">Operations</h3>
-<div class="outline-text-3" id="text-org1a0690e">
+<div id="outline-container-orgd1f744b" class="outline-3">
+<h3 id="orgd1f744b">Operations</h3>
+<div class="outline-text-3" id="text-orgd1f744b">
 <p>
 Many of the operations on vectors and matrices that we discuss in this
 course are built into the NumPy library. For example, addition and
@@ -288,9 +288,9 @@ assert(b @ b == 4)
 </div>
 </div>
 
-<div id="outline-container-orgd147bfe" class="outline-3">
-<h3 id="orgd147bfe">Indexing</h3>
-<div class="outline-text-3" id="text-orgd147bfe">
+<div id="outline-container-org1e35b59" class="outline-3">
+<h3 id="org1e35b59">Indexing</h3>
+<div class="outline-text-3" id="text-org1e35b59">
 <p>
 The simplest and most common operation on NumPy arrays is accessing
 their elements. We can index them in the same way we index Python
@@ -366,9 +366,9 @@ last one.
 </ul>
 </div>
 </div>
-<div id="outline-container-org17c2a0b" class="outline-3">
-<h3 id="org17c2a0b">Stacking</h3>
-<div class="outline-text-3" id="text-org17c2a0b">
+<div id="outline-container-orgde3439d" class="outline-3">
+<h3 id="orgde3439d">Stacking</h3>
+<div class="outline-text-3" id="text-orgde3439d">
 <p>
 A technique we have used several times, but which has been hidden from
 you behind helper functions, is stacking. We commonly need to add a row
@@ -398,9 +398,9 @@ assert(np.array_equal(np.hstack((a, b)), c))
 </div>
 </div>
 
-<div id="outline-container-orgb2668ec" class="outline-3">
-<h3 id="orgb2668ec">Closing Remarks on Arrays</h3>
-<div class="outline-text-3" id="text-orgb2668ec">
+<div id="outline-container-org5af6e48" class="outline-3">
+<h3 id="org5af6e48">Closing Remarks on Arrays</h3>
+<div class="outline-text-3" id="text-org5af6e48">
 <ul class="org-ul">
 <li><p>
 NumPy arrays are not copied on reassignment. This is something we
@@ -437,9 +437,9 @@ over the rows of its transpose (see below).</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd71061b" class="outline-2">
-<h2 id="orgd71061b">Cheat Sheet</h2>
-<div class="outline-text-2" id="text-orgd71061b">
+<div id="outline-container-orgd6f3fe5" class="outline-2">
+<h2 id="orgd6f3fe5">Cheat Sheet</h2>
+<div class="outline-text-2" id="text-orgd6f3fe5">
 <p>
 There many useful functions in NumPy that cannot be put into a single
 short tutorial. As we close this out, here is a list of functions that
