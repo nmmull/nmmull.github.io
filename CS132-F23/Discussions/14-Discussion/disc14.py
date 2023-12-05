@@ -15,5 +15,5 @@ a[1] += 3 * a[0] - a[2]
 a[2] -= a[1] - a[0]
 a[3] += a[0] + a[1]
 a[3] += a[2]
-print(lib.bmatqrix(a))
+print(lib.bmatrix(a))
 print(a[:,:1])
