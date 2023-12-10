@@ -113,21 +113,21 @@ There are four function you need to fill in.
 \item \texttt{distance}, which calculates the distance between two vectors in $\R^n$, represented as 1D NumPy arrays.
 \item \texttt{linear\_design\_matrix}, which builds the design matrix for simple multiple regression, i.e., for finding a model of the form
   \begin{displaymath}
-    f(x_1, \dots, x_8) = \beta_0 + \sum_{1 \leq i \leq 8} \beta_i x_i
+    f(x_1, \dots, x_n) = \beta_0 + \sum_{1 \leq i \leq n} \beta_i x_i
   \end{displaymath}
   This matrix should be identical to the one in the text.
   The independent variables are given to you as a matrix, where each row represent a datapoint.
-  The dataset has 8 independent variables, so the input \texttt{ind\_vars} is a 2D NumPy array with 8 columns, and the design matrix you return should have 9 columns.
+  The dataset has 8 independent variables, so the input \texttt{ind\_vars} is a 2D NumPy array with 8 columns, and the design matrix you return on the input \texttt{ind\_vars} should have 9 columns.
 \item \texttt{quadratic\_design\_matrix}, which builds the design matrix for multiple regression with a quadratic modeling function, i.e.,
   \begin{displaymath}
-    f(x_1, \dots, x_8) = \beta_0 + \sum_{1 \leq i \leq 8} \beta_i x_i+ \sum_{1 \leq i \leq j \leq 8} \beta_{ij} x_ix_j
+    f(x_1, \dots, x_n) = \beta_0 + \sum_{1 \leq i \leq n} \beta_i x_i+ \sum_{1 \leq i \leq j \leq n} \beta_{ij} x_ix_j
   \end{displaymath}
-  This will require adding many new columns to \texttt{ind\_vars}; the design matrix you build should have 45 columns.
+  This will require adding many new columns; the design matrix you return on the input \texttt{ind\_vars} should have 45 columns.
 \item \texttt{cubic\_design\_matrix}, which builds the design matrix for multiple regression with a cubic modeling function, i.e.,
   \begin{displaymath}
-    f(x_1, \dots, x_8) = \beta_0 + \sum_{1 \leq i \leq 8} \beta_i x_i + \sum_{1 \leq i \leq j \leq 8} \beta_{ij} x_ix_j + \sum_{1 \leq i \leq j \leq k \leq 8} \beta_{ijk} x_ix_jx_k
+    f(x_1, \dots, x_n) = \beta_0 + \sum_{1 \leq i \leq n} \beta_i x_i + \sum_{1 \leq i \leq j \leq n} \beta_{ij} x_ix_j + \sum_{1 \leq i \leq j \leq k \leq n} \beta_{ijk} x_ix_jx_k
   \end{displaymath}
-  The design matrix you build should have 165 columns.
+  The design matrix you return on the input \texttt{ind\_vars} should have 165 columns.
   As a hint, note that many of the columns you have to add are the same ones you added in the previous function; don't redo your work.
 \end{itemize}
 When you run the file, you should see a small report on the data and three error calculations for each kind of model.
