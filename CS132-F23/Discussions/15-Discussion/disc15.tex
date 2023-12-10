@@ -1,0 +1,156 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{enumitem}
+
+% package for including images
+\usepackage{graphicx}
+
+% TAKEN FROM OVERLEAF DOCUMENTATION
+% https://www.overleaf.com/learn/latex/Code_listing
+\usepackage{listings}
+\lstset{language=Python}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\R}{\mathbb R}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\col}{Col}
+\DeclareMathOperator{\nul}{Nul}
+\DeclareMathOperator{\rank}{rank}
+
+% environment for solutions
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{
+  Week 15 Discussion
+}
+\author{CAS CS 132: Geometric Algorithms}
+\date{December 11, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent During discussion sections, we will go over three problems.
+\begin{itemize}
+\item
+  The first will be a warm-up question, to help you verify your
+  understanding of the material.
+\item
+  The second will be a solution to a problem on the assignment of
+  the previous week.
+\item
+  The third will be a problem similar to one on the assignment of the
+  following week.
+\end{itemize}
+The remainder of the time will be dedicated to open Q\&A.
+
+\pagebreak
+\section{LAA 6.6.10 (Warm Up)}
+
+Suppose radioactive substances $A$ and $B$ have decay constants of
+0.02 and 0.07, respectively. If a mixture of these two substances at
+time $t = 0$ contains $M_A$ grams of $A$ and $M_B$ grams of $B$, then
+a model for the total amount of $y$ of the mixture present at time $t$
+is
+\begin{displaymath}
+  y = M_A e^{-0.2t} + M_B e^{-0.7t}
+\end{displaymath}
+Suppose the initial amounts $M_A$ and $M_B$ are unknown, but a
+scientist is able to measure the total amounts present at several
+times and records the following points $(t_i, y_i)$:
+\begin{displaymath}
+  (10, 21.34), (11, 20.68), (12, 20.05), (14, 18.87), (15, 18.30)
+\end{displaymath}
+Find the design matrix $X$ such that the least squares solution of
+\begin{displaymath}
+  X
+  \begin{bmatrix}
+    M_A \\ M_B
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    18.30 \\
+    18.87 \\
+    20.05 \\
+    20.68 \\
+    21.34
+  \end{bmatrix}
+\end{displaymath}
+provides an estimate for $M_A$ and $M_B$.
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Least Square (Homework 11)}
+
+Let $C$ be an arbitrary $m \times n$ matrix of rank $k$ and let
+$\mathbf b$ be an arbitrary vector in $\R^m$. Find an expression for
+the maximum size of a linearly independent set of least squares
+solutions for $C\vv x = \vv b$ where $\vv b \not = 0$.
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\section{Design Matrices}
+
+Write Python code (or pseudocode) which builds the design matrix
+for modeling with the function
+\begin{displaymath}
+  f(x) = \beta_0 + \beta_1 x + \beta_2 x^2 + \dots + \beta_k x^k
+\end{displaymath}
+given a feature vector $\vv x$ (i.e., a vector representing the
+independent variable for a collection of data points) represented as a
+1D NumPy array, and an integer $k$ which determines the degree used in
+$f$.
+
+
+\begin{solution}
+\end{solution}
+\end{document}
