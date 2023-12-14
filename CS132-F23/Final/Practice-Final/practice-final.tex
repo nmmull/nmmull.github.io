@@ -1,0 +1,336 @@
+\documentclass{article}
+
+% packages for math
+\usepackage{amsthm} \usepackage{amsmath} \usepackage{amssymb}
+\usepackage{amsfonts}
+
+% package for including images
+\usepackage{graphicx}
+
+% environment for solutions
+\theoremstyle{remark} \newtheorem*{solution}{Solution}
+
+% capital letters for problem parts
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+% no page numbers
+\pagenumbering{gobble}
+
+\newcommand{\vv}[1]{\mathbf{#1}} \newcommand{\R}{\mathbb R}
+\DeclareMathOperator{\vspan}{span} \DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\ran}{ran} \DeclareMathOperator{\col}{Col}
+\DeclareMathOperator{\nul}{Nul} \DeclareMathOperator{\rank}{rank}
+
+% UNCOMMENT IF YOU DON'T WANT PROBLEMS ON INDIVIDUAL PAGES
+% \renewcommand{\pagebreak}{}
+
+\title{Practice Final
+} \author{CAS CS 132: Geometric Algorithms} \date{December 14, 2023}
+
+\begin{document}
+\maketitle
+
+\noindent Name:
+
+\bigskip
+
+\noindent BUID:
+
+\bigskip
+
+\noindent Location:
+
+\bigskip
+
+\begin{itemize}
+\item You will have approximately 120 minutes to complete this exam.
+\item Make sure to read every question, some are easier than others.
+\item Please write your name and BUID \textbf{on every page}.
+\end{itemize}
+
+\pagebreak
+\textit{(Extra page)}
+
+\pagebreak
+\section{Orthogonal Projections and Linear Equations}
+
+Consider the linear equation
+\begin{displaymath}
+  x_1 - x_2 + x_3 = 0
+\end{displaymath}
+and the vector
+\begin{displaymath}
+  \vv v =
+  \begin{bmatrix}
+    4 \\ 1 \\ 0
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item (3 points) Write down the unique vector $\vv z$ which is
+  orthogonal to the plane given by the above linear equation (that is,
+  the vector which is orthogonal to every solution in its solution
+  set.)
+\item (5 points) Find a basis $\{\vv b_1, \vv b_2\}$ for the plane
+  given by the above linear equation.
+\item (5 points) Find a solution to the vector equation $y_1\vv z + y_2\vv
+  b_1 + y_3\vv b_2 = \vv v$.
+\item (5 points) Find the orthogonal projection of $\vv v$ onto the
+  plane given by the above linear equation. (\textit{Hint.} Use the
+  previous parts.)
+\end{enumerate}
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\section{True/False Questions}
+
+\begin{enumerate}
+\item (2 points) For any matrix $A$, if $A$ is square and $\det(A) =
+  0$, then the columns of $A$ are linearly dependent.
+\item (2 points) For any stochastic matrix $A$, if $A$ has a unique
+  stationary state, then it must be regular.
+\item (2 points) For any matrix $A$, the dimension of the null space
+  of $A$ is at most the rank of $A$.
+\item (2 points) For any matrix $A$, if $A$ has $n$ distinct
+  eigenvalues, then it is invertible.
+\item (2 points) Every orthogonal set is linearly independent.
+\item (2 points) For any two matrices $A$ and $B$, if $A$ is
+  invertible and $A$ is row equivalent to $B$ then $B$ is invertible.
+\item (2 points) For any two matrices $A$ and $B$, if $AB$ is defined
+  then $AB \not = BA$.
+\item (2 points) For any matrix $A$ and quadratic form $Q(\vv x)$, if
+  $Q(\vv x) = \vv x^TA\vv x$, then $A$ is symmetric.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\section{Elementary Matrices}
+
+\begin{enumerate}
+\item
+  (5 points) Find the $3 \times 3$ matrix $E$ which implements the
+  following row operations:
+  \begin{align*}
+    \mathsf{swap}&(R_1, R_2) \\ R_1 &\gets 3R_1 \\ R_3 &\gets R_3 + 2
+    R_2
+  \end{align*}
+\item
+  (6 points) Find values for $i$ through $m$ such that $E^T$
+  implements the following row operations:
+  \begin{align*}
+    \mathsf{swap}&(R_i, R_j) \\ R_k &\gets 3R_k \\ R_l &\gets R_l + 2
+    R_m
+  \end{align*}
+\item
+  (6 points) Compute $AE$ where
+  \begin{displaymath}
+    A =
+    \begin{bmatrix}
+      11 & 22 & 33 \\ 11 & 22 & 33 \\ 11 & 22 & 33
+    \end{bmatrix}
+  \end{displaymath}
+  (\textit{Hint.} Use the previous part and the fact that $(B^T)^T =
+  B$.)
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\section{Diagonalizability}
+
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    1 & 1 & 4 \\ 0 & 1 & -1 \\ 0 & 1 & 3
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item (7 points) Find the characteristic polynomial of $A$.
+\item (8 points) Find bases for every eigenspace of $A$. That is for
+  each eigenvalue $\lambda$ of $A$, find a basis for $\nul(A - \lambda
+  I)$.
+\item (3 points) Determine if $A$ is diagonalizable. If it is, provide
+  a diagonalization. Otherwise, justify your answer.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\section{Interpreting Matrices}
+
+\begin{displaymath}
+  A =
+  \begin{bmatrix}
+    0 & 0 & 0 & 1 & 2 \\ 0 & 1 & 2 & 1 & 8
+  \end{bmatrix}
+  \qquad B =
+  \begin{bmatrix}
+    0 & 0 & 0 & 7 \\ 0 & 0 & -4 & 1 \\ 3 & -3 & 2 & 0 \\ 0 & 2 & -1 &
+    1
+  \end{bmatrix}
+\end{displaymath}
+
+\begin{enumerate}
+\item (2 points) Is $A$ in echelon form?
+\item (5 points) Find a basis of $\col A$ with vectors that are
+  columns of $A$.
+\item (5 points) Find a basis of $\nul A$.
+\item (5 points) Compute $\det B$.
+\item (2 points) Is $B$ invertible?
+\end{enumerate}
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\section{Linear Models}
+
+Suppose we are given the data
+\begin{displaymath}
+  (x_1, y_1), (x_2, y_2), (x_3, y_3), (x_4, y_4)
+\end{displaymath}
+
+\begin{enumerate}
+\item
+  (5 points) Construct the design matrix for the given data which can
+  be used to find the best-fit curve of the form
+  \begin{displaymath}
+    f_{\beta_1, \beta_2}(\theta) = \beta_1 \cos\theta + \beta_2
+    \sin\theta
+  \end{displaymath}
+  where $\beta_1$ and $\beta_2$ are parameters.
+\item
+  (7 points) Consider trying to fit the data with a curve of the form
+  \begin{displaymath}
+    g_\alpha(\theta) = \cos(\theta + \alpha)
+  \end{displaymath}
+  where $\alpha$ is a parameter. Note that $g_\alpha$ is not linear in
+  its parameters.  Given $\hat{\alpha}$ and $\hat{\beta_1}$ and
+  $\hat{\beta_2}$, the parameters for the best-fit curves, show that
+  \begin{displaymath}
+    \sum_{i = 1}^4 \| \hat{\beta_1}\cos(x_i) + \hat{\beta_2}\sin(x_i)
+    - y_i\|^2 \leq \sum_{i = 1}^4 \| \cos(x_i + \hat \alpha) - y_i\|^2
+  \end{displaymath}
+  using the trigonometric identity
+  \begin{displaymath}
+    \cos(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)
+  \end{displaymath}
+  In other words, show that the best-fit curve from part A has error
+  at least as small as the error of the best-fit curve from part B.
+\item
+  (4 points, \textbf{Extra Credit}) Compute $\hat{\alpha}$ from
+  $\hat{\beta_1}$ and $\hat{\beta_2}$. This implies that, in fact, the
+  errors are equal.
+\end{enumerate}
+
+\medskip
+
+\begin{solution}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+\pagebreak
+\begin{solution}
+  \textit{(Continued)}
+\end{solution}
+
+
+\end{document}
