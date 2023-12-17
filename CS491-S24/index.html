@@ -3,17 +3,17 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-12-02 Sat 09:02 -->
+<!-- 2023-12-17 Sun 13:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CAS CS 491 (UNDER CONST.)</title>
+<title>CAS CS 491</title>
 <meta name="author" content="Nathan  Mull" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" href="courseStyle.css">
 </head>
 <body>
 <div id="org-div-home-and-up">⟨ <a href="index.html">home</a> ⟩</div><div id="content" class="content">
-<h1 class="title">CAS CS 491 (UNDER CONST.)
+<h1 class="title">CAS CS 491
 <br />
 <span class="subtitle">Type Theory and Mechanized Reasoning<br> Boston University<br> Spring 2024</span>
 </h1>
@@ -50,28 +50,26 @@ provide a way to construct such an 𝑋?)</li>
 <p>
 For more details, see the <a href="index.html">syllabus</a> for this course.
 </p>
-<div id="outline-container-org6b044e1" class="outline-2">
-<h2 id="org6b044e1">Links</h2>
-<div class="outline-text-2" id="text-org6b044e1">
+<div id="outline-container-org2164b2e" class="outline-2">
+<h2 id="org2164b2e">Links</h2>
+<div class="outline-text-2" id="text-org2164b2e">
 </div>
 <ul class="org-ul">
-<li><a id="org3c29408"></a>Syllabus<br /></li>
-<li><a id="orgf5604f8"></a><a href="schedule.html">Full Schedule</a><br /></li>
-<li><a id="orgecc89d0"></a>Piazza<br /></li>
-<li><a id="orgeb5e027"></a>Gradescope<br /></li>
-<li><a id="org261108e"></a>Office Hours Calendar<br /></li>
-<li><a id="orgdf3642f"></a>Programming:<br />
+<li><a id="org78c0dc7"></a><a href="schedule.html">Full Schedule</a><br /></li>
+<li><a id="orgf2510b5"></a>Piazza<br /></li>
+<li><a id="orgf5c44f5"></a>Gradescope<br /></li>
+<li><a id="org415e3c6"></a>Office Hours Calendar<br /></li>
+<li><a id="org5889903"></a>Programming:<br />
 <ul class="org-ul">
-<li><a id="org8b4ccff"></a><a href="https://lean-lang.org">Lean</a><br /></li>
-<li><a id="orga292e32"></a><a href="https://docs.racket-lang.org/pie/">The Pie Reference</a><br /></li>
-<li><a id="orga89fe2a"></a>TBD<br /></li>
+<li><a id="orgf28cb5b"></a><a href="https://lean-lang.org">Lean</a><br /></li>
+<li><a id="orgb76088f"></a><a href="https://docs.racket-lang.org/pie/">The Pie Reference</a><br /></li>
 </ul>
 </li>
 </ul>
 </div>
-<div id="outline-container-org98e96ee" class="outline-2">
-<h2 id="org98e96ee">Schedule</h2>
-<div class="outline-text-2" id="text-org98e96ee">
+<div id="outline-container-org94b8fcd" class="outline-2">
+<h2 id="org94b8fcd">Schedule (Overview)</h2>
+<div class="outline-text-2" id="text-org94b8fcd">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -91,8 +89,14 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-01">01-18</a></td>
-<td class="org-left">What is type theory? (and what is this course?)</td>
+<td class="org-left"><a href="schedule.html#lecture-01">01-22</a></td>
+<td class="org-left">What is this course?</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-02">01-24</a></td>
+<td class="org-left">Induction and Recursion</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -103,14 +107,14 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-02">01-23</a></td>
-<td class="org-left">A Primer on Logic: Propositions</td>
+<td class="org-left"><a href="schedule.html#lecture-03">01-29</a></td>
+<td class="org-left">Functional Programming to Lean (Part 1)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-03">01-25</a></td>
-<td class="org-left">Satisfiability and Resolution</td>
+<td class="org-left"><a href="schedule.html#lecture-04">01-31</a></td>
+<td class="org-left">Functional Programming in Lean (Part 2)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -121,14 +125,50 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-04">01-30</a></td>
+<td class="org-left"><a href="schedule.html#lecture-05">02-05</a></td>
+<td class="org-left">Propositions and Proofs</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-06">02-07</a></td>
+<td class="org-left">Satisfiability and Resolution (SAT)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-07">02-12</a></td>
+<td class="org-left">Theories and Models</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-08">02-14</a></td>
+<td class="org-left">Satsifability Modulo Theories (SMT)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-09">02-19</a></td>
 <td class="org-left">Intuitionistic Propositional Logic</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-05">02-01</a></td>
-<td class="org-left">Kripke Semantics</td>
+<td class="org-left"><a href="schedule.html#lecture-10">02-21</a></td>
+<td class="org-left">Kripke Models</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -139,32 +179,14 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-06">02-06</a></td>
-<td class="org-left">Quantifiers, Higher-Order Logic</td>
+<td class="org-left"><a href="schedule.html#lecture-11">02-26</a></td>
+<td class="org-left">The Curry-Howard Isomorphism (Take 1)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-07">02-08</a></td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-08">02-13</a></td>
-<td class="org-left">The Lambda Calculus</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-09">02-15</a></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="schedule.html#lecture-12">02-28</a></td>
+<td class="org-left">Quantifiers</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -175,32 +197,14 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-10">02-20</a></td>
-<td class="org-left">TBD</td>
+<td class="org-left"><a href="schedule.html#lecture-13">03-04</a></td>
+<td class="org-left">Theorem Proving in Lean (Part 1)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-10">02-22</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-11">02-27</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-11">02-29</a></td>
-<td class="org-left">TBD</td>
+<td class="org-left"><a href="schedule.html#lecture-14">03-06</a></td>
+<td class="org-left">Theorem Proving in Lean (Part 2)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -211,32 +215,32 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-12">03-05</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-13">03-07</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-14">03-12</a></td>
+<td class="org-left">03-11</td>
+<td class="org-left">NO CLASS</td>
 <td class="org-left">Spring Recess</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-15">03-14</a></td>
+<td class="org-left">03-13</td>
+<td class="org-left">NO CLASS</td>
 <td class="org-left">Spring Recess</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-15">03-18</a></td>
+<td class="org-left">The (Untyped) Lambda Calculus</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-16">03-20</a></td>
+<td class="org-left">Introduction to Type Theory: Simple Types</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -247,115 +251,103 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-16">03-19</a></td>
+<td class="org-left"><a href="schedule.html#lecture-17">03-25</a></td>
+<td class="org-left">Polymorphism and Type Constructors</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-18">03-27</a></td>
+<td class="org-left">Type Inference</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-19">04-01</a></td>
+<td class="org-left">Higher-Order Intuitionistic Logic</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-20">04-03</a></td>
+<td class="org-left">Dependent Type Theory</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-21">04-08</a></td>
+<td class="org-left">Curry-Howard Isomoprhism (Take 2)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-22">04-10</a></td>
+<td class="org-left">Meta-Theory and the Lambda Cube</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-23">04-15</a></td>
+<td class="org-left">NO CLASS</td>
+<td class="org-left">Patriots’ Day</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-24">04-17</a></td>
+<td class="org-left">"Real World" Mechanized Theorem Proving</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-25">04-22</a></td>
+<td class="org-left">NO CLASS</td>
+<td class="org-left">Ex. Credit Opp. TBA</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html#lecture-26">04-24</a></td>
+<td class="org-left">Set-Theoretic and Type-Theoretic Paradoxes</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="schedule.html">04-29</a></td>
 <td class="org-left">TBD</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><a href="schedule-material.html#lecture-17">03-21</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-18">03-26</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-19">03-28</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-20">04-02</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-21">04-04</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">04-09</td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-22">04-11</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-23">04-16</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-24">04-18</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-25">04-23</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left"><a href="schedule-material.html#lecture-26">04-25</a></td>
-<td class="org-left">TBD</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">04-30</td>
+<td class="org-left">05-01</td>
 <td class="org-left">TBD</td>
 <td class="org-left">&#xa0;</td>
 </tr>
@@ -363,26 +355,8 @@ For more details, see the <a href="index.html">syllabus</a> for this course.
 </table>
 </div>
 </div>
-<div id="outline-container-orgb7fb20e" class="outline-2">
-<h2 id="orgb7fb20e">Minutiae</h2>
-<div class="outline-text-2" id="text-orgb7fb20e">
-</div>
-<ul class="org-ul">
-<li><a id="orge69674a"></a>Lecture Location: TBD<br /></li>
-<li><a id="orgbe2c50c"></a>Lecture Times: TBD<br /></li>
-<li><a id="org6a6fbeb"></a>Registrar Page:<br /></li>
-</ul>
-</div>
-<div id="outline-container-org6c8e42e" class="outline-2">
-<h2 id="org6c8e42e">Course Staff</h2>
-<div class="outline-text-2" id="text-org6c8e42e">
-</div>
-<ul class="org-ul">
-<li><a id="orgeed4fef"></a>Instructor: <a href="https://nmmull.github.io">Nathan Mull</a><br /></li>
-</ul>
-</div>
-<div id="outline-container-org411f435" class="outline-2">
-<h2 id="org411f435">Log</h2>
+<div id="outline-container-org37377c7" class="outline-2">
+<h2 id="org37377c7">Log</h2>
 </div>
 </div>
 </body>
