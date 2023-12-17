@@ -9,7 +9,9 @@ computing. I've spent some time thinking about [[https://en.wikipedia.org/wiki/P
 SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type systems and normalization]]. Check my [[file:pdfs/CV.pdf][CV]] for
 more information.
 * Teaching
-*CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
+** *CAS CS 320* Concepts of Programming Languages _Spring 2024_
+** *CAS CS 491* Type Theory and Mechanized Reasoning [[file:CS491-S24/index.html][Spring 2024]]
+** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
 * Links
 ** Schedule:
 *** [[https://outlook.office365.com/owa/calendar/e48e922430b341019118f0f8db733eac@bu.edu/cb5b844eb94240efac93f6609f7036b83685496131320490138/calendar.html][calendar]]
