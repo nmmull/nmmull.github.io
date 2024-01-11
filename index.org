@@ -9,11 +9,13 @@ computing. I've spent some time thinking about [[https://en.wikipedia.org/wiki/P
 SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type systems and normalization]]. Check my [[file:pdfs/CV.pdf][CV]] for
 more information.
 * Teaching
-** *CAS CS 320* Concepts of Programming Languages _Spring 2024_
-** *CAS CS 491* Type Theory and Mechanized Reasoning [[file:CS491-S24/index.html][Spring 2024]]
+** *CAS CS 320* Concepts of Programming Languages /Spring 2024/
+** *CAS CS 491* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 ** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
 * Links
-** Schedule:
+** [[file:policies.org][Course Policies]]
+** [[https://github.com/nmmull][GitHub]]
+** TODO Schedule:
 *** [[https://outlook.office365.com/owa/calendar/e48e922430b341019118f0f8db733eac@bu.edu/cb5b844eb94240efac93f6609f7036b83685496131320490138/calendar.html][calendar]]
 *** [[https://calendly.com/nmmull][meet up]]
 + note: This is not for help with course material, just for course
@@ -25,6 +27,7 @@ more information.
 *** [[https://builds.openlogicproject.org][Open Logic Project]]
 *** [[https://www.picturemecoding.com][Picture Me Coding]]
 *** [[https://www.classes.cs.uchicago.edu/archive/2023/winter/22300-1/qh.pdf][A Quarter of Haskell]]
+** [[file:blog.org][MINIature weB LOG]]
 * Log
 *2023-08-24* I'm acting as a supervisor for a [[https://cra.org/ur2phd/][UR2PhD]] project on
 [[https://www.bu.edu/urop/opportunity/computer-science-3/][correct-by-construction code design]]. +Apply if you're interested!+

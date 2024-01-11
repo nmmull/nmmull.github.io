@@ -1,0 +1,128 @@
+#+title: Course Policies
+#+subtitle: Boston University@@html:<br>@@
+#+subtitle: Spring 2024
+There are a number of university policies and course guidelines you
+should be aware of. /Read them carefully and completely./ Also keep in
+mind that, although I am required to use specific language in some
+cases, I stand behind these policies sincerely and seriously, and I
+hope you feel comfortable reaching out to me about any of them if you
+need to. See the [[https://www.bu.edu/policies/][BU Policies]] page for a complete collection of
+university's policies.[fn:: This page is based on a syllabus for CAS
+CS 132 provided to me by Mark Crovella, and on the syllabus of [[https://www.classes.cs.uchicago.edu/archive/2023/summer/19911-1/info.html][CMSC
+19911]] by Ravi Chugh, Andrew McNutt and Sam Cohen.]
+* Academic Integrity
+Please read the BU's [[https://www.bu.edu/academics/policies/academic-conduct-code/][academic conduct code]]. This is taken very
+seriously at BU and I take it seriously in the courses I teach.
+
+I encourage students to work and study in groups, it's a useful way to
+learn, but when you write down your solutions to an assignment, you
+should do it from your own memory, without looking at anyone's work.
+It is just as important that you /never/ let anyone use your work. All
+parties are culpable in cases of academic misconduct.
+
+If you work with others, consult materials found on the Internet, or
+use an AI assistant, you should cite your sources.  This is a useful
+skill in any setting, and so I recommend being as conservative as
+possible regarding what you cite.  In any assignment, these *citations
+should appear at the top of the submission* (in comments if the
+submission is code). Some examples:
+
++ I discussed problem 1 and 2 with Leah Smith. She helped me understand X
+  and Y aspects of the problem.
++ I saw the stack overflow post
+  /stackoverflow.com/questions/6681284/python-numpy-arrays/ which
+  informed my solution.
++ I helped Zihan Guo with problem 4. I told them to try using X.
++ I asked chatGPT "what's the largest eigenvalue of this matrix?" but
+  asked it not to show me how to solve for it.
+
+It can be tricky determining when a citation is necessary.  When in
+doubt, err on the side of longer, more descriptive citations.  And
+again, *all parties are culpable*.  Those who share their work with
+others (this includes sending files and screen sharing) receive the
+same attention as those who use that work.  Please email me
+immediately if you are unsure about a particular situation.
+
+The line between collaboration, abuse of online resources, and
+misconduct has become incredibly blurry, and cases are becoming more
+difficult to navigate. There are obvious prohibitions:
+
++ Don't share your solutions with anyone else
++ Don't use the solutions of other students
++ Don't ask homework questions online on sites like Stack Overflow
++ Don't ask an AI assistant for a solution to a homework question
++ Don't consult a solution posted online, even to verify your own
+
+It would be unreasonable to believe that these things never happen, or
+that I can recognize every case that it happens.  But I have to depend
+on the integrity of all of you (students), which also means that I
+have to take seriously cases of academic misconduct if they do
+unfortunately come up.  Use your best judgment and remember:
+
++ I and the course staff care about your success in this course.  We
+  provide a number of avenues to ask for help, please use them.
++ You will have to answer questions on exams without external aids
+  (and in interviews when you apply for a job).
++ If you don't know how to start thinking about a problem, /it's okay
+  to ask for pointers on how to start/ in office hours and Piazza.  We
+  can't give you any part of the answer, but we may be able to put you
+  in the right direction.
++ We build in safe-guards (like dropped homework assignments) in the
+  case you are unable to complete an assignment.
+* Disability Statement
+If you require disability accommodations, please contact me as soon as
+possible.  You should provide me with the appropriate documentation,
+available though BU's [[https://www.bu.edu/disability/][Disability and Access Services]].  If there's a
+policy you see that I'm failing to comply with, please reach out with
+suggestions.  And if you'd like accommodations that are not covered by
+existing services or policies, feel free to contact me and we can see
+what we can do.  I want everyone to feel able to fully participate in
+the course.
+* Diversity Statement
+My aim is to present material in a way that respects the diversity of
+the student body.  If I fail to do this, please make me aware.  Any
+suggestions are welcomed and appreciated.  I also expect students
+taking any course of mine to appreciate and respect the unique
+opportunity they have to participate in a diverse student body.
+* Sexual Misconduct
+Please read BU's [[https://www.bu.edu/policies/sexual-misconduct-title-ix-hr/][Sexual Misconduct Policy]] and review the entire page
+for information about talking to someone confidentially about
+experiences of sexual misconduct, filing a report, and any other
+relevant information.  Above all, you should feel safe, and able to be
+productive.  If this is not the case, please reach out to me or
+someone else immediately.
+
+The university is legally obligated to investigate reports of sexual
+misconduct, and therefore it cannot guarantee the confidentiality of a
+report, but it will consider a request for confidentiality and respect
+it to the extent possible.  I am also required to report incidents of
+sexual misconduct and *cannot guarantee confidentiality*.  I must
+provide our Title IX coordinator with relevant details such as the
+names of those involved in the incident.
+* A Comment on Generative AI
+We're going to be talking about the role of AI assistants in education
+for the next decade, and the truth is that no one knows at this moment
+what we're going to do about it.  You are the first generation that
+this is impacting, and not just in college, but likely when you leave
+as well.
+
+This can be a good thing.  You have the ability to shape your
+relationship with these tools (even if that means you choose not to
+use them, or even to fight against their use).  But as this is
+happening, we still need to run courses at universities.
+
+It would be drastic for me to prohibit the use of AI assistants, but
+they *should not be used to solve homework assignments directly*.
+I've seen some very powerful and creative ways that they have been
+used to aid learning.  Some ideas:
+
++ Ask explicitly for the solution not to be given.
++ Ask about high-level ideas, like analogies or mnemonics.
++ Ask for explanations about how code works, or why a piece of code is
+  not working.
+
+If you have any other suggestions please let me know.  The point is,
+it's possible to use these tools in productive ways.  Remember,
+*they're not perfect*, they can be wrong, it can sometimes be easy to
+tell when a solution was produced by an AI assistant, and you won't
+have access to them in exams.

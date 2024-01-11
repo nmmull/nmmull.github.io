@@ -1,0 +1,8 @@
+#+title:MINIature weB LOG
+#+subtitle: Nathan Mull@@html:<br>@@
+#+subtitle: Lecturer@@html:<br>@@
+#+subtitle: Boston University@@html:<br>@@
+#+options: toc:1
+* 2024-01-11: First Post
+I don't really know what I want to do with this blog yet, but I think
+it may come in handy.  An experiment of 2024 I guess.
