@@ -10,7 +10,7 @@ SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type s
 more information.
 * Teaching
 ** *CAS CS 320* Concepts of Programming Languages [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
-** *CAS CS 491* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
+** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 ** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
 * Links
 ** [[file:policies.org][Course Policies]]
