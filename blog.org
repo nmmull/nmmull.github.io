@@ -1,4 +1,4 @@
-#+title:MINIature weB LOG
+#+title:Posts
 #+subtitle: Nathan Mull@@html:<br>@@
 #+subtitle: Lecturer@@html:<br>@@
 #+subtitle: Boston University@@html:<br>@@

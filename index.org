@@ -27,9 +27,11 @@ more information.
 *** [[https://builds.openlogicproject.org][Open Logic Project]]
 *** [[https://www.picturemecoding.com][Picture Me Coding]]
 *** [[https://www.classes.cs.uchicago.edu/archive/2023/winter/22300-1/qh.pdf][A Quarter of Haskell]]
-** [[file:blog.org][MINIature weB LOG]]
+** [[file:blog.org][Posts]]
 * Log
-*2023-08-24* I'm acting as a supervisor for a [[https://cra.org/ur2phd/][UR2PhD]] project on
+** *2023-09-11*
+The application period is now over but feel free to send me a message
+if you're interested in the project.
+** *2023-08-24*
+I'm acting as a supervisor for a [[https://cra.org/ur2phd/][UR2PhD]] project on
 [[https://www.bu.edu/urop/opportunity/computer-science-3/][correct-by-construction code design]]. +Apply if you're interested!+
-*2023-09-11* The application period is now over but feel free to send
-me a message if you're interested in the project.
