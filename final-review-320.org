@@ -213,7 +213,7 @@ We tend to make functions tail recursive by adding an accumulator argument to th
 *** Exercises
 1. hour glass + tr hour glass
 2. tr evaluator
-** Type Checking and Type Inference
+** Type Checking
 OCaml is strongly typed, and it is statically checked for adherence to
 typing rules.  OCaml also has type inference, which means we often do
 not have to specify the types of expressions in OCaml programs (though
@@ -338,19 +338,303 @@ TODO
 2. Find a sentence in this grammar which has multiple derivations.
 3. Update this grammar so that it makes the operations precedence and hold
 ** Regular Grammars
-Regular grammars are a special form of grammar which has
-*** Definitions
-*** Regular Expressions
-** Chomsky Normal Forms
+Regular grammars are a special form of grammar.
+
+Regular expressions are a compact representation of regular grammars.
+** Chomsky Norm Form
+TODO
 * Parsing
-** Recursive-Descent Parsing
+The general parsing problem is to find a derivation of a sentence, if
+one exists.  (NOTE ON CHOMSKY)
+
+In the context of this course, we are more interested in the specific
+problem of converting a string representation of a program into an
+algebraic data type representing the syntax of the program.
+
+There are many ways to accomplish this, we saw two.
+
+** Recursive-Descent
+
+Recursive-descent parsing refers to an ad-hoc form of parsing in which
+mutually recursive functions are defined to parse forms of a
+specification.
+
+This is best understood by example.
+
+TODO
+
+(Note: It is unlikely that recursive-descent parsing will appear on
+the final exam in any significant way.)
+
 ** Combinators
+
+We can think of a parser for ~'a~'s as a functions of type
+#+begin_src ocaml
+  type 'a parser = char list -> ('a * char list) option
+#+end_src
+which
+1. consumes the prefix of the input stream corresponding to an ~'a~,
+2. converts that prefix to an ~'a~, and finally,
+3. returns that ~'a~ and the remainder of the stream, failing if no
+   initial part of the stream corresponds to an ~'a~.
+
+One of the simplest examples is the ~char~ parser:
+#+begin_src ocaml
+  let char (d : char) (cs : char list) : (char * char list) option =
+    match cs with
+    | c :: cs when c = d -> Some (d, cs)
+    | _ -> None
+#+end_src
+which consumes the first character of ~cs~ given that it is equal to
+~d~ and returns it, along with the remainder of ~cs~.  This parser
+fails (returns ~None~) in the case that the first character of ~cs~ is
+not ~d~.
+
+When we want to /use/ a parser, we apply it to a character list and
+verify that it consumed it's the entire input:
+#+begin_src ocaml
+  let parse (p : 'a parser) (s : string) =
+    match p (explode s) with
+    | (a, []) -> Some a
+    | _ -> None
+#+end_src
+
+A *parser combinator* is a higher-order function which can be used to
+compose parsers. There is a small subset of parser combinators which
+are of particular importance because they correspond to the constructs
+in EBNF specifications.
++ *Alternatives.* ~p1 <|> p2~ is the parser which tries running the
+  parser ~p1~, returning its output if it succeeds, and running ~p2~
+  otherwise.
+
+  If ~p1~ is a parser for the forms of a nonterminal symbol ~<p1>~
+  and ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~p1
+  <|> p2~ is a parser for forms of the nonterminal symbol
+  #+begin_src
+    <alt> ::= <p1> | <p2>
+  #+end_src
++ *Sequencing.* ~seq p1 p2~ is the parser which runs both ~p1~ and
+  ~p2~ and returns both of their outputs if both parsers succeed.  It
+  fails if either ~p1~ or ~p2~ fails.
+
+  If ~p1~ is a parser for the forms of a nonterminal symbol ~<p1>~ and
+  ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~p1 <|>
+  p2~ is a parser for forms of the nonterminal symbol
+  #+begin_src
+    <seq> ::= <p1> <p2>
+  #+end_src
++ *Repetition.* ~many p~ is the parser which runs ~p~ repeatedly until
+  it fails, collecting all its outputs in a list.
+
+  If ~p~ is a parser for the forms of a nonterminal symbol ~<p>~ and
+  ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~many
+  p~ is a parser for forms of the nonterminal symbol
+  #+begin_src
+    <many> ::= { <p> }
+  #+end_src
+
+The last important combinator is ~map~, which can be used to
+manipulate the output of a parser without affecting how it consumes
+its input.  If ~p~ is an ~'a parser~, and ~f~ is a function of type
+~'a -> 'b~, then ~map f p~ is a ~'b parser~ which runs ~'a~ and then
+applies ~f~ to its output (if it succeeds).
+
+You should also be familiar with how to use the more convenient parser
+combinators throughout the course (though, for the exam, you will not
+be required to memorize their definitions).
++ ~str~, ~token~, ~ws~
++ (~>>~), (~<<~), ~seq3~, ~seq4~
++ (~>|~), ~map2~, ~map3~, ~map4~
++ ~pure~, ~fail~, (we will not test on ~bind~ (~>>=~) but it is good to know...)
+
+
+*** Exercises
 * Formal Semantics
-** Reductions and Derivations
-* Variables
-** Scoping
-* Parameter Passing
-** Call by Name, Call by Value, Call by Reference
-* Activation Records
-* Closures
+In general, semantics is the study of the /meaning/ of language.  We
+use concepts from the study of formal semantics to model the behavior
+(i.e., the meaning) of programs.
+
+We discussed two forms of semantics, *denotational* semantics and
+*operational* semantics.
+
+Giving a denotational semantics for a programming language means
+assigning to each a /mathematical function/ which has the same
+input/output behavior as the program.
+
+In this course, we focus on operational semantics.  Giving an
+operational semantics for a programming language means describing how
+a program in the language is evaluated.  This typically means defining
+a *reduction relation* on programs, which describes how a program is
+reduced until it reaches a state which cannot be further reduced.
+
+** Derivations
+
+Suppose we have a programming language $\mathcal P$ defined by a given BNF grammar.
+
+A *configuration* is a pair consistent of a program $P$ and a state
+$S$ which may be manipulated by programs.  The state may be empty, as
+in the case of functional languages.
+
+Defining the (small-step) operational semantics for $\mathcal P$ means
+defining a reduction relation for configurations:
+\begin{equation*}
+( \ S \ , \ P \ ) \longrightarrow ( \ S' \ , \ P' \ )
+\end{equation*}
+
+A reduction relation is typically defined via *reduction rules*, which
+consist of a /shape/ of a reduction together with a collection of
+*premises*, which may be shapes of reductions or trivial premises
+(also called axioms). The general form of a reduction rules is
+something like
+\begin{equation*}
+\frac
+{P_1 \qquad P_2 \qquad \dots \qquad P_k}
+{C \longrightarrow C'}
+\ \textsf{(name)}
+\end{equation*}
+
+/Shape/ here refers to the fact that the configurations in a reduction
+rule contains /meta-variables/ that describe the /kind of reductions/
+that can be derived, or that can be used a premises.  For example, the
+rules for evaluating an arithmetic expression might include
+\begin{equation*}
+\frac{e_1 \longrightarrow e_1'}
+{e_1 + e_2 \longrightarrow e_1' + e_2}
+\ \textsf{(add-left)}
+\end{equation*}
+which expresses that if $e_1$ reduces to $e_1'$ in a single step then
+$e_1 + e_2$ reduces to $e_1 + e_2'$ in a single step /no matter the
+expressions $e_1$, $e_1'$ and $e_2$/.  This rule can be used to show that
+\begin{equation*}
+(1 + 2) + 3 \longrightarrow 3 + 3
+\end{equation*}
+but also that
+\begin{equation*}
+(1 + (2 * 3)) + 3 \longrightarrow (1 + 6) + 3
+\end{equation*}
+Both reductions invoke that fact that if the left argument can be
+reduced by a single step, then the sum can be reduced by a single
+step.
+
+A *derivation* is, informally, a tree in which each node is a
+reduction and the children of a node are the premises required to
+derive that conclusion.  The leaves of a derivation are trivial
+premises (axioms).
+
+A derivation of a reduction $C \longrightarrow C'$ is a derivation
+whose root is $C \longrightarrow C'$.
+
+TODO derivation
+
+It is generally preferable that any derivable reduction has a unique
+derivation.  This defining an evaluation procedure easier, and amounts
+to fixing an *evaluation order*.  We can often enforce an evaluation
+order via the structure of our reduction rules.
+
+What we have been describing is a *single-step reduction relation*.
+Any single-step reduction relation can be extended to a *multi-step
+reduction relation* by including the following rules and a multi-step reduction relation symbol
+'$\longrightarrow^{\star}$'.
+\begin{equation*}
+\frac
+{}
+{C \longrightarrow^\star C}
+\ \textsf{(refl)}
+\qquad
+\frac
+{C \longrightarrow^\star C' \qquad C' \longrightarrow C''}
+{C \longrightarrow^\star C''}
+\ \textsf{(trans)}
+\end{equation*}
+
+Formally, *evaluation* is the process of determining a configuration $C'$ for a
+given configuration $C$ such that $C \longrightarrow^\star C'$ and
+$C'$ cannot be further reduced (i.e., there is no other configuration
+$C''$ such that $C' \longrightarrow C''$).
+
+*** Exercises
+1. Write a derivation for this reduction.
+2. Find a configuration which this single-step reduces to.
+3. Write a derivation for this multi-step reduction.
+4. Find a configuration for this multi-step reduction.
+5. Show that this reduction relation is not normalizing.
+6. Show that this relation is not unique.
+7. Make this reduction update the above relation so that it has unique
+   reductions and arguments are evaluated from left to right.
+** Examples
+*** Arithmetic Expressions
+*** The Lambda Calculus
+*** A Stack-Oriented Language
+One of the running examples we used for understanding operations
+semantics was stack-oriented languages.
+
+The following is a BNF specification for a stack-oriented language
+whose programs manipulate a stack of integers.
+#+begin_src
+  <prog>  ::= { <com> }
+  <com>   ::= <num> | drop | dup | swap | .
+            | + | - | *
+            | then <com> else <com> end
+  <num>   ::= <digit> { <digit> }
+  <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+#+end_src
+
+Here, for example, is a program which determines the prints the value of $14^2 + 15^2$.
+#+begin_src
+  14 dup *
+  15 dup *
+  + .
+#+end_src
+In the operational semantics of this language we take a configuration
+to be a program ($P$) together with a stack of integers ($S$) and a trace of
+strings ($T$) that are printed throughout the evaluation of the program.
+\begin{equation*}
+( \ S \ , \ T \ , \ P \ )
+\end{equation*}
+with a special error configuration
+\begin{equation*}
+\mathsf{ERROR} \equiv ( \ \varnothing \ , \ \textsf{panic} :: \varnothing \ , \ \epsilon \ )
+\end{equation*}
+
+The operational semantics then describe how each command affects the stack and the trace.
+
+TODO
+*** Exercises
+TODO
+* Subroutines
+** Parameter Passing
+** Examples
+*** Lambda Calculus with Call-by-Name Operational Semantics
+*** Lambda Calculus with Call-by-Value Operational Semantics
+*** Stack-Oriented Language with Subroutines
+* Environments
+We need to specify how those variable bindings are represented in a
+configuration.
+
+When introducing variables to a programming language, we have to
+specify when/where those bindings are accessible. This is called the
+*scope* of the binding.  In general, this is a complex question, but
+is broad strokes there are two paradigms: *dynamic scoping* and
+*lexical scoping*.
+** Stack-Oriented Language with Variables
+* Dynamic Scoping
+Dynamic scoping refers to the idea of using /computational (temporal)
+context/ to determine when a binding is available.  In its simplest
+form, we may think of all bindings as globally available as soon as
+they have been instantiated.
+
+In a language with dynamic scoping and /subroutines/, when it comes to
+determining what bindings are available, it doesn't matter where a
+subroutine is defined, but rather where it is called.
+
+Bash is a widely used language with dynamic scoping, but in general,
+dynamic scoping is not common in modern programming languages.  It is,
+however, much easier to implement than lexical scoping.
+** Stack-Oriented Language with Dynamic Scoping
+* Lexical Scoping
+** Activation Records
+*** Stack-Oriented Language with Mutable Variables and Lexical Scoping
+** Closures
+*** Stack-Oriented Language with Immutable Variables and Lexical Scoping
 * Compilation
+* Solutions to Exercises

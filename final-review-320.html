@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-28 Sun 12:51 -->
+<!-- 2024-04-28 Sun 19:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CAS CS 320 Review</title>
@@ -60,7 +60,7 @@
 <li><a href="#orgcedadcd">Record Types</a></li>
 <li><a href="#org87ba4af">Higher-Order Programming</a></li>
 <li><a href="#orgf62c214">Tail Recursion</a></li>
-<li><a href="#orge76012f">Type Checking and Type Inference</a></li>
+<li><a href="#org5863bf9">Type Checking</a></li>
 </ul>
 </li>
 <li><a href="#orge0e9d8a">Formal Grammar</a>
@@ -68,33 +68,45 @@
 <li><a href="#orgd39b698">BNF Specifications</a></li>
 <li><a href="#org5fe2548">Ambiguity</a></li>
 <li><a href="#org19c5b81">Regular Grammars</a></li>
-<li><a href="#org68a2744">Chomsky Normal Forms</a></li>
+<li><a href="#org5dd135d">Chomsky Norm Form</a></li>
 </ul>
 </li>
 <li><a href="#org6a3f72d">Parsing</a>
 <ul>
-<li><a href="#orga74ef45">Recursive-Descent Parsing</a></li>
+<li><a href="#org9664a00">Recursive-Descent</a></li>
 <li><a href="#orgf8e306b">Combinators</a></li>
 </ul>
 </li>
 <li><a href="#orga0ae140">Formal Semantics</a>
 <ul>
-<li><a href="#org9ea8a1f">Reductions and Derivations</a></li>
+<li><a href="#org86d466c">Derivations</a></li>
+<li><a href="#orgc963db8">Examples</a></li>
 </ul>
 </li>
-<li><a href="#org65e177a">Variables</a>
+<li><a href="#orgd08fbca">Subroutines</a>
 <ul>
-<li><a href="#orgde51277">Scoping</a></li>
+<li><a href="#org599e14b">Parameter Passing</a></li>
+<li><a href="#org186cdf4">Examples</a></li>
 </ul>
 </li>
-<li><a href="#org599e14b">Parameter Passing</a>
+<li><a href="#org2552d76">Environments</a>
 <ul>
-<li><a href="#orgf28dc77">Call by Name, Call by Value, Call by Reference</a></li>
+<li><a href="#org97147b3">Stack-Oriented Language with Variables</a></li>
 </ul>
 </li>
+<li><a href="#orge83cf98">Dynamic Scoping</a>
+<ul>
+<li><a href="#org629ca0b">Stack-Oriented Language with Dynamic Scoping</a></li>
+</ul>
+</li>
+<li><a href="#orgbc1fe25">Lexical Scoping</a>
+<ul>
 <li><a href="#orgf4a1425">Activation Records</a></li>
 <li><a href="#org6e9edfe">Closures</a></li>
+</ul>
+</li>
 <li><a href="#org6047722">Compilation</a></li>
+<li><a href="#org54d3a2a">Solutions to Exercises</a></li>
 </ul>
 </div>
 </div>
@@ -127,9 +139,9 @@ language constructs like let-definitions/bindings, anonymous
 functions, and if-else expressions.
 </p>
 </div>
-<div id="outline-container-org418b051" class="outline-4">
-<h4 id="org418b051">Exercises</h4>
-<div class="outline-text-4" id="text-org418b051">
+<div id="outline-container-org5f50e95" class="outline-4">
+<h4 id="org5f50e95">Exercises</h4>
+<div class="outline-text-4" id="text-org5f50e95">
 <ol class="org-ol">
 <li><p>
 Implement the function
@@ -241,8 +253,8 @@ can depend parametrically on another type).  These two features are encompassed 
 </pre>
 </div>
 </div>
-<div id="outline-container-org488d3bb" class="outline-4">
-<h4 id="org488d3bb">Exercises</h4>
+<div id="outline-container-orgcaa61e5" class="outline-4">
+<h4 id="orgcaa61e5">Exercises</h4>
 </div>
 </div>
 <div id="outline-container-orgcedadcd" class="outline-3">
@@ -286,9 +298,9 @@ let recip (r : rat) : rat =
 </div></li>
 </ul>
 </div>
-<div id="outline-container-org748a705" class="outline-4">
-<h4 id="org748a705">Exercises</h4>
-<div class="outline-text-4" id="text-org748a705">
+<div id="outline-container-orgee27efa" class="outline-4">
+<h4 id="orgee27efa">Exercises</h4>
+<div class="outline-text-4" id="text-orgee27efa">
 <ol class="org-ol">
 <li>merge user data</li>
 <li>add to captured bindings</li>
@@ -371,9 +383,9 @@ f (...(f (f (f accu x1) x2) x3)...) xn
 </pre></li>
 </ul>
 </div>
-<div id="outline-container-orga1a28f9" class="outline-4">
-<h4 id="orga1a28f9">Exercises</h4>
-<div class="outline-text-4" id="text-orga1a28f9">
+<div id="outline-container-orgdc8df56" class="outline-4">
+<h4 id="orgdc8df56">Exercises</h4>
+<div class="outline-text-4" id="text-orgdc8df56">
 <ol class="org-ol">
 <li>predicate operations</li>
 <li>find the derivative (newtons)</li>
@@ -417,9 +429,9 @@ We tend to make functions tail recursive by adding an accumulator argument to th
 </pre>
 </div>
 </div>
-<div id="outline-container-org2598657" class="outline-4">
-<h4 id="org2598657">Exercises</h4>
-<div class="outline-text-4" id="text-org2598657">
+<div id="outline-container-orgbe45995" class="outline-4">
+<h4 id="orgbe45995">Exercises</h4>
+<div class="outline-text-4" id="text-orgbe45995">
 <ol class="org-ol">
 <li>hour glass + tr hour glass</li>
 <li>tr evaluator</li>
@@ -427,9 +439,9 @@ We tend to make functions tail recursive by adding an accumulator argument to th
 </div>
 </div>
 </div>
-<div id="outline-container-orge76012f" class="outline-3">
-<h3 id="orge76012f">Type Checking and Type Inference</h3>
-<div class="outline-text-3" id="text-orge76012f">
+<div id="outline-container-org5863bf9" class="outline-3">
+<h3 id="org5863bf9">Type Checking</h3>
+<div class="outline-text-3" id="text-org5863bf9">
 <p>
 OCaml is strongly typed, and it is statically checked for adherence to
 typing rules.  OCaml also has type inference, which means we often do
@@ -437,9 +449,9 @@ not have to specify the types of expressions in OCaml programs (though
 it can be useful for documentation purposes).
 </p>
 </div>
-<div id="outline-container-orgd519c59" class="outline-4">
-<h4 id="orgd519c59">Exercises</h4>
-<div class="outline-text-4" id="text-orgd519c59">
+<div id="outline-container-org99613af" class="outline-4">
+<h4 id="org99613af">Exercises</h4>
+<div class="outline-text-4" id="text-org99613af">
 <ol class="org-ol">
 <li>What is the type of this?</li>
 <li>Does this type check?</li>
@@ -471,9 +483,9 @@ itself.
 </p>
 </div>
 
-<div id="outline-container-orge26a471" class="outline-4">
-<h4 id="orge26a471">Definitions</h4>
-<div class="outline-text-4" id="text-orge26a471">
+<div id="outline-container-orgc50954e" class="outline-4">
+<h4 id="orgc50954e">Definitions</h4>
+<div class="outline-text-4" id="text-orgc50954e">
 <p>
 A <b>sentential form</b> is a sequences of symbols and a <b>sentence</b> is a
 sequence of terminal symbols.
@@ -523,17 +535,17 @@ representation.
 </div>
 </div>
 
-<div id="outline-container-orgd7b88a4" class="outline-4">
-<h4 id="orgd7b88a4">Examples</h4>
-<div class="outline-text-4" id="text-orgd7b88a4">
+<div id="outline-container-orga7b93a9" class="outline-4">
+<h4 id="orga7b93a9">Examples</h4>
+<div class="outline-text-4" id="text-orga7b93a9">
 <p>
 TODO
 </p>
 </div>
 </div>
-<div id="outline-container-org2d77dc9" class="outline-4">
-<h4 id="org2d77dc9">Exercises</h4>
-<div class="outline-text-4" id="text-org2d77dc9">
+<div id="outline-container-org028c409" class="outline-4">
+<h4 id="org028c409">Exercises</h4>
+<div class="outline-text-4" id="text-org028c409">
 <ol class="org-ol">
 <li>List the symbols implicit in this specification.</li>
 <li>Give a derivation of S in this grammar.</li>
@@ -640,70 +652,545 @@ b \square c\) as \(a \triangle (b \square c)\).
 precedence than addition, so the expression <code>2 * 2 + 3</code> evaluates to
 <code>7</code> as opposed to <code>10</code>.</li>
 </ul>
+
+<p>
+As with associativity, we can enforce precedence within the
+specification itself.
+</p>
+
+<p>
+TODO
+</p>
 </div>
 </div>
-<div id="outline-container-org2e83ffc" class="outline-4">
-<h4 id="org2e83ffc">Exercises</h4>
+<div id="outline-container-org0adfa3c" class="outline-4">
+<h4 id="org0adfa3c">Exercises</h4>
+<div class="outline-text-4" id="text-org0adfa3c">
+<ol class="org-ol">
+<li>Is this grammar ambiguous?</li>
+<li>Find a sentence in this grammar which has multiple derivations.</li>
+<li>Update this grammar so that it makes the operations precedence and hold</li>
+</ol>
+</div>
 </div>
 </div>
 <div id="outline-container-org19c5b81" class="outline-3">
 <h3 id="org19c5b81">Regular Grammars</h3>
 <div class="outline-text-3" id="text-org19c5b81">
+<p>
+Regular grammars are a special form of grammar.
+</p>
+
+<p>
+Regular expressions are a compact representation of regular grammars.
+</p>
 </div>
-<div id="outline-container-orgc50954e" class="outline-4">
-<h4 id="orgc50954e">Definitions</h4>
 </div>
-<div id="outline-container-org2cb63bb" class="outline-4">
-<h4 id="org2cb63bb">Regular Expressions</h4>
+<div id="outline-container-org5dd135d" class="outline-3">
+<h3 id="org5dd135d">Chomsky Norm Form</h3>
+<div class="outline-text-3" id="text-org5dd135d">
+<p>
+TODO
+</p>
 </div>
-</div>
-<div id="outline-container-org68a2744" class="outline-3">
-<h3 id="org68a2744">Chomsky Normal Forms</h3>
 </div>
 </div>
 <div id="outline-container-org6a3f72d" class="outline-2">
 <h2 id="org6a3f72d">Parsing</h2>
 <div class="outline-text-2" id="text-org6a3f72d">
+<p>
+The general parsing problem is to find a derivation of a sentence, if
+one exists.  (NOTE ON CHOMSKY)
+</p>
+
+<p>
+In the context of this course, we are more interested in the specific
+problem of converting a string representation of a program into an
+algebraic data type representing the syntax of the program.
+</p>
+
+<p>
+There are many ways to accomplish this, we saw two.
+</p>
 </div>
-<div id="outline-container-orga74ef45" class="outline-3">
-<h3 id="orga74ef45">Recursive-Descent Parsing</h3>
+
+<div id="outline-container-org9664a00" class="outline-3">
+<h3 id="org9664a00">Recursive-Descent</h3>
+<div class="outline-text-3" id="text-org9664a00">
+<p>
+Recursive-descent parsing refers to an ad-hoc form of parsing in which
+mutually recursive functions are defined to parse forms of a
+specification.
+</p>
+
+<p>
+This is best understood by example.
+</p>
+
+<p>
+TODO
+</p>
+
+<p>
+(Note: It is unlikely that recursive-descent parsing will appear on
+the final exam in any significant way.)
+</p>
 </div>
+</div>
+
 <div id="outline-container-orgf8e306b" class="outline-3">
 <h3 id="orgf8e306b">Combinators</h3>
+<div class="outline-text-3" id="text-orgf8e306b">
+<p>
+We can think of a parser for <code>'a</code>'s as a functions of type
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">type 'a parser = char list -&gt; ('a * char list) option
+</pre>
+</div>
+<p>
+which
+</p>
+<ol class="org-ol">
+<li>consumes the prefix of the input stream corresponding to an <code>'a</code>,</li>
+<li>converts that prefix to an <code>'a</code>, and finally,</li>
+<li>returns that <code>'a</code> and the remainder of the stream, failing if no
+initial part of the stream corresponds to an <code>'a</code>.</li>
+</ol>
+
+<p>
+One of the simplest examples is the <code>char</code> parser:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let char (d : char) (cs : char list) : (char * char list) option =
+  match cs with
+  | c :: cs when c = d -&gt; Some (d, cs)
+  | _ -&gt; None
+</pre>
+</div>
+<p>
+which consumes the first character of <code>cs</code> given that it is equal to
+<code>d</code> and returns it, along with the remainder of <code>cs</code>.  This parser
+fails (returns <code>None</code>) in the case that the first character of <code>cs</code> is
+not <code>d</code>.
+</p>
+
+<p>
+When we want to <i>use</i> a parser, we apply it to a character list and
+verify that it consumed it's the entire input:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let parse (p : 'a parser) (s : string) =
+  match p (explode s) with
+  | (a, []) -&gt; Some a
+  | _ -&gt; None
+</pre>
+</div>
+
+<p>
+A <b>parser combinator</b> is a higher-order function which can be used to
+compose parsers. There is a small subset of parser combinators which
+are of particular importance because they correspond to the constructs
+in EBNF specifications.
+</p>
+<ul class="org-ul">
+<li><p>
+<b>Alternatives.</b> <code>p1 &lt;|&gt; p2</code> is the parser which tries running the
+parser <code>p1</code>, returning its output if it succeeds, and running <code>p2</code>
+otherwise.
+</p>
+
+<p>
+If <code>p1</code> is a parser for the forms of a nonterminal symbol <code>&lt;p1&gt;</code>
+and <code>p2</code> a parser for forms of a nonterminal symbol <code>&lt;p2&gt;</code>, then <code>p1
+  &lt;|&gt; p2</code> is a parser for forms of the nonterminal symbol
+</p>
+<pre class="example">
+&lt;alt&gt; ::= &lt;p1&gt; | &lt;p2&gt;
+</pre></li>
+<li><p>
+<b>Sequencing.</b> <code>seq p1 p2</code> is the parser which runs both <code>p1</code> and
+<code>p2</code> and returns both of their outputs if both parsers succeed.  It
+fails if either <code>p1</code> or <code>p2</code> fails.
+</p>
+
+<p>
+If <code>p1</code> is a parser for the forms of a nonterminal symbol <code>&lt;p1&gt;</code> and
+<code>p2</code> a parser for forms of a nonterminal symbol <code>&lt;p2&gt;</code>, then <code>p1 &lt;|&gt;
+  p2</code> is a parser for forms of the nonterminal symbol
+</p>
+<pre class="example">
+&lt;seq&gt; ::= &lt;p1&gt; &lt;p2&gt;
+</pre></li>
+<li><p>
+<b>Repetition.</b> <code>many p</code> is the parser which runs <code>p</code> repeatedly until
+it fails, collecting all its outputs in a list.
+</p>
+
+<p>
+If <code>p</code> is a parser for the forms of a nonterminal symbol <code>&lt;p&gt;</code> and
+<code>p2</code> a parser for forms of a nonterminal symbol <code>&lt;p2&gt;</code>, then <code>many
+  p</code> is a parser for forms of the nonterminal symbol
+</p>
+<pre class="example">
+&lt;many&gt; ::= { &lt;p&gt; }
+</pre></li>
+</ul>
+
+<p>
+The last important combinator is <code>map</code>, which can be used to
+manipulate the output of a parser without affecting how it consumes
+its input.  If <code>p</code> is an <code>'a parser</code>, and <code>f</code> is a function of type
+<code>'a -&gt; 'b</code>, then <code>map f p</code> is a <code>'b parser</code> which runs <code>'a</code> and then
+applies <code>f</code> to its output (if it succeeds).
+</p>
+
+<p>
+You should also be familiar with how to use the more convenient parser
+combinators throughout the course (though, for the exam, you will not
+be required to memorize their definitions).
+</p>
+<ul class="org-ul">
+<li><code>str</code>, <code>token</code>, <code>ws</code></li>
+<li>(<code>&gt;&gt;</code>), (<code>&lt;&lt;</code>), <code>seq3</code>, <code>seq4</code></li>
+<li>(<code>&gt;|</code>), <code>map2</code>, <code>map3</code>, <code>map4</code></li>
+<li><code>pure</code>, <code>fail</code>, (we will not test on <code>bind</code> (<code>&gt;&gt;=</code>) but it is good to know&#x2026;)</li>
+</ul>
+</div>
+
+
+<div id="outline-container-org0218e89" class="outline-4">
+<h4 id="org0218e89">Exercises</h4>
+</div>
 </div>
 </div>
 <div id="outline-container-orga0ae140" class="outline-2">
 <h2 id="orga0ae140">Formal Semantics</h2>
 <div class="outline-text-2" id="text-orga0ae140">
+<p>
+In general, semantics is the study of the <i>meaning</i> of language.  We
+use concepts from the study of formal semantics to model the behavior
+(i.e., the meaning) of programs.
+</p>
+
+<p>
+We discussed two forms of semantics, <b>denotational</b> semantics and
+<b>operational</b> semantics.
+</p>
+
+<p>
+Giving a denotational semantics for a programming language means
+assigning to each a <i>mathematical function</i> which has the same
+input/output behavior as the program.
+</p>
+
+<p>
+In this course, we focus on operational semantics.  Giving an
+operational semantics for a programming language means describing how
+a program in the language is evaluated.  This typically means defining
+a <b>reduction relation</b> on programs, which describes how a program is
+reduced until it reaches a state which cannot be further reduced.
+</p>
 </div>
-<div id="outline-container-org9ea8a1f" class="outline-3">
-<h3 id="org9ea8a1f">Reductions and Derivations</h3>
+
+<div id="outline-container-org86d466c" class="outline-3">
+<h3 id="org86d466c">Derivations</h3>
+<div class="outline-text-3" id="text-org86d466c">
+<p>
+Suppose we have a programming language \(\mathcal P\) defined by a given BNF grammar.
+</p>
+
+<p>
+A <b>configuration</b> is a pair consistent of a program \(P\) and a state
+\(S\) which may be manipulated by programs.  The state may be empty, as
+in the case of functional languages.
+</p>
+
+<p>
+Defining the (small-step) operational semantics for \(\mathcal P\) means
+defining a reduction relation for configurations:
+</p>
+\begin{equation*}
+( \ S \ , \ P \ ) \longrightarrow ( \ S' \ , \ P' \ )
+\end{equation*}
+
+<p>
+A reduction relation is typically defined via <b>reduction rules</b>, which
+consist of a <i>shape</i> of a reduction together with a collection of
+<b>premises</b>, which may be shapes of reductions or trivial premises
+(also called axioms). The general form of a reduction rules is
+something like
+</p>
+\begin{equation*}
+\frac
+{P_1 \qquad P_2 \qquad \dots \qquad P_k}
+{C \longrightarrow C'}
+\ \textsf{(name)}
+\end{equation*}
+
+<p>
+<i>Shape</i> here refers to the fact that the configurations in a reduction
+rule contains <i>meta-variables</i> that describe the <i>kind of reductions</i>
+that can be derived, or that can be used a premises.  For example, the
+rules for evaluating an arithmetic expression might include
+</p>
+\begin{equation*}
+\frac{e_1 \longrightarrow e_1'}
+{e_1 + e_2 \longrightarrow e_1' + e_2}
+\ \textsf{(add-left)}
+\end{equation*}
+<p>
+which expresses that if \(e_1\) reduces to \(e_1'\) in a single step then
+\(e_1 + e_2\) reduces to \(e_1 + e_2'\) in a single step <i>no matter the
+expressions \(e_1\), \(e_1'\) and \(e_2\)</i>.  This rule can be used to show that
+</p>
+\begin{equation*}
+(1 + 2) + 3 \longrightarrow 3 + 3
+\end{equation*}
+<p>
+but also that
+</p>
+\begin{equation*}
+(1 + (2 * 3)) + 3 \longrightarrow (1 + 6) + 3
+\end{equation*}
+<p>
+Both reductions invoke that fact that if the left argument can be
+reduced by a single step, then the sum can be reduced by a single
+step.
+</p>
+
+<p>
+A <b>derivation</b> is, informally, a tree in which each node is a
+reduction and the children of a node are the premises required to
+derive that conclusion.  The leaves of a derivation are trivial
+premises (axioms).
+</p>
+
+<p>
+A derivation of a reduction \(C \longrightarrow C'\) is a derivation
+whose root is \(C \longrightarrow C'\).
+</p>
+
+<p>
+TODO derivation
+</p>
+
+<p>
+It is generally preferable that any derivable reduction has a unique
+derivation.  This defining an evaluation procedure easier, and amounts
+to fixing an <b>evaluation order</b>.  We can often enforce an evaluation
+order via the structure of our reduction rules.
+</p>
+
+<p>
+What we have been describing is a <b>single-step reduction relation</b>.
+Any single-step reduction relation can be extended to a <b>multi-step
+reduction relation</b> by including the following rules and a multi-step reduction relation symbol
+'\(\longrightarrow^{\star}\)'.
+</p>
+\begin{equation*}
+\frac
+{}
+{C \longrightarrow^\star C}
+\ \textsf{(refl)}
+\qquad
+\frac
+{C \longrightarrow^\star C' \qquad C' \longrightarrow C''}
+{C \longrightarrow^\star C''}
+\ \textsf{(trans)}
+\end{equation*}
+
+<p>
+Formally, <b>evaluation</b> is the process of determining a configuration \(C'\) for a
+given configuration \(C\) such that \(C \longrightarrow^\star C'\) and
+\(C'\) cannot be further reduced (i.e., there is no other configuration
+\(C''\) such that \(C' \longrightarrow C''\)).
+</p>
+</div>
+
+<div id="outline-container-org638c6ba" class="outline-4">
+<h4 id="org638c6ba">Exercises</h4>
+<div class="outline-text-4" id="text-org638c6ba">
+<ol class="org-ol">
+<li>Write a derivation for this reduction.</li>
+<li>Find a configuration which this single-step reduces to.</li>
+<li>Write a derivation for this multi-step reduction.</li>
+<li>Find a configuration for this multi-step reduction.</li>
+<li>Show that this reduction relation is not normalizing.</li>
+<li>Show that this relation is not unique.</li>
+<li>Make this reduction update the above relation so that it has unique
+reductions and arguments are evaluated from left to right.</li>
+</ol>
 </div>
 </div>
-<div id="outline-container-org65e177a" class="outline-2">
-<h2 id="org65e177a">Variables</h2>
-<div class="outline-text-2" id="text-org65e177a">
 </div>
-<div id="outline-container-orgde51277" class="outline-3">
-<h3 id="orgde51277">Scoping</h3>
+<div id="outline-container-orgc963db8" class="outline-3">
+<h3 id="orgc963db8">Examples</h3>
+<div class="outline-text-3" id="text-orgc963db8">
+</div>
+<div id="outline-container-org0a342ac" class="outline-4">
+<h4 id="org0a342ac">Arithmetic Expressions</h4>
+</div>
+<div id="outline-container-org1bc4654" class="outline-4">
+<h4 id="org1bc4654">The Lambda Calculus</h4>
+</div>
+<div id="outline-container-orgecfa776" class="outline-4">
+<h4 id="orgecfa776">A Stack-Oriented Language</h4>
+<div class="outline-text-4" id="text-orgecfa776">
+<p>
+One of the running examples we used for understanding operations
+semantics was stack-oriented languages.
+</p>
+
+<p>
+The following is a BNF specification for a stack-oriented language
+whose programs manipulate a stack of integers.
+</p>
+<pre class="example">
+&lt;prog&gt;  ::= { &lt;com&gt; }
+&lt;com&gt;   ::= &lt;num&gt; | drop | dup | swap | .
+          | + | - | *
+          | then &lt;com&gt; else &lt;com&gt; end
+&lt;num&gt;   ::= &lt;digit&gt; { &lt;digit&gt; }
+&lt;digit&gt; ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+</pre>
+
+<p>
+Here, for example, is a program which determines the prints the value of \(14^2 + 15^2\).
+</p>
+<pre class="example">
+14 dup *
+15 dup *
++ .
+</pre>
+<p>
+In the operational semantics of this language we take a configuration
+to be a program (\(P\)) together with a stack of integers (\(S\)) and a trace of
+strings (\(T\)) that are printed throughout the evaluation of the program.
+</p>
+\begin{equation*}
+( \ S \ , \ T \ , \ P \ )
+\end{equation*}
+<p>
+with a special error configuration
+</p>
+\begin{equation*}
+\mathsf{ERROR} \equiv ( \ \varnothing \ , \ \textsf{panic} :: \varnothing \ , \ \epsilon \ )
+\end{equation*}
+
+<p>
+The operational semantics then describe how each command affects the stack and the trace.
+</p>
+
+<p>
+TODO
+</p>
 </div>
 </div>
-<div id="outline-container-org599e14b" class="outline-2">
-<h2 id="org599e14b">Parameter Passing</h2>
-<div class="outline-text-2" id="text-org599e14b">
+<div id="outline-container-org1767273" class="outline-4">
+<h4 id="org1767273">Exercises</h4>
+<div class="outline-text-4" id="text-org1767273">
+<p>
+TODO
+</p>
 </div>
-<div id="outline-container-orgf28dc77" class="outline-3">
-<h3 id="orgf28dc77">Call by Name, Call by Value, Call by Reference</h3>
 </div>
 </div>
-<div id="outline-container-orgf4a1425" class="outline-2">
-<h2 id="orgf4a1425">Activation Records</h2>
 </div>
-<div id="outline-container-org6e9edfe" class="outline-2">
-<h2 id="org6e9edfe">Closures</h2>
+<div id="outline-container-orgd08fbca" class="outline-2">
+<h2 id="orgd08fbca">Subroutines</h2>
+<div class="outline-text-2" id="text-orgd08fbca">
+</div>
+<div id="outline-container-org599e14b" class="outline-3">
+<h3 id="org599e14b">Parameter Passing</h3>
+</div>
+<div id="outline-container-org186cdf4" class="outline-3">
+<h3 id="org186cdf4">Examples</h3>
+<div class="outline-text-3" id="text-org186cdf4">
+</div>
+<div id="outline-container-org02aa012" class="outline-4">
+<h4 id="org02aa012">Lambda Calculus with Call-by-Name Operational Semantics</h4>
+</div>
+<div id="outline-container-org0f59e61" class="outline-4">
+<h4 id="org0f59e61">Lambda Calculus with Call-by-Value Operational Semantics</h4>
+</div>
+<div id="outline-container-org90cc27f" class="outline-4">
+<h4 id="org90cc27f">Stack-Oriented Language with Subroutines</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org2552d76" class="outline-2">
+<h2 id="org2552d76">Environments</h2>
+<div class="outline-text-2" id="text-org2552d76">
+<p>
+We need to specify how those variable bindings are represented in a
+configuration.
+</p>
+
+<p>
+When introducing variables to a programming language, we have to
+specify when/where those bindings are accessible. This is called the
+<b>scope</b> of the binding.  In general, this is a complex question, but
+is broad strokes there are two paradigms: <b>dynamic scoping</b> and
+<b>lexical scoping</b>.
+</p>
+</div>
+<div id="outline-container-org97147b3" class="outline-3">
+<h3 id="org97147b3">Stack-Oriented Language with Variables</h3>
+</div>
+</div>
+<div id="outline-container-orge83cf98" class="outline-2">
+<h2 id="orge83cf98">Dynamic Scoping</h2>
+<div class="outline-text-2" id="text-orge83cf98">
+<p>
+Dynamic scoping refers to the idea of using <i>computational (temporal)
+context</i> to determine when a binding is available.  In its simplest
+form, we may think of all bindings as globally available as soon as
+they have been instantiated.
+</p>
+
+<p>
+In a language with dynamic scoping and <i>subroutines</i>, when it comes to
+determining what bindings are available, it doesn't matter where a
+subroutine is defined, but rather where it is called.
+</p>
+
+<p>
+Bash is a widely used language with dynamic scoping, but in general,
+dynamic scoping is not common in modern programming languages.  It is,
+however, much easier to implement than lexical scoping.
+</p>
+</div>
+<div id="outline-container-org629ca0b" class="outline-3">
+<h3 id="org629ca0b">Stack-Oriented Language with Dynamic Scoping</h3>
+</div>
+</div>
+<div id="outline-container-orgbc1fe25" class="outline-2">
+<h2 id="orgbc1fe25">Lexical Scoping</h2>
+<div class="outline-text-2" id="text-orgbc1fe25">
+</div>
+<div id="outline-container-orgf4a1425" class="outline-3">
+<h3 id="orgf4a1425">Activation Records</h3>
+<div class="outline-text-3" id="text-orgf4a1425">
+</div>
+<div id="outline-container-org7384464" class="outline-4">
+<h4 id="org7384464">Stack-Oriented Language with Mutable Variables and Lexical Scoping</h4>
+</div>
+</div>
+<div id="outline-container-org6e9edfe" class="outline-3">
+<h3 id="org6e9edfe">Closures</h3>
+<div class="outline-text-3" id="text-org6e9edfe">
+</div>
+<div id="outline-container-orgc60e210" class="outline-4">
+<h4 id="orgc60e210">Stack-Oriented Language with Immutable Variables and Lexical Scoping</h4>
+</div>
+</div>
 </div>
 <div id="outline-container-org6047722" class="outline-2">
 <h2 id="org6047722">Compilation</h2>
+</div>
+<div id="outline-container-org54d3a2a" class="outline-2">
+<h2 id="org54d3a2a">Solutions to Exercises</h2>
 </div>
 </div>
 </body>

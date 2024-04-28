@@ -76,6 +76,8 @@ pre{
     font-family: 'Courier', monospace;
     padding: 20px;
     display: block;
+    /* max-width: 100%; */
+    overflow: auto;
 }
 
 a:link {
@@ -127,7 +129,7 @@ ol{
 #table-of-contents {
     z-index: 1;
     position: fixed;
-    right: 1em;
+    right: 2em;
     top: -0.8em;
     max-height: 100%;
     max-width: 20em;
@@ -150,3 +152,6 @@ ol{
 #table-of-contents:hover #text-table-of-contents {
     display: block;
 }
+
+b, strong {
+    background:  #e8e8d0;
