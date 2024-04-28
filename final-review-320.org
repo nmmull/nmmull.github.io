@@ -1,0 +1,356 @@
+#+title: CAS CS 320 Review
+#+subtitle: Principles of Programming Languages@@html:<br>@@
+#+subtitle: Boston University@@html:<br>@@
+#+subtitle: Spring 2023
+#+HTML_LINK_HOME: material.html
+#+options: H:3 toc:2
+This page contains an outline of the topics covered in /CAS CS 320:
+Principles of Programming Languages/ during the Spring 2023 semester.
+It is not exhaustive, and is biased towards those topics which are
+most pertinent for the final exam of the course.  Included are
+exercises associated with each topic.
+* OCaml
+During the first half of the course, we learned the function
+programming language [[https://ocaml.org][OCaml]].  Our primary goal was to learn how to
+program in the functional style, not thinking of a function as
+defining a list of commands, but instead as specifying the /shape/ of
+its output.
+** Basics
+OCaml has many types that are standard in most programming languages,
+e.g., integers, Boolean values, floating-point numbers, tuples and
+lists, all with basic operators.  It also has standard functional
+language constructs like let-definitions/bindings, anonymous
+functions, and if-else expressions.
+*** Exercises
+1. Implement the function
+ #+begin_src ocaml
+   let matrix_of_list
+     (l : 'a list)
+     (num_cols : int) : ('a list list) option =
+     assert false (* TODO *)
+ #+end_src
+ which converts a list ~l~ into a matrix with ~num_cols~ columns,
+ returing ~None~ in the case that ~num_cols~ is not positive or the
+ resulting matrix is not rectangular (i.e., the length of ~l~ is not
+ a multiple of ~num_cols~).
+2. Euclid's algorithm for determining the greatest common divisor of
+ two integers is takes advantage of the fact that $\mathsf{gcd}(m, n)
+ = \mathsf{gcd}(n, m \bmod n)$.  Implement the function
+ #+begin_src ocaml
+   let gcd (m : int) (n : int) : int =
+     assert false (* TODO *)
+ #+end_src
+ which, given two integers ~m~ and ~n~, returns their greatest
+ commond divisor.
+3. We represent a rational number as a pair of integers where the
+   first integer represents the numerator and the second represents
+   the denominator.  We maintain the invariant that the second number
+   is positive and the pair of numbers are relatively prime.
+   Implement the function ~add~ which adds two rational numbers,
+   making sure to maintain this invariant.
+   #+begin_src ocaml
+     type rat = int * int
+
+     let add (m : rat) (n : rat) : rat =
+       assert false (* TODO *)
+   #+end_src
+4. Implement the function
+   #+begin_src ocaml
+     let gen_fib : (l : int list) (n : int) : int =
+       if n < 0
+       then assert false
+       else
+         assert false (* TODO *)
+   #+end_src
+   which, given a list of integers ~l~ of length $k$ and a nonnegative
+   integer ~n~, returns the ~n~-th element of the following sequence:
+   \begin{equation*}
+   F_n =
+   \begin{cases}
+   l[n] & n < k \\
+   \sum_{i = 1}^k F_{n - i} & n \geq k
+   \end{cases}
+   \end{equation*}
+** Algebraic Data Types
+One of the most important features of a modern functional programming
+language is pattern matching and algebraic data types.  An algebraic
+data type (ADT) is defined by giving a collection of *constructors*,
+which may themselves carry other data.  Here, for example, is an ADT
+whose values represent either a Boolean values or an integers.
+#+begin_src ocaml
+  type bool_or_int
+    = Bool of bool
+    | Int of int
+#+end_src
+We work with values of an ADT by *pattern matching*, providing
+different values depending on the /shape/ of the given value.
+#+begin_src ocaml
+  let num_val (x : bool_or_int) : int =
+    match x with
+    | Bool b -> if b then 1 else 0
+    | Int i -> i
+#+end_src
+ADTs can be /recursive/ (the type being defined can be referred to in
+the definition of the type) and /parametric/ (the type being defined
+can depend parametrically on another type).  These two features are encompassed in the ~list~ type.
+#+begin_src ocaml
+  type 'a mylist
+    = Nil
+    | Cons of 'a * 'a mylist
+#+end_src
+*** Exercises
+** Record Types
+Record types are essentially tuples with named fields.
+#+begin_src ocaml
+  type rat =
+    { numer : int
+    ; denom : int
+    ; is_positive : bool
+    }
+
+  let two_thirds =
+    { numer = 2
+    ; denom = 3
+    ; is_positive = true
+    }
+#+end_src
+Beyond this, they have a couple conveniences that are good to remember.
++ Accessing fields in a record can be done via dot notation, i.e., if
+  ~r~ is a ~rat~ then ~r.is_positive~ is a ~bool~.
++ Updating a small number of fields records can be done using ~with~-notation.
+   #+begin_src ocaml
+     let negate (r : rat) : rat =
+       { r with is_positive = not r.is_positive }
+
+     let recip (r : rat) : rat =
+       if r.numer = 0
+       then assert false
+       else { r with numer = r.denom; denom = r.numer }
+   #+end_src
+*** Exercises
+1. merge user data
+2. add to captured bindings
+3. list of records to dictionary
+
+** Higher-Order Programming
+Higher-order programming is the use of functions as first-class values
+to write general, reusable code.  There are three patterns in
+particular for higher-order programming with lists which we looked at
+in depth.
++ The function ~map~, defined as
+  #+begin_src ocaml
+    let rec map (f : 'a -> 'b) (l : 'a list) : 'b list =
+      match l with
+      | [] -> []
+      | x :: l -> let x = f x in x :: map f l
+  #+end_src
+  replaces each element in ~l~ with ~f~ applied to that element, in
+  order from left to right.
++ The function ~filter~, defined as
+  #+begin_src ocaml
+    let rec filter (p : 'a -> bool) (l : 'a list) : 'a list =
+      match l with
+      | [] -> []
+      | x :: l -> if p x then x :: filter p l else filter p l
+  #+end_src
+  find all element of ~l~ which satisfy the predicate ~p~, in order
+  from left to right.
++ The function ~fold_right~, defined as
+  #+begin_src ocaml
+    let rec fold_right (f : 'a -> 'b -> 'b) (l : 'a list) (accu : 'b) : 'b =
+      match l with
+      | [] -> accu
+      | x :: l -> f x (fold_right f l accu)
+  #+end_src
+  applies the binary operation ~f~ between every element of ~l @ [accu]~ right-associatively:
+  #+begin_src
+     [x1;   x2;   x3; ...   xn]
+      ↓↓    ↓↓    ↓↓        ↓↓
+    f x1 (f x2 (f x3 (...(f xn accu)...)))
+  #+end_src
+  The function ~fold_left~ does the same but to ~accu :: l~  left-associatively:
+  #+begin_src ocaml
+    let rec fold_left (f : 'b -> 'a -> 'b) (accu : 'b) (l : 'a list) : 'b =
+      match l with
+      | [] -> accu
+      | x :: l -> fold_left f (f accu x) l
+  #+end_src
+  #+begin_src
+                       [x1; x2; x3; ... xn]
+                        ↓↓  ↓↓  ↓↓      ↓↓
+    f (...(f (f (f accu x1) x2) x3)...) xn
+  #+end_src
+*** Exercises
+1. predicate operations
+2. find the derivative (newtons)
+3. radix sort bucketing as fold_left
+** Tail Recursion
+Roughly speaking, a recursive call in the body of a function
+definition is in *tail position* if no evaluation is required /after/
+the recursive call.  The following implementation of the factorial
+function is not tail recursive because it requires evaluating the
+product of the result of its recursive call with the input ~n~.
+#+begin_src ocaml
+  let rec factorial (n : int) : int =
+    if n < 0
+    then assert false
+    else if n = 0
+    then 1
+    else n * factorial n
+#+end_src
+We tend to make functions tail recursive by adding an accumulator argument to the function.
+#+begin_src ocaml
+  let factorial_tail (n : int) : int =
+    let rec go (n : int) (accu : int) =
+      if n = 0
+      then accu
+      else go (n - 1) (n * accu)
+    in
+    if n < 0
+    then assert false
+    else go n 1
+#+end_src
+*** Exercises
+1. hour glass + tr hour glass
+2. tr evaluator
+** Type Checking and Type Inference
+OCaml is strongly typed, and it is statically checked for adherence to
+typing rules.  OCaml also has type inference, which means we often do
+not have to specify the types of expressions in OCaml programs (though
+it can be useful for documentation purposes).
+*** Exercises
+1. What is the type of this?
+2. Does this type check?
+* Formal Grammar
+In general, grammar is the study of the form structure of language.
+We use concepts from the study of formal grammar to represent and
+reason about the syntax of programming languages.  These concepts
+inform the design of parsers.
+** BNF Specifications
+We start with a collection of symbols, separated into to disjoint
+groups, the *nonterminal* symbols and the *terminal* symbols.  In a
+Backus-Naur Form (BNF) specification we use notation like ~<nonterm>~
+to denote a nonterminal symbols.  We typically don't specify the
+symbols in advance, but instead glean then from the specification
+itself.
+
+*** Definitions
+A *sentential form* is a sequences of symbols and a *sentence* is a
+sequence of terminal symbols.
+
+A *production rule* is made up of a nonterminal symbol and a
+sentential form, and is written
+#+begin_src
+  <nonterm> ::= SENTFORM
+#+end_src
+We interpret a production rule as indicating that ~<nonterm>~ /stands
+for/ ~SENTFORM~ in a sentence.
+
+A *BNF specification* is given by a collection of production rules and
+a *starting symbol*.  We typically take the nonterminal symbol in the
+/first/ rule of the specification to be the starting symbol.
+
+A *derivation* of a sentential form $S$ in a specification $\mathcal
+B$ with start symbol ~<start>~ is a sequence of sentential forms,
+starting with the start symbol ~<start>~ and ending in $S$, in which
+each form in the sequence (except for ~<start>~) is the results of
+replacing a nonterminal symbol in the previous form with a sentential
+from given by a production rule in $\mathcal B$.
+
+A derivation is *leftmost* if the nonterminal symbol replaced at each
+step of the derivation is the leftmost nonterminal symbol in the
+sentential form.
+
+A *parse tree*, informally, is a derivation represented as a tree, in
+which the root is labeled with the starting symbol and each node
+contains as it's children the symbols of sentential form which it is
+replaced with in the derivation. A parse tree may correspond to
+multiple derivations, but every derivation has a unique parse tree
+representation.
+
+*** Examples
+TODO
+*** Exercises
+1. List the symbols implicit in this specification.
+2. Give a derivation of S in this grammar.
+3. Give a leftmost derivation of S in this grammar.
+4. Give an example of a grammar with no leftmost derivations.
+5. Draw the parse tree associated with this derivation.
+6. Draw the parse tree for this sentence in this grammar.
+7. Implement the algorithm which determines the sentence for a given
+   parse_tree.
+** Ambiguity
+A BNF specification is *ambiguous* if there is a sentence with
+multiple parse trees.  We try to avoid ambiguous specifications for
+programming languages because we don't want a program to be
+interpretable in multiple ways.
+
+*** Fixity
+
+The *fixity* of an operator refers to where the operator is written
+with respect to its arguments.
++ *prefix* operators appear /before/ their argument
+  + the negation operator: ~-5~
++ *postfix* operators appear /after/ their argument
+  + type constructors: ~int list~
++ *infix* (binary) operators appear /between/ their arguments
+  + arithmetic operators: ~(1 + 2) * (3 + 4)~)
++ *mixfix* operators are a combination of these
+  + if-else-expressions: ~if not b the f x else g x~
+
+One of the primary ways in which specifications of programming
+languages can be ambiguous is in the use of infix and mixfix
+operations.  If a language's syntactic constructs are all prefix
+(Polish notation) or all postfix (reverse Polish notation) then the
+specification is unambiguous.
+
+We can make infix binary operators unambiguous by specifying their
+associativity and precedence.
+*** Associativity
+An operator $\square$ is declared *left associative* if we interpret
+$a \square b \square c$ to be equivalent to $(a \square b) \square c$.
++ For arithmetic expressions, we take subtraction to be
+  left-associative, so the expression ~1 - 2 - 3~ evaluates to ~-4~
+  as opposed to ~2~.
+
+An operator $\square$ is declared *right associative* if we interpret
+$a \square b \square c$ to be equivalent to $a \square (b \square c)$.
++ For arithmetic expressions, we take exponentiation to be
+  right-associative, so the expression ~2 ^ 1 ^ 3~ evaluates to ~2~
+  as opposed to ~8~.
+
+We can enforce the associativity of an operator in the specification itself.
+*** Precedence
+Given two binary operators $\square$ and $\triangle$, the operator
+$\square$ has *higher precedence* than $\triangle$ if we interpret $a
+\square b \triangle c$ as $(a \square b) \triangle c$ and $a \triangle
+b \square c$ as $a \triangle (b \square c)$.
++ For arithmetic expressions, we take multiplication to have higher
+  precedence than addition, so the expression ~2 * 2 + 3~ evaluates to
+  ~7~ as opposed to ~10~.
+
+As with associativity, we can enforce precedence within the
+specification itself.
+
+TODO
+*** Exercises
+1. Is this grammar ambiguous?
+2. Find a sentence in this grammar which has multiple derivations.
+3. Update this grammar so that it makes the operations precedence and hold
+** Regular Grammars
+Regular grammars are a special form of grammar which has
+*** Definitions
+*** Regular Expressions
+** Chomsky Normal Forms
+* Parsing
+** Recursive-Descent Parsing
+** Combinators
+* Formal Semantics
+** Reductions and Derivations
+* Variables
+** Scoping
+* Parameter Passing
+** Call by Name, Call by Value, Call by Reference
+* Activation Records
+* Closures
+* Compilation

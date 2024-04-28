@@ -1,3 +1,3 @@
-build:
+open:
 	emacs -Q --script build.el
-	open index.html
+	open $(TARGET)

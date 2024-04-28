@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-04-28 Sun 12:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CAS CS 320 Review</title>
+<meta name="author" content="Nathan  Mull" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="globalStyle.css">
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">⟨ <a href="material.html">home</a> ⟩</div><div id="content" class="content">
+<h1 class="title">CAS CS 320 Review
+<br />
+<span class="subtitle">Principles of Programming Languages<br> Boston University<br> Spring 2023</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga9f916d">OCaml</a>
+<ul>
+<li><a href="#orgca217ba">Basics</a></li>
+<li><a href="#orge0d51e5">Algebraic Data Types</a></li>
+<li><a href="#orgcedadcd">Record Types</a></li>
+<li><a href="#org87ba4af">Higher-Order Programming</a></li>
+<li><a href="#orgf62c214">Tail Recursion</a></li>
+<li><a href="#orge76012f">Type Checking and Type Inference</a></li>
+</ul>
+</li>
+<li><a href="#orge0e9d8a">Formal Grammar</a>
+<ul>
+<li><a href="#orgd39b698">BNF Specifications</a></li>
+<li><a href="#org5fe2548">Ambiguity</a></li>
+<li><a href="#org19c5b81">Regular Grammars</a></li>
+<li><a href="#org68a2744">Chomsky Normal Forms</a></li>
+</ul>
+</li>
+<li><a href="#org6a3f72d">Parsing</a>
+<ul>
+<li><a href="#orga74ef45">Recursive-Descent Parsing</a></li>
+<li><a href="#orgf8e306b">Combinators</a></li>
+</ul>
+</li>
+<li><a href="#orga0ae140">Formal Semantics</a>
+<ul>
+<li><a href="#org9ea8a1f">Reductions and Derivations</a></li>
+</ul>
+</li>
+<li><a href="#org65e177a">Variables</a>
+<ul>
+<li><a href="#orgde51277">Scoping</a></li>
+</ul>
+</li>
+<li><a href="#org599e14b">Parameter Passing</a>
+<ul>
+<li><a href="#orgf28dc77">Call by Name, Call by Value, Call by Reference</a></li>
+</ul>
+</li>
+<li><a href="#orgf4a1425">Activation Records</a></li>
+<li><a href="#org6e9edfe">Closures</a></li>
+<li><a href="#org6047722">Compilation</a></li>
+</ul>
+</div>
+</div>
+<p>
+This page contains an outline of the topics covered in <i>CAS CS 320:
+Principles of Programming Languages</i> during the Spring 2023 semester.
+It is not exhaustive, and is biased towards those topics which are
+most pertinent for the final exam of the course.  Included are
+exercises associated with each topic.
+</p>
+<div id="outline-container-orga9f916d" class="outline-2">
+<h2 id="orga9f916d">OCaml</h2>
+<div class="outline-text-2" id="text-orga9f916d">
+<p>
+During the first half of the course, we learned the function
+programming language <a href="https://ocaml.org">OCaml</a>.  Our primary goal was to learn how to
+program in the functional style, not thinking of a function as
+defining a list of commands, but instead as specifying the <i>shape</i> of
+its output.
+</p>
+</div>
+<div id="outline-container-orgca217ba" class="outline-3">
+<h3 id="orgca217ba">Basics</h3>
+<div class="outline-text-3" id="text-orgca217ba">
+<p>
+OCaml has many types that are standard in most programming languages,
+e.g., integers, Boolean values, floating-point numbers, tuples and
+lists, all with basic operators.  It also has standard functional
+language constructs like let-definitions/bindings, anonymous
+functions, and if-else expressions.
+</p>
+</div>
+<div id="outline-container-org418b051" class="outline-4">
+<h4 id="org418b051">Exercises</h4>
+<div class="outline-text-4" id="text-org418b051">
+<ol class="org-ol">
+<li><p>
+Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let matrix_of_list
+  (l : 'a list)
+  (num_cols : int) : ('a list list) option =
+  assert false (* TODO *)
+</pre>
+</div>
+<p>
+which converts a list <code>l</code> into a matrix with <code>num_cols</code> columns,
+returing <code>None</code> in the case that <code>num_cols</code> is not positive or the
+resulting matrix is not rectangular (i.e., the length of <code>l</code> is not
+a multiple of <code>num_cols</code>).
+</p></li>
+<li><p>
+Euclid's algorithm for determining the greatest common divisor of
+two integers is takes advantage of the fact that \(\mathsf{gcd}(m, n)
+ = \mathsf{gcd}(n, m \bmod n)\).  Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let gcd (m : int) (n : int) : int =
+  assert false (* TODO *)
+</pre>
+</div>
+<p>
+which, given two integers <code>m</code> and <code>n</code>, returns their greatest
+commond divisor.
+</p></li>
+<li><p>
+We represent a rational number as a pair of integers where the
+first integer represents the numerator and the second represents
+the denominator.  We maintain the invariant that the second number
+is positive and the pair of numbers are relatively prime.
+Implement the function <code>add</code> which adds two rational numbers,
+making sure to maintain this invariant.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">type rat = int * int
+
+let add (m : rat) (n : rat) : rat =
+  assert false (* TODO *)
+</pre>
+</div></li>
+<li><p>
+Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let gen_fib : (l : int list) (n : int) : int =
+  if n &lt; 0
+  then assert false
+  else
+    assert false (* TODO *)
+</pre>
+</div>
+<p>
+which, given a list of integers <code>l</code> of length \(k\) and a nonnegative
+integer <code>n</code>, returns the <code>n</code>-th element of the following sequence:
+</p>
+\begin{equation*}
+F_n =
+\begin{cases}
+l[n] & n < k \\
+\sum_{i = 1}^k F_{n - i} & n \geq k
+\end{cases}
+\end{equation*}</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0d51e5" class="outline-3">
+<h3 id="orge0d51e5">Algebraic Data Types</h3>
+<div class="outline-text-3" id="text-orge0d51e5">
+<p>
+One of the most important features of a modern functional programming
+language is pattern matching and algebraic data types.  An algebraic
+data type (ADT) is defined by giving a collection of <b>constructors</b>,
+which may themselves carry other data.  Here, for example, is an ADT
+whose values represent either a Boolean values or an integers.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">type bool_or_int
+  = Bool of bool
+  | Int of int
+</pre>
+</div>
+<p>
+We work with values of an ADT by <b>pattern matching</b>, providing
+different values depending on the <i>shape</i> of the given value.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let num_val (x : bool_or_int) : int =
+  match x with
+  | Bool b -&gt; if b then 1 else 0
+  | Int i -&gt; i
+</pre>
+</div>
+<p>
+ADTs can be <i>recursive</i> (the type being defined can be referred to in
+the definition of the type) and <i>parametric</i> (the type being defined
+can depend parametrically on another type).  These two features are encompassed in the <code>list</code> type.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">type 'a mylist
+  = Nil
+  | Cons of 'a * 'a mylist
+</pre>
+</div>
+</div>
+<div id="outline-container-org488d3bb" class="outline-4">
+<h4 id="org488d3bb">Exercises</h4>
+</div>
+</div>
+<div id="outline-container-orgcedadcd" class="outline-3">
+<h3 id="orgcedadcd">Record Types</h3>
+<div class="outline-text-3" id="text-orgcedadcd">
+<p>
+Record types are essentially tuples with named fields.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">type rat =
+  { numer : int
+  ; denom : int
+  ; is_positive : bool
+  }
+
+let two_thirds =
+  { numer = 2
+  ; denom = 3
+  ; is_positive = true
+  }
+</pre>
+</div>
+<p>
+Beyond this, they have a couple conveniences that are good to remember.
+</p>
+<ul class="org-ul">
+<li>Accessing fields in a record can be done via dot notation, i.e., if
+<code>r</code> is a <code>rat</code> then <code>r.is_positive</code> is a <code>bool</code>.</li>
+<li><p>
+Updating a small number of fields records can be done using <code>with</code>-notation.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let negate (r : rat) : rat =
+  { r with is_positive = not r.is_positive }
+
+let recip (r : rat) : rat =
+  if r.numer = 0
+  then assert false
+  else { r with numer = r.denom; denom = r.numer }
+</pre>
+</div></li>
+</ul>
+</div>
+<div id="outline-container-org748a705" class="outline-4">
+<h4 id="org748a705">Exercises</h4>
+<div class="outline-text-4" id="text-org748a705">
+<ol class="org-ol">
+<li>merge user data</li>
+<li>add to captured bindings</li>
+<li>list of records to dictionary</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87ba4af" class="outline-3">
+<h3 id="org87ba4af">Higher-Order Programming</h3>
+<div class="outline-text-3" id="text-org87ba4af">
+<p>
+Higher-order programming is the use of functions as first-class values
+to write general, reusable code.  There are three patterns in
+particular for higher-order programming with lists which we looked at
+in depth.
+</p>
+<ul class="org-ul">
+<li><p>
+The function <code>map</code>, defined as
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let rec map (f : 'a -&gt; 'b) (l : 'a list) : 'b list =
+  match l with
+  | [] -&gt; []
+  | x :: l -&gt; let x = f x in x :: map f l
+</pre>
+</div>
+<p>
+replaces each element in <code>l</code> with <code>f</code> applied to that element, in
+order from left to right.
+</p></li>
+<li><p>
+The function <code>filter</code>, defined as
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let rec filter (p : 'a -&gt; bool) (l : 'a list) : 'a list =
+  match l with
+  | [] -&gt; []
+  | x :: l -&gt; if p x then x :: filter p l else filter p l
+</pre>
+</div>
+<p>
+find all element of <code>l</code> which satisfy the predicate <code>p</code>, in order
+from left to right.
+</p></li>
+<li><p>
+The function <code>fold_right</code>, defined as
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let rec fold_right (f : 'a -&gt; 'b -&gt; 'b) (l : 'a list) (accu : 'b) : 'b =
+  match l with
+  | [] -&gt; accu
+  | x :: l -&gt; f x (fold_right f l accu)
+</pre>
+</div>
+<p>
+applies the binary operation <code>f</code> between every element of <code>l @ [accu]</code> right-associatively:
+</p>
+<pre class="example">
+ [x1;   x2;   x3; ...   xn]
+  ↓↓    ↓↓    ↓↓        ↓↓
+f x1 (f x2 (f x3 (...(f xn accu)...)))
+</pre>
+<p>
+The function <code>fold_left</code> does the same but to <code>accu :: l</code>  left-associatively:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let rec fold_left (f : 'b -&gt; 'a -&gt; 'b) (accu : 'b) (l : 'a list) : 'b =
+  match l with
+  | [] -&gt; accu
+  | x :: l -&gt; fold_left f (f accu x) l
+</pre>
+</div>
+<pre class="example">
+                   [x1; x2; x3; ... xn]
+                    ↓↓  ↓↓  ↓↓      ↓↓
+f (...(f (f (f accu x1) x2) x3)...) xn
+</pre></li>
+</ul>
+</div>
+<div id="outline-container-orga1a28f9" class="outline-4">
+<h4 id="orga1a28f9">Exercises</h4>
+<div class="outline-text-4" id="text-orga1a28f9">
+<ol class="org-ol">
+<li>predicate operations</li>
+<li>find the derivative (newtons)</li>
+<li>radix sort bucketing as fold<sub>left</sub></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf62c214" class="outline-3">
+<h3 id="orgf62c214">Tail Recursion</h3>
+<div class="outline-text-3" id="text-orgf62c214">
+<p>
+Roughly speaking, a recursive call in the body of a function
+definition is in <b>tail position</b> if no evaluation is required <i>after</i>
+the recursive call.  The following implementation of the factorial
+function is not tail recursive because it requires evaluating the
+product of the result of its recursive call with the input <code>n</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let rec factorial (n : int) : int =
+  if n &lt; 0
+  then assert false
+  else if n = 0
+  then 1
+  else n * factorial n
+</pre>
+</div>
+<p>
+We tend to make functions tail recursive by adding an accumulator argument to the function.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml">let factorial_tail (n : int) : int =
+  let rec go (n : int) (accu : int) =
+    if n = 0
+    then accu
+    else go (n - 1) (n * accu)
+  in
+  if n &lt; 0
+  then assert false
+  else go n 1
+</pre>
+</div>
+</div>
+<div id="outline-container-org2598657" class="outline-4">
+<h4 id="org2598657">Exercises</h4>
+<div class="outline-text-4" id="text-org2598657">
+<ol class="org-ol">
+<li>hour glass + tr hour glass</li>
+<li>tr evaluator</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orge76012f" class="outline-3">
+<h3 id="orge76012f">Type Checking and Type Inference</h3>
+<div class="outline-text-3" id="text-orge76012f">
+<p>
+OCaml is strongly typed, and it is statically checked for adherence to
+typing rules.  OCaml also has type inference, which means we often do
+not have to specify the types of expressions in OCaml programs (though
+it can be useful for documentation purposes).
+</p>
+</div>
+<div id="outline-container-orgd519c59" class="outline-4">
+<h4 id="orgd519c59">Exercises</h4>
+<div class="outline-text-4" id="text-orgd519c59">
+<ol class="org-ol">
+<li>What is the type of this?</li>
+<li>Does this type check?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0e9d8a" class="outline-2">
+<h2 id="orge0e9d8a">Formal Grammar</h2>
+<div class="outline-text-2" id="text-orge0e9d8a">
+<p>
+In general, grammar is the study of the form structure of language.
+We use concepts from the study of formal grammar to represent and
+reason about the syntax of programming languages.  These concepts
+inform the design of parsers.
+</p>
+</div>
+<div id="outline-container-orgd39b698" class="outline-3">
+<h3 id="orgd39b698">BNF Specifications</h3>
+<div class="outline-text-3" id="text-orgd39b698">
+<p>
+We start with a collection of symbols, separated into to disjoint
+groups, the <b>nonterminal</b> symbols and the <b>terminal</b> symbols.  In a
+Backus-Naur Form (BNF) specification we use notation like <code>&lt;nonterm&gt;</code>
+to denote a nonterminal symbols.  We typically don't specify the
+symbols in advance, but instead glean then from the specification
+itself.
+</p>
+</div>
+
+<div id="outline-container-orge26a471" class="outline-4">
+<h4 id="orge26a471">Definitions</h4>
+<div class="outline-text-4" id="text-orge26a471">
+<p>
+A <b>sentential form</b> is a sequences of symbols and a <b>sentence</b> is a
+sequence of terminal symbols.
+</p>
+
+<p>
+A <b>production rule</b> is made up of a nonterminal symbol and a
+sentential form, and is written
+</p>
+<pre class="example">
+&lt;nonterm&gt; ::= SENTFORM
+</pre>
+<p>
+We interpret a production rule as indicating that <code>&lt;nonterm&gt;</code> <i>stands
+for</i> <code>SENTFORM</code> in a sentence.
+</p>
+
+<p>
+A <b>BNF specification</b> is given by a collection of production rules and
+a <b>starting symbol</b>.  We typically take the nonterminal symbol in the
+<i>first</i> rule of the specification to be the starting symbol.
+</p>
+
+<p>
+A <b>derivation</b> of a sentential form \(S\) in a specification \(\mathcal
+B\) with start symbol <code>&lt;start&gt;</code> is a sequence of sentential forms,
+starting with the start symbol <code>&lt;start&gt;</code> and ending in \(S\), in which
+each form in the sequence (except for <code>&lt;start&gt;</code>) is the results of
+replacing a nonterminal symbol in the previous form with a sentential
+from given by a production rule in \(\mathcal B\).
+</p>
+
+<p>
+A derivation is <b>leftmost</b> if the nonterminal symbol replaced at each
+step of the derivation is the leftmost nonterminal symbol in the
+sentential form.
+</p>
+
+<p>
+A <b>parse tree</b>, informally, is a derivation represented as a tree, in
+which the root is labeled with the starting symbol and each node
+contains as it's children the symbols of sentential form which it is
+replaced with in the derivation. A parse tree may correspond to
+multiple derivations, but every derivation has a unique parse tree
+representation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd7b88a4" class="outline-4">
+<h4 id="orgd7b88a4">Examples</h4>
+<div class="outline-text-4" id="text-orgd7b88a4">
+<p>
+TODO
+</p>
+</div>
+</div>
+<div id="outline-container-org2d77dc9" class="outline-4">
+<h4 id="org2d77dc9">Exercises</h4>
+<div class="outline-text-4" id="text-org2d77dc9">
+<ol class="org-ol">
+<li>List the symbols implicit in this specification.</li>
+<li>Give a derivation of S in this grammar.</li>
+<li>Give a leftmost derivation of S in this grammar.</li>
+<li>Give an example of a grammar with no leftmost derivations.</li>
+<li>Draw the parse tree associated with this derivation.</li>
+<li>Draw the parse tree for this sentence in this grammar.</li>
+<li>Implement the algorithm which determines the sentence for a given
+parse<sub>tree</sub>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fe2548" class="outline-3">
+<h3 id="org5fe2548">Ambiguity</h3>
+<div class="outline-text-3" id="text-org5fe2548">
+<p>
+A BNF specification is <b>ambiguous</b> if there is a sentence with
+multiple parse trees.  We try to avoid ambiguous specifications for
+programming languages because we don't want a program to be
+interpretable in multiple ways.
+</p>
+</div>
+
+<div id="outline-container-org26d040f" class="outline-4">
+<h4 id="org26d040f">Fixity</h4>
+<div class="outline-text-4" id="text-org26d040f">
+<p>
+The <b>fixity</b> of an operator refers to where the operator is written
+with respect to its arguments.
+</p>
+<ul class="org-ul">
+<li><b>prefix</b> operators appear <i>before</i> their argument
+<ul class="org-ul">
+<li>the negation operator: <code>-5</code></li>
+</ul></li>
+<li><b>postfix</b> operators appear <i>after</i> their argument
+<ul class="org-ul">
+<li>type constructors: <code>int list</code></li>
+</ul></li>
+<li><b>infix</b> (binary) operators appear <i>between</i> their arguments
+<ul class="org-ul">
+<li>arithmetic operators: <code>(1 + 2) * (3 + 4)</code>)</li>
+</ul></li>
+<li><b>mixfix</b> operators are a combination of these
+<ul class="org-ul">
+<li>if-else-expressions: <code>if not b the f x else g x</code></li>
+</ul></li>
+</ul>
+
+<p>
+One of the primary ways in which specifications of programming
+languages can be ambiguous is in the use of infix and mixfix
+operations.  If a language's syntactic constructs are all prefix
+(Polish notation) or all postfix (reverse Polish notation) then the
+specification is unambiguous.
+</p>
+
+<p>
+We can make infix binary operators unambiguous by specifying their
+associativity and precedence.
+</p>
+</div>
+</div>
+<div id="outline-container-org20af429" class="outline-4">
+<h4 id="org20af429">Associativity</h4>
+<div class="outline-text-4" id="text-org20af429">
+<p>
+An operator \(\square\) is declared <b>left associative</b> if we interpret
+\(a \square b \square c\) to be equivalent to \((a \square b) \square c\).
+</p>
+<ul class="org-ul">
+<li>For arithmetic expressions, we take subtraction to be
+left-associative, so the expression <code>1 - 2 - 3</code> evaluates to <code>-4</code>
+as opposed to <code>2</code>.</li>
+</ul>
+
+<p>
+An operator \(\square\) is declared <b>right associative</b> if we interpret
+\(a \square b \square c\) to be equivalent to \(a \square (b \square c)\).
+</p>
+<ul class="org-ul">
+<li>For arithmetic expressions, we take exponentiation to be
+right-associative, so the expression <code>2 ^ 1 ^ 3</code> evaluates to <code>2</code>
+as opposed to <code>8</code>.</li>
+</ul>
+
+<p>
+We can enforce the associativity of an operator in the specification itself.
+</p>
+</div>
+</div>
+<div id="outline-container-org4934e3c" class="outline-4">
+<h4 id="org4934e3c">Precedence</h4>
+<div class="outline-text-4" id="text-org4934e3c">
+<p>
+Given two binary operators \(\square\) and \(\triangle\), the operator
+\(\square\) has <b>higher precedence</b> than \(\triangle\) if we interpret \(a
+\square b \triangle c\) as \((a \square b) \triangle c\) and \(a \triangle
+b \square c\) as \(a \triangle (b \square c)\).
+</p>
+<ul class="org-ul">
+<li>For arithmetic expressions, we take multiplication to have higher
+precedence than addition, so the expression <code>2 * 2 + 3</code> evaluates to
+<code>7</code> as opposed to <code>10</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2e83ffc" class="outline-4">
+<h4 id="org2e83ffc">Exercises</h4>
+</div>
+</div>
+<div id="outline-container-org19c5b81" class="outline-3">
+<h3 id="org19c5b81">Regular Grammars</h3>
+<div class="outline-text-3" id="text-org19c5b81">
+</div>
+<div id="outline-container-orgc50954e" class="outline-4">
+<h4 id="orgc50954e">Definitions</h4>
+</div>
+<div id="outline-container-org2cb63bb" class="outline-4">
+<h4 id="org2cb63bb">Regular Expressions</h4>
+</div>
+</div>
+<div id="outline-container-org68a2744" class="outline-3">
+<h3 id="org68a2744">Chomsky Normal Forms</h3>
+</div>
+</div>
+<div id="outline-container-org6a3f72d" class="outline-2">
+<h2 id="org6a3f72d">Parsing</h2>
+<div class="outline-text-2" id="text-org6a3f72d">
+</div>
+<div id="outline-container-orga74ef45" class="outline-3">
+<h3 id="orga74ef45">Recursive-Descent Parsing</h3>
+</div>
+<div id="outline-container-orgf8e306b" class="outline-3">
+<h3 id="orgf8e306b">Combinators</h3>
+</div>
+</div>
+<div id="outline-container-orga0ae140" class="outline-2">
+<h2 id="orga0ae140">Formal Semantics</h2>
+<div class="outline-text-2" id="text-orga0ae140">
+</div>
+<div id="outline-container-org9ea8a1f" class="outline-3">
+<h3 id="org9ea8a1f">Reductions and Derivations</h3>
+</div>
+</div>
+<div id="outline-container-org65e177a" class="outline-2">
+<h2 id="org65e177a">Variables</h2>
+<div class="outline-text-2" id="text-org65e177a">
+</div>
+<div id="outline-container-orgde51277" class="outline-3">
+<h3 id="orgde51277">Scoping</h3>
+</div>
+</div>
+<div id="outline-container-org599e14b" class="outline-2">
+<h2 id="org599e14b">Parameter Passing</h2>
+<div class="outline-text-2" id="text-org599e14b">
+</div>
+<div id="outline-container-orgf28dc77" class="outline-3">
+<h3 id="orgf28dc77">Call by Name, Call by Value, Call by Reference</h3>
+</div>
+</div>
+<div id="outline-container-orgf4a1425" class="outline-2">
+<h2 id="orgf4a1425">Activation Records</h2>
+</div>
+<div id="outline-container-org6e9edfe" class="outline-2">
+<h2 id="org6e9edfe">Closures</h2>
+</div>
+<div id="outline-container-org6047722" class="outline-2">
+<h2 id="org6047722">Compilation</h2>
+</div>
+</div>
+</body>
+</html>

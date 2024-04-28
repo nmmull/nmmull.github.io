@@ -41,7 +41,17 @@ h2 {
 h3 {
     text-transform: uppercase;
     font-style: italic;
-    margin-bottom:0.1em;
+    margin-bottom:0.5em;
+    background-color: #d0e8e8;
+    padding-left: 0.3em;
+}
+
+h4 {
+    text-transform: uppercase;
+    font-style:italic;
+    margin-bottom:0.5em;
+    background-color: #e8d0e8;
+    padding-left: 0.3em;
 }
 
 p {
@@ -56,13 +66,13 @@ p {
 
 /* a hack for highlighting text without html export in org */
 code {
-    padding:0.2em;
-    font-size: medium;
-    background-color: #F7A9AF;
+    font-size: 1.2em;
+    font-family: 'Courier', monospace;
+    background-color: #e8e8e8;
 }
 
 pre{
-    background-color: #eee;
+    background-color: #e8e8e8;
     font-family: 'Courier', monospace;
     padding: 20px;
     display: block;
@@ -112,4 +122,31 @@ ol{
 
 .footnotes {
     display: none;
+}
+
+#table-of-contents {
+    z-index: 1;
+    position: fixed;
+    right: 1em;
+    top: -0.8em;
+    max-height: 100%;
+    max-width: 20em;
+    overflow: auto;
+    background:  #ddd;
+    padding-left:0.5em;
+    padding-right:0.5em;
+}
+
+#table-of-contents h2 {
+    text-align: right;
+    font-size:1.2em;
+    max-width: 20em;
+}
+
+#table-of-contents #text-table-of-contents {
+    display: none;
+}
+
+#table-of-contents:hover #text-table-of-contents {
+    display: block;
 }
