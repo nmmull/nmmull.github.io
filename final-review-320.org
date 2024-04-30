@@ -2,8 +2,9 @@
 #+subtitle: Principles of Programming Languages@@html:<br>@@
 #+subtitle: Boston University@@html:<br>@@
 #+subtitle: Spring 2023
-#+HTML_LINK_HOME: material.html
-#+options: H:3 toc:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
+#+HTML_LINK_HOME: index.html
+#+OPTIONS: html-style:nil H:3 toc:2
 This page contains an outline of the topics covered in /CAS CS 320:
 Principles of Programming Languages/ during the Spring 2023 semester.
 It is not exhaustive, and is biased towards those topics which are
@@ -16,11 +17,84 @@ program in the functional style, not thinking of a function as
 defining a list of commands, but instead as specifying the /shape/ of
 its output.
 ** Basics
-OCaml has many types that are standard in most programming languages,
+OCaml has many types that are standard among programming languages,
 e.g., integers, Boolean values, floating-point numbers, tuples and
 lists, all with basic operators.  It also has standard functional
-language constructs like let-definitions/bindings, anonymous
-functions, and if-else expressions.
+language constructs like let-bindings, anonymous functions, and
+if-then-else expressions.
+*** Exercises
+1. Euclid's algorithm for determining the greatest common divisor of
+ two integers takes advantage of the fact that $\mathsf{gcd}(m, n)
+ = \mathsf{gcd}(n, m \bmod n)$.  Implement the function
+ #+begin_src ocaml
+   let gcd (m : int) (n : int) : int =
+     assert false (* TODO *)
+ #+end_src
+ which, given two integers ~m~ and ~n~, returns their greatest
+ common divisor.
+2. We can represent a rational number as a pair of integers where the
+   first integer represents the numerator and the second represents
+   the denominator.  We maintain the invariant that the second number
+   is positive and the pair of numbers are relatively prime.
+   Implement the function ~add~ which adds two rational numbers,
+   making sure to maintain this invariant.
+   #+begin_src ocaml
+     type rat = int * int
+
+     let add (m : rat) (n : rat) : rat =
+       assert false (* TODO *)
+   #+end_src
+3. Implement the function
+   #+begin_src ocaml
+     let gen_fib : (l : int list) (n : int) : int =
+       if n < 0
+       then assert false
+       else
+         assert false (* TODO *)
+   #+end_src
+   which, given a list of integers ~l~ of length $k$ and a nonnegative
+   integer ~n~, returns the $n^\text{th}$ element of the following sequence:
+   \begin{equation*}
+   F_n =
+   \begin{cases}
+   l[n] & n < k \\
+   \sum_{i = 1}^k F_{n - i} & n \geq k
+   \end{cases}
+   \end{equation*}
+** Algebraic Data Types
+One of the most important features of a modern functional programming
+language is pattern matching and algebraic data types.  An algebraic
+data type (ADT) is defined by giving a collection of *constructors*,
+which may themselves carry other data.  We can think of algebraic data
+types as defining *unions* of existing types.  Here, for example, is
+an ADT whose values represent either a Boolean value or an integer.
+#+begin_src ocaml
+  type bool_or_int
+    = Bool of bool
+    | Int of int
+#+end_src
+We work with values of an ADT by *pattern matching*, providing
+different output values depending on the /shape/ of the value we are
+matching with.
+#+begin_src ocaml
+  let num_val (x : bool_or_int) : int =
+    match x with
+    | Bool b -> if b then 1 else 0
+    | Int i -> i
+#+end_src
+ADTs can be *recursive* (the type being defined can be referred to in
+its own definition) and *parametric* (the type being defined can
+depend parametrically on another type).  These two features are
+encompassed in the ~list~ type.
+#+begin_src ocaml
+  type 'a mylist
+    = Nil
+    | Cons of 'a * 'a mylist
+#+end_src
+
+~'a option~ and ~'a result~ also two other parametric types which are
+important to be familiar with.
+
 *** Exercises
 1. Implement the function
  #+begin_src ocaml
@@ -33,74 +107,39 @@ functions, and if-else expressions.
  returing ~None~ in the case that ~num_cols~ is not positive or the
  resulting matrix is not rectangular (i.e., the length of ~l~ is not
  a multiple of ~num_cols~).
-2. Euclid's algorithm for determining the greatest common divisor of
- two integers is takes advantage of the fact that $\mathsf{gcd}(m, n)
- = \mathsf{gcd}(n, m \bmod n)$.  Implement the function
- #+begin_src ocaml
-   let gcd (m : int) (n : int) : int =
-     assert false (* TODO *)
- #+end_src
- which, given two integers ~m~ and ~n~, returns their greatest
- commond divisor.
-3. We represent a rational number as a pair of integers where the
-   first integer represents the numerator and the second represents
-   the denominator.  We maintain the invariant that the second number
-   is positive and the pair of numbers are relatively prime.
-   Implement the function ~add~ which adds two rational numbers,
-   making sure to maintain this invariant.
+2. Implement the function
    #+begin_src ocaml
-     type rat = int * int
-
-     let add (m : rat) (n : rat) : rat =
+     let drop_nones (l : 'a option list) : 'a list =
        assert false (* TODO *)
    #+end_src
-4. Implement the function
+   which returns an ~'a list~ consisting of those elements of ~l~
+   which are not ~None~.
+3. A Red-Black tree is an ordered binary tree in which every node is
+   labeled either red or black.  It is further required that
+   + no red node has a red child
+   + every path from the root node to the leaf has the same number of
+     black nodes
+   Fill in the function ~is_valid~ below which returns ~true~ if ~t~
+   is a valid red-black tree, and ~false~ otherwise.
    #+begin_src ocaml
-     let gen_fib : (l : int list) (n : int) : int =
-       if n < 0
-       then assert false
-       else
-         assert false (* TODO *)
+     type color
+       = Red
+       | Black
+
+     type 'a rbtree
+       = Leaf
+       | Node of (color * 'a * 'a rbtree * 'a rbtree)
+
+     let is_valid (t : rbtree) : bool =
+       assert false (* TODO *)
    #+end_src
-   which, given a list of integers ~l~ of length $k$ and a nonnegative
-   integer ~n~, returns the ~n~-th element of the following sequence:
-   \begin{equation*}
-   F_n =
-   \begin{cases}
-   l[n] & n < k \\
-   \sum_{i = 1}^k F_{n - i} & n \geq k
-   \end{cases}
-   \end{equation*}
-** Algebraic Data Types
-One of the most important features of a modern functional programming
-language is pattern matching and algebraic data types.  An algebraic
-data type (ADT) is defined by giving a collection of *constructors*,
-which may themselves carry other data.  Here, for example, is an ADT
-whose values represent either a Boolean values or an integers.
-#+begin_src ocaml
-  type bool_or_int
-    = Bool of bool
-    | Int of int
-#+end_src
-We work with values of an ADT by *pattern matching*, providing
-different values depending on the /shape/ of the given value.
-#+begin_src ocaml
-  let num_val (x : bool_or_int) : int =
-    match x with
-    | Bool b -> if b then 1 else 0
-    | Int i -> i
-#+end_src
-ADTs can be /recursive/ (the type being defined can be referred to in
-the definition of the type) and /parametric/ (the type being defined
-can depend parametrically on another type).  These two features are encompassed in the ~list~ type.
-#+begin_src ocaml
-  type 'a mylist
-    = Nil
-    | Cons of 'a * 'a mylist
-#+end_src
-*** Exercises
+
+   #+RESULTS:
+   : type color = Red | Black
+   : type 'a rbtree = Leaf | Node of (color * 'a * 'a rbtree * 'a rbtree)
 ** Record Types
-Record types are essentially tuples with named fields.
+*Record types* are essentially tuples with named fields.  Here is an
+ example of a representation of rational numbers using record types.
 #+begin_src ocaml
   type rat =
     { numer : int
@@ -114,10 +153,14 @@ Record types are essentially tuples with named fields.
     ; is_positive = true
     }
 #+end_src
-Beyond this, they have a couple conveniences that are good to remember.
+If we think of algebraic data types as unions, then we may think of
+record types as *products* of existing types.  Beyond this, they have
+a couple conveniences that are good to remember.
 + Accessing fields in a record can be done via dot notation, i.e., if
   ~r~ is a ~rat~ then ~r.is_positive~ is a ~bool~.
-+ Updating a small number of fields records can be done using ~with~-notation.
++ Updating a fields records can be done using ~with~-notation.  This
+  is useful if a record has many fields but only a few need to be
+  updated.
    #+begin_src ocaml
      let negate (r : rat) : rat =
        { r with is_positive = not r.is_positive }
@@ -128,13 +171,58 @@ Beyond this, they have a couple conveniences that are good to remember.
        else { r with numer = r.denom; denom = r.numer }
    #+end_src
 *** Exercises
-1. merge user data
-2. add to captured bindings
-3. list of records to dictionary
+1. Fill in the record types below so that the given function type-checks.
+   #+begin_src ocaml
+     type rectangle1 = (* TODO *)
 
+     type rectangle2 = (* TODO *)
+
+     let transform (r : rectangle1) : rectangle2 =
+       let (x, y) = r.center in
+       { bottom_left = x -. r.width /. 2., y -. r.height /. 2.
+       ; top_right = x +. r.width /. 2., y +. r.height /.  2.
+       }
+   #+end_src
+2. Write a function which adds a binding the list of captured bindings
+   of a closure, ensuring that it is shadowed by any bindings already
+   in the collection of captured bindings.
+   #+begin_src ocaml
+     type closure =
+       { name : string
+       ; body : program
+       ; captured : (string * value) list
+       }
+
+     let add_binding (c : closure) (x : string) (v : value) =
+       assert false (* TODO *)
+   #+end_src
+3. Suppose you are given a list of tools for converting sound files
+   from one format to another.  Each converter has a name, a list of
+   input formats which it can convert from, and a list of output
+   formats which it can convert to.  Implement the function
+   ~convert_options~ which, given a list of converters ~cs~ and an
+   input format ~f~, compiles the possible output formats, keeping
+   track of the names of the converter tools which can be used.
+   #+begin_src ocaml
+     type converter =
+       { name: string
+       ; input_formats : string list
+       ; output_formats : string list
+       }
+
+     type convert_out =
+       { converters : string list
+       ; output_format : string
+       }
+
+     let convert_options
+       (cs : converter list)
+       (f : string) : convert_out list =
+       assert false (* TODO *)
+   #+end_src
 ** Higher-Order Programming
-Higher-order programming is the use of functions as first-class values
-to write general, reusable code.  There are three patterns in
+*Higher-order programming* is the use of functions as *first-class
+values* to write general, reusable code.  There are three patterns in
 particular for higher-order programming with lists which we looked at
 in depth.
 + The function ~map~, defined as
@@ -144,6 +232,9 @@ in depth.
       | [] -> []
       | x :: l -> let x = f x in x :: map f l
   #+end_src
+
+  #+RESULTS:
+  : <fun>
   replaces each element in ~l~ with ~f~ applied to that element, in
   order from left to right.
 + The function ~filter~, defined as
@@ -153,6 +244,9 @@ in depth.
       | [] -> []
       | x :: l -> if p x then x :: filter p l else filter p l
   #+end_src
+
+  #+RESULTS:
+  : <fun>
   find all element of ~l~ which satisfy the predicate ~p~, in order
   from left to right.
 + The function ~fold_right~, defined as
@@ -162,34 +256,82 @@ in depth.
       | [] -> accu
       | x :: l -> f x (fold_right f l accu)
   #+end_src
+
+  #+RESULTS:
+  : <fun>
   applies the binary operation ~f~ between every element of ~l @ [accu]~ right-associatively:
   #+begin_src
-     [x1;   x2;   x3; ...   xn]
+     [x₁;   x₂;   x₃; ...   xₙ]
       ↓↓    ↓↓    ↓↓        ↓↓
-    f x1 (f x2 (f x3 (...(f xn accu)...)))
+    f x₁ (f x₂ (f x₃ (...(f xₙ accu)...)))
   #+end_src
-  The function ~fold_left~ does the same but to ~accu :: l~  left-associatively:
+  and the function ~fold_left~:
   #+begin_src ocaml
     let rec fold_left (f : 'b -> 'a -> 'b) (accu : 'b) (l : 'a list) : 'b =
       match l with
       | [] -> accu
       | x :: l -> fold_left f (f accu x) l
   #+end_src
+
+  #+RESULTS:
+  : <fun>
+  does the same but to ~accu :: l~ left-associatively:
   #+begin_src
-                       [x1; x2; x3; ... xn]
+                       [x₁; x₂; x₃; ... xₙ]
                         ↓↓  ↓↓  ↓↓      ↓↓
-    f (...(f (f (f accu x1) x2) x3)...) xn
+    f (...(f (f (f accu x₁) x₂) x₃)...) xₙ
   #+end_src
+  Note that ~fold_left~ is tail-recursive whereas ~fold_right~ is not.
 *** Exercises
-1. predicate operations
-2. find the derivative (newtons)
-3. radix sort bucketing as fold_left
+1. Implement the functions
+   #+begin_src ocaml
+     let andp (p1 : 'a -> bool) (p2 : 'a -> bool) : 'a -> bool =
+       assert false (* TODO *)
+
+     let orp (p1 : 'a -> bool) (p2 : 'a -> bool) : 'a -> bool =
+       assert false (* TODO *)
+   #+end_src
+   with the following properties:
+   + given two predicates ~p1~ and ~p2~, the predicate ~andp p1 p2~ is
+     the predicate which expresses that both ~p1~ and ~p2~ hold.
+   + given two predicates ~p1~ and ~p2~, the predicate ~orp p1 p2~ is
+     the predicate which expresses that ~p1~ or ~p2~ hold.
+2. We can represent a polynomial as a list of ~float~'s, where
+   #+begin_src
+           [a₀;  a₁;    a₂;     ...;  aₙ]
+            ↓↓   ↓↓     ↓↓            ↓↓
+     p(x) = a₀ + a₁ x + a₂ x² + ... + aₙ xⁿ
+   #+end_src
+   Implement the function
+   #+begin_src ocaml
+     let derivative (p : float list) : float list =
+       assert false (* todo *)
+   #+end_src
+   which computes the list representing the polynomial $p'(x)$, the derivative of $p(x)$.
+3. When implementing radix sort on integers, it is necessary to partition a list
+   of integers based on their last digits.  Fill in the following function
+   #+begin_src ocaml
+     let bucket (l : int list) : int list list =
+       let op accu next =
+         assert false (* TODO *)
+       in
+       let base =
+         List.init 10 (fun _ -> [])
+       in
+       List.fold_left op base l
+   #+end_src
+   which, given a list ~l~ of integers, return 10 lists of integers
+   which partition ~l~ by the last digit the members of ~l~. That is,
+   the $i^\text{th}$ element of ~bucket l~ should contain exactly the
+   elements of ~l~ whose last digit is $i$.
 ** Tail Recursion
 Roughly speaking, a recursive call in the body of a function
 definition is in *tail position* if no evaluation is required /after/
-the recursive call.  The following implementation of the factorial
-function is not tail recursive because it requires evaluating the
-product of the result of its recursive call with the input ~n~.
+the recursive call.[fn:: This can be made more formal by analyzing the
+syntax of OCaml more carefully.]  The following implementation of the
+factorial function is not tail recursive because it requires
+evaluating the product of the result of its recursive call with the
+input ~n~.
 #+begin_src ocaml
   let rec factorial (n : int) : int =
     if n < 0
@@ -198,7 +340,10 @@ product of the result of its recursive call with the input ~n~.
     then 1
     else n * factorial n
 #+end_src
-We tend to make functions tail recursive by adding an accumulator argument to the function.
+We can make functions tail recursive by adding an accumulator argument
+to the function.[fn:: This is, of course, not the only way to achieve
+this. We can also use continuation-passing style, as we saw briefly in
+lecture.]
 #+begin_src ocaml
   let factorial_tail (n : int) : int =
     let rec go (n : int) (accu : int) =
@@ -211,30 +356,81 @@ We tend to make functions tail recursive by adding an accumulator argument to th
     else go n 1
 #+end_src
 *** Exercises
-1. hour glass + tr hour glass
-2. tr evaluator
-** Type Checking
-OCaml is strongly typed, and it is statically checked for adherence to
-typing rules.  OCaml also has type inference, which means we often do
-not have to specify the types of expressions in OCaml programs (though
-it can be useful for documentation purposes).
-*** Exercises
-1. What is the type of this?
-2. Does this type check?
-* Formal Grammar
-In general, grammar is the study of the form structure of language.
-We use concepts from the study of formal grammar to represent and
-reason about the syntax of programming languages.  These concepts
-inform the design of parsers.
-** BNF Specifications
-We start with a collection of symbols, separated into to disjoint
-groups, the *nonterminal* symbols and the *terminal* symbols.  In a
-Backus-Naur Form (BNF) specification we use notation like ~<nonterm>~
-to denote a nonterminal symbols.  We typically don't specify the
-symbols in advance, but instead glean then from the specification
-itself.
+1. Consider the following function which prints a (half) hourglass out
+   of asterisks.  Implement a function which does the same thing but
+   is tail recursive.
+   #+begin_src ocaml
+     let rec hourglass (n : int) : unit =
+       if n > 0
+       then
+         let _ = print_endline (String.make n '*') in
+         let _ = hourglass (n - 1) in
+         let _ = print_endline (String.make n '*') in
+         ()
+       else ()
+   #+end_src
+2. Implement a tail recursive evaluator for Boolean expressions as
+   represented by the following ADT.
+   #+begin_src ocaml
+     type bool_expr
+       = Bool of bool
+       | Not of bool_expr
+       | And of bool_expr * bool_expr
+       | Or of bool_expr * bool_expr
 
-*** Definitions
+     let eval_tr (e : bool_expr) : bool =
+       assert false (* TODO *)
+   #+end_src
+** Type Checking
+OCaml is *strongly typed*, and programs are statically checked for
+adherence to typing rules.  We did not look at the type rules in full
+detail, but we did see some examples of formal typing rules in OCaml,
+e.g.,
+\begin{equation*}
+\frac
+{b \in \mathsf{bool} \qquad e_1 \in \mathsf{t} \qquad e_2 \in \mathsf{t}}
+{(\textsf{if } b \textsf{ then } e_1 \textsf{ else } e_2) \in \mathsf{t}}
+\end{equation*}
+This rule expresses that an if-then-else expression has the same type
+as its if-case and else-case if its individual sub-expressions are
+well-typed.[fn:: You are not required to write formal typing derivations,
+but you should be able to use your intuitions about OCaml to determine
+the type of an expression based on its structure (as the OCaml
+type-checker does mechanically).]
+
+OCaml also has *type inference*, which means we often do not have to
+specify the types of expressions in OCaml programs (though it can be
+useful for documentation purposes).
+*** Exercises
+1. Does this program type-check? If so, what are the types of ~bar~ and ~baz~?
+   #+begin_src ocaml
+     type 'a foo = Foo of ('a foo -> 'a)
+     let bar (Foo f) = f
+     let baz x = bar x x
+   #+end_src
+2. Does this program type-check? If so, what is the type of ~foo~?
+   #+begin_src ocaml
+     let rec foo x y =
+       if x > 0 then
+         foo (x - 1) (y +. 1.)
+       else if x < 0 then
+         foo y x
+       else
+         0
+   #+end_src
+* Formal Grammar
+Grammar is the study of the form and structure of language.  We use
+concepts from the formal grammar to represent and reason about the
+syntax of programming languages.  These concepts also inform the
+design of parsers.
+** BNF Specifications
+We start with a collection of symbols, separated into two disjoint
+groups, the *nonterminal* symbols and the *terminal* symbols.  In a
+Backus-Naur form (BNF) specification we use notation of the form
+~<nonterm>~ to denote a nonterminal symbol.  We typically don't
+specify the symbols in advance, but instead glean them from the
+specification itself.
+
 A *sentential form* is a sequences of symbols and a *sentence* is a
 sequence of terminal symbols.
 
@@ -244,49 +440,175 @@ sentential form, and is written
   <nonterm> ::= SENTFORM
 #+end_src
 We interpret a production rule as indicating that ~<nonterm>~ /stands
-for/ ~SENTFORM~ in a sentence.
+for/ ~SENTFORM~ in a sentential from.
 
 A *BNF specification* is given by a collection of production rules and
 a *starting symbol*.  We typically take the nonterminal symbol in the
-/first/ rule of the specification to be the starting symbol.
+/first/ rule of the specification to be the starting symbol.  We also
+call a BNF specification a *grammar*.[fn:: It may be worth noting
+that, in formal language theory, a grammar is a more general]
 
-A *derivation* of a sentential form $S$ in a specification $\mathcal
-B$ with start symbol ~<start>~ is a sequence of sentential forms,
-starting with the start symbol ~<start>~ and ending in $S$, in which
-each form in the sequence (except for ~<start>~) is the results of
-replacing a nonterminal symbol in the previous form with a sentential
-from given by a production rule in $\mathcal B$.
+In the case that a BNF specification has multiples rules for the same
+nonterminal symbol, we use the notation
+#+begin_src
+  <nonterm> ::= SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ
+#+end_src
+as shorthand for
+#+begin_src
+  <nonterm> ::= SENTFORM₁
+  <nonterm> ::= SENTFORM₂
+   ...
+  <nonterm> ::= SENTFORMₖ
+#+end_src
+
+A *derivation* of a sentential form $S$ in a grammar $\mathcal G$ with
+start symbol ~<start>~ is a sequence of sentential forms, starting
+with the start symbol ~<start>~ and ending in $S$, in which each form
+in the sequence (except for ~<start>~) is the results of replacing /one/
+nonterminal symbol in the previous form with a sentential from given
+by a production rule of $\mathcal G$.
 
 A derivation is *leftmost* if the nonterminal symbol replaced at each
 step of the derivation is the leftmost nonterminal symbol in the
 sentential form.
 
-A *parse tree*, informally, is a derivation represented as a tree, in
-which the root is labeled with the starting symbol and each node
-contains as it's children the symbols of sentential form which it is
-replaced with in the derivation. A parse tree may correspond to
-multiple derivations, but every derivation has a unique parse tree
-representation.
+A grammar $\mathcal G$ *accepts* or *recognizes* a sentence
+$S$ if has a derivation in $\mathcal G$.
 
+A *parse tree*, informally, is a derivation represented as a tree, in which
++ every node is labeled with a symbol
++ the root is labeled with the starting symbol
++ the children of each node are the symbols of the sentential form (in
+  order) which replace the symbol labeling the node in the derivation.
+
+The *frontier* of a parse tree (i.e., the leaf nodes in order from
+left to right) form the sentence derived in the derivation represented
+by the parse tree.
+
+A parse tree may correspond to multiple derivations, but every
+derivation has a unique parse tree representation.  Likewise, every
+parse tree corresponds to a unique /leftmost/ derivation.
 *** Examples
-TODO
+
+/A toy grammar for English sentences:/
+#+begin_src
+  <sentence>    ::= <noun-phrase> <verb-phrase>
+  <verb-phrase> ::= <verb> | <verb> <prep-phrase>
+  <prep-phrase> ::= <prep> <noun-phrase>
+  <noun-phrase> ::= <article> <noun>
+  <article>     ::= the
+  <noun>        ::= cow | moon
+  <verb>        ::= jumped
+  <prep>        ::= over
+#+end_src
+-----
+/A (leftmost) derivation of a sentence recognized by the above
+grammar:/[fn::The exclamation points are for emphasis, they are not a
+part of the derivation.]
+
+#+begin_src
+  <sentence>!
+  <noun-phrase>!     <verb-phrase>
+  <noun-phrase>      <verb>  <prep-phrase>!
+  <noun-phrase>!     <verb>  <prep>  <noun-phrase>
+  <article>  <noun>  <verb>  <prep>  <noun-phrase>!
+  <article>! <noun>  <verb>  <prep>  <article>  <noun>
+  the        <noun>! <verb>  <prep>  <article>  <noun>
+  the        cow     <verb>! <prep>  <article>  <noun>
+  the        cow     jumped  <prep>! <article>  <noun>
+  the        cow     jumped  over    <article>! <noun>
+  the        cow     jumped  over    the        <noun>!
+  the        cow     jumped  over    the        moon
+#+end_src
+-----
+/A toy grammar for an imperative programming language:/
+#+begin_src
+  <program> ::= <stmts>
+  <stmts>   ::= <stmt> | <stmt> ; <stmts>
+  <stmt>    ::= <var> = <stmt>
+  <var>     ::= a | b | c | d
+  <expr>    ::= <term> | <term> + <term> | <term> - <term>
+  <term>    ::= <var> | const
+#+end_src
+-----
+/A (leftmost) derivation of a program recognized by the above grammar:/
+#+begin_src
+  <program>
+  <stmts>
+  <stmt> ; <stmts>
+  <var> = <expr> ; <stmts>
+  a = <expr> ; <stmts>
+  a = <term> ; <stmts>
+  a = const ; <stmts>
+  a = const ; <stmt> ; <stmts>
+  a = const ; <var> = <expr> ; <stmts>
+  a = const ; a = <expr> ; <stmts>
+  a = const ; a = <term> + <term> ; <stmts>
+  a = const ; a = <var> + <term> ; <stmts>
+  a = const ; a = a + <term> ; <stmts>
+  a = const ; a = a + const ; <stmts>
+  a = const ; a = a + const ; <var> = <expr>
+  a = const ; a = a + const ; b = <expr>
+  a = const ; a = a + const ; b = <term>
+  a = const ; a = a + const ; b = <var>
+  a = const ; a = a + const ; b = a
+#+end_src
+*** Extended BNF
+We extend the notation of BNF specifications to make it more
+convenient to use.[fn:: Other source may include more constructs in
+EBNF syntax. See, for example, [[https://en.wikipedia.org/wiki/Extended_Backus–Naur_form][the Wikipedia page]].]
++ ~[ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ ]~ refers to an optional
+  collection of alternatives of a sentential form.  For example, we
+  can represent an integer by the following specification:
+  #+begin_src
+    <int>    ::= [ - ] <digits>
+    <digits> ::= <digit> | <digit> <digits>
+    <digit>  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+  #+end_src
++ ~( SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ )~ refers to a collection
+  of alternatives /within/ a sentential form.  For example, we can
+  represent arithmetic expressions by the following specification:
+  #+begin_src
+    <expr>   ::= <expr> ( + | - | * | / ) <expr> | <digits>
+    <digits> ::= <digit> | <digit> <digits>
+    <digit>  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+  #+end_src
++ ~{ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ }~ to refer to zero or
+  more occurrences of the sentential forms in a collection of
+  alternatives. For example, we can simplify the specification for
+  integers (and enforce that the first digit must be nonzero):
+  #+begin_src
+    <int> ::= [ - ] ( 1 | ... | 9) { 0 | ... | 9 }
+  #+end_src
 *** Exercises
-1. List the symbols implicit in this specification.
-2. Give a derivation of S in this grammar.
-3. Give a leftmost derivation of S in this grammar.
-4. Give an example of a grammar with no leftmost derivations.
-5. Draw the parse tree associated with this derivation.
-6. Draw the parse tree for this sentence in this grammar.
-7. Implement the algorithm which determines the sentence for a given
-   parse_tree.
+1. List the symbols (both terminal and nonterminal) implicit in the following specification.
+   #+begin_src
+     <a> ::= a <b> | a <a> b
+     <b> ::= c <a> | d
+   #+end_src
+2. Give a leftmost derivation of ~a a c a d b b~ in the above
+   grammar. Draw its associated parse tree.
+4. Verify that ~a = a + a ; b = b~ is recognized by the grammar for
+   the simple imperative language above.  Give a derivation that is
+   /not/ leftmost.
+7. Implement the function
+   #+begin_src ocaml
+     type 'a tree
+       = Leaf of 'a
+       | Node of 'a tree list
+
+     let frontier (t : 'a tree) : 'a list =
+       assert false (* TODO *)
+   #+end_src
+   which returns a list of the members of ~t~ in order from left to
+   right.
 ** Ambiguity
 A BNF specification is *ambiguous* if there is a sentence with
-multiple parse trees.  We try to avoid ambiguous specifications for
-programming languages because we don't want a program to be
-interpretable in multiple ways.
-
+multiple parse trees.  Equivalently, a specification is ambiguous if
+there is a sentence with multiple leftmost derivations.  We try to
+avoid ambiguous specifications for programming languages because we ultimately
+don't want a program to be interpretable in multiple ways.
 *** Fixity
-
 The *fixity* of an operator refers to where the operator is written
 with respect to its arguments.
 + *prefix* operators appear /before/ their argument
@@ -298,28 +620,26 @@ with respect to its arguments.
 + *mixfix* operators are a combination of these
   + if-else-expressions: ~if not b the f x else g x~
 
-One of the primary ways in which specifications of programming
-languages can be ambiguous is in the use of infix and mixfix
-operations.  If a language's syntactic constructs are all prefix
-(Polish notation) or all postfix (reverse Polish notation) then the
-specification is unambiguous.
-
-We can make infix binary operators unambiguous by specifying their
-associativity and precedence.
+If a language's syntactic constructs are all prefix (*Polish notation*)
+or all postfix (*reverse Polish notation*) then the specification is
+unambiguous.  We can make infix binary operators unambiguous by
+specifying their associativity and precedence.
 *** Associativity
 An operator $\square$ is declared *left associative* if we interpret
-$a \square b \square c$ to be equivalent to $(a \square b) \square c$.
+$a \square b \square c$ as $(a \square b) \square c$.
 + For arithmetic expressions, we take subtraction to be
   left-associative, so the expression ~1 - 2 - 3~ evaluates to ~-4~
   as opposed to ~2~.
 
 An operator $\square$ is declared *right associative* if we interpret
-$a \square b \square c$ to be equivalent to $a \square (b \square c)$.
+$a \square b \square c$ as  $a \square (b \square c)$.
 + For arithmetic expressions, we take exponentiation to be
   right-associative, so the expression ~2 ^ 1 ^ 3~ evaluates to ~2~
   as opposed to ~8~.
 
 We can enforce the associativity of an operator in the specification itself.
+
+TODO
 *** Precedence
 Given two binary operators $\square$ and $\triangle$, the operator
 $\square$ has *higher precedence* than $\triangle$ if we interpret $a
@@ -338,20 +658,53 @@ TODO
 2. Find a sentence in this grammar which has multiple derivations.
 3. Update this grammar so that it makes the operations precedence and hold
 ** Regular Grammars
-Regular grammars are a special form of grammar.
+A *(right linear) regular grammar* is a grammar whose rules are all of the following forms:
+#+begin_src
+  <nonterm> ::= term
+  <nonterm> ::= term <nonterm>
+  <nonterm> ::= ϵ
+#+end_src
+where $\epsilon$ refers to the empty sentence.
 
-Regular expressions are a compact representation of regular grammars.
-** Chomsky Norm Form
+*Regular expressions* are a compact way of describing regular
+grammars.  They are defined inductively as follows:
++ $\epsilon$ is a regular expression
++ if $r_1, r_2, \dots, r_k$ are regular expressions then so are
+  $(r_1r_2 \dots, r_k)$ and $(r_1 \ | \ r_2 \ | \ \dots \ | \ r_k)$
++ if $r$ is a regular expression, then so is $r^*$
+
+TODO acceptance
+
+Regular grammars and regular expressions are equivalent in
+expressivity.
+*** Exercises
+TODO
+** Chomsky Normal Form
+A grammar is in *Chomsky normal form* if its rule are all of the
+following forms:
+#+begin_src
+  <start>   ::= ϵ
+  <nonterm> ::= <nonterm> <nonterm>
+  <nonterm> ::= term
+#+end_src
+
+Every grammar we have considered (i.e., every grammar with a BNF
+specification) can be converted into an equivalent grammar (i.e., one
+which accepts the same sentences) which is in Chomsky normal form.
+
+*** Exercises
 TODO
 * Parsing
-The general parsing problem is to find a derivation of a sentence, if
-one exists.  (NOTE ON CHOMSKY)
+The general parsing problem is to find a derivation of a sentence in a
+given grammar, if one exists. /(Aside. there is an efficient parsing
+algorithm for grammars in Chomsky normal form)/
 
-In the context of this course, we are more interested in the specific
-problem of converting a string representation of a program into an
-algebraic data type representing the syntax of the program.
+In the context of this course, we are primarily interested in the
+specific problem of converting a ~string~ (or ~char list~) into an ADT
+representing the syntax of the program.
 
-There are many ways to accomplish this, we saw two.
+There are many ways to accomplish this, we saw two:
+*recursive-descent* and *parser-combinators*.
 
 ** Recursive-Descent
 
@@ -468,8 +821,8 @@ a *reduction relation* on programs, which describes how a program is
 reduced until it reaches a state which cannot be further reduced.
 
 ** Derivations
-
-Suppose we have a programming language $\mathcal P$ defined by a given BNF grammar.
+Suppose we have a programming language $\mathcal P$ defined by a given
+BNF grammar.
 
 A *configuration* is a pair consistent of a program $P$ and a state
 $S$ which may be manipulated by programs.  The state may be empty, as
@@ -477,6 +830,7 @@ in the case of functional languages.
 
 Defining the (small-step) operational semantics for $\mathcal P$ means
 defining a reduction relation for configurations:
+
 \begin{equation*}
 ( \ S \ , \ P \ ) \longrightarrow ( \ S' \ , \ P' \ )
 \end{equation*}
@@ -486,6 +840,7 @@ consist of a /shape/ of a reduction together with a collection of
 *premises*, which may be shapes of reductions or trivial premises
 (also called axioms). The general form of a reduction rules is
 something like
+
 \begin{equation*}
 \frac
 {P_1 \qquad P_2 \qquad \dots \qquad P_k}
@@ -497,21 +852,27 @@ something like
 rule contains /meta-variables/ that describe the /kind of reductions/
 that can be derived, or that can be used a premises.  For example, the
 rules for evaluating an arithmetic expression might include
+
 \begin{equation*}
 \frac{e_1 \longrightarrow e_1'}
 {e_1 + e_2 \longrightarrow e_1' + e_2}
-\ \textsf{(add-left)}
+\ \textsf{(addLeft)}
 \end{equation*}
+
 which expresses that if $e_1$ reduces to $e_1'$ in a single step then
 $e_1 + e_2$ reduces to $e_1 + e_2'$ in a single step /no matter the
 expressions $e_1$, $e_1'$ and $e_2$/.  This rule can be used to show that
+
 \begin{equation*}
 (1 + 2) + 3 \longrightarrow 3 + 3
 \end{equation*}
+
 but also that
+
 \begin{equation*}
 (1 + (2 * 3)) + 3 \longrightarrow (1 + 6) + 3
 \end{equation*}
+
 Both reductions invoke that fact that if the left argument can be
 reduced by a single step, then the sum can be reduced by a single
 step.
@@ -533,8 +894,9 @@ order via the structure of our reduction rules.
 
 What we have been describing is a *single-step reduction relation*.
 Any single-step reduction relation can be extended to a *multi-step
-reduction relation* by including the following rules and a multi-step reduction relation symbol
-'$\longrightarrow^{\star}$'.
+reduction relation* by including the following rules and a multi-step
+reduction relation symbol '$\longrightarrow^{\star}$'.
+
 \begin{equation*}
 \frac
 {}
@@ -547,10 +909,10 @@ reduction relation* by including the following rules and a multi-step reduction 
 \ \textsf{(trans)}
 \end{equation*}
 
-Formally, *evaluation* is the process of determining a configuration $C'$ for a
-given configuration $C$ such that $C \longrightarrow^\star C'$ and
-$C'$ cannot be further reduced (i.e., there is no other configuration
-$C''$ such that $C' \longrightarrow C''$).
+Formally, *evaluation* is the process of determining a configuration
+$C'$ for a given configuration $C$ such that $C \longrightarrow^\star
+C'$ and $C'$ cannot be further reduced (i.e., there is no other
+configuration $C''$ such that $C' \longrightarrow C''$).
 
 *** Exercises
 1. Write a derivation for this reduction.
@@ -570,71 +932,362 @@ semantics was stack-oriented languages.
 
 The following is a BNF specification for a stack-oriented language
 whose programs manipulate a stack of integers.
+
+-----
+/Syntax of our base stack-oriented language:/
 #+begin_src
   <prog>  ::= { <com> }
-  <com>   ::= <num> | drop | dup | swap | .
-            | + | - | *
-            | then <com> else <com> end
+  <com>   ::= push <num> | dup | swap |
+            | add | sub | mul
+            | then <prog> else <prog> end
   <num>   ::= <digit> { <digit> }
   <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 #+end_src
+-----
 
-Here, for example, is a program which determines the prints the value of $14^2 + 15^2$.
+Here, for example, is a program which puts the value of $14 + 15 + 16$
+on top of the stack.
 #+begin_src
-  14 dup *
-  15 dup *
-  + .
+  push 16 push 15 push 14
+  add add
 #+end_src
 In the operational semantics of this language we take a configuration
-to be a program ($P$) together with a stack of integers ($S$) and a trace of
-strings ($T$) that are printed throughout the evaluation of the program.
+to be a program ($P$) together with a stack of integers ($S$).
+
 \begin{equation*}
-( \ S \ , \ T \ , \ P \ )
-\end{equation*}
-with a special error configuration
-\begin{equation*}
-\mathsf{ERROR} \equiv ( \ \varnothing \ , \ \textsf{panic} :: \varnothing \ , \ \epsilon \ )
+( \ S \ , \ P \ )
 \end{equation*}
 
-The operational semantics then describe how each command affects the stack and the trace.
+together with a special irreducible $\mathsf{ERROR}$ configuration.
+The operational semantics then describe how each command affects the
+stack and the trace.
 
-TODO
+-----
+/Operational semantics of our base stack-oriented language:/
+
+\begin{equation*}
+\frac{}{(\ S \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ ,\ P \ )}
+\qquad
+\frac{}{( \ m :: n :: S \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ n :: S \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\qquad
+\frac{}{( \ \varnothing \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ n :: S \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ P \ )}
+\qquad
+\frac{}{( \ \varnothing \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ 0 :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_2 \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{n \not = 0}{( \ n :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_1 \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ \varnothing \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}}
+\end{equation*}
+
+-----
+
 *** Exercises
-TODO
-* Subroutines
-** Parameter Passing
-** Examples
-*** Lambda Calculus with Call-by-Name Operational Semantics
-*** Lambda Calculus with Call-by-Value Operational Semantics
-*** Stack-Oriented Language with Subroutines
-* Environments
-We need to specify how those variable bindings are represented in a
-configuration.
+Write a program which
+* Variables
+When introducing variables into a programming language, we also
+introduce an *environment* into the configuration which maintains
+variable bindings.
+
+The structure of the environment depends on the scoping rules used in
+the language, but in its simplest form, and environment is a mapping
+of variable names to values.  This can be accomplished in OCaml with
+an association list (i.e., a ~(string * value) list~.
+
+An environment requires two operations: *fetch* and *update*.  The
+fetch operation should get the value to which a variable is bound in
+the environment.  The update operation should return a new environment
+given a new binding.
+
+In the case of a simple association list, we may write the following
+OCaml implementation:
+#+begin_src ocaml
+  let fetch (e : (string * value) list) (x : string) : value option =
+    List.assoc_opt x e
+
+  let update
+    (e : (string * value) list)
+    (x : string)
+    (v : value) : (string * value) list =
+    (x, v) :: e
+#+end_src
+Different environment representations need different fetch and update
+implementations, but regardless of how these functions are implemented,
+they should satisfy the following equations.
+#+begin_src ocaml
+  let _ = assert (fetch [] x v = None)
+
+  let _ = assert (
+    if x <> y
+    then fetch (update e x v) y = fetch e y
+    else fetch (update e x v) y = v)
+  )
+#+end_src
+
+-----
+/Syntax of our base stack-oriented language:/
+#+begin_src
+  <prog>  ::= { <com> }
+  <com>   ::= push <num> | dup | swap
+            | add | sub | mul
+            | then <prog> else <prog> end
+            | fetch <var> | update <var>
+  <num>   ::= <digit> { <digit> }
+  <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+#+end_src
+-----
+
+In the operational semantics of this language we take a configuration
+to be a program ($P$) together with a stack of integers ($S$) and an
+environment $E$ of variable bindings.
+
+\begin{equation*}
+( \ S \ , \ E \ , \ P \ )
+\end{equation*}
+
+together with a special irreducible $\mathsf{ERROR}$ configuration.
+
+-----
+/Operational semantics of a stack-oriented language with variables:/ They are
+the same as above (with an additional `$E$' in the configurations)
+plus the following rules.
+
+\begin{equation*}
+\frac{\mathsf{fetch}(E, x) \not = \bot}
+{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )}
+\qquad
+\frac{\mathsf{fetch}(E, x) = \bot}
+{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac
+{}{( \ n :: S \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, x, n) \ , \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac
+{}{( \ \varnothing \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+-----
+
+We need to specify how those
+variable bindings are represented in a configuration.
 
 When introducing variables to a programming language, we have to
 specify when/where those bindings are accessible. This is called the
 *scope* of the binding.  In general, this is a complex question, but
 is broad strokes there are two paradigms: *dynamic scoping* and
 *lexical scoping*.
-** Stack-Oriented Language with Variables
+* Subroutines
+A *subroutine* is an encapsulated piece of code that can be reused and
+run in different contexts.
+
+It is not necessary to have variables in order to have subroutines.
+Here is a simple stack-oriented language with subroutines.
+
+-----
+/Syntax of a stack-oriented language with subroutines:/
+
+#+begin_src
+  <prog>   ::= { <com> }
+  <com>    ::= push <num> | add | then <prog> else <prog> end
+             | def <ident> begin <prog> end | Call
+  <num>    ::= <digit> { <digit> }
+  <digit>  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+  <ident>  ::= { <letter> }
+  <letter> ::= A | B | C | ... | X | Y | Z
+
+#+end_src
+-----
+
+-----
+/Example program:/
+#+begin_src
+  def TRIPLE begin
+    dup dup + +
+  end
+#+end_src
+-----
+
+-----
+/Operational Semantics of a stack-oriented language with subroutines:/
+** Parameter Passing
+** Examples
+*** Lambda Calculus with Call-by-Name Operational Semantics
+*** Lambda Calculus with Call-by-Value Operational Semantics
+*** Stack-Oriented Language with Subroutines
 * Dynamic Scoping
-Dynamic scoping refers to the idea of using /computational (temporal)
+*Dynamic scoping* refers to the use of /computational (temporal)
 context/ to determine when a binding is available.  In its simplest
 form, we may think of all bindings as globally available as soon as
 they have been instantiated.
 
-In a language with dynamic scoping and /subroutines/, when it comes to
+In a language with dynamic scoping and subroutines, when it comes to
 determining what bindings are available, it doesn't matter where a
 subroutine is defined, but rather where it is called.
 
 Bash is a widely used language with dynamic scoping, but in general,
 dynamic scoping is not common in modern programming languages.  It is,
 however, much easier to implement than lexical scoping.
+
+TODO EXAMPLE
+
 ** Stack-Oriented Language with Dynamic Scoping
+TODO FILL IN
+
+TODO EXAMPLE
 * Lexical Scoping
+*Lexical scoping* refers to the use of properties of the source code
+ text to deliniate the availability of a binding.  In Python, the body
+ of a function, determined by indentation, deliniates *function
+ scope*.  In OCaml, The body of a let-expression is exactly the scope
+ of its associated binding (it is not possible to refer to that
+ binding outside of the body of the let-expression.  Lexical scoping
+ is common among modern programming languages.
+
+ In a language with lexical scoping and subroutines, when it comes to
+ determining what bindings are available, it doesn't matter where a
+ subroutine was called, but rather where it was defined.
+
+ The way lexical scoping is implemented depends on a couple considerations:
+ + Are variables *mutable*?
+ + Are functions *higher-order*?
+
 ** Activation Records
+
+Lexical scoping with /mutable/ variables requires maintaining a *call
+stack*.  The call stack keeps track of the function calls made during
+the evaluating a program, along with local variables to function calls.
+
+Each function call creates an *activation record* (*frame*) which keeps track of:
++ the input parameters of the function
++ a pointer to the activation record in which the function was defined
++ a pointer to where to return after completing the function call.
+
+We can think of an activation record as having the following rough structure.
+#+begin_src
+  +-------------+
+  | local_n     |
+  | local_n-1   |
+  | ...         |
+  | local_2     |
+  | local_1     |
+  | def_addr    |
+  | return_addr |
+  | arg_k       |
+  | arg_k-1     |
+  | ...         |
+  | arg2        |
+  | arg1        |
+  | return_addr |
+  +-------------+
+#+end_src
+
+Conceptually, we represent the call stack within the environment.
+Rather than maintaining a collection of bindings, we maintain a stack
+of activation records.
+
+In OCaml, we might represent this as:
+#+begin_src ocaml
+  type record =
+    { id : int
+    ; locals : (string * value) list
+    ; def_pointer : int
+    ; ret_prog : program
+    }
+
+  type env = record list
+
+  let fetch (e : env) (x : string) : value option =
+    let rec go e x i =
+      match e with
+      | [] -> None
+      | r :: e ->
+        if r.id = i
+        then
+          match List.assoc_opt x r.locals with
+          | Some v -> Some v
+          | None -> go e x r.def_pointer
+        else go e x (i - 1)
+    in
+    match e with
+    | [] -> None
+    | r :: _ -> go e x r.id
+
+  let update (e : env) (x : string) (v : value) : env =
+    match e with
+    | [] -> assert false (* impossible *)
+    | r :: e -> { r with locals = (x, v) :: r.locals }
+#+end_src
+
+Both of these function can be made more efficient.
+
 *** Stack-Oriented Language with Mutable Variables and Lexical Scoping
+
+Lexical scoping becomes more subtle to implement if functions are
+higher-order.  In this example, we do not allow higher-order
+functions, but we do allow nested function definitions.
+
+
+
+
 ** Closures
+*Closures* are subroutines together with data they need to be executed
+ correctly.  At a minimum, this data usually consists of a local
+ environment, a collection of bindings, which may no longer be in
+ scope when the function is called.  It may also include:
+ + the name given to the subroutine
+ + a pointer to the activation record in which the function was
+   defined
+
+Closures can be used to implement higher-order functions and lexically
+scoped immutable variable bindings.  If variable bindings are
+immutable, a subroutine can defined as a closure which stores all the
+variable bindings it needs when it is defined.
+
+Closure are also used in *continuation-passing style* implementations
+of subroutines.  We can save a closure containing the current
+environment and (a pointer to) the return program.
+
+In OCaml:
+#+begin_src ocaml
+  type closure =
+    { name: string
+    ; body : program
+    ; locals: (string * value) list
+    }
+
+  and value
+    = Closure of closure
+    | Num of int
+
+  type env = closure option * (string * value) list
+#+end_src
+
 *** Stack-Oriented Language with Immutable Variables and Lexical Scoping
-* Compilation
-* Solutions to Exercises
+
+*** Exercises
+*FIN*

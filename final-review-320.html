@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-28 Sun 19:24 -->
+<!-- 2024-04-30 Tue 01:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CAS CS 320 Review</title>
 <meta name="author" content="Nathan  Mull" />
 <meta name="generator" content="Org Mode" />
-<link rel="stylesheet" href="globalStyle.css">
+<link rel="stylesheet" type="text/css" href="globalStyle.css" />
 <script>
   window.MathJax = {
     tex: {
@@ -44,7 +44,7 @@
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up">⟨ <a href="material.html">home</a> ⟩</div><div id="content" class="content">
+<div id="org-div-home-and-up">⟨ <a href="index.html">home</a> ⟩</div><div id="content" class="content">
 <h1 class="title">CAS CS 320 Review
 <br />
 <span class="subtitle">Principles of Programming Languages<br> Boston University<br> Spring 2023</span>
@@ -53,60 +53,54 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga9f916d">OCaml</a>
+<li><a href="#org82ab1b5">1. OCaml</a>
 <ul>
-<li><a href="#orgca217ba">Basics</a></li>
-<li><a href="#orge0d51e5">Algebraic Data Types</a></li>
-<li><a href="#orgcedadcd">Record Types</a></li>
-<li><a href="#org87ba4af">Higher-Order Programming</a></li>
-<li><a href="#orgf62c214">Tail Recursion</a></li>
-<li><a href="#org5863bf9">Type Checking</a></li>
+<li><a href="#org482b544">1.1. Basics</a></li>
+<li><a href="#orgaa60d89">1.2. Algebraic Data Types</a></li>
+<li><a href="#org6db3c76">1.3. Record Types</a></li>
+<li><a href="#org73b32f8">1.4. Higher-Order Programming</a></li>
+<li><a href="#orga17751b">1.5. Tail Recursion</a></li>
+<li><a href="#org4b574af">1.6. Type Checking</a></li>
 </ul>
 </li>
-<li><a href="#orge0e9d8a">Formal Grammar</a>
+<li><a href="#orgef7ab18">2. Formal Grammar</a>
 <ul>
-<li><a href="#orgd39b698">BNF Specifications</a></li>
-<li><a href="#org5fe2548">Ambiguity</a></li>
-<li><a href="#org19c5b81">Regular Grammars</a></li>
-<li><a href="#org5dd135d">Chomsky Norm Form</a></li>
+<li><a href="#orgba3cc9e">2.1. BNF Specifications</a></li>
+<li><a href="#orgb5c4c44">2.2. Ambiguity</a></li>
+<li><a href="#org77d138c">2.3. Regular Grammars</a></li>
+<li><a href="#orgfe21952">2.4. Chomsky Normal Form</a></li>
 </ul>
 </li>
-<li><a href="#org6a3f72d">Parsing</a>
+<li><a href="#org6dee723">3. Parsing</a>
 <ul>
-<li><a href="#org9664a00">Recursive-Descent</a></li>
-<li><a href="#orgf8e306b">Combinators</a></li>
+<li><a href="#org2bed1c7">3.1. Recursive-Descent</a></li>
+<li><a href="#org7fc5ac9">3.2. Combinators</a></li>
 </ul>
 </li>
-<li><a href="#orga0ae140">Formal Semantics</a>
+<li><a href="#org1013678">4. Formal Semantics</a>
 <ul>
-<li><a href="#org86d466c">Derivations</a></li>
-<li><a href="#orgc963db8">Examples</a></li>
+<li><a href="#orga1f758d">4.1. Derivations</a></li>
+<li><a href="#orgea31a4e">4.2. Examples</a></li>
 </ul>
 </li>
-<li><a href="#orgd08fbca">Subroutines</a>
+<li><a href="#org6a8fef1">5. Variables</a></li>
+<li><a href="#org2b47897">6. Subroutines</a>
 <ul>
-<li><a href="#org599e14b">Parameter Passing</a></li>
-<li><a href="#org186cdf4">Examples</a></li>
+<li><a href="#org46744b5">6.1. Parameter Passing</a></li>
+<li><a href="#org77caf0e">6.2. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org2552d76">Environments</a>
+<li><a href="#orgc79194e">7. Dynamic Scoping</a>
 <ul>
-<li><a href="#org97147b3">Stack-Oriented Language with Variables</a></li>
+<li><a href="#orgdd39e4e">7.1. Stack-Oriented Language with Dynamic Scoping</a></li>
 </ul>
 </li>
-<li><a href="#orge83cf98">Dynamic Scoping</a>
+<li><a href="#org31714df">8. Lexical Scoping</a>
 <ul>
-<li><a href="#org629ca0b">Stack-Oriented Language with Dynamic Scoping</a></li>
+<li><a href="#org824f30c">8.1. Activation Records</a></li>
+<li><a href="#org9c31244">8.2. Closures</a></li>
 </ul>
 </li>
-<li><a href="#orgbc1fe25">Lexical Scoping</a>
-<ul>
-<li><a href="#orgf4a1425">Activation Records</a></li>
-<li><a href="#org6e9edfe">Closures</a></li>
-</ul>
-</li>
-<li><a href="#org6047722">Compilation</a></li>
-<li><a href="#org54d3a2a">Solutions to Exercises</a></li>
 </ul>
 </div>
 </div>
@@ -117,9 +111,9 @@ It is not exhaustive, and is biased towards those topics which are
 most pertinent for the final exam of the course.  Included are
 exercises associated with each topic.
 </p>
-<div id="outline-container-orga9f916d" class="outline-2">
-<h2 id="orga9f916d">OCaml</h2>
-<div class="outline-text-2" id="text-orga9f916d">
+<div id="outline-container-org82ab1b5" class="outline-2">
+<h2 id="org82ab1b5"><span class="section-number-2">1.</span> OCaml</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 During the first half of the course, we learned the function
 programming language <a href="https://ocaml.org">OCaml</a>.  Our primary goal was to learn how to
@@ -128,53 +122,37 @@ defining a list of commands, but instead as specifying the <i>shape</i> of
 its output.
 </p>
 </div>
-<div id="outline-container-orgca217ba" class="outline-3">
-<h3 id="orgca217ba">Basics</h3>
-<div class="outline-text-3" id="text-orgca217ba">
+<div id="outline-container-org482b544" class="outline-3">
+<h3 id="org482b544"><span class="section-number-3">1.1.</span> Basics</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
-OCaml has many types that are standard in most programming languages,
+OCaml has many types that are standard among programming languages,
 e.g., integers, Boolean values, floating-point numbers, tuples and
 lists, all with basic operators.  It also has standard functional
-language constructs like let-definitions/bindings, anonymous
-functions, and if-else expressions.
+language constructs like let-bindings, anonymous functions, and
+if-then-else expressions.
 </p>
 </div>
-<div id="outline-container-org5f50e95" class="outline-4">
-<h4 id="org5f50e95">Exercises</h4>
-<div class="outline-text-4" id="text-org5f50e95">
+<div id="outline-container-org1b67563" class="outline-4">
+<h4 id="org1b67563"><span class="section-number-4">1.1.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-1-1">
 <ol class="org-ol">
 <li><p>
-Implement the function
-</p>
-<div class="org-src-container">
-<pre class="src src-ocaml">let matrix_of_list
-  (l : 'a list)
-  (num_cols : int) : ('a list list) option =
-  assert false (* TODO *)
-</pre>
-</div>
-<p>
-which converts a list <code>l</code> into a matrix with <code>num_cols</code> columns,
-returing <code>None</code> in the case that <code>num_cols</code> is not positive or the
-resulting matrix is not rectangular (i.e., the length of <code>l</code> is not
-a multiple of <code>num_cols</code>).
-</p></li>
-<li><p>
 Euclid's algorithm for determining the greatest common divisor of
-two integers is takes advantage of the fact that \(\mathsf{gcd}(m, n)
+two integers takes advantage of the fact that \(\mathsf{gcd}(m, n)
  = \mathsf{gcd}(n, m \bmod n)\).  Implement the function
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let gcd (m : int) (n : int) : int =
-  assert false (* TODO *)
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">gcd</span> (<span style="color: #a0522d;">m</span> :<span style="color: #228b22;"> int</span>) (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> int </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
 </pre>
 </div>
 <p>
 which, given two integers <code>m</code> and <code>n</code>, returns their greatest
-commond divisor.
+common divisor.
 </p></li>
 <li><p>
-We represent a rational number as a pair of integers where the
+We can represent a rational number as a pair of integers where the
 first integer represents the numerator and the second represents
 the denominator.  We maintain the invariant that the second number
 is positive and the pair of numbers are relatively prime.
@@ -182,26 +160,26 @@ Implement the function <code>add</code> which adds two rational numbers,
 making sure to maintain this invariant.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">type rat = int * int
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">rat</span> = int * int
 
-let add (m : rat) (n : rat) : rat =
-  assert false (* TODO *)
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">add</span> (<span style="color: #a0522d;">m</span> :<span style="color: #228b22;"> rat</span>) (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> rat</span>) :<span style="color: #228b22;"> rat </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
 </pre>
 </div></li>
 <li><p>
 Implement the function
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let gen_fib : (l : int list) (n : int) : int =
-  if n &lt; 0
-  then assert false
-  else
-    assert false (* TODO *)
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">gen_fib</span> : (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> int list</span>) (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> int </span>=
+  <span style="color: #a020f0;">if</span> n &lt; 0
+  <span style="color: #a020f0;">then</span> <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span>
+  <span style="color: #a020f0;">else</span>
+    <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
 </pre>
 </div>
 <p>
 which, given a list of integers <code>l</code> of length \(k\) and a nonnegative
-integer <code>n</code>, returns the <code>n</code>-th element of the following sequence:
+integer <code>n</code>, returns the \(n^\text{th}\) element of the following sequence:
 </p>
 \begin{equation*}
 F_n =
@@ -214,108 +192,234 @@ l[n] & n < k \\
 </div>
 </div>
 </div>
-<div id="outline-container-orge0d51e5" class="outline-3">
-<h3 id="orge0d51e5">Algebraic Data Types</h3>
-<div class="outline-text-3" id="text-orge0d51e5">
+<div id="outline-container-orgaa60d89" class="outline-3">
+<h3 id="orgaa60d89"><span class="section-number-3">1.2.</span> Algebraic Data Types</h3>
+<div class="outline-text-3" id="text-1-2">
 <p>
 One of the most important features of a modern functional programming
 language is pattern matching and algebraic data types.  An algebraic
 data type (ADT) is defined by giving a collection of <b>constructors</b>,
-which may themselves carry other data.  Here, for example, is an ADT
-whose values represent either a Boolean values or an integers.
+which may themselves carry other data.  We can think of algebraic data
+types as defining <b>unions</b> of existing types.  Here, for example, is
+an ADT whose values represent either a Boolean value or an integer.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">type bool_or_int
-  = Bool of bool
-  | Int of int
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">bool_or_int</span>
+  = <span style="color: #000000; background-color: #ffffff;">Bool</span> <span style="color: #a020f0;">of</span> bool
+  | <span style="color: #000000; background-color: #ffffff;">Int</span> <span style="color: #a020f0;">of</span> int
 </pre>
 </div>
 <p>
 We work with values of an ADT by <b>pattern matching</b>, providing
-different values depending on the <i>shape</i> of the given value.
+different output values depending on the <i>shape</i> of the value we are
+matching with.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let num_val (x : bool_or_int) : int =
-  match x with
-  | Bool b -&gt; if b then 1 else 0
-  | Int i -&gt; i
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">num_val</span> (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> bool_or_int</span>) :<span style="color: #228b22;"> int </span>=
+  <span style="color: #a020f0;">match</span> x <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">Bool</span> b -&gt; <span style="color: #a020f0;">if</span> b <span style="color: #a020f0;">then</span> 1 <span style="color: #a020f0;">else</span> 0
+  | <span style="color: #000000; background-color: #ffffff;">Int</span> i -&gt; i
 </pre>
 </div>
 <p>
-ADTs can be <i>recursive</i> (the type being defined can be referred to in
-the definition of the type) and <i>parametric</i> (the type being defined
-can depend parametrically on another type).  These two features are encompassed in the <code>list</code> type.
+ADTs can be <b>recursive</b> (the type being defined can be referred to in
+its own definition) and <b>parametric</b> (the type being defined can
+depend parametrically on another type).  These two features are
+encompassed in the <code>list</code> type.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">type 'a mylist
-  = Nil
-  | Cons of 'a * 'a mylist
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a mylist</span>
+  = <span style="color: #000000; background-color: #ffffff;">Nil</span>
+  | <span style="color: #000000; background-color: #ffffff;">Cons</span> <span style="color: #a020f0;">of</span> 'a * 'a mylist
 </pre>
 </div>
-</div>
-<div id="outline-container-orgcaa61e5" class="outline-4">
-<h4 id="orgcaa61e5">Exercises</h4>
-</div>
-</div>
-<div id="outline-container-orgcedadcd" class="outline-3">
-<h3 id="orgcedadcd">Record Types</h3>
-<div class="outline-text-3" id="text-orgcedadcd">
+
 <p>
-Record types are essentially tuples with named fields.
+<code>'a option</code> and <code>'a result</code> also two other parametric types which are
+important to be familiar with.
+</p>
+</div>
+
+<div id="outline-container-org3e9eb68" class="outline-4">
+<h4 id="org3e9eb68"><span class="section-number-4">1.2.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li><p>
+Implement the function
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">type rat =
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">matrix_of_list</span>
+  (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a list</span>)
+  (<span style="color: #a0522d;">num_cols</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> ('a list list) option </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div>
+<p>
+which converts a list <code>l</code> into a matrix with <code>num_cols</code> columns,
+returing <code>None</code> in the case that <code>num_cols</code> is not positive or the
+resulting matrix is not rectangular (i.e., the length of <code>l</code> is not
+a multiple of <code>num_cols</code>).
+</p></li>
+<li><p>
+Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">drop_nones</span> (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a option list</span>) :<span style="color: #228b22;"> 'a list </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div>
+<p>
+which returns an <code>'a list</code> consisting of those elements of <code>l</code>
+which are not <code>None</code>.
+</p></li>
+<li><p>
+A Red-Black tree is an ordered binary tree in which every node is
+labeled either red or black.  It is further required that
+</p>
+<ul class="org-ul">
+<li>no red node has a red child</li>
+<li>every path from the root node to the leaf has the same number of
+black nodes</li>
+</ul>
+<p>
+Fill in the function <code>is_valid</code> below which returns <code>true</code> if <code>t</code>
+is a valid red-black tree, and <code>false</code> otherwise.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">color</span>
+  = <span style="color: #000000; background-color: #ffffff;">Red</span>
+  | <span style="color: #000000; background-color: #ffffff;">Black</span>
+
+<span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a rbtree</span>
+  = <span style="color: #000000; background-color: #ffffff;">Leaf</span>
+  | <span style="color: #000000; background-color: #ffffff;">Node</span> <span style="color: #a020f0;">of</span> (color * 'a * 'a rbtree * 'a rbtree)
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">is_valid</span> (<span style="color: #a0522d;">t</span> :<span style="color: #228b22;"> rbtree</span>) :<span style="color: #228b22;"> bool </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org6db3c76" class="outline-3">
+<h3 id="org6db3c76"><span class="section-number-3">1.3.</span> Record Types</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+<b>Record types</b> are essentially tuples with named fields.  Here is an
+ example of a representation of rational numbers using record types.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">rat</span> =
   { numer : int
   ; denom : int
   ; is_positive : bool
   }
 
-let two_thirds =
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">two_thirds</span> =
   { numer = 2
   ; denom = 3
-  ; is_positive = true
+  ; is_positive = <span style="color: #008b8b;">true</span>
   }
 </pre>
 </div>
 <p>
-Beyond this, they have a couple conveniences that are good to remember.
+If we think of algebraic data types as unions, then we may think of
+record types as <b>products</b> of existing types.  Beyond this, they have
+a couple conveniences that are good to remember.
 </p>
 <ul class="org-ul">
 <li>Accessing fields in a record can be done via dot notation, i.e., if
 <code>r</code> is a <code>rat</code> then <code>r.is_positive</code> is a <code>bool</code>.</li>
 <li><p>
-Updating a small number of fields records can be done using <code>with</code>-notation.
+Updating a fields records can be done using <code>with</code>-notation.  This
+is useful if a record has many fields but only a few need to be
+updated.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let negate (r : rat) : rat =
-  { r with is_positive = not r.is_positive }
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">negate</span> (<span style="color: #a0522d;">r</span> :<span style="color: #228b22;"> rat</span>) :<span style="color: #228b22;"> rat </span>=
+  { r <span style="color: #a020f0;">with</span> is_positive = <span style="color: #a52a2a;">not</span> r.is_positive }
 
-let recip (r : rat) : rat =
-  if r.numer = 0
-  then assert false
-  else { r with numer = r.denom; denom = r.numer }
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">recip</span> (<span style="color: #a0522d;">r</span> :<span style="color: #228b22;"> rat</span>) :<span style="color: #228b22;"> rat </span>=
+  <span style="color: #a020f0;">if</span> r.numer = 0
+  <span style="color: #a020f0;">then</span> <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span>
+  <span style="color: #a020f0;">else</span> { r <span style="color: #a020f0;">with</span> numer = r.denom; denom = r.numer }
 </pre>
 </div></li>
 </ul>
 </div>
-<div id="outline-container-orgee27efa" class="outline-4">
-<h4 id="orgee27efa">Exercises</h4>
-<div class="outline-text-4" id="text-orgee27efa">
+<div id="outline-container-org9a25851" class="outline-4">
+<h4 id="org9a25851"><span class="section-number-4">1.3.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-3-1">
 <ol class="org-ol">
-<li>merge user data</li>
-<li>add to captured bindings</li>
-<li>list of records to dictionary</li>
+<li><p>
+Fill in the record types below so that the given function type-checks.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">rectangle1</span> = <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+
+<span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">rectangle2</span> = <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">transform</span> (<span style="color: #a0522d;">r</span> :<span style="color: #228b22;"> rectangle1</span>) :<span style="color: #228b22;"> rectangle2 </span>=
+  <span style="color: #000000; font-weight: bold;">let</span> (<span style="color: #a0522d;">x</span>, <span style="color: #a0522d;">y</span>) = r.center <span style="color: #000000; font-weight: bold;">in</span>
+  { bottom_left = x -. r.width /. 2., y -. r.height /. 2.
+  ; top_right = x +. r.width /. 2., y +. r.height /.  2.
+  }
+</pre>
+</div></li>
+<li><p>
+Write a function which adds a binding the list of captured bindings
+of a closure, ensuring that it is shadowed by any bindings already
+in the collection of captured bindings.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">closure</span> =
+  { name : string
+  ; body : program
+  ; captured : (string * value) list
+  }
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">add_binding</span> (<span style="color: #a0522d;">c</span> :<span style="color: #228b22;"> closure</span>) (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> string</span>) (<span style="color: #a0522d;">v</span> :<span style="color: #228b22;"> value</span>) =
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div></li>
+<li><p>
+Suppose you are given a list of tools for converting sound files
+from one format to another.  Each converter has a name, a list of
+input formats which it can convert from, and a list of output
+formats which it can convert to.  Implement the function
+<code>convert_options</code> which, given a list of converters <code>cs</code> and an
+input format <code>f</code>, compiles the possible output formats, keeping
+track of the names of the converter tools which can be used.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">converter</span> =
+  { name: string
+  ; input_formats : string list
+  ; output_formats : string list
+  }
+
+<span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">convert_out</span> =
+  { converters : string list
+  ; output_format : string
+  }
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">convert_options</span>
+  (<span style="color: #a0522d;">cs</span> :<span style="color: #228b22;"> converter list</span>)
+  (<span style="color: #a0522d;">f</span> :<span style="color: #228b22;"> string</span>) :<span style="color: #228b22;"> convert_out list </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div></li>
 </ol>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org87ba4af" class="outline-3">
-<h3 id="org87ba4af">Higher-Order Programming</h3>
-<div class="outline-text-3" id="text-org87ba4af">
+<div id="outline-container-org73b32f8" class="outline-3">
+<h3 id="org73b32f8"><span class="section-number-3">1.4.</span> Higher-Order Programming</h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
-Higher-order programming is the use of functions as first-class values
-to write general, reusable code.  There are three patterns in
+<b>Higher-order programming</b> is the use of functions as <b>first-class
+values</b> to write general, reusable code.  There are three patterns in
 particular for higher-order programming with lists which we looked at
 in depth.
 </p>
@@ -324,10 +428,10 @@ in depth.
 The function <code>map</code>, defined as
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let rec map (f : 'a -&gt; 'b) (l : 'a list) : 'b list =
-  match l with
-  | [] -&gt; []
-  | x :: l -&gt; let x = f x in x :: map f l
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">map</span> (<span style="color: #a0522d;">f</span> :<span style="color: #228b22;"> 'a -&gt; 'b</span>) (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a list</span>) :<span style="color: #228b22;"> 'b list </span>=
+  <span style="color: #a020f0;">match</span> l <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; <span style="color: #000000; background-color: #ffffff;">[]</span>
+  | x <span style="color: #000000; background-color: #ffffff;">::</span> l -&gt; <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">x</span> = f x <span style="color: #000000; font-weight: bold;">in</span> x <span style="color: #000000; background-color: #ffffff;">::</span> map f l
 </pre>
 </div>
 <p>
@@ -338,10 +442,10 @@ order from left to right.
 The function <code>filter</code>, defined as
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let rec filter (p : 'a -&gt; bool) (l : 'a list) : 'a list =
-  match l with
-  | [] -&gt; []
-  | x :: l -&gt; if p x then x :: filter p l else filter p l
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">filter</span> (<span style="color: #a0522d;">p</span> :<span style="color: #228b22;"> 'a -&gt; bool</span>) (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a list</span>) :<span style="color: #228b22;"> 'a list </span>=
+  <span style="color: #a020f0;">match</span> l <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; <span style="color: #000000; background-color: #ffffff;">[]</span>
+  | x <span style="color: #000000; background-color: #ffffff;">::</span> l -&gt; <span style="color: #a020f0;">if</span> p x <span style="color: #a020f0;">then</span> x <span style="color: #000000; background-color: #ffffff;">::</span> filter p l <span style="color: #a020f0;">else</span> filter p l
 </pre>
 </div>
 <p>
@@ -352,140 +456,266 @@ from left to right.
 The function <code>fold_right</code>, defined as
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let rec fold_right (f : 'a -&gt; 'b -&gt; 'b) (l : 'a list) (accu : 'b) : 'b =
-  match l with
-  | [] -&gt; accu
-  | x :: l -&gt; f x (fold_right f l accu)
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">fold_right</span> (<span style="color: #a0522d;">f</span> :<span style="color: #228b22;"> 'a -&gt; 'b -&gt; 'b</span>) (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a list</span>) (<span style="color: #a0522d;">accu</span> :<span style="color: #228b22;"> 'b</span>) :<span style="color: #228b22;"> 'b </span>=
+  <span style="color: #a020f0;">match</span> l <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; accu
+  | x <span style="color: #000000; background-color: #ffffff;">::</span> l -&gt; f x (fold_right f l accu)
 </pre>
 </div>
 <p>
 applies the binary operation <code>f</code> between every element of <code>l @ [accu]</code> right-associatively:
 </p>
 <pre class="example">
- [x1;   x2;   x3; ...   xn]
+ [x₁;   x₂;   x₃; ...   xₙ]
   ↓↓    ↓↓    ↓↓        ↓↓
-f x1 (f x2 (f x3 (...(f xn accu)...)))
+f x₁ (f x₂ (f x₃ (...(f xₙ accu)...)))
 </pre>
 <p>
-The function <code>fold_left</code> does the same but to <code>accu :: l</code>  left-associatively:
+and the function <code>fold_left</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let rec fold_left (f : 'b -&gt; 'a -&gt; 'b) (accu : 'b) (l : 'a list) : 'b =
-  match l with
-  | [] -&gt; accu
-  | x :: l -&gt; fold_left f (f accu x) l
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">fold_left</span> (<span style="color: #a0522d;">f</span> :<span style="color: #228b22;"> 'b -&gt; 'a -&gt; 'b</span>) (<span style="color: #a0522d;">accu</span> :<span style="color: #228b22;"> 'b</span>) (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> 'a list</span>) :<span style="color: #228b22;"> 'b </span>=
+  <span style="color: #a020f0;">match</span> l <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; accu
+  | x <span style="color: #000000; background-color: #ffffff;">::</span> l -&gt; fold_left f (f accu x) l
 </pre>
 </div>
+<p>
+does the same but to <code>accu :: l</code> left-associatively:
+</p>
 <pre class="example">
-                   [x1; x2; x3; ... xn]
+                   [x₁; x₂; x₃; ... xₙ]
                     ↓↓  ↓↓  ↓↓      ↓↓
-f (...(f (f (f accu x1) x2) x3)...) xn
-</pre></li>
+f (...(f (f (f accu x₁) x₂) x₃)...) xₙ
+</pre>
+<p>
+Note that <code>fold_left</code> is tail-recursive whereas <code>fold_right</code> is not.
+</p></li>
 </ul>
 </div>
-<div id="outline-container-orgdc8df56" class="outline-4">
-<h4 id="orgdc8df56">Exercises</h4>
-<div class="outline-text-4" id="text-orgdc8df56">
+<div id="outline-container-org8f810e4" class="outline-4">
+<h4 id="org8f810e4"><span class="section-number-4">1.4.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <ol class="org-ol">
-<li>predicate operations</li>
-<li>find the derivative (newtons)</li>
-<li>radix sort bucketing as fold<sub>left</sub></li>
+<li><p>
+Implement the functions
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">andp</span> (<span style="color: #a0522d;">p1</span> :<span style="color: #228b22;"> 'a -&gt; bool</span>) (<span style="color: #a0522d;">p2</span> :<span style="color: #228b22;"> 'a -&gt; bool</span>) :<span style="color: #228b22;"> 'a -&gt; bool </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">orp</span> (<span style="color: #a0522d;">p1</span> :<span style="color: #228b22;"> 'a -&gt; bool</span>) (<span style="color: #a0522d;">p2</span> :<span style="color: #228b22;"> 'a -&gt; bool</span>) :<span style="color: #228b22;"> 'a -&gt; bool </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div>
+<p>
+with the following properties:
+</p>
+<ul class="org-ul">
+<li>given two predicates <code>p1</code> and <code>p2</code>, the predicate <code>andp p1 p2</code> is
+the predicate which expresses that both <code>p1</code> and <code>p2</code> hold.</li>
+<li>given two predicates <code>p1</code> and <code>p2</code>, the predicate <code>orp p1 p2</code> is
+the predicate which expresses that <code>p1</code> or <code>p2</code> hold.</li>
+</ul></li>
+<li><p>
+We can represent a polynomial as a list of <code>float</code>'s, where
+</p>
+<pre class="example">
+      [a₀;  a₁;    a₂;     ...;  aₙ]
+       ↓↓   ↓↓     ↓↓            ↓↓
+p(x) = a₀ + a₁ x + a₂ x² + ... + aₙ xⁿ
+</pre>
+<p>
+Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">derivative</span> (<span style="color: #a0522d;">p</span> :<span style="color: #228b22;"> float list</span>) :<span style="color: #228b22;"> float list </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">todo</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div>
+<p>
+which computes the list representing the polynomial \(p'(x)\), the derivative of \(p(x)\).
+</p></li>
+<li><p>
+When implementing radix sort on integers, it is necessary to partition a list
+of integers based on their last digits.  Fill in the following function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">bucket</span> (<span style="color: #a0522d;">l</span> :<span style="color: #228b22;"> int list</span>) :<span style="color: #228b22;"> int list list </span>=
+  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">op</span> <span style="color: #a0522d;">accu</span> <span style="color: #a0522d;">next</span> =
+    <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+  <span style="color: #000000; font-weight: bold;">in</span>
+  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">base</span> =
+    <span style="color: #228b22;">List.</span>init 10 (<span style="color: #a020f0;">fun</span> <span style="color: #a0522d;">_</span> -&gt; <span style="color: #000000; background-color: #ffffff;">[]</span>)
+  <span style="color: #000000; font-weight: bold;">in</span>
+  <span style="color: #228b22;">List.</span>fold_left op base l
+</pre>
+</div>
+<p>
+which, given a list <code>l</code> of integers, return 10 lists of integers
+which partition <code>l</code> by the last digit the members of <code>l</code>. That is,
+the \(i^\text{th}\) element of <code>bucket l</code> should contain exactly the
+elements of <code>l</code> whose last digit is \(i\).
+</p></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf62c214" class="outline-3">
-<h3 id="orgf62c214">Tail Recursion</h3>
-<div class="outline-text-3" id="text-orgf62c214">
+<div id="outline-container-orga17751b" class="outline-3">
+<h3 id="orga17751b"><span class="section-number-3">1.5.</span> Tail Recursion</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 Roughly speaking, a recursive call in the body of a function
 definition is in <b>tail position</b> if no evaluation is required <i>after</i>
-the recursive call.  The following implementation of the factorial
-function is not tail recursive because it requires evaluating the
-product of the result of its recursive call with the input <code>n</code>.
+the recursive call.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>  The following implementation of the
+factorial function is not tail recursive because it requires
+evaluating the product of the result of its recursive call with the
+input <code>n</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let rec factorial (n : int) : int =
-  if n &lt; 0
-  then assert false
-  else if n = 0
-  then 1
-  else n * factorial n
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">factorial</span> (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> int </span>=
+  <span style="color: #a020f0;">if</span> n &lt; 0
+  <span style="color: #a020f0;">then</span> <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span>
+  <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> n = 0
+  <span style="color: #a020f0;">then</span> 1
+  <span style="color: #a020f0;">else</span> n * factorial n
 </pre>
 </div>
 <p>
-We tend to make functions tail recursive by adding an accumulator argument to the function.
+We can make functions tail recursive by adding an accumulator argument
+to the function.<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let factorial_tail (n : int) : int =
-  let rec go (n : int) (accu : int) =
-    if n = 0
-    then accu
-    else go (n - 1) (n * accu)
-  in
-  if n &lt; 0
-  then assert false
-  else go n 1
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">factorial_tail</span> (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> int </span>=
+  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">go</span> (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) (<span style="color: #a0522d;">accu</span> :<span style="color: #228b22;"> int</span>) =
+    <span style="color: #a020f0;">if</span> n = 0
+    <span style="color: #a020f0;">then</span> accu
+    <span style="color: #a020f0;">else</span> go (n - 1) (n * accu)
+  <span style="color: #000000; font-weight: bold;">in</span>
+  <span style="color: #a020f0;">if</span> n &lt; 0
+  <span style="color: #a020f0;">then</span> <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span>
+  <span style="color: #a020f0;">else</span> go n 1
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbe45995" class="outline-4">
-<h4 id="orgbe45995">Exercises</h4>
-<div class="outline-text-4" id="text-orgbe45995">
+<div id="outline-container-org73c961a" class="outline-4">
+<h4 id="org73c961a"><span class="section-number-4">1.5.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-5-1">
 <ol class="org-ol">
-<li>hour glass + tr hour glass</li>
-<li>tr evaluator</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="outline-container-org5863bf9" class="outline-3">
-<h3 id="org5863bf9">Type Checking</h3>
-<div class="outline-text-3" id="text-org5863bf9">
-<p>
-OCaml is strongly typed, and it is statically checked for adherence to
-typing rules.  OCaml also has type inference, which means we often do
-not have to specify the types of expressions in OCaml programs (though
-it can be useful for documentation purposes).
+<li><p>
+Consider the following function which prints a (half) hourglass out
+of asterisks.  Implement a function which does the same thing but
+is tail recursive.
 </p>
-</div>
-<div id="outline-container-org99613af" class="outline-4">
-<h4 id="org99613af">Exercises</h4>
-<div class="outline-text-4" id="text-org99613af">
-<ol class="org-ol">
-<li>What is the type of this?</li>
-<li>Does this type check?</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orge0e9d8a" class="outline-2">
-<h2 id="orge0e9d8a">Formal Grammar</h2>
-<div class="outline-text-2" id="text-orge0e9d8a">
-<p>
-In general, grammar is the study of the form structure of language.
-We use concepts from the study of formal grammar to represent and
-reason about the syntax of programming languages.  These concepts
-inform the design of parsers.
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">hourglass</span> (<span style="color: #a0522d;">n</span> :<span style="color: #228b22;"> int</span>) :<span style="color: #228b22;"> unit </span>=
+  <span style="color: #a020f0;">if</span> n &gt; 0
+  <span style="color: #a020f0;">then</span>
+    <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">_</span> = print_endline (<span style="color: #228b22;">String.</span>make n <span style="color: #8b2252;">'*'</span>) <span style="color: #000000; font-weight: bold;">in</span>
+    <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">_</span> = hourglass (n - 1) <span style="color: #000000; font-weight: bold;">in</span>
+    <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">_</span> = print_endline (<span style="color: #228b22;">String.</span>make n <span style="color: #8b2252;">'*'</span>) <span style="color: #000000; font-weight: bold;">in</span>
+    ()
+  <span style="color: #a020f0;">else</span> ()
+</pre>
+</div></li>
+<li><p>
+Implement a tail recursive evaluator for Boolean expressions as
+represented by the following ADT.
 </p>
-</div>
-<div id="outline-container-orgd39b698" class="outline-3">
-<h3 id="orgd39b698">BNF Specifications</h3>
-<div class="outline-text-3" id="text-orgd39b698">
-<p>
-We start with a collection of symbols, separated into to disjoint
-groups, the <b>nonterminal</b> symbols and the <b>terminal</b> symbols.  In a
-Backus-Naur Form (BNF) specification we use notation like <code>&lt;nonterm&gt;</code>
-to denote a nonterminal symbols.  We typically don't specify the
-symbols in advance, but instead glean then from the specification
-itself.
-</p>
-</div>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">bool_expr</span>
+  = <span style="color: #000000; background-color: #ffffff;">Bool</span> <span style="color: #a020f0;">of</span> bool
+  | <span style="color: #000000; background-color: #ffffff;">Not</span> <span style="color: #a020f0;">of</span> bool_expr
+  | <span style="color: #000000; background-color: #ffffff;">And</span> <span style="color: #a020f0;">of</span> bool_expr * bool_expr
+  | <span style="color: #000000; background-color: #ffffff;">Or</span> <span style="color: #a020f0;">of</span> bool_expr * bool_expr
 
-<div id="outline-container-orgc50954e" class="outline-4">
-<h4 id="orgc50954e">Definitions</h4>
-<div class="outline-text-4" id="text-orgc50954e">
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">eval_tr</span> (<span style="color: #a0522d;">e</span> :<span style="color: #228b22;"> bool_expr</span>) :<span style="color: #228b22;"> bool </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org4b574af" class="outline-3">
+<h3 id="org4b574af"><span class="section-number-3">1.6.</span> Type Checking</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+OCaml is <b>strongly typed</b>, and programs are statically checked for
+adherence to typing rules.  We did not look at the type rules in full
+detail, but we did see some examples of formal typing rules in OCaml,
+e.g.,
+</p>
+\begin{equation*}
+\frac
+{b \in \mathsf{bool} \qquad e_1 \in \mathsf{t} \qquad e_2 \in \mathsf{t}}
+{(\textsf{if } b \textsf{ then } e_1 \textsf{ else } e_2) \in \mathsf{t}}
+\end{equation*}
+<p>
+This rule expresses that an if-then-else expression has the same type
+as its if-case and else-case if its individual sub-expressions are
+well-typed.<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>
+</p>
+
+<p>
+OCaml also has <b>type inference</b>, which means we often do not have to
+specify the types of expressions in OCaml programs (though it can be
+useful for documentation purposes).
+</p>
+</div>
+<div id="outline-container-org1b946b4" class="outline-4">
+<h4 id="org1b946b4"><span class="section-number-4">1.6.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<ol class="org-ol">
+<li><p>
+Does this program type-check? If so, what are the types of <code>bar</code> and <code>baz</code>?
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a foo</span> = <span style="color: #000000; background-color: #ffffff;">Foo</span> <span style="color: #a020f0;">of</span> ('a foo -&gt; 'a)
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">bar</span> (<span style="color: #000000; background-color: #ffffff;">Foo</span> <span style="color: #a0522d;">f</span>) = f
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">baz</span> <span style="color: #a0522d;">x</span> = bar x x
+</pre>
+</div></li>
+<li><p>
+Does this program type-check? If so, what is the type of <code>foo</code>?
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">foo</span> <span style="color: #a0522d;">x</span> <span style="color: #a0522d;">y</span> =
+  <span style="color: #a020f0;">if</span> x &gt; 0 <span style="color: #a020f0;">then</span>
+    foo (x - 1) (y +. 1.)
+  <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> x &lt; 0 <span style="color: #a020f0;">then</span>
+    foo y x
+  <span style="color: #a020f0;">else</span>
+    0
+</pre>
+</div></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgef7ab18" class="outline-2">
+<h2 id="orgef7ab18"><span class="section-number-2">2.</span> Formal Grammar</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Grammar is the study of the form and structure of language.  We use
+concepts from the formal grammar to represent and reason about the
+syntax of programming languages.  These concepts also inform the
+design of parsers.
+</p>
+</div>
+<div id="outline-container-orgba3cc9e" class="outline-3">
+<h3 id="orgba3cc9e"><span class="section-number-3">2.1.</span> BNF Specifications</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+We start with a collection of symbols, separated into two disjoint
+groups, the <b>nonterminal</b> symbols and the <b>terminal</b> symbols.  In a
+Backus-Naur form (BNF) specification we use notation of the form
+<code>&lt;nonterm&gt;</code> to denote a nonterminal symbol.  We typically don't
+specify the symbols in advance, but instead glean them from the
+specification itself.
+</p>
+
 <p>
 A <b>sentential form</b> is a sequences of symbols and a <b>sentence</b> is a
 sequence of terminal symbols.
@@ -500,22 +730,40 @@ sentential form, and is written
 </pre>
 <p>
 We interpret a production rule as indicating that <code>&lt;nonterm&gt;</code> <i>stands
-for</i> <code>SENTFORM</code> in a sentence.
+for</i> <code>SENTFORM</code> in a sentential from.
 </p>
 
 <p>
 A <b>BNF specification</b> is given by a collection of production rules and
 a <b>starting symbol</b>.  We typically take the nonterminal symbol in the
-<i>first</i> rule of the specification to be the starting symbol.
+<i>first</i> rule of the specification to be the starting symbol.  We also
+call a BNF specification a <b>grammar</b>.<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
 </p>
 
 <p>
-A <b>derivation</b> of a sentential form \(S\) in a specification \(\mathcal
-B\) with start symbol <code>&lt;start&gt;</code> is a sequence of sentential forms,
-starting with the start symbol <code>&lt;start&gt;</code> and ending in \(S\), in which
-each form in the sequence (except for <code>&lt;start&gt;</code>) is the results of
-replacing a nonterminal symbol in the previous form with a sentential
-from given by a production rule in \(\mathcal B\).
+In the case that a BNF specification has multiples rules for the same
+nonterminal symbol, we use the notation
+</p>
+<pre class="example">
+&lt;nonterm&gt; ::= SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ
+</pre>
+<p>
+as shorthand for
+</p>
+<pre class="example">
+&lt;nonterm&gt; ::= SENTFORM₁
+&lt;nonterm&gt; ::= SENTFORM₂
+ ...
+&lt;nonterm&gt; ::= SENTFORMₖ
+</pre>
+
+<p>
+A <b>derivation</b> of a sentential form \(S\) in a grammar \(\mathcal G\) with
+start symbol <code>&lt;start&gt;</code> is a sequence of sentential forms, starting
+with the start symbol <code>&lt;start&gt;</code> and ending in \(S\), in which each form
+in the sequence (except for <code>&lt;start&gt;</code>) is the results of replacing <i>one</i>
+nonterminal symbol in the previous form with a sentential from given
+by a production rule of \(\mathcal G\).
 </p>
 
 <p>
@@ -525,54 +773,197 @@ sentential form.
 </p>
 
 <p>
-A <b>parse tree</b>, informally, is a derivation represented as a tree, in
-which the root is labeled with the starting symbol and each node
-contains as it's children the symbols of sentential form which it is
-replaced with in the derivation. A parse tree may correspond to
-multiple derivations, but every derivation has a unique parse tree
-representation.
+A grammar \(\mathcal G\) <b>accepts</b> or <b>recognizes</b> a sentence
+\(S\) if has a derivation in \(\mathcal G\).
 </p>
-</div>
-</div>
 
-<div id="outline-container-orga7b93a9" class="outline-4">
-<h4 id="orga7b93a9">Examples</h4>
-<div class="outline-text-4" id="text-orga7b93a9">
 <p>
-TODO
+A <b>parse tree</b>, informally, is a derivation represented as a tree, in which
+</p>
+<ul class="org-ul">
+<li>every node is labeled with a symbol</li>
+<li>the root is labeled with the starting symbol</li>
+<li>the children of each node are the symbols of the sentential form (in
+order) which replace the symbol labeling the node in the derivation.</li>
+</ul>
+
+<p>
+The <b>frontier</b> of a parse tree (i.e., the leaf nodes in order from
+left to right) form the sentence derived in the derivation represented
+by the parse tree.
+</p>
+
+<p>
+A parse tree may correspond to multiple derivations, but every
+derivation has a unique parse tree representation.  Likewise, every
+parse tree corresponds to a unique <i>leftmost</i> derivation.
 </p>
 </div>
+<div id="outline-container-org5ac547c" class="outline-4">
+<h4 id="org5ac547c"><span class="section-number-4">2.1.1.</span> Examples</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+<i>A toy grammar for English sentences:</i>
+</p>
+<pre class="example">
+&lt;sentence&gt;    ::= &lt;noun-phrase&gt; &lt;verb-phrase&gt;
+&lt;verb-phrase&gt; ::= &lt;verb&gt; | &lt;verb&gt; &lt;prep-phrase&gt;
+&lt;prep-phrase&gt; ::= &lt;prep&gt; &lt;noun-phrase&gt;
+&lt;noun-phrase&gt; ::= &lt;article&gt; &lt;noun&gt;
+&lt;article&gt;     ::= the
+&lt;noun&gt;        ::= cow | moon
+&lt;verb&gt;        ::= jumped
+&lt;prep&gt;        ::= over
+</pre>
+<hr />
+<p>
+<i>A (leftmost) derivation of a sentence recognized by the above
+grammar:</i><sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>
+</p>
+
+<pre class="example">
+&lt;sentence&gt;!
+&lt;noun-phrase&gt;!     &lt;verb-phrase&gt;
+&lt;noun-phrase&gt;      &lt;verb&gt;  &lt;prep-phrase&gt;!
+&lt;noun-phrase&gt;!     &lt;verb&gt;  &lt;prep&gt;  &lt;noun-phrase&gt;
+&lt;article&gt;  &lt;noun&gt;  &lt;verb&gt;  &lt;prep&gt;  &lt;noun-phrase&gt;!
+&lt;article&gt;! &lt;noun&gt;  &lt;verb&gt;  &lt;prep&gt;  &lt;article&gt;  &lt;noun&gt;
+the        &lt;noun&gt;! &lt;verb&gt;  &lt;prep&gt;  &lt;article&gt;  &lt;noun&gt;
+the        cow     &lt;verb&gt;! &lt;prep&gt;  &lt;article&gt;  &lt;noun&gt;
+the        cow     jumped  &lt;prep&gt;! &lt;article&gt;  &lt;noun&gt;
+the        cow     jumped  over    &lt;article&gt;! &lt;noun&gt;
+the        cow     jumped  over    the        &lt;noun&gt;!
+the        cow     jumped  over    the        moon
+</pre>
+<hr />
+<p>
+<i>A toy grammar for an imperative programming language:</i>
+</p>
+<pre class="example">
+&lt;program&gt; ::= &lt;stmts&gt;
+&lt;stmts&gt;   ::= &lt;stmt&gt; | &lt;stmt&gt; ; &lt;stmts&gt;
+&lt;stmt&gt;    ::= &lt;var&gt; = &lt;stmt&gt;
+&lt;var&gt;     ::= a | b | c | d
+&lt;expr&gt;    ::= &lt;term&gt; | &lt;term&gt; + &lt;term&gt; | &lt;term&gt; - &lt;term&gt;
+&lt;term&gt;    ::= &lt;var&gt; | const
+</pre>
+<hr />
+<p>
+<i>A (leftmost) derivation of a program recognized by the above grammar:</i>
+</p>
+<pre class="example">
+&lt;program&gt;
+&lt;stmts&gt;
+&lt;stmt&gt; ; &lt;stmts&gt;
+&lt;var&gt; = &lt;expr&gt; ; &lt;stmts&gt;
+a = &lt;expr&gt; ; &lt;stmts&gt;
+a = &lt;term&gt; ; &lt;stmts&gt;
+a = const ; &lt;stmts&gt;
+a = const ; &lt;stmt&gt; ; &lt;stmts&gt;
+a = const ; &lt;var&gt; = &lt;expr&gt; ; &lt;stmts&gt;
+a = const ; a = &lt;expr&gt; ; &lt;stmts&gt;
+a = const ; a = &lt;term&gt; + &lt;term&gt; ; &lt;stmts&gt;
+a = const ; a = &lt;var&gt; + &lt;term&gt; ; &lt;stmts&gt;
+a = const ; a = a + &lt;term&gt; ; &lt;stmts&gt;
+a = const ; a = a + const ; &lt;stmts&gt;
+a = const ; a = a + const ; &lt;var&gt; = &lt;expr&gt;
+a = const ; a = a + const ; b = &lt;expr&gt;
+a = const ; a = a + const ; b = &lt;term&gt;
+a = const ; a = a + const ; b = &lt;var&gt;
+a = const ; a = a + const ; b = a
+</pre>
 </div>
-<div id="outline-container-org028c409" class="outline-4">
-<h4 id="org028c409">Exercises</h4>
-<div class="outline-text-4" id="text-org028c409">
+</div>
+<div id="outline-container-orga996cbb" class="outline-4">
+<h4 id="orga996cbb"><span class="section-number-4">2.1.2.</span> Extended BNF</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+We extend the notation of BNF specifications to make it more
+convenient to use.<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+</p>
+<ul class="org-ul">
+<li><p>
+<code>[ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ ]</code> refers to an optional
+collection of alternatives of a sentential form.  For example, we
+can represent an integer by the following specification:
+</p>
+<pre class="example">
+&lt;int&gt;    ::= [ - ] &lt;digits&gt;
+&lt;digits&gt; ::= &lt;digit&gt; | &lt;digit&gt; &lt;digits&gt;
+&lt;digit&gt;  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+</pre></li>
+<li><p>
+<code>( SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ )</code> refers to a collection
+of alternatives <i>within</i> a sentential form.  For example, we can
+represent arithmetic expressions by the following specification:
+</p>
+<pre class="example">
+&lt;expr&gt;   ::= &lt;expr&gt; ( + | - | * | / ) &lt;expr&gt; | &lt;digits&gt;
+&lt;digits&gt; ::= &lt;digit&gt; | &lt;digit&gt; &lt;digits&gt;
+&lt;digit&gt;  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+</pre></li>
+<li><p>
+<code>{ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ }</code> to refer to zero or
+more occurrences of the sentential forms in a collection of
+alternatives. For example, we can simplify the specification for
+integers (and enforce that the first digit must be nonzero):
+</p>
+<pre class="example">
+&lt;int&gt; ::= [ - ] ( 1 | ... | 9) { 0 | ... | 9 }
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfd1fcb5" class="outline-4">
+<h4 id="orgfd1fcb5"><span class="section-number-4">2.1.3.</span> Exercises</h4>
+<div class="outline-text-4" id="text-2-1-3">
 <ol class="org-ol">
-<li>List the symbols implicit in this specification.</li>
-<li>Give a derivation of S in this grammar.</li>
-<li>Give a leftmost derivation of S in this grammar.</li>
-<li>Give an example of a grammar with no leftmost derivations.</li>
-<li>Draw the parse tree associated with this derivation.</li>
-<li>Draw the parse tree for this sentence in this grammar.</li>
-<li>Implement the algorithm which determines the sentence for a given
-parse<sub>tree</sub>.</li>
+<li><p>
+List the symbols (both terminal and nonterminal) implicit in the following specification.
+</p>
+<pre class="example">
+&lt;a&gt; ::= a &lt;b&gt; | a &lt;a&gt; b
+&lt;b&gt; ::= c &lt;a&gt; | d
+</pre></li>
+<li>Give a leftmost derivation of <code>a a c a d b b</code> in the above
+grammar. Draw its associated parse tree.</li>
+<li>Verify that <code>a = a + a ; b = b</code> is recognized by the grammar for
+the simple imperative language above.  Give a derivation that is
+<i>not</i> leftmost.</li>
+<li><p>
+Implement the function
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a tree</span>
+  = <span style="color: #000000; background-color: #ffffff;">Leaf</span> <span style="color: #a020f0;">of</span> 'a
+  | <span style="color: #000000; background-color: #ffffff;">Node</span> <span style="color: #a020f0;">of</span> 'a tree list
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">frontier</span> (<span style="color: #a0522d;">t</span> :<span style="color: #228b22;"> 'a tree</span>) :<span style="color: #228b22;"> 'a list </span>=
+  <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">TODO</span><span style="color: #b22222;"> *)</span>
+</pre>
+</div>
+<p>
+which returns a list of the members of <code>t</code> in order from left to
+right.
+</p></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org5fe2548" class="outline-3">
-<h3 id="org5fe2548">Ambiguity</h3>
-<div class="outline-text-3" id="text-org5fe2548">
+<div id="outline-container-orgb5c4c44" class="outline-3">
+<h3 id="orgb5c4c44"><span class="section-number-3">2.2.</span> Ambiguity</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 A BNF specification is <b>ambiguous</b> if there is a sentence with
-multiple parse trees.  We try to avoid ambiguous specifications for
-programming languages because we don't want a program to be
-interpretable in multiple ways.
+multiple parse trees.  Equivalently, a specification is ambiguous if
+there is a sentence with multiple leftmost derivations.  We try to
+avoid ambiguous specifications for programming languages because we ultimately
+don't want a program to be interpretable in multiple ways.
 </p>
 </div>
-
-<div id="outline-container-org26d040f" class="outline-4">
-<h4 id="org26d040f">Fixity</h4>
-<div class="outline-text-4" id="text-org26d040f">
+<div id="outline-container-orgdb8cb04" class="outline-4">
+<h4 id="orgdb8cb04"><span class="section-number-4">2.2.1.</span> Fixity</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <p>
 The <b>fixity</b> of an operator refers to where the operator is written
 with respect to its arguments.
@@ -597,25 +988,19 @@ with respect to its arguments.
 </ul>
 
 <p>
-One of the primary ways in which specifications of programming
-languages can be ambiguous is in the use of infix and mixfix
-operations.  If a language's syntactic constructs are all prefix
-(Polish notation) or all postfix (reverse Polish notation) then the
-specification is unambiguous.
-</p>
-
-<p>
-We can make infix binary operators unambiguous by specifying their
-associativity and precedence.
+If a language's syntactic constructs are all prefix (<b>Polish notation</b>)
+or all postfix (<b>reverse Polish notation</b>) then the specification is
+unambiguous.  We can make infix binary operators unambiguous by
+specifying their associativity and precedence.
 </p>
 </div>
 </div>
-<div id="outline-container-org20af429" class="outline-4">
-<h4 id="org20af429">Associativity</h4>
-<div class="outline-text-4" id="text-org20af429">
+<div id="outline-container-orgca5798b" class="outline-4">
+<h4 id="orgca5798b"><span class="section-number-4">2.2.2.</span> Associativity</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <p>
 An operator \(\square\) is declared <b>left associative</b> if we interpret
-\(a \square b \square c\) to be equivalent to \((a \square b) \square c\).
+\(a \square b \square c\) as \((a \square b) \square c\).
 </p>
 <ul class="org-ul">
 <li>For arithmetic expressions, we take subtraction to be
@@ -625,7 +1010,7 @@ as opposed to <code>2</code>.</li>
 
 <p>
 An operator \(\square\) is declared <b>right associative</b> if we interpret
-\(a \square b \square c\) to be equivalent to \(a \square (b \square c)\).
+\(a \square b \square c\) as  \(a \square (b \square c)\).
 </p>
 <ul class="org-ul">
 <li>For arithmetic expressions, we take exponentiation to be
@@ -636,11 +1021,15 @@ as opposed to <code>8</code>.</li>
 <p>
 We can enforce the associativity of an operator in the specification itself.
 </p>
+
+<p>
+TODO
+</p>
 </div>
 </div>
-<div id="outline-container-org4934e3c" class="outline-4">
-<h4 id="org4934e3c">Precedence</h4>
-<div class="outline-text-4" id="text-org4934e3c">
+<div id="outline-container-orga615692" class="outline-4">
+<h4 id="orga615692"><span class="section-number-4">2.2.3.</span> Precedence</h4>
+<div class="outline-text-4" id="text-2-2-3">
 <p>
 Given two binary operators \(\square\) and \(\triangle\), the operator
 \(\square\) has <b>higher precedence</b> than \(\triangle\) if we interpret \(a
@@ -663,9 +1052,9 @@ TODO
 </p>
 </div>
 </div>
-<div id="outline-container-org0adfa3c" class="outline-4">
-<h4 id="org0adfa3c">Exercises</h4>
-<div class="outline-text-4" id="text-org0adfa3c">
+<div id="outline-container-orge5497a7" class="outline-4">
+<h4 id="orge5497a7"><span class="section-number-4">2.2.4.</span> Exercises</h4>
+<div class="outline-text-4" id="text-2-2-4">
 <ol class="org-ol">
 <li>Is this grammar ambiguous?</li>
 <li>Find a sentence in this grammar which has multiple derivations.</li>
@@ -674,49 +1063,104 @@ TODO
 </div>
 </div>
 </div>
-<div id="outline-container-org19c5b81" class="outline-3">
-<h3 id="org19c5b81">Regular Grammars</h3>
-<div class="outline-text-3" id="text-org19c5b81">
+<div id="outline-container-org77d138c" class="outline-3">
+<h3 id="org77d138c"><span class="section-number-3">2.3.</span> Regular Grammars</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
-Regular grammars are a special form of grammar.
+A <b>(right linear) regular grammar</b> is a grammar whose rules are all of the following forms:
+</p>
+<pre class="example">
+&lt;nonterm&gt; ::= term
+&lt;nonterm&gt; ::= term &lt;nonterm&gt;
+&lt;nonterm&gt; ::= ϵ
+</pre>
+<p>
+where \(\epsilon\) refers to the empty sentence.
 </p>
 
 <p>
-Regular expressions are a compact representation of regular grammars.
+<b>Regular expressions</b> are a compact way of describing regular
+grammars.  They are defined inductively as follows:
+</p>
+<ul class="org-ul">
+<li>\(\epsilon\) is a regular expression</li>
+<li>if \(r_1, r_2, \dots, r_k\) are regular expressions then so are
+\((r_1r_2 \dots, r_k)\) and \((r_1 \ | \ r_2 \ | \ \dots \ | \ r_k)\)</li>
+<li>if \(r\) is a regular expression, then so is \(r^*\)</li>
+</ul>
+
+<p>
+TODO acceptance
+</p>
+
+<p>
+Regular grammars and regular expressions are equivalent in
+expressivity.
 </p>
 </div>
-</div>
-<div id="outline-container-org5dd135d" class="outline-3">
-<h3 id="org5dd135d">Chomsky Norm Form</h3>
-<div class="outline-text-3" id="text-org5dd135d">
+<div id="outline-container-org932dccb" class="outline-4">
+<h4 id="org932dccb"><span class="section-number-4">2.3.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-2-3-1">
 <p>
 TODO
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6a3f72d" class="outline-2">
-<h2 id="org6a3f72d">Parsing</h2>
-<div class="outline-text-2" id="text-org6a3f72d">
+<div id="outline-container-orgfe21952" class="outline-3">
+<h3 id="orgfe21952"><span class="section-number-3">2.4.</span> Chomsky Normal Form</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
-The general parsing problem is to find a derivation of a sentence, if
-one exists.  (NOTE ON CHOMSKY)
+A grammar is in <b>Chomsky normal form</b> if its rule are all of the
+following forms:
 </p>
+<pre class="example">
+&lt;start&gt;   ::= ϵ
+&lt;nonterm&gt; ::= &lt;nonterm&gt; &lt;nonterm&gt;
+&lt;nonterm&gt; ::= term
+</pre>
 
 <p>
-In the context of this course, we are more interested in the specific
-problem of converting a string representation of a program into an
-algebraic data type representing the syntax of the program.
-</p>
-
-<p>
-There are many ways to accomplish this, we saw two.
+Every grammar we have considered (i.e., every grammar with a BNF
+specification) can be converted into an equivalent grammar (i.e., one
+which accepts the same sentences) which is in Chomsky normal form.
 </p>
 </div>
 
-<div id="outline-container-org9664a00" class="outline-3">
-<h3 id="org9664a00">Recursive-Descent</h3>
-<div class="outline-text-3" id="text-org9664a00">
+<div id="outline-container-org04ab1d5" class="outline-4">
+<h4 id="org04ab1d5"><span class="section-number-4">2.4.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+TODO
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6dee723" class="outline-2">
+<h2 id="org6dee723"><span class="section-number-2">3.</span> Parsing</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The general parsing problem is to find a derivation of a sentence in a
+given grammar, if one exists. <i>(Aside. there is an efficient parsing
+algorithm for grammars in Chomsky normal form)</i>
+</p>
+
+<p>
+In the context of this course, we are primarily interested in the
+specific problem of converting a <code>string</code> (or <code>char list</code>) into an ADT
+representing the syntax of the program.
+</p>
+
+<p>
+There are many ways to accomplish this, we saw two:
+<b>recursive-descent</b> and <b>parser-combinators</b>.
+</p>
+</div>
+
+<div id="outline-container-org2bed1c7" class="outline-3">
+<h3 id="org2bed1c7"><span class="section-number-3">3.1.</span> Recursive-Descent</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 Recursive-descent parsing refers to an ad-hoc form of parsing in which
 mutually recursive functions are defined to parse forms of a
@@ -738,14 +1182,14 @@ the final exam in any significant way.)
 </div>
 </div>
 
-<div id="outline-container-orgf8e306b" class="outline-3">
-<h3 id="orgf8e306b">Combinators</h3>
-<div class="outline-text-3" id="text-orgf8e306b">
+<div id="outline-container-org7fc5ac9" class="outline-3">
+<h3 id="org7fc5ac9"><span class="section-number-3">3.2.</span> Combinators</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 We can think of a parser for <code>'a</code>'s as a functions of type
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">type 'a parser = char list -&gt; ('a * char list) option
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">'a parser</span> = char list -&gt; ('a * char list) option
 </pre>
 </div>
 <p>
@@ -762,9 +1206,9 @@ initial part of the stream corresponds to an <code>'a</code>.</li>
 One of the simplest examples is the <code>char</code> parser:
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let char (d : char) (cs : char list) : (char * char list) option =
-  match cs with
-  | c :: cs when c = d -&gt; Some (d, cs)
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">char</span> (<span style="color: #a0522d;">d</span> :<span style="color: #228b22;"> char</span>) (<span style="color: #a0522d;">cs</span> :<span style="color: #228b22;"> char list</span>) :<span style="color: #228b22;"> (char * char list) option </span>=
+  <span style="color: #a020f0;">match</span> cs <span style="color: #a020f0;">with</span>
+  | c <span style="color: #000000; background-color: #ffffff;">::</span> cs <span style="color: #a020f0;">when</span> c = d -&gt; <span style="color: #000000; background-color: #ffffff;">Some</span> (d, cs)
   | _ -&gt; None
 </pre>
 </div>
@@ -780,9 +1224,9 @@ When we want to <i>use</i> a parser, we apply it to a character list and
 verify that it consumed it's the entire input:
 </p>
 <div class="org-src-container">
-<pre class="src src-ocaml">let parse (p : 'a parser) (s : string) =
-  match p (explode s) with
-  | (a, []) -&gt; Some a
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">parse</span> (<span style="color: #a0522d;">p</span> :<span style="color: #228b22;"> 'a parser</span>) (<span style="color: #a0522d;">s</span> :<span style="color: #228b22;"> string</span>) =
+  <span style="color: #a020f0;">match</span> p (explode s) <span style="color: #a020f0;">with</span>
+  | (a, <span style="color: #000000; background-color: #ffffff;">[]</span>) -&gt; <span style="color: #000000; background-color: #ffffff;">Some</span> a
   | _ -&gt; None
 </pre>
 </div>
@@ -859,14 +1303,14 @@ be required to memorize their definitions).
 </div>
 
 
-<div id="outline-container-org0218e89" class="outline-4">
-<h4 id="org0218e89">Exercises</h4>
+<div id="outline-container-org28f09a4" class="outline-4">
+<h4 id="org28f09a4"><span class="section-number-4">3.2.1.</span> Exercises</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-orga0ae140" class="outline-2">
-<h2 id="orga0ae140">Formal Semantics</h2>
-<div class="outline-text-2" id="text-orga0ae140">
+<div id="outline-container-org1013678" class="outline-2">
+<h2 id="org1013678"><span class="section-number-2">4.</span> Formal Semantics</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 In general, semantics is the study of the <i>meaning</i> of language.  We
 use concepts from the study of formal semantics to model the behavior
@@ -893,11 +1337,12 @@ reduced until it reaches a state which cannot be further reduced.
 </p>
 </div>
 
-<div id="outline-container-org86d466c" class="outline-3">
-<h3 id="org86d466c">Derivations</h3>
-<div class="outline-text-3" id="text-org86d466c">
+<div id="outline-container-orga1f758d" class="outline-3">
+<h3 id="orga1f758d"><span class="section-number-3">4.1.</span> Derivations</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
-Suppose we have a programming language \(\mathcal P\) defined by a given BNF grammar.
+Suppose we have a programming language \(\mathcal P\) defined by a given
+BNF grammar.
 </p>
 
 <p>
@@ -910,6 +1355,7 @@ in the case of functional languages.
 Defining the (small-step) operational semantics for \(\mathcal P\) means
 defining a reduction relation for configurations:
 </p>
+
 \begin{equation*}
 ( \ S \ , \ P \ ) \longrightarrow ( \ S' \ , \ P' \ )
 \end{equation*}
@@ -921,6 +1367,7 @@ consist of a <i>shape</i> of a reduction together with a collection of
 (also called axioms). The general form of a reduction rules is
 something like
 </p>
+
 \begin{equation*}
 \frac
 {P_1 \qquad P_2 \qquad \dots \qquad P_k}
@@ -934,25 +1381,31 @@ rule contains <i>meta-variables</i> that describe the <i>kind of reductions</i>
 that can be derived, or that can be used a premises.  For example, the
 rules for evaluating an arithmetic expression might include
 </p>
+
 \begin{equation*}
 \frac{e_1 \longrightarrow e_1'}
 {e_1 + e_2 \longrightarrow e_1' + e_2}
-\ \textsf{(add-left)}
+\ \textsf{(addLeft)}
 \end{equation*}
+
 <p>
 which expresses that if \(e_1\) reduces to \(e_1'\) in a single step then
 \(e_1 + e_2\) reduces to \(e_1 + e_2'\) in a single step <i>no matter the
 expressions \(e_1\), \(e_1'\) and \(e_2\)</i>.  This rule can be used to show that
 </p>
+
 \begin{equation*}
 (1 + 2) + 3 \longrightarrow 3 + 3
 \end{equation*}
+
 <p>
 but also that
 </p>
+
 \begin{equation*}
 (1 + (2 * 3)) + 3 \longrightarrow (1 + 6) + 3
 \end{equation*}
+
 <p>
 Both reductions invoke that fact that if the left argument can be
 reduced by a single step, then the sum can be reduced by a single
@@ -985,9 +1438,10 @@ order via the structure of our reduction rules.
 <p>
 What we have been describing is a <b>single-step reduction relation</b>.
 Any single-step reduction relation can be extended to a <b>multi-step
-reduction relation</b> by including the following rules and a multi-step reduction relation symbol
-'\(\longrightarrow^{\star}\)'.
+reduction relation</b> by including the following rules and a multi-step
+reduction relation symbol '\(\longrightarrow^{\star}\)'.
 </p>
+
 \begin{equation*}
 \frac
 {}
@@ -1001,16 +1455,16 @@ reduction relation</b> by including the following rules and a multi-step reducti
 \end{equation*}
 
 <p>
-Formally, <b>evaluation</b> is the process of determining a configuration \(C'\) for a
-given configuration \(C\) such that \(C \longrightarrow^\star C'\) and
-\(C'\) cannot be further reduced (i.e., there is no other configuration
-\(C''\) such that \(C' \longrightarrow C''\)).
+Formally, <b>evaluation</b> is the process of determining a configuration
+\(C'\) for a given configuration \(C\) such that \(C \longrightarrow^\star
+C'\) and \(C'\) cannot be further reduced (i.e., there is no other
+configuration \(C''\) such that \(C' \longrightarrow C''\)).
 </p>
 </div>
 
-<div id="outline-container-org638c6ba" class="outline-4">
-<h4 id="org638c6ba">Exercises</h4>
-<div class="outline-text-4" id="text-org638c6ba">
+<div id="outline-container-org232fc19" class="outline-4">
+<h4 id="org232fc19"><span class="section-number-4">4.1.1.</span> Exercises</h4>
+<div class="outline-text-4" id="text-4-1-1">
 <ol class="org-ol">
 <li>Write a derivation for this reduction.</li>
 <li>Find a configuration which this single-step reduces to.</li>
@@ -1024,19 +1478,19 @@ reductions and arguments are evaluated from left to right.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc963db8" class="outline-3">
-<h3 id="orgc963db8">Examples</h3>
-<div class="outline-text-3" id="text-orgc963db8">
+<div id="outline-container-orgea31a4e" class="outline-3">
+<h3 id="orgea31a4e"><span class="section-number-3">4.2.</span> Examples</h3>
+<div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org0a342ac" class="outline-4">
-<h4 id="org0a342ac">Arithmetic Expressions</h4>
+<div id="outline-container-org17aa6cb" class="outline-4">
+<h4 id="org17aa6cb"><span class="section-number-4">4.2.1.</span> Arithmetic Expressions</h4>
 </div>
-<div id="outline-container-org1bc4654" class="outline-4">
-<h4 id="org1bc4654">The Lambda Calculus</h4>
+<div id="outline-container-org1fd0d6d" class="outline-4">
+<h4 id="org1fd0d6d"><span class="section-number-4">4.2.2.</span> The Lambda Calculus</h4>
 </div>
-<div id="outline-container-orgecfa776" class="outline-4">
-<h4 id="orgecfa776">A Stack-Oriented Language</h4>
-<div class="outline-text-4" id="text-orgecfa776">
+<div id="outline-container-org29ca793" class="outline-4">
+<h4 id="org29ca793"><span class="section-number-4">4.2.3.</span> A Stack-Oriented Language</h4>
+<div class="outline-text-4" id="text-4-2-3">
 <p>
 One of the running examples we used for understanding operations
 semantics was stack-oriented languages.
@@ -1046,85 +1500,212 @@ semantics was stack-oriented languages.
 The following is a BNF specification for a stack-oriented language
 whose programs manipulate a stack of integers.
 </p>
+
+<hr />
+<p>
+<i>Syntax of our base stack-oriented language:</i>
+</p>
 <pre class="example">
 &lt;prog&gt;  ::= { &lt;com&gt; }
-&lt;com&gt;   ::= &lt;num&gt; | drop | dup | swap | .
-          | + | - | *
-          | then &lt;com&gt; else &lt;com&gt; end
+&lt;com&gt;   ::= push &lt;num&gt; | dup | swap |
+          | add | sub | mul
+          | then &lt;prog&gt; else &lt;prog&gt; end
 &lt;num&gt;   ::= &lt;digit&gt; { &lt;digit&gt; }
 &lt;digit&gt; ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 </pre>
+<hr />
 
 <p>
-Here, for example, is a program which determines the prints the value of \(14^2 + 15^2\).
+Here, for example, is a program which puts the value of \(14 + 15 + 16\)
+on top of the stack.
 </p>
 <pre class="example">
-14 dup *
-15 dup *
-+ .
+push 16 push 15 push 14
+add add
 </pre>
 <p>
 In the operational semantics of this language we take a configuration
-to be a program (\(P\)) together with a stack of integers (\(S\)) and a trace of
-strings (\(T\)) that are printed throughout the evaluation of the program.
+to be a program (\(P\)) together with a stack of integers (\(S\)).
 </p>
+
 \begin{equation*}
-( \ S \ , \ T \ , \ P \ )
-\end{equation*}
-<p>
-with a special error configuration
-</p>
-\begin{equation*}
-\mathsf{ERROR} \equiv ( \ \varnothing \ , \ \textsf{panic} :: \varnothing \ , \ \epsilon \ )
+( \ S \ , \ P \ )
 \end{equation*}
 
 <p>
-The operational semantics then describe how each command affects the stack and the trace.
+together with a special irreducible \(\mathsf{ERROR}\) configuration.
+The operational semantics then describe how each command affects the
+stack and the trace.
+</p>
+
+<hr />
+<p>
+<i>Operational semantics of our base stack-oriented language:</i>
+</p>
+
+\begin{equation*}
+\frac{}{(\ S \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ ,\ P \ )}
+\qquad
+\frac{}{( \ m :: n :: S \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ n :: S \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\qquad
+\frac{}{( \ \varnothing \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ n :: S \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ P \ )}
+\qquad
+\frac{}{( \ \varnothing \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ 0 :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_2 \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{n \not = 0}{( \ n :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_1 \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac{}{( \ \varnothing \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}}
+\end{equation*}
+
+<hr />
+</div>
+</div>
+
+<div id="outline-container-orgbaa1c8b" class="outline-4">
+<h4 id="orgbaa1c8b"><span class="section-number-4">4.2.4.</span> Exercises</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<p>
+Write a program which
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6a8fef1" class="outline-2">
+<h2 id="org6a8fef1"><span class="section-number-2">5.</span> Variables</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+When introducing variables into a programming language, we also
+introduce an <b>environment</b> into the configuration which maintains
+variable bindings.
 </p>
 
 <p>
-TODO
+The structure of the environment depends on the scoping rules used in
+the language, but in its simplest form, and environment is a mapping
+of variable names to values.  This can be accomplished in OCaml with
+an association list (i.e., a <code>(string * value) list</code>.
 </p>
-</div>
-</div>
-<div id="outline-container-org1767273" class="outline-4">
-<h4 id="org1767273">Exercises</h4>
-<div class="outline-text-4" id="text-org1767273">
+
 <p>
-TODO
+An environment requires two operations: <b>fetch</b> and <b>update</b>.  The
+fetch operation should get the value to which a variable is bound in
+the environment.  The update operation should return a new environment
+given a new binding.
 </p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd08fbca" class="outline-2">
-<h2 id="orgd08fbca">Subroutines</h2>
-<div class="outline-text-2" id="text-orgd08fbca">
-</div>
-<div id="outline-container-org599e14b" class="outline-3">
-<h3 id="org599e14b">Parameter Passing</h3>
-</div>
-<div id="outline-container-org186cdf4" class="outline-3">
-<h3 id="org186cdf4">Examples</h3>
-<div class="outline-text-3" id="text-org186cdf4">
-</div>
-<div id="outline-container-org02aa012" class="outline-4">
-<h4 id="org02aa012">Lambda Calculus with Call-by-Name Operational Semantics</h4>
-</div>
-<div id="outline-container-org0f59e61" class="outline-4">
-<h4 id="org0f59e61">Lambda Calculus with Call-by-Value Operational Semantics</h4>
-</div>
-<div id="outline-container-org90cc27f" class="outline-4">
-<h4 id="org90cc27f">Stack-Oriented Language with Subroutines</h4>
-</div>
-</div>
-</div>
-<div id="outline-container-org2552d76" class="outline-2">
-<h2 id="org2552d76">Environments</h2>
-<div class="outline-text-2" id="text-org2552d76">
+
 <p>
-We need to specify how those variable bindings are represented in a
-configuration.
+In the case of a simple association list, we may write the following
+OCaml implementation:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">fetch</span> (<span style="color: #a0522d;">e</span> :<span style="color: #228b22;"> (string * value) list</span>) (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> string</span>) :<span style="color: #228b22;"> value option </span>=
+  <span style="color: #228b22;">List.</span>assoc_opt x e
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">update</span>
+  (<span style="color: #a0522d;">e</span> :<span style="color: #228b22;"> (string * value) list</span>)
+  (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> string</span>)
+  (<span style="color: #a0522d;">v</span> :<span style="color: #228b22;"> value</span>) :<span style="color: #228b22;"> (string * value) list </span>=
+  (x, v) <span style="color: #000000; background-color: #ffffff;">::</span> e
+</pre>
+</div>
+<p>
+Different environment representations need different fetch and update
+implementations, but regardless of how these functions are implemented,
+they should satisfy the following equations.
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">_</span> = <span style="color: #a020f0;">assert</span> (fetch <span style="color: #000000; background-color: #ffffff;">[]</span> x v = <span style="color: #000000; background-color: #ffffff;">None</span>)
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #a0522d;">_</span> = <span style="color: #a020f0;">assert</span> (
+  <span style="color: #a020f0;">if</span> x &lt;&gt; y
+  <span style="color: #a020f0;">then</span> fetch (update e x v) y = fetch e y
+  <span style="color: #a020f0;">else</span> fetch (update e x v) y = v)
+)
+</pre>
+</div>
+
+<hr />
+<p>
+<i>Syntax of our base stack-oriented language:</i>
+</p>
+<pre class="example">
+&lt;prog&gt;  ::= { &lt;com&gt; }
+&lt;com&gt;   ::= push &lt;num&gt; | dup | swap
+          | add | sub | mul
+          | then &lt;prog&gt; else &lt;prog&gt; end
+          | fetch &lt;var&gt; | update &lt;var&gt;
+&lt;num&gt;   ::= &lt;digit&gt; { &lt;digit&gt; }
+&lt;digit&gt; ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+</pre>
+<hr />
+
+<p>
+In the operational semantics of this language we take a configuration
+to be a program (\(P\)) together with a stack of integers (\(S\)) and an
+environment \(E\) of variable bindings.
+</p>
+
+\begin{equation*}
+( \ S \ , \ E \ , \ P \ )
+\end{equation*}
+
+<p>
+together with a special irreducible \(\mathsf{ERROR}\) configuration.
+</p>
+
+<hr />
+<p>
+<i>Operational semantics of a stack-oriented language with variables:</i> They are
+the same as above (with an additional `\(E\)' in the configurations)
+plus the following rules.
+</p>
+
+\begin{equation*}
+\frac{\mathsf{fetch}(E, x) \not = \bot}
+{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )}
+\qquad
+\frac{\mathsf{fetch}(E, x) = \bot}
+{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+\begin{equation*}
+\frac
+{}{( \ n :: S \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, x, n) \ , \ P \ )}
+\end{equation*}
+
+\begin{equation*}
+\frac
+{}{( \ \varnothing \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
+\end{equation*}
+
+<hr />
+
+<p>
+We need to specify how those
+variable bindings are represented in a configuration.
 </p>
 
 <p>
@@ -1135,22 +1716,83 @@ is broad strokes there are two paradigms: <b>dynamic scoping</b> and
 <b>lexical scoping</b>.
 </p>
 </div>
-<div id="outline-container-org97147b3" class="outline-3">
-<h3 id="org97147b3">Stack-Oriented Language with Variables</h3>
 </div>
-</div>
-<div id="outline-container-orge83cf98" class="outline-2">
-<h2 id="orge83cf98">Dynamic Scoping</h2>
-<div class="outline-text-2" id="text-orge83cf98">
+<div id="outline-container-org2b47897" class="outline-2">
+<h2 id="org2b47897"><span class="section-number-2">6.</span> Subroutines</h2>
+<div class="outline-text-2" id="text-6">
 <p>
-Dynamic scoping refers to the idea of using <i>computational (temporal)
+A <b>subroutine</b> is an encapsulated piece of code that can be reused and
+run in different contexts.
+</p>
+
+<p>
+It is not necessary to have variables in order to have subroutines.
+Here is a simple stack-oriented language with subroutines.
+</p>
+
+<hr />
+<p>
+<i>Syntax of a stack-oriented language with subroutines:</i>
+</p>
+
+<pre class="example">
+&lt;prog&gt;   ::= { &lt;com&gt; }
+&lt;com&gt;    ::= push &lt;num&gt; | add | then &lt;prog&gt; else &lt;prog&gt; end
+           | def &lt;ident&gt; begin &lt;prog&gt; end | Call
+&lt;num&gt;    ::= &lt;digit&gt; { &lt;digit&gt; }
+&lt;digit&gt;  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+&lt;ident&gt;  ::= { &lt;letter&gt; }
+&lt;letter&gt; ::= A | B | C | ... | X | Y | Z
+
+</pre>
+<hr />
+
+<hr />
+<p>
+<i>Example program:</i>
+</p>
+<pre class="example">
+def TRIPLE begin
+  dup dup + +
+end
+</pre>
+<hr />
+
+<hr />
+<p>
+<i>Operational Semantics of a stack-oriented language with subroutines:</i>
+</p>
+</div>
+<div id="outline-container-org46744b5" class="outline-3">
+<h3 id="org46744b5"><span class="section-number-3">6.1.</span> Parameter Passing</h3>
+</div>
+<div id="outline-container-org77caf0e" class="outline-3">
+<h3 id="org77caf0e"><span class="section-number-3">6.2.</span> Examples</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-org26a45fc" class="outline-4">
+<h4 id="org26a45fc"><span class="section-number-4">6.2.1.</span> Lambda Calculus with Call-by-Name Operational Semantics</h4>
+</div>
+<div id="outline-container-org23d812b" class="outline-4">
+<h4 id="org23d812b"><span class="section-number-4">6.2.2.</span> Lambda Calculus with Call-by-Value Operational Semantics</h4>
+</div>
+<div id="outline-container-org0e3f9a0" class="outline-4">
+<h4 id="org0e3f9a0"><span class="section-number-4">6.2.3.</span> Stack-Oriented Language with Subroutines</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc79194e" class="outline-2">
+<h2 id="orgc79194e"><span class="section-number-2">7.</span> Dynamic Scoping</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<b>Dynamic scoping</b> refers to the use of <i>computational (temporal)
 context</i> to determine when a binding is available.  In its simplest
 form, we may think of all bindings as globally available as soon as
 they have been instantiated.
 </p>
 
 <p>
-In a language with dynamic scoping and <i>subroutines</i>, when it comes to
+In a language with dynamic scoping and subroutines, when it comes to
 determining what bindings are available, it doesn't matter where a
 subroutine is defined, but rather where it is called.
 </p>
@@ -1160,38 +1802,242 @@ Bash is a widely used language with dynamic scoping, but in general,
 dynamic scoping is not common in modern programming languages.  It is,
 however, much easier to implement than lexical scoping.
 </p>
+
+<p>
+TODO EXAMPLE
+</p>
 </div>
-<div id="outline-container-org629ca0b" class="outline-3">
-<h3 id="org629ca0b">Stack-Oriented Language with Dynamic Scoping</h3>
-</div>
-</div>
-<div id="outline-container-orgbc1fe25" class="outline-2">
-<h2 id="orgbc1fe25">Lexical Scoping</h2>
-<div class="outline-text-2" id="text-orgbc1fe25">
-</div>
-<div id="outline-container-orgf4a1425" class="outline-3">
-<h3 id="orgf4a1425">Activation Records</h3>
-<div class="outline-text-3" id="text-orgf4a1425">
-</div>
-<div id="outline-container-org7384464" class="outline-4">
-<h4 id="org7384464">Stack-Oriented Language with Mutable Variables and Lexical Scoping</h4>
-</div>
-</div>
-<div id="outline-container-org6e9edfe" class="outline-3">
-<h3 id="org6e9edfe">Closures</h3>
-<div class="outline-text-3" id="text-org6e9edfe">
-</div>
-<div id="outline-container-orgc60e210" class="outline-4">
-<h4 id="orgc60e210">Stack-Oriented Language with Immutable Variables and Lexical Scoping</h4>
+
+<div id="outline-container-orgdd39e4e" class="outline-3">
+<h3 id="orgdd39e4e"><span class="section-number-3">7.1.</span> Stack-Oriented Language with Dynamic Scoping</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+TODO FILL IN
+</p>
+
+<p>
+TODO EXAMPLE
+</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org6047722" class="outline-2">
-<h2 id="org6047722">Compilation</h2>
+<div id="outline-container-org31714df" class="outline-2">
+<h2 id="org31714df"><span class="section-number-2">8.</span> Lexical Scoping</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<b>Lexical scoping</b> refers to the use of properties of the source code
+ text to deliniate the availability of a binding.  In Python, the body
+ of a function, determined by indentation, deliniates <b>function
+ scope</b>.  In OCaml, The body of a let-expression is exactly the scope
+ of its associated binding (it is not possible to refer to that
+ binding outside of the body of the let-expression.  Lexical scoping
+ is common among modern programming languages.
+</p>
+
+<p>
+In a language with lexical scoping and subroutines, when it comes to
+determining what bindings are available, it doesn't matter where a
+subroutine was called, but rather where it was defined.
+</p>
+
+<p>
+The way lexical scoping is implemented depends on a couple considerations:
+</p>
+<ul class="org-ul">
+<li>Are variables <b>mutable</b>?</li>
+<li>Are functions <b>higher-order</b>?</li>
+</ul>
 </div>
-<div id="outline-container-org54d3a2a" class="outline-2">
-<h2 id="org54d3a2a">Solutions to Exercises</h2>
+
+<div id="outline-container-org824f30c" class="outline-3">
+<h3 id="org824f30c"><span class="section-number-3">8.1.</span> Activation Records</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Lexical scoping with <i>mutable</i> variables requires maintaining a <b>call
+stack</b>.  The call stack keeps track of the function calls made during
+the evaluating a program, along with local variables to function calls.
+</p>
+
+<p>
+Each function call creates an <b>activation record</b> (<b>frame</b>) which keeps track of:
+</p>
+<ul class="org-ul">
+<li>the input parameters of the function</li>
+<li>a pointer to the activation record in which the function was defined</li>
+<li>a pointer to where to return after completing the function call.</li>
+</ul>
+
+<p>
+We can think of an activation record as having the following rough structure.
+</p>
+<pre class="example">
++-------------+
+| local_n     |
+| local_n-1   |
+| ...         |
+| local_2     |
+| local_1     |
+| def_addr    |
+| return_addr |
+| arg_k       |
+| arg_k-1     |
+| ...         |
+| arg2        |
+| arg1        |
+| return_addr |
++-------------+
+</pre>
+
+<p>
+Conceptually, we represent the call stack within the environment.
+Rather than maintaining a collection of bindings, we maintain a stack
+of activation records.
+</p>
+
+<p>
+In OCaml, we might represent this as:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">record</span> =
+  { id : int
+  ; locals : (string * value) list
+  ; def_pointer : int
+  ; ret_prog : program
+  }
+
+<span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">env</span> = record list
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">fetch</span> (<span style="color: #a0522d;">e</span> :<span style="color: #228b22;"> env</span>) (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> string</span>) :<span style="color: #228b22;"> value option </span>=
+  <span style="color: #000000; font-weight: bold;">let</span> <span style="color: #000000; font-weight: bold;">rec</span> <span style="color: #0000ff;">go</span> <span style="color: #a0522d;">e</span> <span style="color: #a0522d;">x</span> <span style="color: #a0522d;">i</span> =
+    <span style="color: #a020f0;">match</span> e <span style="color: #a020f0;">with</span>
+    | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; <span style="color: #000000; background-color: #ffffff;">None</span>
+    | r <span style="color: #000000; background-color: #ffffff;">::</span> e -&gt;
+      <span style="color: #a020f0;">if</span> r.id = i
+      <span style="color: #a020f0;">then</span>
+        <span style="color: #a020f0;">match</span> <span style="color: #228b22;">List.</span>assoc_opt x r.locals <span style="color: #a020f0;">with</span>
+        | <span style="color: #000000; background-color: #ffffff;">Some</span> v -&gt; <span style="color: #000000; background-color: #ffffff;">Some</span> v
+        | <span style="color: #000000; background-color: #ffffff;">None</span> -&gt; go e x r.def_pointer
+      <span style="color: #a020f0;">else</span> go e x (i - 1)
+  <span style="color: #000000; font-weight: bold;">in</span>
+  <span style="color: #a020f0;">match</span> e <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; <span style="color: #000000; background-color: #ffffff;">None</span>
+  | r <span style="color: #000000; background-color: #ffffff;">::</span> _ -&gt; go e x r.id
+
+<span style="color: #000000; font-weight: bold;">let</span> <span style="color: #0000ff;">update</span> (<span style="color: #a0522d;">e</span> :<span style="color: #228b22;"> env</span>) (<span style="color: #a0522d;">x</span> :<span style="color: #228b22;"> string</span>) (<span style="color: #a0522d;">v</span> :<span style="color: #228b22;"> value</span>) :<span style="color: #228b22;"> env </span>=
+  <span style="color: #a020f0;">match</span> e <span style="color: #a020f0;">with</span>
+  | <span style="color: #000000; background-color: #ffffff;">[]</span> -&gt; <span style="color: #a020f0;">assert</span> <span style="color: #008b8b;">false</span> <span style="color: #b22222;">(* </span><span style="color: #b22222;">impossible</span><span style="color: #b22222;"> *)</span>
+  | r <span style="color: #000000; background-color: #ffffff;">::</span> e -&gt; { r <span style="color: #a020f0;">with</span> locals = (x, v) <span style="color: #000000; background-color: #ffffff;">::</span> r.locals }
+</pre>
+</div>
+
+<p>
+Both of these function can be made more efficient.
+</p>
+</div>
+
+<div id="outline-container-org970dd35" class="outline-4">
+<h4 id="org970dd35"><span class="section-number-4">8.1.1.</span> Stack-Oriented Language with Mutable Variables and Lexical Scoping</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+Lexical scoping becomes more subtle to implement if functions are
+higher-order.  In this example, we do not allow higher-order
+functions, but we do allow nested function definitions.
+</p>
 </div>
 </div>
+</div>
+
+
+
+
+<div id="outline-container-org9c31244" class="outline-3">
+<h3 id="org9c31244"><span class="section-number-3">8.2.</span> Closures</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+<b>Closures</b> are subroutines together with data they need to be executed
+ correctly.  At a minimum, this data usually consists of a local
+ environment, a collection of bindings, which may no longer be in
+ scope when the function is called.  It may also include:
+</p>
+<ul class="org-ul">
+<li>the name given to the subroutine</li>
+<li>a pointer to the activation record in which the function was
+defined</li>
+</ul>
+
+<p>
+Closures can be used to implement higher-order functions and lexically
+scoped immutable variable bindings.  If variable bindings are
+immutable, a subroutine can defined as a closure which stores all the
+variable bindings it needs when it is defined.
+</p>
+
+<p>
+Closure are also used in <b>continuation-passing style</b> implementations
+of subroutines.  We can save a closure containing the current
+environment and (a pointer to) the return program.
+</p>
+
+<p>
+In OCaml:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">closure</span> =
+  { name: string
+  ; body : program
+  ; locals: (string * value) list
+  }
+
+<span style="color: #000000; font-weight: bold;">and</span> <span style="color: #0000ff;">value</span>
+  = <span style="color: #000000; background-color: #ffffff;">Closure</span> <span style="color: #a020f0;">of</span> closure
+  | <span style="color: #000000; background-color: #ffffff;">Num</span> <span style="color: #a020f0;">of</span> int
+
+<span style="color: #000000; font-weight: bold;">type</span> <span style="color: #228b22;">env</span> = closure option * (string * value) list
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgae14a49" class="outline-4">
+<h4 id="orgae14a49"><span class="section-number-4">8.2.1.</span> Stack-Oriented Language with Immutable Variables and Lexical Scoping</h4>
+</div>
+
+<div id="outline-container-org6eb7c64" class="outline-4">
+<h4 id="org6eb7c64"><span class="section-number-4">8.2.2.</span> Exercises</h4>
+<div class="outline-text-4" id="text-8-2-2">
+<p>
+<b>FIN</b>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This can be made more formal by analyzing the
+syntax of OCaml more carefully.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This is, of course, not the only way to achieve
+this. We can also use continuation-passing style, as we saw briefly in
+lecture.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">You are not required to write formal typing derivations,
+but you should be able to use your intuitions about OCaml to determine
+the type of an expression based on its structure (as the OCaml
+type-checker does mechanically).</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">It may be worth noting
+that, in formal language theory, a grammar is a more general</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">The exclamation points are for emphasis, they are not a
+part of the derivation.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Other source may include more constructs in
+EBNF syntax. See, for example, <a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form">the Wikipedia page</a>.</p></div></div>
+
+
+</div>
+</div></div>
 </body>
 </html>

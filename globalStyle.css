@@ -76,7 +76,6 @@ pre{
     font-family: 'Courier', monospace;
     padding: 20px;
     display: block;
-    /* max-width: 100%; */
     overflow: auto;
 }
 
@@ -132,7 +131,7 @@ ol{
     right: 2em;
     top: -0.8em;
     max-height: 100%;
-    max-width: 20em;
+    max-width: 23em;
     overflow: auto;
     background:  #ddd;
     padding-left:0.5em;
@@ -142,7 +141,7 @@ ol{
 #table-of-contents h2 {
     text-align: right;
     font-size:1.2em;
-    max-width: 20em;
+    max-width: 23em;
 }
 
 #table-of-contents #text-table-of-contents {
