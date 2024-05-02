@@ -59,10 +59,10 @@ p {
     margin-bottom: 1em;
 }
 
-.footnote{
-    margin-top: 5em;
-    font-size: 0.8em;
-}
+/* .footnote{ */
+/*     margin-top: 5em; */
+/*     font-size: 0.8em; */
+/* } */
 
 /* a hack for highlighting text without html export in org */
 code {
@@ -121,9 +121,9 @@ ol{
     margin-left:1em;
 }
 
-.footnotes {
-    display: none;
-}
+/* .footnotes { */
+/*     display: none; */
+/* } */
 
 #table-of-contents {
     z-index: 1;

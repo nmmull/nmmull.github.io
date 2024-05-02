@@ -7,8 +7,8 @@
 #+OPTIONS: html-style:nil H:3 toc:2
 This page contains an outline of the topics covered in /CAS CS 320:
 Principles of Programming Languages/ during the Spring 2023 semester.
-It is not exhaustive, and is biased towards those topics which are
-most pertinent for the final exam of the course.  Included are
+It is not exhaustive, though it is biased towards those topics which
+are pertinent for the final exam of the course.  Included are
 exercises associated with each topic.
 * OCaml
 During the first half of the course, we learned the function
@@ -30,6 +30,10 @@ if-then-else expressions.
    let gcd (m : int) (n : int) : int =
      assert false (* TODO *)
  #+end_src
+
+ #+RESULTS:
+ : <fun>
+
  which, given two integers ~m~ and ~n~, returns their greatest
  common divisor.
 2. We can represent a rational number as a pair of integers where the
@@ -62,10 +66,10 @@ if-then-else expressions.
    \end{cases}
    \end{equation*}
 ** Algebraic Data Types
-One of the most important features of a modern functional programming
-language is pattern matching and algebraic data types.  An algebraic
+One of the most important features of modern functional programming
+languages is pattern matching and [[https://cs3110.github.io/textbook/chapters/data/algebraic_data_types.html][algebraic data types]].  An algebraic
 data type (ADT) is defined by giving a collection of *constructors*,
-which may themselves carry other data.  We can think of algebraic data
+which themselves can carry other data.  We can think of algebraic data
 types as defining *unions* of existing types.  Here, for example, is
 an ADT whose values represent either a Boolean value or an integer.
 #+begin_src ocaml
@@ -92,9 +96,8 @@ encompassed in the ~list~ type.
     | Cons of 'a * 'a mylist
 #+end_src
 
-~'a option~ and ~'a result~ also two other parametric types which are
+~'a option~ and ~'a result~ two other parametric types which are
 important to be familiar with.
-
 *** Exercises
 1. Implement the function
  #+begin_src ocaml
@@ -103,6 +106,10 @@ important to be familiar with.
      (num_cols : int) : ('a list list) option =
      assert false (* TODO *)
  #+end_src
+
+ #+RESULTS:
+ : <fun>
+
  which converts a list ~l~ into a matrix with ~num_cols~ columns,
  returing ~None~ in the case that ~num_cols~ is not positive or the
  resulting matrix is not rectangular (i.e., the length of ~l~ is not
@@ -112,8 +119,12 @@ important to be familiar with.
      let drop_nones (l : 'a option list) : 'a list =
        assert false (* TODO *)
    #+end_src
+
+   #+RESULTS:
+   : <fun>
+
    which returns an ~'a list~ consisting of those elements of ~l~
-   which are not ~None~.
+   which are not ~None~ (in order).
 3. A Red-Black tree is an ordered binary tree in which every node is
    labeled either red or black.  It is further required that
    + no red node has a red child
@@ -130,13 +141,12 @@ important to be familiar with.
        = Leaf
        | Node of (color * 'a * 'a rbtree * 'a rbtree)
 
-     let is_valid (t : rbtree) : bool =
+     let is_valid (t : 'a rbtree) : bool =
        assert false (* TODO *)
    #+end_src
 
    #+RESULTS:
-   : type color = Red | Black
-   : type 'a rbtree = Leaf | Node of (color * 'a * 'a rbtree * 'a rbtree)
+   : <fun>
 ** Record Types
 *Record types* are essentially tuples with named fields.  Here is an
  example of a representation of rational numbers using record types.
@@ -153,9 +163,9 @@ important to be familiar with.
     ; is_positive = true
     }
 #+end_src
-If we think of algebraic data types as unions, then we may think of
-record types as *products* of existing types.  Beyond this, they have
-a couple conveniences that are good to remember.
+If we think of algebraic data types as unions of existing types, then
+we may think of record types as *products* of existing types.  Beyond
+this, they have a couple conveniences that are good to remember.
 + Accessing fields in a record can be done via dot notation, i.e., if
   ~r~ is a ~rat~ then ~r.is_positive~ is a ~bool~.
 + Updating a fields records can be done using ~with~-notation.  This
@@ -183,10 +193,12 @@ a couple conveniences that are good to remember.
        ; top_right = x +. r.width /. 2., y +. r.height /.  2.
        }
    #+end_src
-2. Write a function which adds a binding the list of captured bindings
-   of a closure, ensuring that it is shadowed by any bindings already
-   in the collection of captured bindings.
+2. Write a function which adds a binding to the list of captured
+   bindings of a closure, ensuring that it is shadowed by any bindings
+   already in the collection of captured bindings.
    #+begin_src ocaml
+     type value = unit (* DUMMY TYPE *)
+     type program = unit (* DUMMY TYPE *)
      type closure =
        { name : string
        ; body : program
@@ -196,12 +208,16 @@ a couple conveniences that are good to remember.
      let add_binding (c : closure) (x : string) (v : value) =
        assert false (* TODO *)
    #+end_src
+
+   #+RESULTS:
+   : <fun>
+
 3. Suppose you are given a list of tools for converting sound files
    from one format to another.  Each converter has a name, a list of
    input formats which it can convert from, and a list of output
    formats which it can convert to.  Implement the function
    ~convert_options~ which, given a list of converters ~cs~ and an
-   input format ~f~, compiles the possible output formats, keeping
+   input format ~f~, collects the possible output formats, keeping
    track of the names of the converter tools which can be used.
    #+begin_src ocaml
      type converter =
@@ -247,7 +263,7 @@ in depth.
 
   #+RESULTS:
   : <fun>
-  find all element of ~l~ which satisfy the predicate ~p~, in order
+  collects all element of ~l~ which satisfy the predicate ~p~, in order
   from left to right.
 + The function ~fold_right~, defined as
   #+begin_src ocaml
@@ -296,7 +312,7 @@ in depth.
      the predicate which expresses that both ~p1~ and ~p2~ hold.
    + given two predicates ~p1~ and ~p2~, the predicate ~orp p1 p2~ is
      the predicate which expresses that ~p1~ or ~p2~ hold.
-2. We can represent a polynomial as a list of ~float~'s, where
+2. We can represent a polynomial as a list of ~float~'s as follows.
    #+begin_src
            [a₀;  a₁;    a₂;     ...;  aₙ]
             ↓↓   ↓↓     ↓↓            ↓↓
@@ -320,6 +336,10 @@ in depth.
        in
        List.fold_left op base l
    #+end_src
+
+   #+RESULTS:
+   : <fun>
+
    which, given a list ~l~ of integers, return 10 lists of integers
    which partition ~l~ by the last digit the members of ~l~. That is,
    the $i^\text{th}$ element of ~bucket l~ should contain exactly the
@@ -327,18 +347,16 @@ in depth.
 ** Tail Recursion
 Roughly speaking, a recursive call in the body of a function
 definition is in *tail position* if no evaluation is required /after/
-the recursive call.[fn:: This can be made more formal by analyzing the
-syntax of OCaml more carefully.]  The following implementation of the
-factorial function is not tail recursive because it requires
-evaluating the product of the result of its recursive call with the
-input ~n~.
+the recursive call.  The following implementation of the factorial
+function is not tail recursive because it requires evaluating the
+product of the result of its recursive call with the input ~n~.
 #+begin_src ocaml
   let rec factorial (n : int) : int =
     if n < 0
     then assert false
     else if n = 0
     then 1
-    else n * factorial n
+    else n * factorial (n - 1)
 #+end_src
 We can make functions tail recursive by adding an accumulator argument
 to the function.[fn:: This is, of course, not the only way to achieve
@@ -356,9 +374,9 @@ lecture.]
     else go n 1
 #+end_src
 *** Exercises
-1. Consider the following function which prints a (half) hourglass out
-   of asterisks.  Implement a function which does the same thing but
-   is tail recursive.
+1. Consider the following function which prints a (half) hourglass in
+   asterisks.  Implement a function which does the same thing but is
+   tail recursive.
    #+begin_src ocaml
      let rec hourglass (n : int) : unit =
        if n > 0
@@ -369,7 +387,7 @@ lecture.]
          ()
        else ()
    #+end_src
-2. Implement a tail recursive evaluator for Boolean expressions as
+2. /(Challenge)/ Implement a tail recursive evaluator for Boolean expressions as
    represented by the following ADT.
    #+begin_src ocaml
      type bool_expr
@@ -426,8 +444,8 @@ design of parsers.
 ** BNF Specifications
 We start with a collection of symbols, separated into two disjoint
 groups, the *nonterminal* symbols and the *terminal* symbols.  In a
-Backus-Naur form (BNF) specification we use notation of the form
-~<nonterm>~ to denote a nonterminal symbol.  We typically don't
+Backus-Naur form (BNF) specification we use angle brackets (e.g.,
+~<nonterm>~) to denote a nonterminal symbol.  We typically don't
 specify the symbols in advance, but instead glean them from the
 specification itself.
 
@@ -445,8 +463,7 @@ for/ ~SENTFORM~ in a sentential from.
 A *BNF specification* is given by a collection of production rules and
 a *starting symbol*.  We typically take the nonterminal symbol in the
 /first/ rule of the specification to be the starting symbol.  We also
-call a BNF specification a *grammar*.[fn:: It may be worth noting
-that, in formal language theory, a grammar is a more general]
+call a BNF specification a *grammar*.[fn:: In formal language theory, a grammar is a more general than this.]
 
 In the case that a BNF specification has multiples rules for the same
 nonterminal symbol, we use the notation
@@ -489,8 +506,7 @@ A parse tree may correspond to multiple derivations, but every
 derivation has a unique parse tree representation.  Likewise, every
 parse tree corresponds to a unique /leftmost/ derivation.
 *** Examples
-
-/A toy grammar for English sentences:/
+/Toy grammar for English sentences:/
 #+begin_src
   <sentence>    ::= <noun-phrase> <verb-phrase>
   <verb-phrase> ::= <verb> | <verb> <prep-phrase>
@@ -502,7 +518,7 @@ parse tree corresponds to a unique /leftmost/ derivation.
   <prep>        ::= over
 #+end_src
 -----
-/A (leftmost) derivation of a sentence recognized by the above
+/Derivation of a sentence recognized by the above
 grammar:/[fn::The exclamation points are for emphasis, they are not a
 part of the derivation.]
 
@@ -521,7 +537,7 @@ part of the derivation.]
   the        cow     jumped  over    the        moon
 #+end_src
 -----
-/A toy grammar for an imperative programming language:/
+/Toy grammar for an imperative programming language:/
 #+begin_src
   <program> ::= <stmts>
   <stmts>   ::= <stmt> | <stmt> ; <stmts>
@@ -556,7 +572,7 @@ part of the derivation.]
 *** Extended BNF
 We extend the notation of BNF specifications to make it more
 convenient to use.[fn:: Other source may include more constructs in
-EBNF syntax. See, for example, [[https://en.wikipedia.org/wiki/Extended_Backus–Naur_form][the Wikipedia page]].]
+EBNF meta-syntax. See, for example, [[https://en.wikipedia.org/wiki/Extended_Backus–Naur_form][the Wikipedia page]].]
 + ~[ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ ]~ refers to an optional
   collection of alternatives of a sentential form.  For example, we
   can represent an integer by the following specification:
@@ -573,7 +589,7 @@ EBNF syntax. See, for example, [[https://en.wikipedia.org/wiki/Extended_Backus�
     <digits> ::= <digit> | <digit> <digits>
     <digit>  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
   #+end_src
-+ ~{ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ }~ to refer to zero or
++ ~{ SENTFORM₁ | SENTFORM₂ | ... | SENTFORMₖ }~ refers to zero or
   more occurrences of the sentential forms in a collection of
   alternatives. For example, we can simplify the specification for
   integers (and enforce that the first digit must be nonzero):
@@ -637,9 +653,38 @@ $a \square b \square c$ as  $a \square (b \square c)$.
   right-associative, so the expression ~2 ^ 1 ^ 3~ evaluates to ~2~
   as opposed to ~8~.
 
-We can enforce the associativity of an operator in the specification itself.
+The associativity of an operator should affect the shape of parse tree
+in a given grammar. For example, in the grammar:
+#+begin_src
+  <expr> ::= x | <expr> + <expr>
+#+end_src
+there are two parse trees for the sentence ~x + x + x~:
+#+begin_src
+  <expr>                                  <expr>
+  |                                       |
+  |---------------------------\           |------------ \
+  |                    |      |           |      |      |
+  <expr>               |      |           |      |      <expr>
+  |                    |      |           |      |      |
+  |-------------\      |      |           |      |      |-------------\
+  |      |      |      |      |           |      |      |      |      |
+  <expr> |      <expr> |      <expr>      <expr> |      <expr> |      <expr>
+  |      |      |      |      |           |      |      |      |      |
+  x      +      x      +      x           x      +      x      +      x
+#+end_src
+The left tree groups the first two arguments (left associatively) and
+the second groups the last two arguments (right associatively).
 
-TODO
+We can enforce the associativity of an operator in the specification
+itself by breaking symmetry in the production rules, effectively
+choosing one of the above two parse trees.  Addition is typically
+understood as left associative, so we should require its /right/
+argument to be a variable:
+
+#+begin_src
+  <expr> ::= x | <expr> + x
+#+end_src
+
 *** Precedence
 Given two binary operators $\square$ and $\triangle$, the operator
 $\square$ has *higher precedence* than $\triangle$ if we interpret $a
@@ -650,15 +695,86 @@ b \square c$ as $a \triangle (b \square c)$.
   ~7~ as opposed to ~10~.
 
 As with associativity, we can enforce precedence within the
-specification itself.
+specification itself. In the grammar:
+#+begin_src
+  <expr> ::= x | <expr> + x | <expr> * x
+#+end_src
+the sentences ~x + x * x~ has only one parse tree, but is not the
+correct parse tree with respect to the rules of arithmetic (addition
+has been given higher precedence).
+#+begin_src
+  <expr>
+  |
+  |---------------------------\
+  |                    |      |
+  <expr>               |      |
+  |                    |      |
+  |-------------\      |      |
+  |      |      |      |      |
+  <expr> |      |      |      |
+  |      |      |      |      |
+  x      +      x      *      x
+#+end_src
+To fix this, we can break symmetry again by ensuring that arguments to
+multiplication can only be variables or other expressions with only
+multiplication.
+#+begin_src
+  <expr>  ::= <expr2> | <expr> + <expr2>
+  <expr2> ::= x | <expr2> * x
+#+end_src
+In this grammar, the parse tree of ~x + x * x~ groups the arguments of
+multiplication (giving multiplication higher precedence).
+#+begin_src
+  <expr>
+  |
+  |------------- \
+  |       |      |
+  <expr>  |      <expr2>
+  |       |      |
+  |       |      |--------------\
+  |       |      |       |      |
+  <expr2> |      <expr2> |      |
+  |       |      |       |      |
+  x       +      x       *      x
+#+end_src
+Note that it is now impossible to group the argument of the addition.
+In order to make this possible, parentheses need to be introduced into
+the grammar:
+#+begin_src
+  <expr>  ::= <expr2> | <expr> + <expr2>
+  <expr2> ::= x | <expr2> * x | ( <expr> )
+#+end_src
 
-TODO
 *** Exercises
-1. Is this grammar ambiguous?
-2. Find a sentence in this grammar which has multiple derivations.
-3. Update this grammar so that it makes the operations precedence and hold
+1. Draw the parse tree for the sentence ~(x + x) * x~ in the grammar
+   at the end of the section.
+2. Draw the parse tree for the sentence ~x * x + x * x~ in the grammar
+   at the end of the section.
+3. Update the grammar at the end of the section to include
+   subtraction, multiplication, and (right-associative)
+   exponentiation.
+4. Consider the following ambiguous grammar.
+   #+begin_src
+     <s>  ::= <np> <vp>
+     <vp> ::= <v> | <v> <np> | <v> <np> <pp>
+     <pp> ::= <p> <np>
+     <np> ::= <n> | <d> <n> | <np> <pp>
+     <n>  ::= John | man | mountain | telescope
+     <v>  ::= saw
+     <d>  ::= the
+     <p>  ::= on | with
+   #+end_src
+   Give two leftmost derivations of the sentence ~John saw the man on
+   the mountain with the telescope~.
+5. Consider the following grammar for function types over ~int~.
+   #+begin_src
+     <fun-type> ::= <int-type> | <int-type> -> <fun-type>
+     <int-type> ::= int
+   #+end_src
+   Show that this grammar is ambiguous and then rewrite this grammar
+   so that ~->~ is a right associative operator.
 ** Regular Grammars
-A *(right linear) regular grammar* is a grammar whose rules are all of the following forms:
+A *(right linear) regular grammar* is a grammar such that every rule is in one of the following forms:
 #+begin_src
   <nonterm> ::= term
   <nonterm> ::= term <nonterm>
@@ -666,19 +782,38 @@ A *(right linear) regular grammar* is a grammar whose rules are all of the follo
 #+end_src
 where $\epsilon$ refers to the empty sentence.
 
-*Regular expressions* are a compact way of describing regular
-grammars.  They are defined inductively as follows:
+*Regular expressions* are a compact syntax for regular grammars.[fn::
+It is a theorem of formal language theory that regular grammars and
+regular expressions are equivalent in expressivity.]  They are defined
+inductively as follows:
++ a terminal symbol is a regular expression
 + $\epsilon$ is a regular expression
 + if $r_1, r_2, \dots, r_k$ are regular expressions then so are
-  $(r_1r_2 \dots, r_k)$ and $(r_1 \ | \ r_2 \ | \ \dots \ | \ r_k)$
-+ if $r$ is a regular expression, then so is $r^*$
+  $r_1r_2 \dots r_k$ and $r_1 \ | \ r_2 \ | \ \dots \ | \ r_k$
++ if $r$ is a regular expression, then so is $(r)$ and $r^*$
 
-TODO acceptance
+A regular expression *accepts* or *recognizes* a sentence according to the following rules:
++ a terminal symbol $t$ accepts $t$
++ if each $r_i$ excepts $s_i$, then $r_1r_2\dots r_k$ accepts $s_1s_2\dots s_k$
++ if $r_i$ accepts $s_i$ then, $r_1 \ | \ r_2 \ | \ \dots \ | \ r_k$
+  accepts $s_i$
++ if $r$ accepts $s$ the $(r)$ accepts $s$
++ if $r$ accepts $s_1, s_2, \dots, s_k$, then $r^*$ accepts $s_1s_2
+  \dots s_k$
 
-Regular grammars and regular expressions are equivalent in
-expressivity.
 *** Exercises
-TODO
+1. Find a regular expression for all binary strings in which every ~1~
+   is adjacent to /exactly/ one other ~1~.
+2. Write a right-linear regular grammar for all binary strings in
+   which every ~1~ must be followed by /at least/ two ~0~'s. Give a
+   derivation in this grammar of the sentence ~100100010000~.
+3. Determine which of the following sentences are accepted by the
+   regular expression ~a(bc|cb)*d~.
+   + ~abc~
+   + ~abcd~
+   + ~abccbd~
+   + ~abad~
+   + ~abbcd~
 ** Chomsky Normal Form
 A grammar is in *Chomsky normal form* if its rule are all of the
 following forms:
@@ -693,11 +828,17 @@ specification) can be converted into an equivalent grammar (i.e., one
 which accepts the same sentences) which is in Chomsky normal form.
 
 *** Exercises
-TODO
+1. Rewrite the following grammar in Chomsky normal form.
+   #+begin_src
+     <a> ::= a <b> b
+     <b> ::= <b> c | <c> <c>
+     <c> ::= <c> d | d <c>
+   #+end_src
 * Parsing
 The general parsing problem is to find a derivation of a sentence in a
-given grammar, if one exists. /(Aside. there is an efficient parsing
-algorithm for grammars in Chomsky normal form)/
+given grammar, if one exists.[fn::There is an efficient parsing
+algorithm for grammars in Chomsky normal form. This is the main
+primary we consider grammars of this form.]
 
 In the context of this course, we are primarily interested in the
 specific problem of converting a ~string~ (or ~char list~) into an ADT
@@ -706,22 +847,13 @@ representing the syntax of the program.
 There are many ways to accomplish this, we saw two:
 *recursive-descent* and *parser-combinators*.
 
-** Recursive-Descent
-
-Recursive-descent parsing refers to an ad-hoc form of parsing in which
-mutually recursive functions are defined to parse forms of a
-specification.
-
-This is best understood by example.
-
-TODO
-
-(Note: It is unlikely that recursive-descent parsing will appear on
-the final exam in any significant way.)
-
+Recursive-descent parsing is an ad-hoc parsing method in which
+mutually recursive functions are defined to parse each part of a given
+specification. *It will not appear on the final exam in any
+significant way.*
 ** Combinators
 
-We can think of a parser for ~'a~'s as a functions of type
+We can think of a parser for ~'a~'s as a function of type
 #+begin_src ocaml
   type 'a parser = char list -> ('a * char list) option
 #+end_src
@@ -755,9 +887,9 @@ verify that it consumed it's the entire input:
 A *parser combinator* is a higher-order function which can be used to
 compose parsers. There is a small subset of parser combinators which
 are of particular importance because they correspond to the constructs
-in EBNF specifications.
+in EBNF specifications and regular expressions.
 + *Alternatives.* ~p1 <|> p2~ is the parser which tries running the
-  parser ~p1~, returning its output if it succeeds, and running ~p2~
+  parser ~p1~, returning its output if it succeeds, and runs ~p2~
   otherwise.
 
   If ~p1~ is a parser for the forms of a nonterminal symbol ~<p1>~
@@ -771,7 +903,7 @@ in EBNF specifications.
   fails if either ~p1~ or ~p2~ fails.
 
   If ~p1~ is a parser for the forms of a nonterminal symbol ~<p1>~ and
-  ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~p1 <|>
+  ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~seq p1
   p2~ is a parser for forms of the nonterminal symbol
   #+begin_src
     <seq> ::= <p1> <p2>
@@ -779,8 +911,7 @@ in EBNF specifications.
 + *Repetition.* ~many p~ is the parser which runs ~p~ repeatedly until
   it fails, collecting all its outputs in a list.
 
-  If ~p~ is a parser for the forms of a nonterminal symbol ~<p>~ and
-  ~p2~ a parser for forms of a nonterminal symbol ~<p2>~, then ~many
+  If ~p~ is a parser for the forms of a nonterminal symbol ~<p>~, then ~many
   p~ is a parser for forms of the nonterminal symbol
   #+begin_src
     <many> ::= { <p> }
@@ -793,74 +924,103 @@ its input.  If ~p~ is an ~'a parser~, and ~f~ is a function of type
 applies ~f~ to its output (if it succeeds).
 
 You should also be familiar with how to use the more convenient parser
-combinators throughout the course (though, for the exam, you will not
-be required to memorize their definitions).
+combinators throughout the course. *For the final exam, you will not
+be required to memorize their definitions.*
 + ~str~, ~token~, ~ws~
 + (~>>~), (~<<~), ~seq3~, ~seq4~
 + (~>|~), ~map2~, ~map3~, ~map4~
++ ~optional~
 + ~pure~, ~fail~, (we will not test on ~bind~ (~>>=~) but it is good to know...)
-
-
 *** Exercises
+1. Implement the parser
+   #+begin_src ocaml
+     let parse_bool : bool parser =
+       assert false (* TODO *)
+   #+end_src
+   which can consume ~"True"~ and return the value ~tre~ or ~"False"~
+   and return the value false. In particular, it should not consume
+   whitespace before or ~"True"~ or ~"False"~
+2. Implement the parser
+   #+begin_src ocaml
+     let parse_bool list : bool list parser =
+       assert false (* TODO *)
+   #+end_src
+   which can parse a list of booleans in Python syntax, i.e., square
+   brackets, comma separators, white-space agnostic.
+3. Implement a parser
+   #+begin_src ocaml
+     let peak : char parser =
+       assert false (* TODO *)
+   #+end_src
+   which returns the first character of its input /but does not
+   consume any part of the input./ This should only fail if the input is empty.
+4. Implement a parser combinator
+   #+begin_src ocaml
+     let check (p : 'a parser) (pred : 'a -> bool) : 'a parser =
+       assert false (* TODO *)
+   #+end_src
+   which runs ~p~ and then fails if ~pred~ is false on the output of
+   ~p~. /Hint./ It is easier to implement directly, rather than in
+   terms of other combinators.
 * Formal Semantics
-In general, semantics is the study of the /meaning/ of language.  We
-use concepts from the study of formal semantics to model the behavior
-(i.e., the meaning) of programs.
+Semantics is the study of the /meaning/ of language.  We use concepts
+from formal semantics to model the meaning of programs.
 
-We discussed two forms of semantics, *denotational* semantics and
-*operational* semantics.
+We discussed two forms of semantics: *denotational* and *operational*.
 
 Giving a denotational semantics for a programming language means
-assigning to each a /mathematical function/ which has the same
+assigning to each program a /mathematical function/ which has the same
 input/output behavior as the program.
 
-In this course, we focus on operational semantics.  Giving an
-operational semantics for a programming language means describing how
-a program in the language is evaluated.  This typically means defining
-a *reduction relation* on programs, which describes how a program is
-reduced until it reaches a state which cannot be further reduced.
-
+We focused primarily on operational semantics.  Giving an operational
+semantics for a programming language means describing how a program is
+evaluated.  This typically means defining a *reduction relation* on
+programs, which describes how a program is reduced until it reaches a
+state which cannot be further reduced.
 ** Derivations
-Suppose we have a programming language $\mathcal P$ defined by a given
-BNF grammar.
+Suppose we have a programming language defined by a BNF specification
+$\mathcal P$.
 
-A *configuration* is a pair consistent of a program $P$ and a state
-$S$ which may be manipulated by programs.  The state may be empty, as
-in the case of functional languages.
+A *configuration* is a pair consistent of a program $P$ (a sentence
+accepted by $\mathcal P$) and a state $S$ which may be manipulated by
+programs.  The nature of $S$ depends on the intentions of the
+programming language.  The state may be empty, as in the case of
+functional languages.
 
-Defining the (small-step) operational semantics for $\mathcal P$ means
-defining a reduction relation for configurations:
+Defining a (small-step) operational semantics means defining a
+reduction relation for configurations:
 
 \begin{equation*}
 ( \ S \ , \ P \ ) \longrightarrow ( \ S' \ , \ P' \ )
 \end{equation*}
 
-A reduction relation is typically defined via *reduction rules*, which
+A reduction relation is defined via *reduction rules*, which
 consist of a /shape/ of a reduction together with a collection of
-*premises*, which may be shapes of reductions or trivial premises
-(also called axioms). The general form of a reduction rules is
-something like
+*premises*, which may be other shapes of reductions or trivial premises
+(also called *axioms*). The general form of a reduction rules is:
 
-\begin{equation*}
-\frac
-{P_1 \qquad P_2 \qquad \dots \qquad P_k}
-{C \longrightarrow C'}
-\ \textsf{(name)}
-\end{equation*}
+\begin{prooftree}
+\AxiomC{$P_1$}
+\AxiomC{$P_2$}
+\AxiomC{$\dots$}
+\AxiomC{$P_k$}
+\RightLabel{(name)}
+\QuaternaryInfC{$C \longrightarrow C'$}
+\end{prooftree}
 
 /Shape/ here refers to the fact that the configurations in a reduction
 rule contains /meta-variables/ that describe the /kind of reductions/
 that can be derived, or that can be used a premises.  For example, the
 rules for evaluating an arithmetic expression might include
 
-\begin{equation*}
-\frac{e_1 \longrightarrow e_1'}
-{e_1 + e_2 \longrightarrow e_1' + e_2}
-\ \textsf{(addLeft)}
-\end{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(addLeft)}
+\UnaryInfC{$e_1 + e_2 \longrightarrow e_1' + e_2$}
+\end{prooftree}
 
 which expresses that if $e_1$ reduces to $e_1'$ in a single step then
-$e_1 + e_2$ reduces to $e_1 + e_2'$ in a single step /no matter the
+$e_1 + e_2$ reduces to $e_1' + e_2$ in a single step /no matter the
 expressions $e_1$, $e_1'$ and $e_2$/.  This rule can be used to show that
 
 \begin{equation*}
@@ -870,7 +1030,7 @@ expressions $e_1$, $e_1'$ and $e_2$/.  This rule can be used to show that
 but also that
 
 \begin{equation*}
-(1 + (2 * 3)) + 3 \longrightarrow (1 + 6) + 3
+(1 + (4 - 2)) + 3 \longrightarrow (1 + 2) + 3
 \end{equation*}
 
 Both reductions invoke that fact that if the left argument can be
@@ -879,18 +1039,10 @@ step.
 
 A *derivation* is, informally, a tree in which each node is a
 reduction and the children of a node are the premises required to
-derive that conclusion.  The leaves of a derivation are trivial
-premises (axioms).
-
-A derivation of a reduction $C \longrightarrow C'$ is a derivation
-whose root is $C \longrightarrow C'$.
-
-TODO derivation
-
-It is generally preferable that any derivable reduction has a unique
-derivation.  This defining an evaluation procedure easier, and amounts
-to fixing an *evaluation order*.  We can often enforce an evaluation
-order via the structure of our reduction rules.
+derive that reduction according to a reduction rule.  The leaves of a
+derivation are trivial premises.  A derivation of a reduction $C
+\longrightarrow C'$ is a derivation whose root is $C \longrightarrow
+C'$.
 
 What we have been describing is a *single-step reduction relation*.
 Any single-step reduction relation can be extended to a *multi-step
@@ -898,15 +1050,18 @@ reduction relation* by including the following rules and a multi-step
 reduction relation symbol '$\longrightarrow^{\star}$'.
 
 \begin{equation*}
-\frac
-{}
-{C \longrightarrow^\star C}
-\ \textsf{(refl)}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(refl)}
+\UnaryInfC{$C \longrightarrow^\star C$}
+\end{prooftree}
 \qquad
-\frac
-{C \longrightarrow^\star C' \qquad C' \longrightarrow C''}
-{C \longrightarrow^\star C''}
-\ \textsf{(trans)}
+\begin{prooftree}
+\AxiomC{$C \longrightarrow^\star C'$}
+\AxiomC{$C' \longrightarrow C''$}
+\RightLabel{(trans)}
+\BinaryInfC{$C \longrightarrow^\star C''$}
+\end{prooftree}
 \end{equation*}
 
 Formally, *evaluation* is the process of determining a configuration
@@ -914,265 +1069,1215 @@ $C'$ for a given configuration $C$ such that $C \longrightarrow^\star
 C'$ and $C'$ cannot be further reduced (i.e., there is no other
 configuration $C''$ such that $C' \longrightarrow C''$).
 
-*** Exercises
-1. Write a derivation for this reduction.
-2. Find a configuration which this single-step reduces to.
-3. Write a derivation for this multi-step reduction.
-4. Find a configuration for this multi-step reduction.
-5. Show that this reduction relation is not normalizing.
-6. Show that this relation is not unique.
-7. Make this reduction update the above relation so that it has unique
-   reductions and arguments are evaluated from left to right.
+We can express an evaluation as a derivation of a multi-step
+reduction, but it is common (and done below) to simply write a
+sequence of configurations, with the understanding that each
+configuration follows from the previous configuration by a derivable
+single-step reduction.
 ** Examples
+There are many examples of operational semantics and reduction rules
+in this document, we start with the two most basic.
 *** Arithmetic Expressions
-*** The Lambda Calculus
+In the operational semantics of arithmetic expressions, we take a
+configuration to be an arithmetic expression (a program with no
+state).  Each rule describes how to reduce an arithmetic expression by
+a single step.
+
+-----
+
+/Grammar for a subset of arithmetic expressions in Polish notation:/
+
+#+begin_src
+  <expr>  ::= <num> | (add | sub) <expr> <expr>
+  <num>   ::= [-] (0 | ... | 9) | { 0 | ... | 9 }
+#+end_src
+
+-----
+/Operational semantics for a subset of arithmetic expression in
+Polish notation:/
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(addNum)}
+\BinaryInfC{$\mathsf{add} \ m \ n \longrightarrow m + n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(addLeft)}
+\UnaryInfC{$\textsf{add} \ e_1 \ e_2 \longrightarrow \mathsf{add} \ e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(addRight)}
+\UnaryInfC{$\mathsf{add} \ e_1 \ e_2 \longrightarrow \mathsf{add} \ e_1 \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(subNum)}
+\BinaryInfC{$\mathsf{sub} \ m \ n \longrightarrow m - n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(subLeft)}
+\UnaryInfC{$\textsf{sub} \ e_1 \ e_2 \longrightarrow \mathsf{sub} \ e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(subRight)}
+\UnaryInfC{$\mathsf{sub} \ e_1 \ e_2 \longrightarrow \mathsf{sub} \ e_1 \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+-----
+
+It is generally preferable that any derivable reduction
+has a /unique/ derivation.  This makes defining an evaluation procedure
+easier, and amounts to fixing an *evaluation order*.  We can enforce
+an evaluation order via the structure of our reduction rules.
+
+-----
+/Operational semantics for a subset of arithmetic expression in
+Polish Notation with a left-to-right evaluation order:/
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(addNum)}
+\BinaryInfC{$\mathsf{add} \ m \ n \longrightarrow m + n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(addLeft)}
+\UnaryInfC{$\textsf{add} \ e_1 \ e_2 \longrightarrow \mathsf{add} \ e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(addRight)}
+\BinaryInfC{$\mathsf{add} \ m \ e_2 \longrightarrow \mathsf{add} \ m \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(subNum)}
+\BinaryInfC{$\mathsf{sub} \ m \ n \longrightarrow m - n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(subLeft)}
+\UnaryInfC{$\textsf{sub} \ e_1 \ e_2 \longrightarrow \mathsf{sub} \ e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(subRight)}
+\BinaryInfC{$\mathsf{sub} \ m \ e_2 \longrightarrow \mathsf{sub} \ m \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+-----
+/Example single-step derivation:/
+
+\begin{equation}\label{d1}
+\begin{prooftree}
+\AxiomC{$2 \in \mathbb Z$}
+\AxiomC{$3 \in \mathbb Z$}
+\BinaryInfC{$\mathsf{sub} \ 2 \ 3 \longrightarrow \text{-} 1$}
+\UnaryInfC{$\mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1 \longrightarrow \mathsf{add} \ \text{-}1 \ \mathsf{add} \ 1 \ 1$}
+\end{prooftree}
+\end{equation}
+
+-----
+/Example multi-step derivation:/
+
+\begin{equation}\label{d2}
+\begin{prooftree}
+\AxiomC{$\text - 1 \in \mathbb Z$}
+\AxiomC{$1 \in \mathbb Z$}
+\AxiomC{$1 \in \mathbb Z$}
+\BinaryInfC{$\mathsf{add} \ 1 \ 1 \longrightarrow 2$}
+\BinaryInfC{$\mathsf{add} \ \text - 1 \ \mathsf{add} \ 1 \ 1 \longrightarrow \mathsf{add} \ \text- 1 \ 2$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{d3}
+\begin{prooftree}
+\AxiomC{$\text- 1 \in \mathbb Z$}
+\AxiomC{$2 \in \mathbb Z$}
+\BinaryInfC{$\mathsf{add} \ \text- 1 \ 2 \longrightarrow 1$}
+\end{prooftree}
+\end{equation}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1 \longrightarrow^\star \mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1$}
+\AxiomC{(\ref{d1})}
+\BinaryInfC{$\mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1 \longrightarrow^\star \mathsf{add} \ \text{-}1 \ \mathsf{add} \ 1 \ 1$}
+\AxiomC{(\ref{d2})}
+\BinaryInfC{$\mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1 \longrightarrow^\star \mathsf{add} \ \text{-}1 \ 2$}\
+\AxiomC{(\ref{d3})}
+\BinaryInfC{$\mathsf{add} \ \mathsf{sub} \ 2 \ 3 \ \mathsf{add} \ 1 \ 1 \longrightarrow^\star 1$}\
+\end{prooftree}
+
+-----
+/Example evaluation, written as a sequence of configurations:/
+#+begin_src
+  add sub 2 3 add 1 1 ⟶
+  add -1 add 1 1 ⟶
+  add -1 2 ⟶
+  1 ✓
+#+end_src
 *** A Stack-Oriented Language
-One of the running examples we used for understanding operations
-semantics was stack-oriented languages.
+The primary examples we used in this course for understanding
+operational semantics were variants of stack-oriented
+languages.[fn::In the remainder of this document, we will continue
+this trend. Each following stack-oriented language is a /variation on
+a theme/.]
 
-The following is a BNF specification for a stack-oriented language
-whose programs manipulate a stack of integers.
-
------
-/Syntax of our base stack-oriented language:/
-#+begin_src
-  <prog>  ::= { <com> }
-  <com>   ::= push <num> | dup | swap |
-            | add | sub | mul
-            | then <prog> else <prog> end
-  <num>   ::= <digit> { <digit> }
-  <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-#+end_src
------
-
-Here, for example, is a program which puts the value of $14 + 15 + 16$
-on top of the stack.
-#+begin_src
-  push 16 push 15 push 14
-  add add
-#+end_src
-In the operational semantics of this language we take a configuration
-to be a program ($P$) together with a stack of integers ($S$).
+In the simplest case, we take a configuration to be a program ($P$)
+together with a stack of integers ($S$), written
 
 \begin{equation*}
 ( \ S \ , \ P \ )
 \end{equation*}
 
-together with a special irreducible $\mathsf{ERROR}$ configuration.
-The operational semantics then describe how each command affects the
-stack and the trace.
+We also include a special irreducible configuration $\mathsf{ERROR}$
+for representing a failed evaluation.
 
 -----
-/Operational semantics of our base stack-oriented language:/
-
-\begin{equation*}
-\frac{}{(\ S \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ ,\ P \ )}
-\qquad
-\frac{}{( \ m :: n :: S \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ P \ )}
-\end{equation*}
-
-\begin{equation*}
-\frac{}{( \ n :: S \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
-\qquad
-\frac{}{( \ \varnothing \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}}
-\end{equation*}
-
-\begin{equation*}
-\frac{}{( \ n :: S \ , \ \textsf{dup} \ P \ ) \longrightarrow
-  ( \ n :: n :: S \ , \ P \ )}
-\qquad
-\frac{}{( \ \varnothing \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}}
-\end{equation*}
-
-\begin{equation*}
-\frac{}{( \ 0 :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
-( \ S \ , \ Q_2 \ P \ )}
-\end{equation*}
-
-\begin{equation*}
-\frac{n \not = 0}{( \ n :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
-( \ S \ , \ Q_1 \ P \ )}
-\end{equation*}
-
-\begin{equation*}
-\frac{}{( \ \varnothing \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
-\mathsf{ERROR}}
-\end{equation*}
+/Grammar for a simple stack-oriented language:/
+#+begin_src
+  <prog>  ::= { <com> }
+  <com>   ::= push <num> | dup | add | sub
+            | then <prog> else <prog> end
+  <num>   ::= (0 | ... | 9) { 0 | ... | 9 }
+#+end_src
 
 -----
+/Example program which puts 14 + 15 - 16 on the stack:/
+#+begin_src
+  push 16 push 15 push 14
+  add sub
+#+end_src
 
+-----
+/Operational semantics for a simple stack-oriented language:/
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(push)}
+\UnaryInfC{$(\ S \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ ,\ P \ )$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dup)}
+\UnaryInfC{$( \ n :: S \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ P \ )$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dupErr)}
+\UnaryInfC{$( \ \varnothing \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(add)}
+\UnaryInfC{$( \ m :: n :: S \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ P \ )$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr1)}
+\UnaryInfC{$( \ n :: S \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(sub)}
+\UnaryInfC{$( \ m :: n :: S \ , \ \textsf{sub} \ P \ ) \longrightarrow ( \ (m - n) :: S \ , \ P \ )$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr1)}
+\UnaryInfC{$( \ n :: S \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifFalse)}
+\UnaryInfC{$( \ 0 :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_2 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$n \not = 0$}
+\RightLabel{(ifTrue)}
+\UnaryInfC{$( \ n :: S \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ Q_1 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifErr)}
+\UnaryInfC{$( \ \varnothing \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}$}
+\end{prooftree}
+
+-----
+/Example multi-step derivation:/
+
+\begin{equation}\label{e1}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow
+( \ 16 :: \varnothing \ , \ \textsf{push 15 push 14 add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{e2}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ 16 :: \varnothing \ , \ \textsf{push 15 push 14 add sub} \ )
+\longrightarrow
+( \ 15 :: 16 :: \varnothing \ , \ \textsf{push 14 add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{e3}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ 15 :: 16 :: \varnothing \ , \ \textsf{push 14 add sub} \ )
+\longrightarrow
+( \ 14 :: 15 :: 16 :: \varnothing \ , \ \textsf{add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{e4}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ 14 :: 15 :: 16 :: \varnothing \ , \ \textsf{add sub} \ )
+\longrightarrow
+( \ 29 :: 16 :: \varnothing \ , \ \textsf{sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{e5}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ 29 :: 16 :: \varnothing \ , \ \textsf{sub} \ )
+\longrightarrow
+( \ 13 :: \varnothing \ , \ \epsilon \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{f1}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{f2}
+\begin{prooftree}
+\AxiomC{(\ref{f1})}
+\AxiomC{(\ref{e1})}
+\BinaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ 16 :: \varnothing \ , \ \textsf{push 15 push 14 add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{f3}
+\begin{prooftree}
+\AxiomC{(\ref{f2})}
+\AxiomC{(\ref{e2})}
+\BinaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ 15 :: 16 :: \varnothing \ , \ \textsf{push 14 add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{f4}
+\begin{prooftree}
+\AxiomC{(\ref{f3})}
+\AxiomC{(\ref{e3})}
+\BinaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ 14 :: 15 :: 16 :: \varnothing \ , \ \textsf{add sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{equation}\label{f5}
+\begin{prooftree}
+\AxiomC{(\ref{f4})}
+\AxiomC{(\ref{e4})}
+\BinaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ 29 :: 16 :: \varnothing \ , \ \textsf{sub} \ )
+$}
+\end{prooftree}
+\end{equation}
+
+\begin{prooftree}
+\AxiomC{(\ref{f5})}
+\AxiomC{(\ref{e5})}
+\BinaryInfC{$
+( \ \varnothing \ , \ \textsf{push 16 push 15 push 14 add sub} \ )
+\longrightarrow^\star
+( \ 13 :: \varnothing \ , \ \epsilon \ )
+$}
+\end{prooftree}
+
+-----
+/Example evaluation:/
+#+begin_src
+  ( ∅                   , push 16 push 15 push 14 add sub ) ⟶
+  ( 16 :: ∅             , push 15 push 14 add sub ) ⟶
+  ( 15 :: 16 :: ∅       , push 14 add sub ) ⟶
+  ( 14 :: 15 :: 16 :: ∅ , add sub ) ⟶
+  ( 29 :: 16 :: ∅       , sub ) ⟶
+  ( 13 :: ∅             , ϵ ) ✓
+#+end_src
 *** Exercises
-Write a program which
+1. Add multiplication (~mul~) and division (~div~) to the operational semantics of
+   arithmetic expressions (make sure to disallow division by $0$).
+2. Derive the single-step reduction
+   #+begin_src
+     sub add add 1 2 mul 3 4 2 ⟶ sub add 3 mul 3 4 2
+   #+end_src
+   in the operational semantics for arithmetic expressions.
+3. Derive the multi-step reduction
+   #+begin_src
+     sub add add 1 2 mul 3 4 2 ⟶⋆ ??
+   #+end_src
+   where ~??~ is the value of the given expression according to the
+   given semantics.  You may write it as a sequence of configurations.
+4. Write an operational semantics for Boolean expressions with
+   left-to-right evaluation and short-circuiting (like in project 3).
+5. Given an evaluation of the program
+   #+begin_src
+     push 10 dup mul dup
+   #+end_src
+   in the given semantics for the above stack-oriented language.
 * Variables
-When introducing variables into a programming language, we also
-introduce an *environment* into the configuration which maintains
+When introducing variables into a programming language, we need to
+introduce an *environment* to the configuration which maintains
 variable bindings.
 
 The structure of the environment depends on the scoping rules used in
-the language, but in its simplest form, and environment is a mapping
-of variable names to values.  This can be accomplished in OCaml with
-an association list (i.e., a ~(string * value) list~.
+the language, but in the simplest case, and environment is a mapping
+of variable names to values.  This can be implemented as an
+association list in OCaml.
 
-An environment requires two operations: *fetch* and *update*.  The
-fetch operation should get the value to which a variable is bound in
-the environment.  The update operation should return a new environment
-given a new binding.
+No matter the implementation, an environment requires two operations:
+*fetch* and *update*.  The fetch operation should get the value to
+which a variable is bound in the environment, failing if the variable
+is not bound in the environment.  The update operation should return a
+new environment with the additional binding.
 
-In the case of a simple association list, we may write the following
-OCaml implementation:
+-----
+/OCaml implementation of an environment represented as an association list:/
 #+begin_src ocaml
-  let fetch (e : (string * value) list) (x : string) : value option =
+  type value = unit (* A DUMMY TYPE *)
+  type 'a env = ('a * value) list
+
+  let empty_env = []
+
+  let fetch (e : 'a env) (x : 'a) : value option =
     List.assoc_opt x e
 
   let update
-    (e : (string * value) list)
-    (x : string)
-    (v : value) : (string * value) list =
+    (e : 'a env)
+    (x : 'a)
+    (v : value) : 'a env =
     (x, v) :: e
 #+end_src
-Different environment representations need different fetch and update
-implementations, but regardless of how these functions are implemented,
-they should satisfy the following equations.
-#+begin_src ocaml
-  let _ = assert (fetch [] x v = None)
 
-  let _ = assert (
-    if x <> y
-    then fetch (update e x v) y = fetch e y
-    else fetch (update e x v) y = v)
-  )
-#+end_src
+#+RESULTS:
+: <fun>
 
 -----
-/Syntax of our base stack-oriented language:/
-#+begin_src
-  <prog>  ::= { <com> }
-  <com>   ::= push <num> | dup | swap
-            | add | sub | mul
-            | then <prog> else <prog> end
-            | fetch <var> | update <var>
-  <num>   ::= <digit> { <digit> }
-  <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-#+end_src
------
 
-In the operational semantics of this language we take a configuration
-to be a program ($P$) together with a stack of integers ($S$) and an
-environment $E$ of variable bindings.
+Again, different environment representations need different
+implementations of fetch and update, but regardless of how these
+functions are implemented, they should satisfy the following
+equations:
+
++ ~fetch emtpy_env x = None~ for any ~x~
++ ~fetch (update e x v) x = Some v~ for any ~e~, ~x~, and ~v~
++ ~fetch (update e x v) y = fetch e y~ for any ~e~, ~x~, ~y~, and ~v~
+  given ~y~ is not equal to ~x~
+** Stack-Oriented Language with Variables
+In the operational semantics of the following stack-oriented language,
+we take a configuration to be a program ($P$) together with a stack of
+integers ($S$) and an environment $E$ of variable bindings.
 
 \begin{equation*}
 ( \ S \ , \ E \ , \ P \ )
 \end{equation*}
 
-together with a special irreducible $\mathsf{ERROR}$ configuration.
+As above, we also include the special irreducible configuration $\mathsf{ERROR}$.
 
 -----
-/Operational semantics of a stack-oriented language with variables:/ They are
-the same as above (with an additional `$E$' in the configurations)
-plus the following rules.
-
-\begin{equation*}
-\frac{\mathsf{fetch}(E, x) \not = \bot}
-{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow
- ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )}
-\qquad
-\frac{\mathsf{fetch}(E, x) = \bot}
-{( \ S \ , \ E \ , \textsf{fetch} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
-\end{equation*}
-
-\begin{equation*}
-\frac
-{}{( \ n :: S \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow
-( \ S \ , \ \mathsf{update}(E, x, n) \ , \ P \ )}
-\end{equation*}
-
-\begin{equation*}
-\frac
-{}{( \ \varnothing \ , \ E \ , \ \mathsf{update} \ x \ P \ ) \longrightarrow \mathsf{ERROR}}
-\end{equation*}
-
------
-
-We need to specify how those
-variable bindings are represented in a configuration.
-
-When introducing variables to a programming language, we have to
-specify when/where those bindings are accessible. This is called the
-*scope* of the binding.  In general, this is a complex question, but
-is broad strokes there are two paradigms: *dynamic scoping* and
-*lexical scoping*.
-* Subroutines
-A *subroutine* is an encapsulated piece of code that can be reused and
-run in different contexts.
-
-It is not necessary to have variables in order to have subroutines.
-Here is a simple stack-oriented language with subroutines.
-
------
-/Syntax of a stack-oriented language with subroutines:/
-
+/Grammar for a stack-oriented language with variables:/
 #+begin_src
-  <prog>   ::= { <com> }
-  <com>    ::= push <num> | add | then <prog> else <prog> end
-             | def <ident> begin <prog> end | Call
-  <num>    ::= <digit> { <digit> }
-  <digit>  ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-  <ident>  ::= { <letter> }
-  <letter> ::= A | B | C | ... | X | Y | Z
-
+  <prog>  ::= { <com> }
+  <com>   ::= push <num> | dup | add | sub
+            | then <prog> else <prog> end
+            | lookup <ident> | assign <ident>
+  <num>   ::= ( 0 | ... | 9 ) { 0 | ... | 9 }
+  <ident> ::= ( A | ... | Z ) { A | ... | Z }
 #+end_src
------
 
 -----
 /Example program:/
 #+begin_src
-  def TRIPLE begin
-    dup dup + +
-  end
+  push 14 assign X
+  push 15 assign Y
+  lookup X lookup Y add
 #+end_src
------
 
 -----
-/Operational Semantics of a stack-oriented language with subroutines:/
+/Operational semantics for a stack-oriented language with variables:/
+
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(push)}
+\UnaryInfC{$(\ S \ , \ E \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ , \ E \ ,\ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dup)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dupErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(add)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(sub)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{sub} \ P \ ) \longrightarrow ( \ (m - n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifFalse)}
+\UnaryInfC{$( \ 0 :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_2 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$n \not = 0$}
+\RightLabel{(ifTrue)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_1 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) \in \mathbb Z$}
+\RightLabel{(lookup)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) \not \in \mathbb Z$}
+\RightLabel{(lookupErr)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assign)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, x, n) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assignErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+-----
+/Example evaluation:/
+#+begin_src
+  ( ∅             , []               , push 14 assign X push 15 assign Y lookup X lookup Y add ) ⟶
+  ( 14 :: ∅       , []               , assign X push 15 assign Y lookup X lookup Y add ) ⟶
+  ( ∅             , [X ↦ 14]         , push 15 assign Y lookup X lookup Y add ) ⟶
+  ( 15 :: ∅       , [X ↦ 14]         , assign Y lookup X lookup Y add ) ⟶
+  ( ∅             , [Y ↦ 15; X ↦ 14] , lookup X lookup Y add ) ⟶
+  ( 14 :: ∅       , [Y ↦ 15; X ↦ 14] , lookup Y add ) ⟶
+  ( 15 :: 14 :: ∅ , [Y ↦ 15; X ↦ 14] , add ) ⟶
+  ( 29 :: ∅       , [Y ↦ 15; X ↦ 14] , ϵ ) ✓
+#+end_src
+
+-----
+
+The other primary concern when it comes to variables is
+*scoping*. This will come in a later section after discussing
+subroutines.
+*** Exercises
+1. There is currently no way to /unassign/ variables in the
+   environment.  Redefine the function
+   #+begin_src ocaml
+     let update (e : env) (x : string) (v : value option) : env =
+       assert false (* TODO *)
+   #+end_src
+   which takes an /optional value/ so that ~update e x (Some v)~ will
+   bind ~x~ to ~v~ in ~e~ and ~update e x None~ will /remove/ any
+   bindings of ~x~ in the environment.
+2. Extend the command set and the operational semantics to include a
+   command ~unassign X~ which can be used to remove bindings in the
+   environment within a program.
+* Subroutines
+A *subroutine* is an encapsulated piece of code that can be reused and
+executed in different contexts within a program.
+
+Implementing subroutines in a programming language requires dealing
+with several concerns, including *parameter passing* and *return
+values*.
+** Stack-Oriented Language with Subroutines
+For stack-oriented languages, we don't need to deal with parameters or
+return values of subroutines; all of these is handled on the stack.
+This makes adding subroutines to our stack-oriented languages fairly
+simple.
+
+In the operational semantics of the following stack-oriented language,
+we take a configuration to be a program ($P$) together with a stack of
+integers ($S$) and an environment ($E$) of bindings /which now
+includes bindings to programs/, or the special $\mathsf{ERROR}$
+configuration.
+
+-----
+/Grammar for a stack-oriented language with subroutines:/
+
+#+begin_src
+  <prog>  ::= { <com> }
+  <com>   ::= push <num> | dup | add | sub
+            | then <prog> else <prog> end
+            | lookup <ident> | assign <ident>
+            | def <ident> begin <prog> end | call <ident>
+  <num>   ::= ( 0 | ... | 9 ) { 0 | ... | 9 }
+  <ident> ::= ( A | ... | Z ) { A | ... | Z }
+#+end_src
+
+-----
+/Example program:/
+#+begin_src
+  def F begin
+    dup add
+  end
+
+  push 6 assign X
+  push 5 call F
+  lookup X call F
+#+end_src
+
+-----
+/Operational Semantics for a stack-oriented language with subroutines
+(and dynamic scoping):/
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(push)}
+\UnaryInfC{$(\ S \ , \ E \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ , \ E \ ,\ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dup)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dupErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(add)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(sub)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{sub} \ P \ ) \longrightarrow ( \ (m - n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifFalse)}
+\UnaryInfC{$( \ 0 :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_2 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$n \not = 0$}
+\RightLabel{(ifTrue)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_1 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) \in \mathbb Z$}
+\RightLabel{(lookup)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) \not \in \mathbb Z$}
+\RightLabel{(lookupErr)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assign)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, x, n) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assignErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(funDef)}
+\UnaryInfC{$( \ S \ , \ E \ , \ \mathsf{def} \ F \ \mathsf{begin} \ Q \ \mathsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, F, Q) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F) = Q$}
+\RightLabel{(call)}
+\UnaryInfC{$( \ S \ , \ E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow ( \ S \ , \ E \ , \ Q \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F) = \bot \quad$ or $\quad \mathsf{fetch}(E, F) \in \mathbb Z$}
+\RightLabel{(callErr)}
+\UnaryInfC{$( \ S \ , \ E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+-----
+/Example execution:/
+
+#+begin_src
+  ( ∅                 , []                   , def F begin dup add end push 6 assign X push 5 call F lookup X call F ) ⟶
+  ( ∅                 , [F ↦ dup add]        , push 6 assign X push 5 call F lookup X call F) ⟶
+  ( 6 :: ∅            , [F ↦ dup add]        , assign X push 5 call F lookup X callF) ⟶
+  ( ∅                 , [X ↦ 6, F ↦ dup add] , push 5 call F lookup X call F ) ⟶
+  ( 5 :: ∅            , [X ↦ 6, F ↦ dup add] , call F lookup X call F ) ⟶
+  ( 5 :: ∅            , [X ↦ 6, F ↦ dup add] , dup add lookup X call F ) ⟶
+  ( 5 :: 5 :: ∅       , [X ↦ 6, F ↦ dup add] , add lookup X call F ) ⟶
+  ( 10 :: ∅           , [X ↦ 6, F ↦ dup add] , lookup X call F ) ⟶
+  ( 6 :: 10 :: ∅      , [X ↦ 6, F ↦ dup add] , call F ) ⟶
+  ( 6 :: 10 :: ∅      , [X ↦ 6, F ↦ dup add] , dup add ) ⟶
+  ( 6 :: 6 :: 10 :: ∅ , [X ↦ 6, F ↦ dup add] , add ) ⟶
+  ( 12 :: 10 :: ∅     , [X ↦ 6, F ↦ dup add] , ϵ ) ✓
+#+end_src
+*** Exercises
+1. Implement the function ~SWAP~ in the stack-oriented language with
+   subroutines which swaps the top two values on the stack, assuming
+   there are two values on the top of the stack. Also implement the
+   function ~ROT~ which rotates to the top three elements of the
+   stack, i.e., ~x :: y :: z :: S~ becomes ~z :: x :: y :: S~.
+2. Implement ~MUL~ which multiplies the top two elements of the
+   stack.  Try to implement recursively and non-recursively.
 ** Parameter Passing
-** Examples
-*** Lambda Calculus with Call-by-Name Operational Semantics
-*** Lambda Calculus with Call-by-Value Operational Semantics
-*** Stack-Oriented Language with Subroutines
+*Parameter passing* is part of the *evaluation strategy* of a
+programming language.  It refers to how parameters are passed to a
+function when it is called.  There are two forms of parameter passing
+we primarily considered in the course:
++ *call-by-value.* When a function is called, its arguments are
+  evaluated and the function is given the /values/ of its arguments.
+  The important feature of the call-by-value strategy is that the
+  arguments of a function are evaluated exactly once.
++ *call-by-name.* when a function is called, it is given the /names/
+  of its arguments, to which a function can refer. The important
+  feature of the call-by-name strategy is that, arguments are only
+  evaluated if they are used; if a function never uses an argument,
+  then that argument is never evaluated.
+
+The details of the call-by-name and call-by-value strategies are more
+subtle in the context of imperative languages with mutable variable
+bindings.  These strategies are more easily understood in the context
+of functional languages, as in the following examples.
+
+Note that both of these example use the *substitution model* for their
+operational semantics.
+*** A Functional Language with Call-by-Name Parameter Passing
+/Grammar for a simple functional language:/
+#+begin_src
+  <expr>  ::= <value>
+            | <expr> <expr>
+            | <expr> (+ | -) <expr>
+            | '(' <expr> ')'
+  <value> ::= <num> | <ident>
+            | fun <ident> -> <expr>
+  <num>   ::= ( 0 | ... | 9 ) { 0 | ... | 9 }
+  <ident> ::= ( a | ... | z ) { a | ... | z }
+#+end_src
+-----
+/Example program:/
+#+begin_src
+  (fun x -> fun y -> x)
+    2
+    ((fun z -> z + 5) 4)
+#+end_src
+-----
+/Operational semantics for the lambda calculus with call-by-name parameter passing and left-to-right evaluation:/
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(appRed)}
+\UnaryInfC{$e_1 \ e_2 \longrightarrow e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(cbnBeta)}
+\UnaryInfC{$(\texttt{fun} \ x \ \texttt{->} \ e_1) \ e_2 \longrightarrow e_1[e_2 / x]$}
+\end{prooftree}
+\end{equation*}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(addRedLeft)}
+\UnaryInfC{$e_1 \ \texttt{+} \ e_2 \longrightarrow e_1' \ \texttt{+} \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$v \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(addRedRight)}
+\BinaryInfC{$v \ \texttt{+} \ e_2 \longrightarrow v \ \texttt{+} \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(addNum)}
+\BinaryInfC{$m \ \texttt{+} \ n \longrightarrow m + n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(subRedLeft)}
+\UnaryInfC{$e_1 \ \texttt{-} \ e_2 \longrightarrow e_1' \ \texttt{-} \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$v \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(subRedRight)}
+\BinaryInfC{$v \ \texttt{-} \ e_2 \longrightarrow v \ \texttt{-} \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(subNum)}
+\BinaryInfC{$m \ \texttt{-} \ n \longrightarrow m - n$}
+\end{prooftree}
+
+-----
+/Example evaluation:/ Note that the "second" argument is never
+evaluated.
+
+#+begin_src
+  (fun x -> fun y -> x) 2  ((fun z -> z + 5) 4) ⟶
+
+  (fun y -> x) [2 / x]     ((fun z -> z + 5) 4) ≡
+
+  (fun y -> 2)             ((fun z -> z + 5) 4) ⟶
+
+  2 [(fun z -> z + 5) 4 / x]                    ≡
+
+p  2
+#+end_src
+*** Functional language with Call-by-Value Parameter Passing
+/Operational semantics for a simple functional language with
+call-by-value parameter passing and left-to-right evaluation:/
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(appRedLeft)}
+\UnaryInfC{$e_1 \ e_2 \longrightarrow e_1' \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(appRedRight)}
+\UnaryInfC{$(\texttt{fun} \ x \ \texttt{->} e_1) \ e_2 \longrightarrow (\texttt{fun} \ x \ \texttt{->} e_1) \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$v$ is a value}
+\RightLabel{(cbvBeta)}
+\UnaryInfC{$(\texttt{fun} \ x \ \texttt{->} \ e) \ v \longrightarrow e[v / x]$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(addRedLeft)}
+\UnaryInfC{$e_1 \ \texttt{+} \ e_2 \longrightarrow e_1' \ \texttt{+} \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$v \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(addRedRight)}
+\BinaryInfC{$v \ \texttt{+} \ e_2 \longrightarrow v \ \texttt{+} \ e_2'$}
+\end{prooftree}
+\end{equation*}
+p
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(addNum)}
+\BinaryInfC{$m \ \texttt{+} \ n \longrightarrow m + n$}
+\end{prooftree}
+
+\begin{equation*}
+\begin{prooftree}
+\AxiomC{$e_1 \longrightarrow e_1'$}
+\RightLabel{(subRedLeft)}
+\UnaryInfC{$e_1 \ \texttt{-} \ e_2 \longrightarrow e_1' \ \texttt{-} \ e_2$}
+\end{prooftree}
+\qquad
+\begin{prooftree}
+\AxiomC{$v \in \mathbb Z$}
+\AxiomC{$e_2 \longrightarrow e_2'$}
+\RightLabel{(subRedRight)}
+\BinaryInfC{$v \ \texttt{-} \ e_2 \longrightarrow v \ \texttt{-} \ e_2'$}
+\end{prooftree}
+\end{equation*}
+
+\begin{prooftree}
+\AxiomC{$m \in \mathbb Z$}
+\AxiomC{$n \in \mathbb Z$}
+\RightLabel{(subNum)}
+\BinaryInfC{$m \ \texttt{-} \ n \longrightarrow m - n$}
+\end{prooftree}
+
+-----
+/Example evaluation:/ Note that the "second" argument is evaluated
+before it passed to the function (i.e., before the function is applied
+to it).
+
+#+begin_src
+  (fun x -> fun y -> x) 2  ((fun z -> z + 5) 4) ⟶
+
+  (fun y -> x) [2 / x]     ((fun z -> z + 5) 4) ≡
+
+  (fun y -> 2)             ((fun z -> z + 5) 4) ⟶
+
+  (fun y -> 2)             ((z + 5) [4 / z])    ≡
+
+  (fun y -> 2)             (4 + 5)              ⟶
+
+  (fun y -> 2)             9                    ⟶
+
+  2 [ 9 / y ]                                   ≡
+
+  2
+#+end_src
+*** Exercises
+1. Give an example of a program which does not terminate using
+   call-by-value parameter passing, but does terminate using
+   call-by-name parameter passing.
+2. Give an example of a program which will take ~4 times as many
+   reductions to terminate using call-by name parameter passing, as
+   compared to call by value parameter passing.
+3. Write a program that does not terminate using call-by-name
+   parameter passing.
+4. Determine what the following program evaluates to.
+   #+begin_src
+     (fun f -> fun x -> f x x)
+       (fun y -> fun z -> fun a -> y (z a))
+       (fun x -> x + 1) 3
+   #+end_src
+5. We can represents expressions in the language as an ADT.  Implement
+   following function
+   #+begin_src ocaml
+     type expr
+       = App of expr * expr
+       | Add of expr * expr
+       | Sub of expr * expr
+       | Num of int
+       | Var of string
+       | Fun of string * expr
+
+     let is_value (e : expr) : bool =
+       assert false (* TODO *)
+   #+end_src
+   which returns ~true~ if ~e~ is a value (i.e., it is a number, a
+   variable, or a function), and ~false~ otherwise.
+6. You may notice that our language has no error configuration.  We
+   say that an expression is *stuck* if it is not a value but it
+   cannot be further reduced.  Implement the function
+   #+begin_src ocaml
+     let is_stuck (e : expr) : bool =
+       assert false (* TODO *)
+   #+end_src
+   which returns ~true~ if ~e~ is stuck and ~false~ otherwise.
 * Dynamic Scoping
 *Dynamic scoping* refers to the use of /computational (temporal)
 context/ to determine when a binding is available.  In its simplest
 form, we may think of all bindings as globally available as soon as
-they have been instantiated.
+they have been instantiated in the process of executing a program.
 
-In a language with dynamic scoping and subroutines, when it comes to
-determining what bindings are available, it doesn't matter where a
-subroutine is defined, but rather where it is called.
+In a language with dynamic scoping, when it comes to determining what
+bindings are available to a subroutine, it doesn't matter where a
+subroutine is /defined/, but rather where it is /called/.
 
 Bash is a widely used language with dynamic scoping, but in general,
 dynamic scoping is not common in modern programming languages.  It is,
 however, much easier to implement than lexical scoping.
 
-TODO EXAMPLE
+The stack-oriented language with subroutines given above implements
+dynamic scoping by fiat.
+** Examples
+/Example bash program highlighting dynamic scoping:/
+#+begin_src bash
+function f () {
+  X=2
+}
+function g () {
+  echo $X
+}
 
-** Stack-Oriented Language with Dynamic Scoping
-TODO FILL IN
+X=1
+g
+f
+g
 
-TODO EXAMPLE
+# prints:
+# 1
+# 2
+#+end_src
+
+-----
+/Example program in the stack-oriented language highlighting dynamic scoping:/
+#+begin_src
+  def F begin
+    push 2 assign X
+  end
+
+  def G begin
+    lookup X
+  end
+
+  push 1 assign X
+  call G
+  call F
+  call G
+#+end_src
+
+-----
+/Example evaluation:/
+#+begin_src
+  ( ∅           , []                                         , def F begin push 2 assign x end def G begin lookup X end push 1 assign X call G call F call G) ⟶
+  ( ∅           , [F ↦ push 2 assign X]                      , def G begin lookup X push 1 assign X call G call F call G) ⟶
+  ( ∅           , [G ↦ lookup X; F ↦ push 2 assign X]        , push 1 assign X call G call F call G) ⟶
+  ( 1 :: ∅      , [G ↦ lookup X; F ↦ push 2 assign X]        , assign X call G call F call G) ⟶
+  ( ∅           , [X ↦ 1; G ↦ lookup X; F ↦ push 2 assign X] , call G call F call G) ⟶
+  ( ∅           , [X ↦ 1; G ↦ lookup X; F ↦ push 2 assign X] , lookup X call F call G) ⟶
+  ( 1 :: ∅      , [X ↦ 1; G ↦ lookup X; F ↦ push 2 assign X] , call F call G) ⟶
+  ( 1 :: ∅      , [X ↦ 1; G ↦ lookup X; F ↦ push 2 assign X] , push 2 assign X call G) ⟶
+  ( 2 :: 1 :: ∅ , [X ↦ 1; G ↦ lookup X; F ↦ push 2 assign X] , assign X call G) ⟶
+  ( 1 :: ∅      , [X ↦ 2; G ↦ lookup X; F ↦ push 2 assign X] , call G) ⟶
+  ( 1 :: ∅      , [X ↦ 2; G ↦ lookup X; F ↦ push 2 assign X] , lookup X) ⟶
+  ( 2 :: 1 :: ∅ , [X ↦ 2; G ↦ lookup X; F ↦ push 2 assign X] , ϵ ) ✓
+#+end_src
+*** Exercises
+1. Give an evaluation of the following program.
+   #+begin_src
+     def F begin
+       deg G begin
+         lookup X
+       end
+     end
+
+     push 1 assign X
+     call F
+     call G
+   #+end_src
 * Lexical Scoping
 *Lexical scoping* refers to the use of properties of the source code
  text to deliniate the availability of a binding.  In Python, the body
  of a function, determined by indentation, deliniates *function
  scope*.  In OCaml, The body of a let-expression is exactly the scope
  of its associated binding (it is not possible to refer to that
- binding outside of the body of the let-expression.  Lexical scoping
- is common among modern programming languages.
+ binding outside of the body of the let-expression).  Lexical scoping
+ is common among modern programming languages (including both Python and OCaml).
 
- In a language with lexical scoping and subroutines, when it comes to
- determining what bindings are available, it doesn't matter where a
- subroutine was called, but rather where it was defined.
+ In a language with lexical scoping, when it comes to determining what
+ bindings are available to a subroutine, it doesn't matter where a
+ subroutine was /called/, but rather where it was /defined/ (this is
+ the opposite of dynamic scoping).
 
- The way lexical scoping is implemented depends on a couple considerations:
+ The implementation lexical scoping depends on a couple
+ considerations:
  + Are variables *mutable*?
  + Are functions *higher-order*?
 
@@ -1180,114 +2285,881 @@ TODO EXAMPLE
 
 Lexical scoping with /mutable/ variables requires maintaining a *call
 stack*.  The call stack keeps track of the function calls made during
-the evaluating a program, along with local variables to function calls.
+the evaluating a program, along with local variables to function
+calls.
 
-Each function call creates an *activation record* (*frame*) which keeps track of:
+Each function call (transferring control from the caller to the callee)
+creates an *activation record* (or *frame*) which keeps track of:
 + the input parameters of the function
 + a pointer to the activation record in which the function was defined
-+ a pointer to where to return after completing the function call.
++ a pointer to where to return after completing the function call
+Returning from a subroutine (transferring control from the callee to
+the caller) removes its associated frame from the stack.
 
-We can think of an activation record as having the following rough structure.
+At a low level, we can think of an activation record as having the
+following rough structure.
 #+begin_src
-  +-------------+
-  | local_n     |
-  | local_n-1   |
-  | ...         |
-  | local_2     |
-  | local_1     |
-  | def_addr    |
-  | return_addr |
-  | arg_k       |
-  | arg_k-1     |
-  | ...         |
-  | arg2        |
-  | arg1        |
-  | return_addr |
-  +-------------+
+  TOP OF THE STACK
+  +--------------+
+  | localK       |
+  | ...          |
+  | local2       |
+  | local1       |
+  | return_addr  |
+  | def_addr     |
+  | argN         |
+  | ...          |
+  | arg2         |
+  | arg1         |
+  +--------------+
+  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 #+end_src
 
 Conceptually, we represent the call stack within the environment.
-Rather than maintaining a collection of bindings, we maintain a stack
-of activation records.
+That is, rather than maintaining a collection of bindings in the
+environment, we maintain a stack of activation records.  In OCaml, we
+might implement this as follows.[fn::This is not the most efficient
+implementation.] Note that this implementation has our stack-oriented
+languages in mind so there are no parameters in a record.
 
-In OCaml, we might represent this as:
+*IMPORTANT.* This works slightly differently than in project 2. Note
+ that the ~fetch~ operation returns the identifier of the record in
+ which it found a binding.
 #+begin_src ocaml
+  type command = unit (* DUMMY TYPE *)
+  type program = command list
+  type value
+    = Num of int
+    | Prog of program
   type record =
     { id : int
     ; locals : (string * value) list
-    ; def_pointer : int
     ; ret_prog : program
+    ; def_pointer : int
     }
 
   type env = record list
 
-  let fetch (e : env) (x : string) : value option =
+  let empty_env =
+    [ { id = 0
+      ; locals = []
+      ; def_pointer = -1
+      ; ret_prog = []
+      }
+    ]
+
+  let fetch (e : env) (x : string) : (value * int) option =
     let rec go e x i =
       match e with
-      | [] -> None
       | r :: e ->
         if r.id = i
         then
           match List.assoc_opt x r.locals with
-          | Some v -> Some v
+          | Some v -> Some (v, i)
           | None -> go e x r.def_pointer
         else go e x (i - 1)
+      | _ -> assert false (* impossible *)
     in
     match e with
-    | [] -> None
     | r :: _ -> go e x r.id
+    | _ -> assert false (* impossible *)
 
   let update (e : env) (x : string) (v : value) : env =
     match e with
+    | r :: e -> { r with locals = (x, v) :: r.locals } :: e
     | [] -> assert false (* impossible *)
-    | r :: e -> { r with locals = (x, v) :: r.locals }
 #+end_src
 
-Both of these function can be made more efficient.
+#+RESULTS:
+: <fun>
 
 *** Stack-Oriented Language with Mutable Variables and Lexical Scoping
-
 Lexical scoping becomes more subtle to implement if functions are
 higher-order.  In this example, we do not allow higher-order
 functions, but we do allow nested function definitions.
 
+In the operational semantics for the following stack-oriented
+language, we take a configuration to be a program ($P$) together with
+a stack of integers ($S$) and an /call stack/ ($E$) which is a stack
+of records as describe above. We use
+
+\begin{equation*}
+\langle i , L, R, j \rangle
+\end{equation*}
+
+to denote an activation record with identifier $i$, local bindings
+$L$, return program $R$, and pointer $j$ to the defining activation
+record.
+
+This is very similar to what was done in project 2.
+
+-----
+/Operational Semantics for a stack-oriented language with lexical scoping and
+mutable variables:/
 
 
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(push)}
+\UnaryInfC{$(\ S \ , \ E \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ , \ E \ ,\ P \ )$}
+\end{prooftree}
 
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dup)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dupErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(add)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(sub)}
+\UnaryInfC{$( \ m :: n :: S \ , \ E \ , \ \textsf{sub} \ P \ ) \longrightarrow ( \ (m - n) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr1)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifFalse)}
+\UnaryInfC{$( \ 0 :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_2 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$n \not = 0$}
+\RightLabel{(ifTrue)}
+\UnaryInfC{$( \ n :: S \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ E \ , \ Q_1 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x)$ is a number}
+\RightLabel{(lookup)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x)$ is not a number}
+\RightLabel{(lookupErr)}
+\UnaryInfC{$( \ S \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assign)}
+\UnaryInfC{$( \ m :: S \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, x, m) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assignErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(funDef)}
+\UnaryInfC{$( \ S \ , \ E \ , \ \mathsf{def} \ F \ \mathsf{begin} \ Q \ \mathsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ \mathsf{update}(E, F, Q) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F) = (Q, i)$ and $Q$ is a program}
+\RightLabel{(call)}
+\UnaryInfC{$( \ S \ , E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow ( \ S \ , \ \langle \mathsf{len}(E), \varnothing, P, i \rangle :: E \ , \ Q \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(return)}
+\UnaryInfC{$( \ S \ , \ \langle i, L, R, j \rangle :: E \ , \ \epsilon \ ) \longrightarrow ( \ S \ , \ E \ , \ R \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F)$ is not a program}
+\RightLabel{(callErr)}
+\UnaryInfC{$( \ S \ , \ E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+------
+/Example program:/
+
+#+begin_src
+push 2 assign X
+
+def F begin
+  lookup X
+  push 4 assign X
+end
+
+call F
+push 3 assign X
+call F
+#+end_src
+
+------
+/Example evaluation:/
+#+begin_src
+  ( ∅
+  , ⟨0 , [] , ϵ , -1 ⟩ ::
+    ∅
+  , push 2 assign X def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨0 , [] , ϵ , -1 ⟩ ::
+    ∅
+  , assign X def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ⟨ 0 , [X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ⟨ 1 , [] , push 3 assign X call F , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , lookup X push 4 assign X
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ 1 , [] , push 3 assign X call F , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , push 4 assign X
+  ) ⟶
+
+  ( 4 :: 2 :: ∅
+  , ⟨ 1 , [] , push 3 assign X call F , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , assign X
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ 1 , [X ↦ 4] , push 3 assign X call F , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , ϵ
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , push 3 assign X call F
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  , ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 2] , ϵ , -1 ⟩ ::
+    ∅
+  , assign X call F
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , call F
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ 1 , [] , ϵ , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , lookup X push 4 assign X
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  , ⟨ 1 , [] , ϵ , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , push 4 assign X
+  ) ⟶
+
+  ( 4 :: 3 :: 2 :: ∅
+  , ⟨ 1 , [] , ϵ , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , assign X
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  , ⟨ 1 , [X ↦ 4] , ϵ , 0 ⟩ ::
+    ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , ϵ
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  , ⟨ 0 , [F ↦ lookup X push 4 assign X; X ↦ 3] , ϵ , -1 ⟩ ::
+    ∅
+  , ϵ
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  , ∅
+  , ϵ
+  ) ✓
+#+end_src
+*** Exercises
+1. Give an evaluation of the following program.
+   #+begin_src
+     push 2 assign X
+     def F begin
+       push 3 assign X
+       call G
+     end
+     def G begin
+       lookup X
+     end
+     call F
+   #+end_src
+2. Implement the function
+   #+begin_src ocaml
+     let global_update (e : env) (x : string) (v : value) =
+       assert false (* TODO *)
+   #+end_src
+   which always updates the binding in the /global frame/ (as opposed
+   to the topmost frame).
+3. Extend the language and the operational semantics to include a
+   commands ~gassign~ which assigns variables in the global frame,
+   even within a subroutine.
 ** Closures
 *Closures* are subroutines together with data they need to be executed
- correctly.  At a minimum, this data usually consists of a local
- environment, a collection of bindings, which may no longer be in
- scope when the function is called.  It may also include:
- + the name given to the subroutine
- + a pointer to the activation record in which the function was
-   defined
+correctly.  At a minimum, this data consists of a collection of
+*captured bindings*, i.e., bindings which may no longer be in scope or
+may be shadowed when the function is called.  It often also includes
+the name given to the subroutine, as this is important for
+implementing recursive functions.
 
 Closures can be used to implement higher-order functions and lexically
 scoped immutable variable bindings.  If variable bindings are
-immutable, a subroutine can defined as a closure which stores all the
-variable bindings it needs when it is defined.
+immutable, a subroutine can be defined as a closure which stores all
+the variable bindings it that exist when it is defined.
 
 Closure are also used in *continuation-passing style* implementations
 of subroutines.  We can save a closure containing the current
-environment and (a pointer to) the return program.
+environment and (a pointer to) the return program.  This closure is
+often called the *current continuation*.
 
-In OCaml:
+To simplify things, we can keep track of /two/ stacks, one for data
+and the other for holding continuations for returning from a
+function.[fn::This is what the language Forth does.]
+
 #+begin_src ocaml
   type closure =
     { name: string
+    ; captured: (string * value) list
     ; body : program
-    ; locals: (string * value) list
     }
 
   and value
     = Closure of closure
     | Num of int
 
-  type env = closure option * (string * value) list
+  type env = (string * value) list
+  type ccs = closure list
 #+end_src
 
-*** Stack-Oriented Language with Immutable Variables and Lexical Scoping
+*** Stack-Oriented Language with Lexical Scoping and Higher-Order Functions
+In the operational semantics of the following stack oriented language,
+we take a configuration to be a program ($P$) together with a stack of
+values ($S$) /which includes integers and closures/, a stack
+continuations ($C$) used for returning from a function call, and an
+environment ($E$), represented as a list of bindings (as in the case
+of our stack-oriented language with dynamic scoping).  We use
+
+\begin{equation*}
+\langle F, L, P \rangle
+\end{equation*}
+
+to denote a closure with name $F$, captured bindings $L$, and body
+$P$.
+
+Note that we need to be able to put closures on the stack in order to
+implement higher-order functions.
+
+-----
+/Operational Semantics of a stack-oriented language with lexical
+scoping, immutable variables, and higher-order functions:/
+
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(push)}
+\UnaryInfC{$(\ S \ , \ C \ , \ E \ , \ \textsf{push n} \ P \ ) \longrightarrow ( \ n :: S \ , \ C \ , \ E \ ,\ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dup)}
+\UnaryInfC{$( \ n :: S \ , \ C \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow
+  ( \ n :: n :: S \ , \ C \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(dupErr)}
+\UnaryInfC{$( \ \varnothing \ , \ C \ , \ E \ , \ \textsf{dup} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(add)}
+\UnaryInfC{$( \ m :: n :: S \ , \ C \ , \ E \ , \ \textsf{add} \ P \ ) \longrightarrow ( \ (m + n) :: S \ , \ C \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr1)}
+\UnaryInfC{$( \ n :: S \ , \ C \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(addErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ C \ , \ E \ , \ \mathsf{add} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(sub)}
+\UnaryInfC{$( \ m :: n :: S \ , \ C \ , \ E \ , \ \textsf{sub} \ P \ ) \longrightarrow ( \ (m - n) :: S \ , \ C \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr1)}
+\UnaryInfC{$( \ n :: S \ , \ C \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(subErr0)}
+\UnaryInfC{$( \ \varnothing \ , \ C \ , \ E \ , \ \mathsf{sub} \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifFalse)}
+\UnaryInfC{$( \ 0 :: S \ , \ C \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ C \ , \ E \ , \ Q_2 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$n \not = 0$}
+\RightLabel{(ifTrue)}
+\UnaryInfC{$( \ n :: S \ , \ C \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ C \ , \ E \ , \ Q_1 \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(ifErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \textsf{then} \ Q_1 \ \textsf{else} \ Q_2 \ \textsf{end} \ P \ ) \longrightarrow
+\mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) \not = \bot$}
+\RightLabel{(lookup)}
+\UnaryInfC{$( \ S \ , \ C \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow
+ ( \ \mathsf{fetch}(E, x) :: S \ , \ C \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, x) = \bot$}
+\RightLabel{(lookupErr)}
+\UnaryInfC{$( \ S \ , \ C \ , \ E \ , \textsf{lookup} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assign)}
+\UnaryInfC{$( \ n :: S \ , \ C \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow
+( \ S \ , \ C \ , \ \mathsf{update}(E, x, n) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(assignErr)}
+\UnaryInfC{$( \ \varnothing \ , \ E \ , \ \mathsf{assign} \ x \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(funDef)}
+\UnaryInfC{$( \ S \ , \ C \ , \ E \ , \ \mathsf{def} \ F \ \mathsf{begin} \ Q \ \mathsf{end} \ P \ ) \longrightarrow
+( \ S \ , \ C \ , \ \mathsf{update}(E, F, \langle F, E, Q\rangle) \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F) = \langle G, L, Q\rangle$}
+\RightLabel{(call)}
+\UnaryInfC{$( \ S \ , \ C \ , \ E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow ( \ S \ , \ \langle\mathsf{cc}, E, P\rangle :: C \ , \ \mathsf{update}(L, G, Q) \ , \ Q \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\RightLabel{(return)}
+\UnaryInfC{$( \ S \ , \ \langle\mathsf{cc}, E, P \rangle :: C \ , \ L \ , \ \epsilon \ ) \longrightarrow ( \ S \ , \ C \ , \ E \ , \ P \ )$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$\mathsf{fetch}(E, F) = \bot \quad$ or $\quad \mathsf{fetch}(E, F) \in \mathbb Z$}
+\RightLabel{(callErr)}
+\UnaryInfC{$( \ S \ , \ C \ , \ E \ , \ \mathsf{call} \ F \ P \ ) \longrightarrow \mathsf{ERROR}$}
+\end{prooftree}
+
+-----
+/Example evaluation (of the same program as in the previous section:/
+#+begin_src
+  ( ∅
+  , ∅
+  , []
+  , push 2 assign X def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( 2 :: ∅
+  , ∅
+  , []
+  , assign X def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ∅
+  , [ X ↦ 2 ]
+  , def F begin lookup X push 4 assign X end call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , call F push 3 assign X call F
+  ) ⟶
+
+  ( ∅
+  , ⟨ cc , push 3 assign X call F , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , lookup X push 4 assign X
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ cc , push 3 assign X call F , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 2 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , push 4 assign X
+  ) ⟶
+
+  ( 4 :: 2 :: ∅
+  , ⟨ cc , push 3 assign X call F , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 2 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , assign X
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ cc , push 3 assign X call F , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 2 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 4
+    ]
+  , ϵ
+  ) ⟶
+
+  ( 2 :: ∅
+  ,  ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , push 3 assign X call F
+  ) ⟶
+
+  ( 3 :: 2 :: ∅
+  ,  ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , assign X call F
+  ) ⟶
+
+  ( 2 :: ∅
+  ,  ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 3
+    ]
+  , call F
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ cc , ϵ , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 3 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , lookup X push 4 assign X
+  ) ⟶
+
+  ( 2 :: 2 :: ∅
+  , ⟨ cc , ϵ , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 3 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , push 4 assign X
+  ) ⟶
+
+  ( 4 :: 2 :: 2 :: ∅
+  , ⟨ cc , ϵ , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 3 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 2
+    ]
+  , assign X
+  ) ⟶
+
+  ( 2 :: 2 :: ∅
+  , ⟨ cc , ϵ , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩ ; X ↦ 3 ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 4
+    ]
+  , ϵ
+  ) ⟶
+
+  ( 2 :: 2 :: ∅
+  ,  ∅
+  , [ F ↦ ⟨ F , lookup X push 4 assign X , [X ↦ 2] ⟩
+    ; X ↦ 3
+    ]
+  , ϵ
+  ) ✓
+#+end_src
+-----
+/Example program with higher-order functions:/
+#+begin_src
+  def K begin
+    assign X
+    def F begin
+      assign Y
+      lookup X
+    end
+    lookup F
+  end
+
+  push 3 call K assign THREE
+  push 2 call THREE
+#+end_src
+
+-----
+/Example evaluation with higher-order functions:/
+#+begin_src
+  ( ∅
+  , ∅
+  , []
+  , def K begin assign X def F begin assign Y lookup X end lookup F end push 3 call K assign THREE push 2 call THREE
+  ) ⟶
+
+  ( ∅
+  , ∅
+  , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ]
+  , push 3 call K assign THREE push 2 call THREE
+  ) ⟶
+
+  ( 3 :: ∅
+  , ∅
+  , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ]
+  , call K assign THREE push 2 call THREE
+  ) ⟶
+
+  ( 3 :: ∅
+  , ⟨ cc , assign THREE push 2 call THREE , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ] ⟩ ::
+    ∅
+  , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ]
+  , assign X def F begin assign Y lookup X end lookup F
+  ) ⟶
+
+  ( ∅
+  , ⟨ cc , assign THREE push 2 call THREE , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ] ⟩ ::
+    ∅
+  , [ X ↦ 3
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , def F begin assign Y lookup X end lookup F
+  ) ⟶
+
+  ( ∅
+  , ⟨ cc , assign THREE push 2 call THREE , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; X ↦ 3
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , lookup F
+  ) ⟶
+
+  ( ⟨ F , assign Y lookup X , [X ↦ 3] ⟩ :: ∅
+  , ⟨ cc , assign THREE push 2 call THREE , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ] ⟩ ::
+    ∅
+  , [ F ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; X ↦ 3
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , ϵ
+  ) ⟶
+
+  ( ⟨ F , assign Y lookup X , [X ↦ 3] ⟩ :: ∅
+  ,  ∅
+  , [ K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩ ]
+  , assign THREE push 2 call THREE
+  ) ⟶
+
+  ( ∅
+  , ∅
+  , [ THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , push 2 call THREE
+  ) ⟶
+
+  ( 2 :: ∅
+  , ∅
+  , [ THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , call THREE
+  ) ⟶
+
+  ( 2 :: ∅
+  , ⟨ cc , ϵ , [THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩] ⟩ ::
+    ∅
+  , [ THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; X ↦ 3
+    ]
+  , assign Y lookup X
+  ) ⟶
+
+  ( ∅
+  , ⟨ cc , ϵ , [THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩] ⟩ ::
+    ∅
+  , [ Y ↦ 2
+    ; THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; X ↦ 3
+    ]
+  , lookup X
+  ) ⟶
+
+  ( 3 :: ∅
+  , ⟨ cc , ϵ , [THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩] ⟩ ::
+    ∅
+  , [ Y ↦ 2
+    ; THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; X ↦ 3
+    ]
+  , ϵ
+  ) ⟶
+
+  ( 3 :: ∅
+  ,  ∅
+  , [ THREE ↦ ⟨ F , assign Y lookup X , [X ↦ 3] ⟩
+    ; K ↦ ⟨ K , assign X def F begin assign Y lookup X end lookup F , [] ⟩
+    ]
+  , ϵ
+  ) ✓
+
+#+end_src
+
 
 *** Exercises
-*FIN*
+1. Evaluate the following program.
+   #+begin_src
+     def ADDFIVE begin
+       push 5 add
+     end
+
+     def TWICE begin
+       assign F
+       call F
+       call F
+     end
+
+     push 0
+     lookup ADDFIVE
+     call TWICE
+   #+end_src
+2. Write a program which terminates for the stack-oriented languages
+   with
+
+   + dynamic scoping
+   + lexical scoping via call stacks
+   + lexical scoping via closures
+
+   and leaves one number on the stack, but which leaves a different
+   number in each of the three cases.
+3. Redefine the language and semantics to include a ~return~ command
+   (as in project 3).
+4. Redefine the language and semantics to include a ~call~ command (as
+   in project 3) so that the language has anonymous functions.
+5. /(Open ended)/ Describe the benefit of having two stacks (one for data and one for
+   returns) instead of just one.
