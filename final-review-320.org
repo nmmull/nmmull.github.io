@@ -3152,7 +3152,7 @@ scoping, immutable variables, and higher-order functions:/
    with
 
    + dynamic scoping
-   + lexical scoping via call stacks
+   + lexical scoping via activation records
    + lexical scoping via closures
 
    and leaves one number on the stack, but which leaves a different
