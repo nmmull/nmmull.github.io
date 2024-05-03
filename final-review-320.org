@@ -942,7 +942,7 @@ be required to memorize their definitions.*
    whitespace before or ~"True"~ or ~"False"~
 2. Implement the parser
    #+begin_src ocaml
-     let parse_bool list : bool list parser =
+     let parse_bool_list : bool list parser =
        assert false (* TODO *)
    #+end_src
    which can parse a list of booleans in Python syntax, i.e., square
