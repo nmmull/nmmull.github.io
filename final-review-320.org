@@ -1933,7 +1933,7 @@ configuration.
    function ~ROT~ which rotates to the top three elements of the
    stack, i.e., ~x :: y :: z :: S~ becomes ~z :: x :: y :: S~.
 2. Implement ~MUL~ which multiplies the top two elements of the
-   stack.  Try to implement recursively and non-recursively.
+   stack.  Try to implement it recursively and non-recursively.
 ** Parameter Passing
 *Parameter passing* is part of the *evaluation strategy* of a
 programming language.  It refers to how parameters are passed to a
