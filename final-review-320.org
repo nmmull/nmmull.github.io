@@ -541,7 +541,7 @@ part of the derivation.]
 #+begin_src
   <program> ::= <stmts>
   <stmts>   ::= <stmt> | <stmt> ; <stmts>
-  <stmt>    ::= <var> = <stmt>
+  <stmt>    ::= <var> = <expr>
   <var>     ::= a | b | c | d
   <expr>    ::= <term> | <term> + <term> | <term> - <term>
   <term>    ::= <var> | const
@@ -602,7 +602,7 @@ EBNF meta-syntax. See, for example, [[https://en.wikipedia.org/wiki/Extended_Bac
      <a> ::= a <b> | a <a> b
      <b> ::= c <a> | d
    #+end_src
-2. Give a leftmost derivation of ~a a c a d b b~ in the above
+2. Give a leftmost derivation of ~a a a c a d b b~ in the above
    grammar. Draw its associated parse tree.
 4. Verify that ~a = a + a ; b = b~ is recognized by the grammar for
    the simple imperative language above.  Give a derivation that is
