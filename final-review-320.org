@@ -2146,8 +2146,8 @@ to it).
    call-by-value parameter passing, but does terminate using
    call-by-name parameter passing.
 2. Give an example of a program which will take ~4 times as many
-   reductions to terminate using call-by name parameter passing, as
-   compared to call by value parameter passing.
+   reductions to terminate using call-by-name parameter passing, as
+   compared to call-by-value parameter passing.
 3. Write a program that does not terminate using call-by-name
    parameter passing.
 4. Determine what the following program evaluates to.
