@@ -768,7 +768,7 @@ the grammar:
    the mountain with the telescope~.
 5. Consider the following grammar for function types over ~int~.
    #+begin_src
-     <fun-type> ::= <int-type> | <int-type> -> <fun-type>
+     <fun-type> ::= <int-type> | <fun-type> -> <fun-type>
      <int-type> ::= int
    #+end_src
    Show that this grammar is ambiguous and then rewrite this grammar
