@@ -2049,7 +2049,7 @@ evaluated.
 
   2 [(fun z -> z + 5) 4 / x]                    ≡
 
-p  2
+  2
 #+end_src
 *** Functional language with Call-by-Value Parameter Passing
 /Operational semantics for a simple functional language with
