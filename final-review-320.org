@@ -2047,7 +2047,7 @@ evaluated.
 
   (fun y -> 2)             ((fun z -> z + 5) 4) ⟶
 
-  2 [(fun z -> z + 5) 4 / x]                    ≡
+  2 [(fun z -> z + 5) 4 / y]                    ≡
 
   2
 #+end_src
@@ -2154,7 +2154,7 @@ to it).
    #+begin_src
      (fun f -> fun x -> f x x)
        (fun y -> fun z -> fun a -> y (z a))
-       (fun x -> x + 1) 3
+p       (fun x -> x + 1) 3
    #+end_src
 5. We can represents expressions in the language as an ADT.  Implement
    following function
