@@ -2357,7 +2357,7 @@ languages in mind so there are no parameters in a record.
           match List.assoc_opt x r.locals with
           | Some v -> Some (v, i)
           | None -> go e x r.def_pointer
-        else go e x (i - 1)
+        else go e x i
       | _ -> assert false (* impossible *)
     in
     match e with
