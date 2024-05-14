@@ -1,6 +1,6 @@
 #+title: Course Policies
-#+subtitle: Boston University@@html:<br>@@
-#+subtitle: Spring 2024
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
+#+OPTIONS: html-style:nil H:1 toc:1
 There are a number of university policies and course guidelines you
 should be aware of. /Read them carefully and completely./ Also keep in
 mind that, although I am required to use specific language in some

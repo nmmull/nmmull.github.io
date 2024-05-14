@@ -1,5 +1,4 @@
 #+title: Nathan Mull
-# #+subtitle: Lecturer
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
 #+OPTIONS: html-style:nil H:1 toc:nil num:nil
 I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at [[https://www.bu.edu][Boston
