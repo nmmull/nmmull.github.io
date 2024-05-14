@@ -16,6 +16,7 @@ more information.
 ** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
 * Links
 ** [[file:policies.org][Course Policies]]
+** [[file:final-review-320.org][CAS CS 320 Final Review]]
 ** Projects I like:
 *** [[https://dldc.lib.uchicago.edu/open/attachment-converter/index.html][Attachment Converter]]
 *** [[https://elucidations.vercel.app][Elucidations]]
