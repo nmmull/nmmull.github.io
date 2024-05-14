@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-05-08 Wed 10:36 -->
+<!-- 2024-05-14 Tue 15:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CAS CS 320 Review</title>
+<title>Final Review</title>
 <meta name="author" content="Nathan  Mull" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="globalStyle.css" />
@@ -44,64 +44,61 @@
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up">⟨ <a href="index.html">home</a> ⟩</div><div id="content" class="content">
-<h1 class="title">CAS CS 320 Review
-<br />
-<span class="subtitle">Principles of Programming Languages<br> Boston University<br> Spring 2023</span>
-</h1>
+<div id="content" class="content">
+<h1 class="title">Final Review</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ecc0a1">1. OCaml</a>
+<li><a href="#org00c9821">1. OCaml</a>
 <ul>
-<li><a href="#orgd3bfe8e">1.1. Basics</a></li>
-<li><a href="#orgc4b8c3a">1.2. Algebraic Data Types</a></li>
-<li><a href="#org09a59fa">1.3. Record Types</a></li>
-<li><a href="#org7e524bc">1.4. Higher-Order Programming</a></li>
-<li><a href="#org9a1b622">1.5. Tail Recursion</a></li>
-<li><a href="#org853dacd">1.6. Type Checking</a></li>
+<li><a href="#org742c276">1.1. Basics</a></li>
+<li><a href="#orga53f48e">1.2. Algebraic Data Types</a></li>
+<li><a href="#org3cd0da7">1.3. Record Types</a></li>
+<li><a href="#orga91a361">1.4. Higher-Order Programming</a></li>
+<li><a href="#org763069a">1.5. Tail Recursion</a></li>
+<li><a href="#org95e4ccb">1.6. Type Checking</a></li>
 </ul>
 </li>
-<li><a href="#orgf07b54c">2. Formal Grammar</a>
+<li><a href="#org5ca1dac">2. Formal Grammar</a>
 <ul>
-<li><a href="#orga408bcd">2.1. BNF Specifications</a></li>
-<li><a href="#org2bd068e">2.2. Ambiguity</a></li>
-<li><a href="#org03bda8f">2.3. Regular Grammars</a></li>
-<li><a href="#org815453b">2.4. Chomsky Normal Form</a></li>
+<li><a href="#org8daf64b">2.1. BNF Specifications</a></li>
+<li><a href="#org888316c">2.2. Ambiguity</a></li>
+<li><a href="#org357dc06">2.3. Regular Grammars</a></li>
+<li><a href="#orgcbe1079">2.4. Chomsky Normal Form</a></li>
 </ul>
 </li>
-<li><a href="#org9987f50">3. Parsing</a>
+<li><a href="#orgc2d0547">3. Parsing</a>
 <ul>
-<li><a href="#orga5acde1">3.1. Combinators</a></li>
+<li><a href="#org6a444d1">3.1. Combinators</a></li>
 </ul>
 </li>
-<li><a href="#org939866f">4. Formal Semantics</a>
+<li><a href="#orgf41e697">4. Formal Semantics</a>
 <ul>
-<li><a href="#orgbf1f4cc">4.1. Derivations</a></li>
-<li><a href="#org1fe38cb">4.2. Examples</a></li>
+<li><a href="#org82b08a8">4.1. Derivations</a></li>
+<li><a href="#org0a23acb">4.2. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org74d9c11">5. Variables</a>
+<li><a href="#orgde01630">5. Variables</a>
 <ul>
-<li><a href="#org7648baa">5.1. Stack-Oriented Language with Variables</a></li>
+<li><a href="#orgc5c95d0">5.1. Stack-Oriented Language with Variables</a></li>
 </ul>
 </li>
-<li><a href="#orgc2a5ccc">6. Subroutines</a>
+<li><a href="#org0846b42">6. Subroutines</a>
 <ul>
-<li><a href="#org0129bf6">6.1. Stack-Oriented Language with Subroutines</a></li>
-<li><a href="#org99e656a">6.2. Parameter Passing</a></li>
+<li><a href="#org187cac7">6.1. Stack-Oriented Language with Subroutines</a></li>
+<li><a href="#org77fe603">6.2. Parameter Passing</a></li>
 </ul>
 </li>
-<li><a href="#org79c8b21">7. Dynamic Scoping</a>
+<li><a href="#org17891d0">7. Dynamic Scoping</a>
 <ul>
-<li><a href="#org0925c60">7.1. Examples</a></li>
+<li><a href="#org061188c">7.1. Examples</a></li>
 </ul>
 </li>
-<li><a href="#org0010cef">8. Lexical Scoping</a>
+<li><a href="#orgce67e97">8. Lexical Scoping</a>
 <ul>
-<li><a href="#org66d6e01">8.1. Activation Records</a></li>
-<li><a href="#orgc84cce7">8.2. Closures</a></li>
+<li><a href="#org8677704">8.1. Activation Records</a></li>
+<li><a href="#org78760df">8.2. Closures</a></li>
 </ul>
 </li>
 </ul>
@@ -109,13 +106,13 @@
 </div>
 <p>
 This page contains an outline of the topics covered in <i>CAS CS 320:
-Principles of Programming Languages</i> during the Spring 2023 semester.
-It is not exhaustive, though it is biased towards those topics which
-are pertinent for the final exam of the course.  Included are
-exercises associated with each topic.
+Principles of Programming Languages</i> during the Spring 2023 semester
+at Boston University.  It is not exhaustive, though it is biased
+towards those topics which are pertinent for the final exam of the
+course.  Included are exercises associated with each topic.
 </p>
-<div id="outline-container-org2ecc0a1" class="outline-2">
-<h2 id="org2ecc0a1"><span class="section-number-2">1.</span> OCaml</h2>
+<div id="outline-container-org00c9821" class="outline-2">
+<h2 id="org00c9821"><span class="section-number-2">1.</span> OCaml</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 During the first half of the course, we learned the function
@@ -125,8 +122,8 @@ defining a list of commands, but instead as specifying the <i>shape</i> of
 its output.
 </p>
 </div>
-<div id="outline-container-orgd3bfe8e" class="outline-3">
-<h3 id="orgd3bfe8e"><span class="section-number-3">1.1.</span> Basics</h3>
+<div id="outline-container-org742c276" class="outline-3">
+<h3 id="org742c276"><span class="section-number-3">1.1.</span> Basics</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 OCaml has many types that are standard among programming languages,
@@ -136,8 +133,8 @@ language constructs like let-bindings, anonymous functions, and
 if-then-else expressions.
 </p>
 </div>
-<div id="outline-container-org7a7c2de" class="outline-4">
-<h4 id="org7a7c2de"><span class="section-number-4">1.1.1.</span> Exercises</h4>
+<div id="outline-container-orgee3f4d8" class="outline-4">
+<h4 id="orgee3f4d8"><span class="section-number-4">1.1.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ol class="org-ol">
 <li><p>
@@ -196,8 +193,8 @@ l[n] & n < k \\
 </div>
 </div>
 </div>
-<div id="outline-container-orgc4b8c3a" class="outline-3">
-<h3 id="orgc4b8c3a"><span class="section-number-3">1.2.</span> Algebraic Data Types</h3>
+<div id="outline-container-orga53f48e" class="outline-3">
+<h3 id="orga53f48e"><span class="section-number-3">1.2.</span> Algebraic Data Types</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 One of the most important features of modern functional programming
@@ -243,8 +240,8 @@ encompassed in the <code>list</code> type.
 important to be familiar with.
 </p>
 </div>
-<div id="outline-container-org18637f5" class="outline-4">
-<h4 id="org18637f5"><span class="section-number-4">1.2.1.</span> Exercises</h4>
+<div id="outline-container-org25dd813" class="outline-4">
+<h4 id="org25dd813"><span class="section-number-4">1.2.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ol class="org-ol">
 <li><p>
@@ -307,8 +304,8 @@ is a valid red-black tree, and <code>false</code> otherwise.
 </div>
 </div>
 </div>
-<div id="outline-container-org09a59fa" class="outline-3">
-<h3 id="org09a59fa"><span class="section-number-3">1.3.</span> Record Types</h3>
+<div id="outline-container-org3cd0da7" class="outline-3">
+<h3 id="org3cd0da7"><span class="section-number-3">1.3.</span> Record Types</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 <b>Record types</b> are essentially tuples with named fields.  Here is an
@@ -353,8 +350,8 @@ updated.
 </div></li>
 </ul>
 </div>
-<div id="outline-container-org051b789" class="outline-4">
-<h4 id="org051b789"><span class="section-number-4">1.3.1.</span> Exercises</h4>
+<div id="outline-container-org08f41c5" class="outline-4">
+<h4 id="org08f41c5"><span class="section-number-4">1.3.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <ol class="org-ol">
 <li><p>
@@ -422,8 +419,8 @@ track of the names of the converter tools which can be used.
 </div>
 </div>
 </div>
-<div id="outline-container-org7e524bc" class="outline-3">
-<h3 id="org7e524bc"><span class="section-number-3">1.4.</span> Higher-Order Programming</h3>
+<div id="outline-container-orga91a361" class="outline-3">
+<h3 id="orga91a361"><span class="section-number-3">1.4.</span> Higher-Order Programming</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 <b>Higher-order programming</b> is the use of functions as <b>first-class
@@ -501,8 +498,8 @@ Note that <code>fold_left</code> is tail-recursive whereas <code>fold_right</cod
 </p></li>
 </ul>
 </div>
-<div id="outline-container-org81c8181" class="outline-4">
-<h4 id="org81c8181"><span class="section-number-4">1.4.1.</span> Exercises</h4>
+<div id="outline-container-orga02cf2d" class="outline-4">
+<h4 id="orga02cf2d"><span class="section-number-4">1.4.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ol class="org-ol">
 <li><p>
@@ -570,8 +567,8 @@ elements of <code>l</code> whose last digit is \(i\).
 </div>
 </div>
 </div>
-<div id="outline-container-org9a1b622" class="outline-3">
-<h3 id="org9a1b622"><span class="section-number-3">1.5.</span> Tail Recursion</h3>
+<div id="outline-container-org763069a" class="outline-3">
+<h3 id="org763069a"><span class="section-number-3">1.5.</span> Tail Recursion</h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 Roughly speaking, a recursive call in the body of a function
@@ -606,8 +603,8 @@ to the function.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backli
 </pre>
 </div>
 </div>
-<div id="outline-container-org4e56c00" class="outline-4">
-<h4 id="org4e56c00"><span class="section-number-4">1.5.1.</span> Exercises</h4>
+<div id="outline-container-orgb6ed962" class="outline-4">
+<h4 id="orgb6ed962"><span class="section-number-4">1.5.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <ol class="org-ol">
 <li><p>
@@ -645,8 +642,8 @@ represented by the following ADT.
 </div>
 </div>
 </div>
-<div id="outline-container-org853dacd" class="outline-3">
-<h3 id="org853dacd"><span class="section-number-3">1.6.</span> Type Checking</h3>
+<div id="outline-container-org95e4ccb" class="outline-3">
+<h3 id="org95e4ccb"><span class="section-number-3">1.6.</span> Type Checking</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 OCaml is <b>strongly typed</b>, and programs are statically checked for
@@ -671,8 +668,8 @@ specify the types of expressions in OCaml programs (though it can be
 useful for documentation purposes).
 </p>
 </div>
-<div id="outline-container-org6d8ee41" class="outline-4">
-<h4 id="org6d8ee41"><span class="section-number-4">1.6.1.</span> Exercises</h4>
+<div id="outline-container-org8e3afba" class="outline-4">
+<h4 id="org8e3afba"><span class="section-number-4">1.6.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <ol class="org-ol">
 <li><p>
@@ -702,8 +699,8 @@ Does this program type-check? If so, what is the type of <code>foo</code>?
 </div>
 </div>
 </div>
-<div id="outline-container-orgf07b54c" class="outline-2">
-<h2 id="orgf07b54c"><span class="section-number-2">2.</span> Formal Grammar</h2>
+<div id="outline-container-org5ca1dac" class="outline-2">
+<h2 id="org5ca1dac"><span class="section-number-2">2.</span> Formal Grammar</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Grammar is the study of the form and structure of language.  We use
@@ -712,8 +709,8 @@ syntax of programming languages.  These concepts also inform the
 design of parsers.
 </p>
 </div>
-<div id="outline-container-orga408bcd" class="outline-3">
-<h3 id="orga408bcd"><span class="section-number-3">2.1.</span> BNF Specifications</h3>
+<div id="outline-container-org8daf64b" class="outline-3">
+<h3 id="org8daf64b"><span class="section-number-3">2.1.</span> BNF Specifications</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 We start with a collection of symbols, separated into two disjoint
@@ -807,8 +804,8 @@ derivation has a unique parse tree representation.  Likewise, every
 parse tree corresponds to a unique <i>leftmost</i> derivation.
 </p>
 </div>
-<div id="outline-container-org9d62ba8" class="outline-4">
-<h4 id="org9d62ba8"><span class="section-number-4">2.1.1.</span> Examples</h4>
+<div id="outline-container-org434da0e" class="outline-4">
+<h4 id="org434da0e"><span class="section-number-4">2.1.1.</span> Examples</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 <i>Toy grammar for English sentences:</i>
@@ -882,8 +879,8 @@ a = const ; a = a + const ; b = a
 </pre>
 </div>
 </div>
-<div id="outline-container-org7056298" class="outline-4">
-<h4 id="org7056298"><span class="section-number-4">2.1.2.</span> Extended BNF</h4>
+<div id="outline-container-orgd2352eb" class="outline-4">
+<h4 id="orgd2352eb"><span class="section-number-4">2.1.2.</span> Extended BNF</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 We extend the notation of BNF specifications to make it more
@@ -922,8 +919,8 @@ integers (and enforce that the first digit must be nonzero):
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf566478" class="outline-4">
-<h4 id="orgf566478"><span class="section-number-4">2.1.3.</span> Exercises</h4>
+<div id="outline-container-orgb5a6bb6" class="outline-4">
+<h4 id="orgb5a6bb6"><span class="section-number-4">2.1.3.</span> Exercises</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <ol class="org-ol">
 <li><p>
@@ -958,8 +955,8 @@ right.
 </div>
 </div>
 </div>
-<div id="outline-container-org2bd068e" class="outline-3">
-<h3 id="org2bd068e"><span class="section-number-3">2.2.</span> Ambiguity</h3>
+<div id="outline-container-org888316c" class="outline-3">
+<h3 id="org888316c"><span class="section-number-3">2.2.</span> Ambiguity</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 A BNF specification is <b>ambiguous</b> if there is a sentence with
@@ -969,8 +966,8 @@ avoid ambiguous specifications for programming languages because we ultimately
 don't want a program to be interpretable in multiple ways.
 </p>
 </div>
-<div id="outline-container-orgaef6069" class="outline-4">
-<h4 id="orgaef6069"><span class="section-number-4">2.2.1.</span> Fixity</h4>
+<div id="outline-container-orgad96c05" class="outline-4">
+<h4 id="orgad96c05"><span class="section-number-4">2.2.1.</span> Fixity</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 The <b>fixity</b> of an operator refers to where the operator is written
@@ -1003,8 +1000,8 @@ specifying their associativity and precedence.
 </p>
 </div>
 </div>
-<div id="outline-container-org844e923" class="outline-4">
-<h4 id="org844e923"><span class="section-number-4">2.2.2.</span> Associativity</h4>
+<div id="outline-container-org7821e61" class="outline-4">
+<h4 id="org7821e61"><span class="section-number-4">2.2.2.</span> Associativity</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 An operator \(\square\) is declared <b>left associative</b> if we interpret
@@ -1068,8 +1065,8 @@ argument to be a variable:
 </div>
 </div>
 
-<div id="outline-container-orgc4086f7" class="outline-4">
-<h4 id="orgc4086f7"><span class="section-number-4">2.2.3.</span> Precedence</h4>
+<div id="outline-container-orgac17462" class="outline-4">
+<h4 id="orgac17462"><span class="section-number-4">2.2.3.</span> Precedence</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 Given two binary operators \(\square\) and \(\triangle\), the operator
@@ -1146,8 +1143,8 @@ the grammar:
 </div>
 </div>
 
-<div id="outline-container-orgf4839e3" class="outline-4">
-<h4 id="orgf4839e3"><span class="section-number-4">2.2.4.</span> Exercises</h4>
+<div id="outline-container-org74061c5" class="outline-4">
+<h4 id="org74061c5"><span class="section-number-4">2.2.4.</span> Exercises</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <ol class="org-ol">
 <li>Draw the parse tree for the sentence <code>(x + x) * x</code> in the grammar
@@ -1189,8 +1186,8 @@ so that <code>-&gt;</code> is a right associative operator.
 </div>
 </div>
 </div>
-<div id="outline-container-org03bda8f" class="outline-3">
-<h3 id="org03bda8f"><span class="section-number-3">2.3.</span> Regular Grammars</h3>
+<div id="outline-container-org357dc06" class="outline-3">
+<h3 id="org357dc06"><span class="section-number-3">2.3.</span> Regular Grammars</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 A <b>(right linear) regular grammar</b> is a grammar such that every rule is in one of the following forms:
@@ -1230,8 +1227,8 @@ accepts \(s_i\)</li>
 </ul>
 </div>
 
-<div id="outline-container-orga1cc650" class="outline-4">
-<h4 id="orga1cc650"><span class="section-number-4">2.3.1.</span> Exercises</h4>
+<div id="outline-container-org66b6711" class="outline-4">
+<h4 id="org66b6711"><span class="section-number-4">2.3.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <ol class="org-ol">
 <li>Find a regular expression for all binary strings in which every <code>1</code>
@@ -1252,8 +1249,8 @@ regular expression <code>a(bc|cb)*d</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-org815453b" class="outline-3">
-<h3 id="org815453b"><span class="section-number-3">2.4.</span> Chomsky Normal Form</h3>
+<div id="outline-container-orgcbe1079" class="outline-3">
+<h3 id="orgcbe1079"><span class="section-number-3">2.4.</span> Chomsky Normal Form</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 A grammar is in <b>Chomsky normal form</b> if its rule are all of the
@@ -1272,8 +1269,8 @@ which accepts the same sentences) which is in Chomsky normal form.
 </p>
 </div>
 
-<div id="outline-container-orgb885860" class="outline-4">
-<h4 id="orgb885860"><span class="section-number-4">2.4.1.</span> Exercises</h4>
+<div id="outline-container-org4387632" class="outline-4">
+<h4 id="org4387632"><span class="section-number-4">2.4.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <ol class="org-ol">
 <li><p>
@@ -1289,8 +1286,8 @@ Rewrite the following grammar in Chomsky normal form.
 </div>
 </div>
 </div>
-<div id="outline-container-org9987f50" class="outline-2">
-<h2 id="org9987f50"><span class="section-number-2">3.</span> Parsing</h2>
+<div id="outline-container-orgc2d0547" class="outline-2">
+<h2 id="orgc2d0547"><span class="section-number-2">3.</span> Parsing</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The general parsing problem is to find a derivation of a sentence in a
@@ -1315,8 +1312,8 @@ specification. <b>It will not appear on the final exam in any
 significant way.</b>
 </p>
 </div>
-<div id="outline-container-orga5acde1" class="outline-3">
-<h3 id="orga5acde1"><span class="section-number-3">3.1.</span> Combinators</h3>
+<div id="outline-container-org6a444d1" class="outline-3">
+<h3 id="org6a444d1"><span class="section-number-3">3.1.</span> Combinators</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 We can think of a parser for <code>'a</code>'s as a function of type
@@ -1434,8 +1431,8 @@ be required to memorize their definitions.</b>
 <li><code>pure</code>, <code>fail</code>, (we will not test on <code>bind</code> (<code>&gt;&gt;=</code>) but it is good to know&#x2026;)</li>
 </ul>
 </div>
-<div id="outline-container-orga9dd65e" class="outline-4">
-<h4 id="orga9dd65e"><span class="section-number-4">3.1.1.</span> Exercises</h4>
+<div id="outline-container-orgee0ca67" class="outline-4">
+<h4 id="orgee0ca67"><span class="section-number-4">3.1.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <ol class="org-ol">
 <li><p>
@@ -1493,8 +1490,8 @@ terms of other combinators.
 </div>
 </div>
 </div>
-<div id="outline-container-org939866f" class="outline-2">
-<h2 id="org939866f"><span class="section-number-2">4.</span> Formal Semantics</h2>
+<div id="outline-container-orgf41e697" class="outline-2">
+<h2 id="orgf41e697"><span class="section-number-2">4.</span> Formal Semantics</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Semantics is the study of the <i>meaning</i> of language.  We use concepts
@@ -1519,8 +1516,8 @@ programs, which describes how a program is reduced until it reaches a
 state which cannot be further reduced.
 </p>
 </div>
-<div id="outline-container-orgbf1f4cc" class="outline-3">
-<h3 id="orgbf1f4cc"><span class="section-number-3">4.1.</span> Derivations</h3>
+<div id="outline-container-org82b08a8" class="outline-3">
+<h3 id="org82b08a8"><span class="section-number-3">4.1.</span> Derivations</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Suppose we have a programming language defined by a BNF specification
@@ -1644,16 +1641,16 @@ single-step reduction.
 </p>
 </div>
 </div>
-<div id="outline-container-org1fe38cb" class="outline-3">
-<h3 id="org1fe38cb"><span class="section-number-3">4.2.</span> Examples</h3>
+<div id="outline-container-org0a23acb" class="outline-3">
+<h3 id="org0a23acb"><span class="section-number-3">4.2.</span> Examples</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 There are many examples of operational semantics and reduction rules
 in this document, we start with the two most basic.
 </p>
 </div>
-<div id="outline-container-org0284cc6" class="outline-4">
-<h4 id="org0284cc6"><span class="section-number-4">4.2.1.</span> Arithmetic Expressions</h4>
+<div id="outline-container-orgad1f3d4" class="outline-4">
+<h4 id="orgad1f3d4"><span class="section-number-4">4.2.1.</span> Arithmetic Expressions</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 In the operational semantics of arithmetic expressions, we take a
@@ -1840,8 +1837,8 @@ add -1 2 ⟶
 </pre>
 </div>
 </div>
-<div id="outline-container-org732cad7" class="outline-4">
-<h4 id="org732cad7"><span class="section-number-4">4.2.2.</span> A Stack-Oriented Language</h4>
+<div id="outline-container-org8484db2" class="outline-4">
+<h4 id="org8484db2"><span class="section-number-4">4.2.2.</span> A Stack-Oriented Language</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 The primary examples we used in this course for understanding
@@ -2113,8 +2110,8 @@ $}
 </pre>
 </div>
 </div>
-<div id="outline-container-org08239d5" class="outline-4">
-<h4 id="org08239d5"><span class="section-number-4">4.2.3.</span> Exercises</h4>
+<div id="outline-container-org8182372" class="outline-4">
+<h4 id="org8182372"><span class="section-number-4">4.2.3.</span> Exercises</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <ol class="org-ol">
 <li>Add multiplication (<code>mul</code>) and division (<code>div</code>) to the operational semantics of
@@ -2154,8 +2151,8 @@ in the given semantics for the above stack-oriented language.
 </div>
 </div>
 </div>
-<div id="outline-container-org74d9c11" class="outline-2">
-<h2 id="org74d9c11"><span class="section-number-2">5.</span> Variables</h2>
+<div id="outline-container-orgde01630" class="outline-2">
+<h2 id="orgde01630"><span class="section-number-2">5.</span> Variables</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 When introducing variables into a programming language, we need to
@@ -2215,8 +2212,8 @@ equations:
 given <code>y</code> is not equal to <code>x</code></li>
 </ul>
 </div>
-<div id="outline-container-org7648baa" class="outline-3">
-<h3 id="org7648baa"><span class="section-number-3">5.1.</span> Stack-Oriented Language with Variables</h3>
+<div id="outline-container-orgc5c95d0" class="outline-3">
+<h3 id="orgc5c95d0"><span class="section-number-3">5.1.</span> Stack-Oriented Language with Variables</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 In the operational semantics of the following stack-oriented language,
@@ -2390,8 +2387,8 @@ The other primary concern when it comes to variables is
 subroutines.
 </p>
 </div>
-<div id="outline-container-orgc1019ef" class="outline-4">
-<h4 id="orgc1019ef"><span class="section-number-4">5.1.1.</span> Exercises</h4>
+<div id="outline-container-org86206b1" class="outline-4">
+<h4 id="org86206b1"><span class="section-number-4">5.1.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <ol class="org-ol">
 <li><p>
@@ -2416,8 +2413,8 @@ environment within a program.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc2a5ccc" class="outline-2">
-<h2 id="orgc2a5ccc"><span class="section-number-2">6.</span> Subroutines</h2>
+<div id="outline-container-org0846b42" class="outline-2">
+<h2 id="org0846b42"><span class="section-number-2">6.</span> Subroutines</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 A <b>subroutine</b> is an encapsulated piece of code that can be reused and
@@ -2430,8 +2427,8 @@ with several concerns, including <b>parameter passing</b> and <b>return
 values</b>.
 </p>
 </div>
-<div id="outline-container-org0129bf6" class="outline-3">
-<h3 id="org0129bf6"><span class="section-number-3">6.1.</span> Stack-Oriented Language with Subroutines</h3>
+<div id="outline-container-org187cac7" class="outline-3">
+<h3 id="org187cac7"><span class="section-number-3">6.1.</span> Stack-Oriented Language with Subroutines</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 For stack-oriented languages, we don't need to deal with parameters or
@@ -2624,8 +2621,8 @@ lookup X call F
 ( 12 :: 10 :: ∅     , [X ↦ 6, F ↦ dup add] , ϵ ) ✓
 </pre>
 </div>
-<div id="outline-container-orgafc409c" class="outline-4">
-<h4 id="orgafc409c"><span class="section-number-4">6.1.1.</span> Exercises</h4>
+<div id="outline-container-org584b49b" class="outline-4">
+<h4 id="org584b49b"><span class="section-number-4">6.1.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <ol class="org-ol">
 <li>Implement the function <code>SWAP</code> in the stack-oriented language with
@@ -2639,8 +2636,8 @@ stack.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org99e656a" class="outline-3">
-<h3 id="org99e656a"><span class="section-number-3">6.2.</span> Parameter Passing</h3>
+<div id="outline-container-org77fe603" class="outline-3">
+<h3 id="org77fe603"><span class="section-number-3">6.2.</span> Parameter Passing</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 <b>Parameter passing</b> is part of the <b>evaluation strategy</b> of a
@@ -2672,8 +2669,8 @@ Note that both of these example use the <b>substitution model</b> for their
 operational semantics.
 </p>
 </div>
-<div id="outline-container-org8ecf6a1" class="outline-4">
-<h4 id="org8ecf6a1"><span class="section-number-4">6.2.1.</span> A Functional Language with Call-by-Name Parameter Passing</h4>
+<div id="outline-container-orga62d859" class="outline-4">
+<h4 id="orga62d859"><span class="section-number-4">6.2.1.</span> A Functional Language with Call-by-Name Parameter Passing</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 <i>Grammar for a simple functional language:</i>
@@ -2779,8 +2776,8 @@ evaluated.
 </pre>
 </div>
 </div>
-<div id="outline-container-org9efa17b" class="outline-4">
-<h4 id="org9efa17b"><span class="section-number-4">6.2.2.</span> Functional language with Call-by-Value Parameter Passing</h4>
+<div id="outline-container-org124e042" class="outline-4">
+<h4 id="org124e042"><span class="section-number-4">6.2.2.</span> Functional language with Call-by-Value Parameter Passing</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 <i>Operational semantics for a simple functional language with
@@ -2879,8 +2876,8 @@ to it).
 </pre>
 </div>
 </div>
-<div id="outline-container-orgc7762ae" class="outline-4">
-<h4 id="orgc7762ae"><span class="section-number-4">6.2.3.</span> Exercises</h4>
+<div id="outline-container-orgc573295" class="outline-4">
+<h4 id="orgc573295"><span class="section-number-4">6.2.3.</span> Exercises</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <ol class="org-ol">
 <li>Give an example of a program which does not terminate using
@@ -2938,8 +2935,8 @@ which returns <code>true</code> if <code>e</code> is stuck and <code>false</code
 </div>
 </div>
 </div>
-<div id="outline-container-org79c8b21" class="outline-2">
-<h2 id="org79c8b21"><span class="section-number-2">7.</span> Dynamic Scoping</h2>
+<div id="outline-container-org17891d0" class="outline-2">
+<h2 id="org17891d0"><span class="section-number-2">7.</span> Dynamic Scoping</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 <b>Dynamic scoping</b> refers to the use of <i>computational (temporal)
@@ -2965,8 +2962,8 @@ The stack-oriented language with subroutines given above implements
 dynamic scoping by fiat.
 </p>
 </div>
-<div id="outline-container-org0925c60" class="outline-3">
-<h3 id="org0925c60"><span class="section-number-3">7.1.</span> Examples</h3>
+<div id="outline-container-org061188c" class="outline-3">
+<h3 id="org061188c"><span class="section-number-3">7.1.</span> Examples</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 <i>Example bash program highlighting dynamic scoping:</i>
@@ -3028,8 +3025,8 @@ call G
 ( 2 :: 1 :: ∅ , [X ↦ 2; G ↦ lookup X; F ↦ push 2 assign X] , ϵ ) ✓
 </pre>
 </div>
-<div id="outline-container-orgd28f2d3" class="outline-4">
-<h4 id="orgd28f2d3"><span class="section-number-4">7.1.1.</span> Exercises</h4>
+<div id="outline-container-orgb86fdfa" class="outline-4">
+<h4 id="orgb86fdfa"><span class="section-number-4">7.1.1.</span> Exercises</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <ol class="org-ol">
 <li><p>
@@ -3051,8 +3048,8 @@ call G
 </div>
 </div>
 </div>
-<div id="outline-container-org0010cef" class="outline-2">
-<h2 id="org0010cef"><span class="section-number-2">8.</span> Lexical Scoping</h2>
+<div id="outline-container-orgce67e97" class="outline-2">
+<h2 id="orgce67e97"><span class="section-number-2">8.</span> Lexical Scoping</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 <b>Lexical scoping</b> refers to the use of properties of the source code
@@ -3081,8 +3078,8 @@ considerations:
 </ul>
 </div>
 
-<div id="outline-container-org66d6e01" class="outline-3">
-<h3 id="org66d6e01"><span class="section-number-3">8.1.</span> Activation Records</h3>
+<div id="outline-container-org8677704" class="outline-3">
+<h3 id="org8677704"><span class="section-number-3">8.1.</span> Activation Records</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 Lexical scoping with <i>mutable</i> variables requires maintaining a <b>call
@@ -3186,8 +3183,8 @@ languages in mind so there are no parameters in a record.
 </div>
 </div>
 
-<div id="outline-container-org642b8e8" class="outline-4">
-<h4 id="org642b8e8"><span class="section-number-4">8.1.1.</span> Stack-Oriented Language with Mutable Variables and Lexical Scoping</h4>
+<div id="outline-container-orge063af1" class="outline-4">
+<h4 id="orge063af1"><span class="section-number-4">8.1.1.</span> Stack-Oriented Language with Mutable Variables and Lexical Scoping</h4>
 <div class="outline-text-4" id="text-8-1-1">
 <p>
 Lexical scoping becomes more subtle to implement if functions are
@@ -3484,8 +3481,8 @@ call F
 </pre>
 </div>
 </div>
-<div id="outline-container-org06fce44" class="outline-4">
-<h4 id="org06fce44"><span class="section-number-4">8.1.2.</span> Exercises</h4>
+<div id="outline-container-orgca172c3" class="outline-4">
+<h4 id="orgca172c3"><span class="section-number-4">8.1.2.</span> Exercises</h4>
 <div class="outline-text-4" id="text-8-1-2">
 <ol class="org-ol">
 <li><p>
@@ -3521,8 +3518,8 @@ even within a subroutine.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc84cce7" class="outline-3">
-<h3 id="orgc84cce7"><span class="section-number-3">8.2.</span> Closures</h3>
+<div id="outline-container-org78760df" class="outline-3">
+<h3 id="org78760df"><span class="section-number-3">8.2.</span> Closures</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 <b>Closures</b> are subroutines together with data they need to be executed
@@ -3570,8 +3567,8 @@ function.<sup><a id="fnr.10" class="footref" href="#fn.10" role="doc-backlink">1
 </div>
 </div>
 
-<div id="outline-container-orge43fbd9" class="outline-4">
-<h4 id="orge43fbd9"><span class="section-number-4">8.2.1.</span> Stack-Oriented Language with Lexical Scoping and Higher-Order Functions</h4>
+<div id="outline-container-org3526885" class="outline-4">
+<h4 id="org3526885"><span class="section-number-4">8.2.1.</span> Stack-Oriented Language with Lexical Scoping and Higher-Order Functions</h4>
 <div class="outline-text-4" id="text-8-2-1">
 <p>
 In the operational semantics of the following stack oriented language,
@@ -4006,8 +4003,8 @@ push 2 call THREE
 </div>
 
 
-<div id="outline-container-orgffd0f20" class="outline-4">
-<h4 id="orgffd0f20"><span class="section-number-4">8.2.2.</span> Exercises</h4>
+<div id="outline-container-org0eea23e" class="outline-4">
+<h4 id="org0eea23e"><span class="section-number-4">8.2.2.</span> Exercises</h4>
 <div class="outline-text-4" id="text-8-2-2">
 <ol class="org-ol">
 <li><p>

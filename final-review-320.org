@@ -1,15 +1,11 @@
-#+title: CAS CS 320 Review
-#+subtitle: Principles of Programming Languages@@html:<br>@@
-#+subtitle: Boston University@@html:<br>@@
-#+subtitle: Spring 2023
+#+title: Final Review
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
-#+HTML_LINK_HOME: index.html
 #+OPTIONS: html-style:nil H:3 toc:2
 This page contains an outline of the topics covered in /CAS CS 320:
-Principles of Programming Languages/ during the Spring 2023 semester.
-It is not exhaustive, though it is biased towards those topics which
-are pertinent for the final exam of the course.  Included are
-exercises associated with each topic.
+Principles of Programming Languages/ during the Spring 2023 semester
+at Boston University.  It is not exhaustive, though it is biased
+towards those topics which are pertinent for the final exam of the
+course.  Included are exercises associated with each topic.
 * OCaml
 During the first half of the course, we learned the function
 programming language [[https://ocaml.org][OCaml]].  Our primary goal was to learn how to
