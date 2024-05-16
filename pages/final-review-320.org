@@ -1,5 +1,5 @@
 #+title: Final Review
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
 #+OPTIONS: html-style:nil H:3 toc:2
 This page contains an outline of the topics covered in /CAS CS 320:
 Principles of Programming Languages/ during the Spring 2023 semester

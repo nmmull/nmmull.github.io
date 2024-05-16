@@ -1,21 +1,22 @@
 #+title: Nathan Mull
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
 #+OPTIONS: html-style:nil H:1 toc:nil num:nil
+| Office       | CDS 907             |
+| Email        | (++ @bu.edu) nmmull |
+| GitHub       | [[https://github.com/nmmull][nmmull]]              |
 I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at [[https://www.bu.edu][Boston
 University]]. Outside of teaching, I'm interested generally in logic and
 computing. I've spent some time thinking about [[https://en.wikipedia.org/wiki/Proof_complexity#SAT_solvers][proof complexity and
 SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type systems and normalization]]. Check my [[file:pdfs/CV.pdf][CV]] for
 more information.
-| Office       | CDS 907             |
-| Email        | (++ @bu.edu) nmmull |
-| GitHub       | [[https://github.com/nmmull][nmmull]]              |
 * Teaching
 ** *CAS CS 320* Concepts of Programming Languages [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
 ** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 ** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
 * Links
-** [[file:policies.org][Course Policies]]
-** [[file:final-review-320.org][CAS CS 320 Final Review]]
+** [[file:pages/summer-2024.html][Summer Log (2024)]]
+** [[file:pages/policies.org][Course Policies]]
+** [[file:pages/final-review-320.org][CAS CS 320 Final Review]]
 ** Projects I like:
 *** [[https://dldc.lib.uchicago.edu/open/attachment-converter/index.html][Attachment Converter]]
 *** [[https://elucidations.vercel.app][Elucidations]]

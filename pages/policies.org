@@ -1,5 +1,5 @@
 #+title: Course Policies
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="globalStyle.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
 #+OPTIONS: html-style:nil H:1 toc:1
 There are a number of university policies and course guidelines you
 should be aware of. /Read them carefully and completely./ Also keep in

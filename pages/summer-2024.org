@@ -1,0 +1,14 @@
+#+title: Summer Log
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
+#+OPTIONS: html-style:nil H:1 num:nil
+This is a log of the random projects I've worked on in the summer of
+2024, mostly reading and writing.  It's my immodest way of enforcing
+some productivity.  Feel free to reach out if you want to talk about
+anything below (as fun as learning things is, talking about
+things I've learned is a joy of its own).
+
+* Reading
+** *How Do We Look*, Mary Beard
+** *Thus Spoke Zarathustra*, Friedrich Nietzsche
+** *The Lily of the Field and the Bird of the Air*, Søren Kierkegaard
+** *Angels and Saints*, Eliot Weinberger /(current)/
