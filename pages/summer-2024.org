@@ -11,4 +11,12 @@ things I've learned is a joy of its own).
 ** *How Do We Look*, Mary Beard
 ** *Thus Spoke Zarathustra*, Friedrich Nietzsche
 ** *The Lily of the Field and the Bird of the Air*, Søren Kierkegaard
+** *Elm Guide*, Evan Czaplicki ([[https://guide.elm-lang.org][link]])
+*** Honestly, I skimmed it
 ** *Angels and Saints*, Eliot Weinberger /(current)/
+* Projects
+** *Visualizers for Stack-Oriented Languages*
++ While teaching CS320, I spent a lot of time walking through the
+  evaluation of stack oriented languages.  I'd like to use Elm to
+  build nicer visualizations of this process.
++ [[file:stack-vis-prototype.html][A rudimentary prototype]]
