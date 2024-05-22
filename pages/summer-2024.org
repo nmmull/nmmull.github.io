@@ -22,8 +22,10 @@ things I've learned is a joy of its own).
   build nicer visualizations of this process.
 + [[file:stack-vis-prototype.html][A rudimentary prototype]]
 ** *Overture: A Personal Agda Library*
-+ I'd like to more time digging into the [[https://github.com/agda/agda-stdlib][Agda standard library]].  As an
-  exercise in library management, I'm also extending it.
++ I'd like to spend more time digging into the [[https://github.com/agda/agda-stdlib][Agda standard library]].
+  As an exercise in library management, I'm also extending it.
++ A list of added lemmas:
+  + prime numbers divide their intermediate binomial coefficients
 + /Disclaimer./ I have no intention of maintaining this beyond
   personal use.
 + [[https://github.com/nmmull/Overture][The repository]]
