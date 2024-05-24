@@ -13,7 +13,9 @@ things I've learned is a joy of its own).
 ** *Elm Guide*, Evan Czaplicki ([[https://guide.elm-lang.org][link]])
 *** Honestly, I skimmed it
 ** *Angels and Saints*, Eliot Weinberger
-** *Art in the After-Culture*, Ben Davis /(current)/
+** *Art in the After-Culture*, Ben Davis
+*** Highly recommended
+** *Means and Ends*, Zoe Baker /(current)/
 * Projects
 ** *Visualizers for Stack-Oriented Languages*
 + While teaching CS320, I spent a lot of time walking through the
