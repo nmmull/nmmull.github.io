@@ -6,7 +6,6 @@ This is a log of the random projects I've worked on in the summer of
 some productivity.  Feel free to reach out if you want to talk about
 anything below (as fun as learning things is, talking about
 things I've learned is a joy of its own).
-
 * Reading
 ** *How Do We Look*, Mary Beard
 ** *Thus Spoke Zarathustra*, Friedrich Nietzsche
@@ -26,6 +25,8 @@ things I've learned is a joy of its own).
   As an exercise in library management, I'm also extending it.
 + A list of added lemmas:
   + prime numbers divide their intermediate binomial coefficients
+  + Fermat's little theorem
+  + sum divisibility in semirings
 + /Disclaimer./ I have no intention of maintaining this beyond
   personal use.
 + [[https://github.com/nmmull/Overture][The repository]]
