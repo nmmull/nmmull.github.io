@@ -22,13 +22,17 @@ things I've learned is a joy of its own).
   evaluation of stack oriented languages.  I'd like to use Elm to
   build nicer visualizations of this process.
 + [[file:stack-vis-prototype.html][A rudimentary prototype]]
++ [[file:diane-proto-ii.html][A slightly more interesting prototype]]
 ** *Overture: A Personal Agda Library*
 + I'd like to spend more time digging into the [[https://github.com/agda/agda-stdlib][Agda standard library]].
   As an exercise in library management, I'm also extending it.
-+ A list of added lemmas:
-  + prime numbers divide their intermediate binomial coefficients
-  + Fermat's little theorem
-  + sum divisibility in semirings
 + /Disclaimer./ I have no intention of maintaining this beyond
   personal use.
 + [[https://github.com/nmmull/Overture][The repository]]
+** *Fermat's Little Theorem in Agda*
++ For their final project, a student in CS400 attempted to prove
+  Fermat's little theorem in Agda (without the standard library).  I
+  was impressed how far they got, but eventually things get tricky
+  when starting to reason about summations.  I decided to put together
+  a proof myself using the standard library.
++ The proof appears in the Overture repository.
