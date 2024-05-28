@@ -15,6 +15,7 @@ things I've learned is a joy of its own).
 ** *Angels and Saints*, Eliot Weinberger
 ** *Art in the After-Culture*, Ben Davis
 *** Highly recommended
+** *The Threepenny Opera*, Bertolt Brecht
 ** *Means and Ends*, Zoe Baker /(current)/
 * Projects
 ** *Visualizers for Stack-Oriented Languages*
