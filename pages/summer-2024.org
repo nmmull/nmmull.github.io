@@ -16,6 +16,8 @@ things I've learned is a joy of its own).
 ** *Art in the After-Culture*, Ben Davis
 *** Highly recommended
 ** *The Threepenny Opera*, Bertolt Brecht
+** *The Pillowman*, Martin McDonagh
+** *Crime and Punishment*, Fyodor Dostoevsky /(current)/
 ** *Means and Ends*, Zoe Baker /(current)/
 * Projects
 ** *Visualizers for Stack-Oriented Languages*
@@ -24,6 +26,7 @@ things I've learned is a joy of its own).
   build nicer visualizations of this process.
 + [[file:stack-vis-prototype.html][A rudimentary prototype]]
 + [[file:diane-proto-ii.html][A slightly more interesting prototype]]
++ [[file:diane-proto-iv.html][A mock-up playground for a simple language]]
 ** *Overture: A Personal Agda Library*
 + I'd like to spend more time digging into the [[https://github.com/agda/agda-stdlib][Agda standard library]].
   As an exercise in library management, I'm also extending it.

@@ -175,4 +175,8 @@ button:hover {
     text-decoration: underline;
 }
 
+:focus {
+    outline: thin dotted;
+}
+
 /* end of file */
