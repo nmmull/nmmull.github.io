@@ -17,7 +17,7 @@ things I've learned is a joy of its own).
 *** Highly recommended
 ** *The Threepenny Opera*, Bertolt Brecht
 ** *The Pillowman*, Martin McDonagh
-** *Crime and Punishment*, Fyodor Dostoevsky /(current)/
+** *Crime and Punishment*, Fyodor Dostoevsky
 ** *Means and Ends*, Zoe Baker /(current)/
 * Projects
 ** *Visualizers for Stack-Oriented Languages*
