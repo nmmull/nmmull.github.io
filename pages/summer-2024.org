@@ -36,7 +36,12 @@ things I've learned is a joy of its own).
 ** *Fermat's Little Theorem in Agda*
 + For their final project, a student in CS400 attempted to prove
   Fermat's little theorem in Agda (without the standard library).  I
-  was impressed how far they got, but eventually things get tricky
-  when starting to reason about summations.  I decided to put together
-  a proof myself using the standard library.
+  was impressed by how far they got, but eventually things get tricky
+  when you start reasoning about summations.  I decided to put
+  together a proof myself using the standard library.  It was hairer
+  than I expected...
 + The proof appears in the Overture repository.
+** *Diane: A Toy Stack-Oriented Language*
++ I built my first larger-scale prototype of a visualizer for a
+  stack-oriented language
++ [[https://nmmull.github.io/Diane/index.html][The website]]
