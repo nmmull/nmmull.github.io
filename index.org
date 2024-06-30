@@ -12,7 +12,7 @@ more information.
 * Teaching
 ** *CAS CS 320* Concepts of Programming Languages [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
 ** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
-** *CAS CS 132* Geometric Algorithms [[file:CS132-F23/index.org][Fall 2023]]
+** *CAS CS 132* Geometric Algorithms [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]] [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
 * Links
 ** [[file:pages/summer-2024.html][Summer Log (2024)]]
 ** [[file:pages/policies.org][Course Policies]]
