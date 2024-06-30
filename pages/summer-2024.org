@@ -16,7 +16,8 @@ about anything below.
 ** *The Threepenny Opera*, Bertolt Brecht
 ** *The Pillowman*, Martin McDonagh
 ** *Crime and Punishment*, Fyodor Dostoevsky
-** *Means and Ends*, Zoe Baker /(current)/
+** *Adorno, Foucault and the Critique of the West*, Deborah Cook
+** *Means and Ends*, Zoe Baker
 * Projects
 ** *Visualizers for Stack-Oriented Languages*
 + While teaching CS320, I spent a lot of time walking through the
