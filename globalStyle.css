@@ -182,4 +182,8 @@ blockquote {
     background: #e8e8e8;
 }
 
+img {
+    border: 1px dashed lightgray;
+}
+
 /* end of file */
