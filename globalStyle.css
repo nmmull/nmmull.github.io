@@ -186,4 +186,9 @@ img {
     border: 1px dashed lightgray;
 }
 
+.example {
+    background-color: #cefad0;
+    border: 1px dashed lightgray;
+}
+
 /* end of file */
