@@ -1,0 +1,23 @@
+#+title: A Pedagogy Reading Group
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
+#+OPTIONS: html-style:nil H:3 toc:nil num:nil
+This is the landing page for an informal reading group on pedagogy at
+Boston University.  We meet a couple times a semester to discuss
+anything and everything pedagogy and teaching.  The intended audience
+is anyone teaching (or who will teach) courses at BU who wants to
+think more about their practice.
+
+If you want to be added to the email list for this group (or if you
+want to be removed from the email list), please send a message to
+~nmmull at bu dot edu~.  *If you're interesting in leading a
+discussion* on a paper/book chapter that you read, or just a discussion
+of the form "this is what I've been thinking about recently", please
+send an message.
+
+* Fall 2024
+
+For the fall 2024 semester we'll be meeting on *Fridays 1-2PM* (location TBD).
+See the sections below for dates and topics.
+** 2024-10-04 TBD
+** 2024-11-08 TBD
+** 2024-12-16 TBD

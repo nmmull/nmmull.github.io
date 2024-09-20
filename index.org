@@ -14,6 +14,7 @@ more information.
 ** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 ** *CAS CS 132* Geometric Algorithms [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]] [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
 * Links
+** [[file:pages/reading-group.org][A Pedagogy Reading Group]]
 ** [[file:pages/summer-2024.html][Summer Log (2024)]]
 ** [[file:pages/policies.org][Course Policies]]
 ** [[file:pages/final-review-320.org][CAS CS 320 Final Review]]
