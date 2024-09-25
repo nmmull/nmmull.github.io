@@ -16,7 +16,7 @@ send an message.
 
 * Fall 2024
 
-For the fall 2024 semester we'll be meeting on *Fridays 12-1PM* (location TBD).
+For the fall 2024 semester we'll be meeting on *Fridays 12-1PM in CDS 950*.
 See the sections below for dates and topics.
 ** 2024-10-04 TBD
 ** 2024-11-08 TBD
