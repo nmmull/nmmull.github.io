@@ -18,6 +18,23 @@ send an message.
 
 For the fall 2024 semester we'll be meeting on *Fridays 12-1PM in CDS 950*.
 See the sections below for dates and topics.
-** 2024-10-04 TBD
+** 2024-10-04 SIGCE 2024 Playlist
++ *discussion leader:* Nathan
++ *outline:* There were a bunch of interesting-looking papers out of
+  [[https://sigcse2024.sigcse.org][SIGCE]] this year, I'd like to chat about some of the ones that caught
+  my eye.  The two main papers I'd like to discuss are
+  + [[https://dl.acm.org/doi/10.1145/3626252.3630846][Experiences of Undergraduate Computer Science Students Living with Mental Health Conditions]]
+  + [[https://dl.acm.org/doi/10.1145/3626252.3630953][Transforming Grading Practices in the Computing Education Community]]
+  They're kind of hard to read, but I'd like to more directly confront
+  the challenges that students face outside of the courses I teach.  I
+  think there's a lot of space here to talk about our experiences,
+  failures, and solutions (in any field).
+
+  We likely won't have time to discuss them but I also want to include
+  these papers, which are more specific to computer science.
+  + [[https://dl.acm.org/doi/10.1145/3626252.3630904][Participatory Governance in the Computer Science Theory Classroom]]
+  + [[https://dl.acm.org/doi/abs/10.1145/3626252.3630871][How We Manage an Army of Teaching Assistants: Experience Report on Scaling a CS1 Course]]
+  Though not perfect, I think they offer potential solutions to
+  creating more accessible computer science courses, even at scale.
 ** 2024-11-08 TBD
 ** 2024-12-06 TBD
