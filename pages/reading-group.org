@@ -36,5 +36,6 @@ See the sections below for dates and topics.
   + [[https://dl.acm.org/doi/abs/10.1145/3626252.3630871][How We Manage an Army of Teaching Assistants: Experience Report on Scaling a CS1 Course]]
   Though not perfect, I think they offer potential solutions to
   creating more accessible computer science courses, even at scale.
++ *Zoom link:* [[https://bostonu.zoom.us/j/9514912878?omn=94167650417][https://bostonu.zoom.us/j/9514912878?omn=94167650417]]
 ** 2024-11-08 TBD
 ** 2024-12-06 TBD
