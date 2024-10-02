@@ -15,9 +15,8 @@ more information.
 ** *CAS CS 132* Geometric Algorithms [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]] [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
 * Links
 ** [[file:pages/reading-group.org][A Pedagogy Reading Group]]
-** [[file:pages/summer-2024.html][Summer Log (2024)]]
 ** [[file:pages/policies.org][Course Policies]]
-** [[file:pages/final-review-320.org][CAS CS 320 Final Review]]
+** [[https://nmmull.github.io/Diane/index.html][Diane (A Toy Programming Language)]]
 ** Projects I like:
 *** [[https://dldc.lib.uchicago.edu/open/attachment-converter/index.html][Attachment Converter]]
 *** [[https://elucidations.vercel.app][Elucidations]]
