@@ -68,6 +68,7 @@ pre{
     padding: 20px;
     display: block;
     overflow: auto;
+    line-height: 1.2em;
 }
 
 a:link {
