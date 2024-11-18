@@ -19,7 +19,7 @@ send an message.
 For the fall 2024 semester we'll be meeting on *Fridays 12-1PM in CDS 950*.
 See the sections below for dates and topics.
 ** 2024-10-04 SIGCE 2024 Playlist
-+ *discussion leader:* Nathan
++ *discussion leader:* Nathan Mull
 + *outline:* There were a bunch of interesting-looking papers out of
   [[https://sigcse2024.sigcse.org][SIGCE]] this year, I'd like to chat about some of the ones that caught
   my eye.  The two main papers I'd like to discuss are
@@ -36,6 +36,20 @@ See the sections below for dates and topics.
   + [[https://dl.acm.org/doi/abs/10.1145/3626252.3630871][How We Manage an Army of Teaching Assistants: Experience Report on Scaling a CS1 Course]]
   Though not perfect, I think they offer potential solutions to
   creating more accessible computer science courses, even at scale.
-+ *Zoom link:* [[https://bostonu.zoom.us/j/9514912878?omn=94167650417][https://bostonu.zoom.us/j/9514912878?omn=94167650417]]
-** 2024-11-08 TBD
-** 2024-12-06 TBD
++ *Zoom link:* /past/
+** 2024-11-08 Trauma-Informed Teaching
++ *discussion leader:* Tori Lee
++ *outline:* We'll discuss trauma-informed teaching and mental health
+  and try to take away some practical/actionable steps from our
+  readings for things we can implement into spring courses, e.g.,
+  small steps we can take in planning our syllabi and assignments
+  (acknowledging that CS courses typically don’t actually teach
+  /about/ sexual assault, but certainly teach to students who have
+  experienced it).
++ *Zoom link:* [[https://bostonu.zoom.us/j/96468715816?pwd=lzNk2LFUiCVPcFF3ihXVcvrnHbENye.1][link]]
+** 2024-12-06 Microintervention Strategies
++ *discussion leader:* Anna Ward
++ *outline:* We'll look at the first three chapters of
+  [[https://www.wiley.com/en-us/Microintervention+Strategies%3A+What+You+Can+Do+to+Disarm+and+Dismantle+Individual+and+Systemic+Racism+and+Bias-p-9781119769989][Microintervention Strategies]] and discuss how these strategies can be
+  applied to interacting with students and designing material
++ *Zoom link:* [[https://bostonu.zoom.us/j/98846086217?pwd=mxxFfQblPeXjCOUcBai44HastEaRoT.1][link]]
