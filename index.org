@@ -10,10 +10,10 @@ computing. I've spent some time thinking about [[https://en.wikipedia.org/wiki/P
 SAT-solvers]], and [[https://en.wikipedia.org/wiki/Pure_type_system][pure type systems and normalization]]. Check my [[file:pdfs/CV.pdf][CV]] for
 more information.
 * Teaching
-** *CAS CS 392* Rust, in Practice and in Theory Spring 2025
-** *CAS CS 320* Concepts of Programming Languages [[https://nmmull.github.io/CS320/landing/Spring-2025/index.html][Spring 2025]] [[https://nmmull.github.io/CS320/landing/Fall-2024/index.html][Fall 2024]] [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
-** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 ** *CAS CS 132* Geometric Algorithms [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]] [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
+** *CAS CS 320* Concepts of Programming Languages [[https://nmmull.github.io/CS320/landing/Spring-2025/index.html][Spring 2025]] [[https://nmmull.github.io/CS320/landing/Fall-2024/index.html][Fall 2024]] [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
+** *CAS CS 392* Rust, in Practice and in Theory [[https://nmmull.github.io/CS392-S25/index.html][Spring 2025]]
+** *CAS CS 400* Type Theory and Mechanized Reasoning [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
 * Links
 ** [[file:pages/reading-group.org][A Pedagogy Reading Group]]
 ** [[file:pages/policies.org][Course Policies]]
