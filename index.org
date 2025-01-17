@@ -24,3 +24,6 @@ more information.
 *** [[https://builds.openlogicproject.org][Open Logic Project]]
 *** [[https://www.picturemecoding.com][Picture Me Coding]]
 *** [[https://www.classes.cs.uchicago.edu/archive/2023/winter/22300-1/qh.pdf][A Quarter of Haskell]]
+** BU Information:
+*** [[https://www.bu.edu/cs/phd-program/resources/teaching-fellow-expectations/][Teaching Fellow Expectations]]
+*** [[https://www.bu.edu/cs/resources/course-support/][Course Support Opportunities]]
