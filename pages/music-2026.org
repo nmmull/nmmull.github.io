@@ -1,0 +1,6 @@
+#+title: 2026 in 52 albums
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../nmmull.css" />
+#+OPTIONS: html-style:nil H:1 num:nil toc:nil
+#+HTML_LINK_HOME: http://nmmull.github.io
+1. *Snocaps* by Snocaps
+2. *With Greg from Deerhoof* by Serengeti
