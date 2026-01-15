@@ -4,3 +4,4 @@
 #+HTML_LINK_HOME: http://nmmull.github.io
 1. *Snocaps* by Snocaps
 2. *With Greg from Deerhoof* by Serengeti
+3. *Trio!* by Dabin Ryu
