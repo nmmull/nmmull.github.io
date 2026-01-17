@@ -2,6 +2,9 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../nmmull.css" />
 #+OPTIONS: html-style:nil H:1 num:nil toc:nil
 #+HTML_LINK_HOME: http://nmmull.github.io
+The concept's pretty simple.  One album per week, not necessarily my
+favorite album of the week, not necessarily a new album, just one that
+I listened to frequently and liked.
 1. *Snocaps* by Snocaps
 2. *With Greg from Deerhoof* by Serengeti
 3. *Trio!* by Dabin Ryu
