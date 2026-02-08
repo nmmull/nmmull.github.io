@@ -1,0 +1,32 @@
+#+title: Nathan Mull
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="nmmull.css" />
+#+OPTIONS: html-style:nil H:1 num:nil toc:nil
+#+HTML_LINK_HOME: http://nmmull.github.io
+I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at Boston
+University.  My office number is *CDS 907* and my email address
+is ~(++ @bu.edu)nmmull~.  I'm interested generally in logic and
+computing.  I use the pronouns he/him/his.
+* Teaching
+** CAS CS 132: Geometric Algorithms
+*** [[https://nmmull.github.io/cs132-s26/index.html][Spring 2026]]
+*** [[https://nmmull.github.io/CS132-F25/index.html][Fall 2025]]
+*** [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]]
+*** [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
+** CAS CS 320: Concepts of Programming Languages
+*** [[https://bu-cs320.github.io/cs320-s26/][Spring 2026]]
+*** [[https://nmmull.github.io/CS320/landing/Fall-2025/index.html][Fall 2025]]
+*** [[https://nmmull.github.io/CS320/landing/Spring-2025/index.html][Spring 2025]]
+*** [[https://nmmull.github.io/CS320/landing/Fall-2024/index.html][Fall 2024]]
+*** [[https://nmmull.github.io/CS320/landing/Spring-2024/index.html][Spring 2024]]
+** CAS CS 392: Rust, in Practice and in Theory
+*** [[https://nmmull.github.io/CS392-F25/index.html][Fall 2025]]
+*** [[https://nmmull.github.io/CS392-S25/index.html][Spring 2025]]
+** CAS CS 400: Type Theory and Mechanized Reasoning
+*** [[https://nmmull.github.io/CS491-S24/index.html][Spring 2024]]
+* Links
+** [[https://nmmull.github.io/logic-bu/index.html][Logic @ BU]]
+** [[https://nmmull.github.io/this-and-that/index.html][This and That]]
+** [[file:pages/music-2026.org][2026 in 52 Albums]]
+** [[https://github.com/nmmull/compsig][Compsig: A Signal Converter]]
+** [[https://nmmull.github.io/Diane/index.html][Diane: A Toy Stack-Based PL]]
+** [[https://dldc.lib.uchicago.edu/open/attachment-converter/index.html][Attachment Converter]]
