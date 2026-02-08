@@ -1,7 +1,6 @@
 #+title: Nathan Mull
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="nmmull.css" />
 #+OPTIONS: html-style:nil H:1 num:nil toc:nil
-#+HTML_LINK_HOME: http://nmmull.github.io
 I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]] at Boston
 University.  My office number is *CDS 907* and my email address
 is ~(++ @bu.edu)nmmull~.  I'm interested generally in logic and
