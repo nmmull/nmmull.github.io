@@ -25,7 +25,7 @@ computing.  I use the pronouns he/him/his.
 * Links
 + [[https://nmmull.github.io/logic-bu/index.html][Logic @ BU]]
 + [[https://nmmull.github.io/this-and-that/index.html][This and That]]
-+ [[file:pages/music-2026.org][2026 in 52 Albums]]
++ [[file:2026-in-52-albums/index.org][2026 in 52 Albums]]
 + [[https://github.com/nmmull/compsig][Compsig: A Signal Converter]]
 + [[https://nmmull.github.io/Diane/index.html][Diane: A Toy Stack+Based PL]]
 + [[https://dldc.lib.uchicago.edu/open/attachment-converter/index.html][Attachment Converter]]

@@ -1,0 +1,19 @@
+body {
+    font-family: 'Courier New', monospace;
+    margin: 50px;
+    max-width: 680px;
+    line-height: 1.8;
+}
+
+hr {
+  border: 1px solid black;
+}
+
+a:link, a:visited {
+    color: #3248a8;
+    text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
