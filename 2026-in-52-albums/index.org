@@ -7,6 +7,45 @@ listened to and liked.
 
 -----
 
+* Week 10 (3/1)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/escenarios.jpg]]
+
+[[https://javierburin.bandcamp.com/album/escenarios][*Escenarios* by Javier Burin]]
+
+I've been on the fence about this one for a while now.  I thought I'd
+make it this week's album so I could figure out if I actually like
+it. Final analysis: I do.  This one made me work for it; at first it
+just barely registered under the din of the currently-crowded
+post-bebop/modern chamber jazz soundscape.  I think what ultimately
+did it for me was the solo in the second track "PF" which plays like a
+slightly unhinged Bach.  It also took me several listens to realize
+just how full-bodied the tracks are.  The first couple listen-throughs
+I guess I thought some tracks were multiple; several of them are past
+the 7m mark and often the thread, though strong, weaves haphazardously
+through a number of different stylistic groundings (no apologies for
+mixing metaphors).  One gets the feeling when listening to these folks
+(if my experience is not wholly solipsistic) of being in the presence
+of some wicked talent (I'm a Bostonian now), talent that is achingly
+vying for attention.  This doesn't mean it's contentious──sometimes
+the easiest way to get someone's attention is with the help of some
+other attention-getters──but it lacks that cool
+I'm-so-good-I-could-give-my-buddy-the-spotlight-and-you-still-couldn't-help-noticing-me
+character of some of my absolute favorite jazz albums (people who've
+known me long enough and have talked music with me will know that my
+such-as example is Ben Wendel's *Understory: Live at the Village
+Vanguard*).  One consequence: the album is sprinkled with "gimmicks"
+several of which are used by the greats but are gimmicks none the
+less: (1) the bass-follow-piano riffs that give a satisfying almost
+hip-hop cadence (2) the hidden-rhythm syncopation of one voice
+followed by the another which sets the beat (like Vijay Iyer's
+"Accelerando" or Dirty Projectors' "The Socialites").  But in my view
+the real kicker is that Javier Burin is freakin' 25 (22 on recording
+this album), and I'm very much looking forward to whatever's next.
+
+-----
+
 * Week 9 (2/22)
 
 #+ATTR_HTML: :width 300px
@@ -70,8 +109,8 @@ to this turned up loud in my little impreza.
 Frankfurt Radio Symphony Orchestra, conducted by James Gaffigan]]
 
 This week I watched the BU Symphony Orchestra's first concert of the
-year, whose program included a performance by Juan Shin─the CFA 2025
-concerto competition winner─of the Korngold Violin Concerto.  And,
+year, whose program included a performance by Juan Shin──the CFA 2025
+concerto competition winner──of the Korngold Violin Concerto.  And,
 though hyperbolic, maybe with a touch of romanticism that parrots the
 piece itself, I'd say this felt like a once in a lifetime experience.
 Juan's playing was technically exquisite, graceful and easy, yet
@@ -103,7 +142,7 @@ the trap of many early-AI projects: AI is used in the way that reverb
 is used in recording, it creates "aura" but muddles personality
 (compare Casals and Ma on the cello suites).  The AI of it all pushes
 Herndon towards "the middle", welcoming more than usual (not
-unflattering) comparisons─I get flavors of Oneohtrix Point Never,
+unflattering) comparisons──I get flavors of Oneohtrix Point Never,
 Caroline Shaw, Julia Holter, Purity Ring, and it's hard not to think
 of Imogen Heap, at least for folks listening to music in the aughts.
 Taken as an experiment (as I think it's intended) *PROTO* is
