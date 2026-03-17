@@ -7,8 +7,20 @@ listened to and liked.
 
 -----
 
-* Week 11 (3/8)
+* Week 12 (3/15)
 
+#+ATTR_HTML: :width 300px
+[[file:covers/extra-stars.jpg]]
+
+[[https://intlanthem.bandcamp.com/album/extra-stars][*Extra Stars* by Gregory Uhlmann]]
+
+Gregory Uhlmann at it again, in a strange but not unprecedented way.
+Something like an academic study of blips, bloops, taps, tinkles,
+thumps, and drones.  What more could you want (or say, for that matter)?
+
+-----
+
+* Week 11 (3/8)
 
 #+ATTR_HTML: :width 300px
 [[file:covers/farming.jpg]]
