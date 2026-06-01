@@ -63,7 +63,7 @@ thing. Hope I get a chance to chat with them again.
 #+ATTR_HTML: :width 300px
 [[file:covers/have-i-lost-my-magic.jpg]]
 
-[[https://toathena.bandcamp.com/album/have-i-lost-my-magic][*Have I lost my magic?* by To Athena]]
+[[https://toathena.bandcamp.com/album/have-i-lost-my-magic][*Have I Lost My Magic?* by To Athena]]
 
 It's the first week after the end of the academic year, and in
 addition to hiding from the world, it seems I didn't listen to much
