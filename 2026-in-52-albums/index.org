@@ -5,6 +5,142 @@ The concept's pretty simple.  One album per week, not necessarily [[https://nmmu
 favorite album of the week, not necessarily a new album, just one I
 listened to and liked.
 
+This microblog is written without the use of generative AI.
+
+-----
+
+* Week 25 (6/14)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/star-star.jpg]]
+
+[[https://mingjia.bandcamp.com/album/star-star][*star, star* by mingjia]]
+
+I found myself in a contemporary classical rabbit hole on bandcamp and
+came across this album by the one of the teeth-contributers (dumb
+joke) that somehow went under my radar.  Which surprises me at least
+in part because the album art is so striking I would have expected it
+to catch my eye if it ever found it's way on my computer screen.
+
+This album has a lot of my favorite things about the classical pop
+cross-section.  The classical-side may find it too musical theater.
+The pop-side may find it, also too musical theater.  It's admittedly a
+bit musical theater.  But that's not why I love it (nor is it a
+negative in my view).  Mingjia sings like its an extension of her
+speaking voice.  She enunciates.  I cannot stress how much this feels
+like an aesthetic choice and not just an emergent feature of proper
+training. Her voice is glass smooth and glass clear, her minute
+flourishes never come at the expense of the story she's telling.  The
+arrangements are what read classical, and there are some excerpts that
+could be part of a proper symphony, but this in itself feels
+unnecessarily boxy as a descriptor (also a tad elitist).  The story
+telling also reads classical──the pieces are long and meandering──to
+the I might amend my previous phrase and rather say that it's
+operatic.
+
+-----
+
+* Week 24 (6/7)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/whippersnap.jpg]]
+
+[[https://ezraquartet.bandcamp.com/album/whippersnap][*Whippersnap* by EZRA]]
+
+A collegue of mine hosts (and produces and engineers) a radio program
+on WMBR Camridge called [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]].  A such she has
+fantastic taste in music, and every time I get a chance to chat I ask
+about what music's been exciting her (the first recommendation she
+ever gave me was *STILLPOINT* by Awadagin Pratt, which remains a
+favorite of mine).  I brought up that I'd been listening to The Hands
+Free's new album *Upturned Cup*, and she followed with *Froggy's
+Demise* by EZRA.  And, honestly, checkmate.
+
+Classically-Jazzically-inclined bluegrass isn't new, but I think it
+finds it's greatest popularity──and arguably one of it's highest
+inflection points──in the *The Goat Rodeo Sessions* (of course the
+related prototype/offshoot projects are important too; as an aside,
+I've always been curious how Béla Fleck fits into the picture, a
+frequent collaborator with Edgar Meyer, but somehow not a Goat
+Rodeo-er).  After a supergroup like this, it's difficult to imagine a
+huge amount of movement in this already rarefied space.  EZRA reminded
+me (like a slap in the face) that there many dimensions to musical
+innovation.  There is of course technical skill (which EZRA clearly
+has, within grasp of the Goat Rodeo crew), but there's also genre
+fluidity, there's group cohesion.  The transitions between avante-jazz
+and bluegrass lick are quick, and often done with a kind of precision
+that feels like watching someone slalom with an Escalade (this is not
+a particularly flattering metaphor, but once I thought it I couldn't
+eject the image from my mind, and just it feels right).  True solos
+are sparse, there are leading players on most pieces but it's well
+balanced (both Pomaria and Gossamer have lovely bass melodies).  The
+introduction of the piano on this album's instrumentation occasionally
+leans saccharine, but mostly gives a satisfying body to the entire
+project.
+
+-----
+
+* Week 23 (5/31)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/everything.jpg]]
+
+[[https://blackseadahu.bandcamp.com/album/everything][*Everything* by Black Sea Dehu]]
+
+Okay, so I made a suggestive hint last time as to what kind of album
+I'd be covering this week.  And I did give *Clifford Brown and Max
+Roach at Basin Street* as well as *Freedom Suite* a fair number of
+listens.  But I have to stay true to the concept of this microblog,
+and the reality is this album ultimately dominated my queue (also, who
+the f*** cares? I'm well aware no one's reading this).
+
+Black Sea Dehu is another Swiss band on [[https://mouthwateringrecords.bandcamp.com][Mouthwatering Records]] (the
+label is the intermediate node in my web-surfing-graph from To Athena
+of Week 21).  The first important point to address: /What is a Dehu?/
+Great question.  A Dehu is a mountain-goat-ish creature whose legs are
+shorter on one side of its body (naturally).  From [[https://en.wikipedia.org/wiki/Dahu][Wikipedia]]: "there
+are two different types of dahu: the /laevogyrous dahu/, with shorter
+legs on its left side, walks around the mountain counterclockwise; the
+/dextrogyre dahu/, with the shorter legs on its right side, walks
+clockwise around the mountain."  Someone was having fun.
+
+I think what makes this album so compelling is that is feels jammed
+packed with everything (nudge nudge): musical and lyrical prowess,
+emotional outpour, mythos, the tug of life and death, of
+traditionalism and experimentalism.  It feels tight; the album blurb
+notes that it comes on the heels of some major touring hours.  It also
+notes that it's shrouded in grief: "Created in the aftermath of losing
+a parent and the years of stumbling that followed, it grew like a
+forest after fire."  The result is stunning, but in a way that
+necessitates a couple listens.
+
+Case in point: Ants on the Wall (the opener) is a lovely rumination on
+the mundane: ants come in the summer.  Arrangement-wise, it's core is
+a clear ambling guitar, a minimal drum beat, airy vocals.  This is
+layered with rhythm guitar, bass (okay sure) but then also a steel
+guitar, another electric guitar, an array of percussional clicks and
+clacks, clarinets, accordion, backup vocals (and as far as I can tell,
+exactly one additional "oh" from an unknown vocalist which lasts
+something like 3 seconds).  It's a lot. But somehow it's not crowded.
+It's the kind of arranging that I've never fully grasped, along the
+lines of early Sufjan, akin to the way a painter will include a
+flourish of green within a decidedly red-blue skyscape that I'd never
+think to include but is somehow just right.  And all this eventually
+quiets, closing with these haunting lyrics:
+
+#+begin_quote
+Is it June again?
+Are you really dead?
+What's the catch?
+Deep within the ground
+the queen's waiting for her eggs to hatch
+#+end_quote
+
+The entire album has this energy. It's devastating. It skirts the edge
+of some unknown cathartic release.  I also must say that Janine
+Cathrein's voice is gorgeous; she uses little vibrato, and
+her ability to oscillate/transition between notes is chilling.
+
 -----
 
 * Week 22 (5/24)
