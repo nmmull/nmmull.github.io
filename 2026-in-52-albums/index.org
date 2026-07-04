@@ -9,6 +9,109 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 27 (6/28)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/traunkirchen.jpg]]
+
+[[https://suwonyim.bandcamp.com/album/traunkirchen][*Traunkirchen* by Suwon Yim]]
+
+This week I drove from Boston to Chicago on Monday (a 15 hour day) and
+back on Thursday (and 18 hour day due to a detour through Auburn,
+Indiana).  This meant I listened to a lot of music.  Most of what's
+made it onto this microblog was on repeat, one notable exception being
+Waxahatchee's *Tigers Blood* (which I used to keep myself awake by
+singing loudly to each song while attempting to memorize the lyrics
+(which meant most of the time I was singing in pseudo-English, just
+guessing words)).  The other exception is the above album.
+
+Suwon Yim is something of a mystery to me.  I'll be the first to admit
+that her music is not the most challenging, and can sometimes even be
+(gasp) catchy.  This album is solo piano, and has a couple pieces that
+could be on the soundtrack of From Up on Poppy Hill (which feels to me
+to be the epitome of wholesome yet enjoyable sap).  The thing is,
+sometimes I don't want my music to challenge me.  And, let me go back,
+almost /every/ piece on this album is catchy, and a pleasure to listen
+to.  I feel bad that I want to apologize for this album (dictionary
+definition of guilty pleasure I guess) but it really does just bring
+me joy.  And, in fairness to Suwon Yim, it has a classical-streak that
+may be the backbone of my admiration.  The R&B-ish motifs are
+counterbalanced with Mendelssohn-ish phasing and occasional
+French-impressionist-ish textures.  Although that description sounds a
+bit more wild than I intend it to be, it's kind of like the "lite"
+versions of all of those things, with a dash of the cinematic, and of
+course a bit of something else that is wholly her own.
+
+So I haven't said why she is a mystery.  First: as of writing I am the
+/only/ person who's supported this album on Bandcamp.  Now that may be
+because there's some other method by which folks are
+supporting/listening to it, but I checked and couldn't find anything
+(as further evidence, her Spotify numbers are low as far as I can
+tell).  Okay, the music industry is hard, it's a new album, maybe I
+just have bad taste.  But this really does seem like an album that
+could appeal to a lot of people. /Maybe it's because she's a new
+artist?/ Fair question, I hadn't heard of her until this week. Point
+two: she has /17 full-length albums/ on Bandcamp, dating back to 2020,
+all of which have not been well supported.  And I don't love all of
+them (and I haven't gotten through all of them yet), but some of them
+are /really good/ (again, in my now dubious opinion).  It makes
+absolutely no sense to me that she doesn't have even a small Bandcamp
+following (my last hypothesis is that I don't know where/how Korean
+folks listen to music...).  Oh well, I hope that she continues to make
+music, she's made a fan of me, and I'll be recommending this album
+enthusiastically.
+
+-----
+
+* Week 26 (6/21)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/prism-of-existence.jpg]]
+
+[[https://soojinsuh.bandcamp.com/album/prism-of-existence][*PRISM OF EXISTENCE* by Soojin Suh]]
+
+Soojin Suh is another data point supporting my (not all that
+surprising) hypothesis that the best composers are percussionists and
+bassists.  My first introduction to Soojin Suh was her project
+*Alchemy* with Daniel Ko, which I maintain is the most accessible
+saxaphone + drum free jazz album out there (fight me (I won't win, but
+still, it's worth a listen)).  Her later album *Roots to Branches*
+with the cutely named Chordless Quartet consistently finds its way on
+my listening queue.  Both of these albums demonstrate a preternatural
+ability create lush with little ("Chordless" here referring to the
+fact that the group is drum, bass, double sax).  This is often
+achieved by allowing the members of the group freedom to move, only
+occasionally syncing back up but never straying too far from each
+other.  Regardless of how it's achieved, I never──in either
+album──leave thinking /that needed some piano/.
+
+It's within this context that I'm surprised by *PRISM*; there /is/ a
+piano, and it's boxy as hell.  The rhythms of THE DOORS OF PERCEPTION
+are by no means easy, but they are tightly regimented, almost
+claustrophobically so, with whole sections dedicated to frenetic
+lock-step melodies.  The chordal character of the entire album is
+anxious, with only a few glimmers of hopeful consonance.  There's a
+suite of pieces called UNCERTAINTY (it take every fiber of my being to
+not write "for crying out loud" here, so instead I self-consciously
+include it as a parenthetical) the first movement of which (the opener
+of the album) creates an awkward, disconcerting mood of classic bebop
+groove meets cat-walks-on-the-piano postmodern grab bag.
+
+I'll admit, I'm all in on this one; I'm generally very much for
+artists breaking out of familiar patterns.  But I've included the
+above because (1) I think it's important to understand where the
+album's aesthetic is coming from (to the extent that I can claim to
+know) and (2) if you already know, I think it's too easy to see this
+one as bending to trends.  I think by putting herself (and bassist Hoo
+Kim and pianist Jaehun Kang) within these meticulous structures the
+anxiety comes through not just in the composition but in the
+performance.  Every player feels beholden to the prescribed
+rhythmic/melodic game, but also has moments of breaking out, of
+hinting at something freer, and I think listening for these moments is
+what has me coming back.
+
+-----
+
 * Week 25 (6/14)
 
 #+ATTR_HTML: :width 300px
