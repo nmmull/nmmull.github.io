@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-07 Tue 17:50 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explosives and Distinguishers</title>
+<meta name="author" content="Nathan" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="myStyle.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Explosives and Distinguishers</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org804f943">Distinguishers</a></li>
+<li><a href="#org534e150">Inequality</a></li>
+<li><a href="#orgeac2c43">Decidability</a></li>
+<li><a href="#org9e0cebb">Deciders</a></li>
+<li><a href="#orgbcca5b6">Distinguishability</a></li>
+<li><a href="#org4dd7e79">Strong Deciders</a></li>
+<li><a href="#orgb9357ec">Conclusions</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i><b>Abstract.</b> I examine the relationship between decidable equality,
+inequality, and distinguishability in the minimal fragment of <a href="https://docs.racket-lang.org/pie/index.html">Pie</a>. I
+prove that the statement:</i>
+</p>
+
+<blockquote>
+<p>
+<i>If 𝐴 admits decidable equality, then unequal terms of type 𝐴 are
+distinguishable</i>
+</p>
+</blockquote>
+
+<p>
+<i>holds in Pie, its minimal fragment and its paraconsistent variant,
+but with necessarily different notions of decidable equality.  An
+auxiliary goal of this piece is to present formal proofs that
+demonstrate the ways in which basic claims about decidability depend
+on the principle of explosion.</i>
+</p>
+
+<p>
+<b>Quick Preamble:</b> This piece contains (too) many proofs in <a href="https://docs.racket-lang.org/pie/index.html">Pie</a>, a
+simple, beautiful, but verbose dependently typed programming language.
+Here's a small logical interface used throughout to make proofs more
+readable:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">#lang pie
+
+(claim &#8869; U)
+(define &#8869; Absurd)
+
+(claim &#8868; U)
+(define &#8868; Trivial)
+
+(claim &#172; (&#8594; U U))
+(define &#172; (&#955; (A) (&#8594; A &#8869;)))
+
+(claim &#8743; (&#8594; U U U))
+(define &#8743; (&#955; (A B) (Pair A B)))
+
+(claim &#8744; (&#8594; U U U))
+(define &#8744; (&#955; (A B) (Either A B)))
+
+(claim &#8596; (&#8594; U U U))
+(define &#8596; (&#955; (A B) (&#8743; (&#8594; A B) (&#8594; B A))))
+
+(claim &#8800; (&#928; ((A U)) (&#8594; A A U)))
+(define &#8800; (&#955; (A x y) (&#172; (= A x y))))
+</pre>
+</div>
+
+<p>
+<b>Preamble over.</b>
+</p>
+
+<p>
+I recently spent an inordinate amount of time thinking about
+Pie<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>  formalizations of the
+following theorem:
+</p>
+
+<blockquote>
+<p>
+<i>1 = 0 implies I am the Pope.</i>
+</p>
+</blockquote>
+
+<p>
+I was interested primarily in proofs that could be carried out in the
+minimal fragment of Pie, i.e., without the use of <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._ind-.Absurd%29%29"><code>ind-Absurd</code></a>, the
+induction principle for the empty type which expresses the <a href="https://en.wikipedia.org/wiki/Principle_of_explosion">principle
+of explosion</a>.  I'll call this fragment <b>minimal Pie</b> throughout, and
+will try to use <b>vanilla Pie</b> otherwise for emphasis.
+</p>
+
+<p>
+Thinking about this problem long enough leads invariably to a standard
+fact of constructive mathematics: 1 = 0 is <i>explosive</i> in the sense
+that anything follows from it in minimal Pie.<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim explode-1=0
+  (&#8594; (= Nat 1 0) (&#928; ((A U)) A)))
+(define explode-1=0
+  (&#955; (1=0 A)
+     (replace
+       1=0
+       (&#955; (a) (which-Nat a A (&#955; (_) &#8868;)))
+       sole)))
+</pre>
+</div>
+
+<p>
+Thinking about this problem for too long leads to a natural enough
+question: <i>which equalities are explosive?</i>
+</p>
+<div id="outline-container-org804f943" class="outline-2">
+<h2 id="org804f943">Distinguishers</h2>
+<div class="outline-text-2" id="text-org804f943">
+<p>
+Its straightforward to generalize the above proof to any fixed pair of
+natural numbers.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim sub1 (→ Nat Nat))
+(define sub1
+  (λ (n)
+     (which-Nat n 0 (λ (n-1) n-1))))
+
+(claim ∸ (→ Nat Nat Nat))
+(define ∸
+  (λ (m n)
+     (iter-Nat n m sub1)))
+
+(claim 5=7→1=0
+  (→ (= Nat 5 7) (= Nat 1 0)))
+(define 5=7→1=0
+  (λ (5=7)
+     (symm
+       (cong
+         5=7
+         (the
+           (→ Nat Nat)
+           (λ (n) (∸ n 6)))))))
+
+(claim explode-5=7
+  (→ (= Nat 5 7) (Π ((A U)) A)))
+(define explode-5=7
+  (λ (5=7)
+     (explode-1=0 (5=7→1=0 5=7))))
+</pre>
+</div>
+
+<p>
+It also works for the equality true = false, given the standard sum
+type encoding of Booleans.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim Bool U)
+(define Bool (Either &#8868; &#8868;))
+
+(claim true Bool)
+(define true (left sole))
+
+(claim false Bool)
+(define false (right sole))
+
+(claim ind-Bool
+  (&#928; ((target Bool)
+      (motive (&#8594; Bool U))
+      (true-case (motive true))
+      (false-case (motive false)))
+     (motive target)))
+(define ind-Bool
+  (&#955; (target motive true-case false-case)
+     (ind-Either
+       target
+       motive
+       (&#955; (_) true-case)
+       (&#955; (_) false-case))))
+
+(claim bool&#8594;nat (&#8594; Bool Nat))
+(define bool&#8594;nat
+  (&#955; (b) (ind-Bool b (&#955; (_) Nat) 1 0)))
+
+(claim true=false&#8594;1=0
+  (&#8594; (= Bool true false) (= Nat 1 0)))
+(define true=false&#8594;1=0
+  (&#955; (true=false) (cong true=false bool&#8594;nat)))
+
+(claim explode-true=false
+  (&#8594; (= Bool true false) (&#928; ((A U)) A)))
+(define explode-true=false
+  (&#955; (true=false)
+     (explode-1=0 (true=false&#8594;1=0 true=false))))
+</pre>
+</div>
+
+<p>
+All we're doing here is bootstrapping; if an equality implies 1 = 0
+then it's explosive.  This condition is clunky, but it hints at a
+definition: let's say a Boolean function 𝑓 <i>distinguishes</i> two values
+𝑎 and 𝑏 if 𝑓(𝑎) is true and 𝑓(𝑏) is false.  Let's also say 𝑎 and 𝑏 are
+<i>distinguishable</i>, written 𝑎 ◇ 𝑏, if there is a distinguisher for
+them.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim Distinguishes
+  (&#928; ((A U)
+      (f (&#8594; A Bool)))
+     (&#8594; A A U)))
+(define Distinguishes
+  (&#955; (_ f x y)
+     (&#8743; (= Bool (f x) true)
+        (= Bool (f y) false))))
+
+(claim &#9671;
+  (&#928; ((A U))
+     (&#8594; A A U)))
+(define &#9671;
+  (&#955; (A x y)
+     (&#931; ((f (&#8594; A Bool)))
+        (Distinguishes A f x y))))
+
+<span style="color: #b22222;">; </span><span style="color: #b22222;">these are just getters for &#9671;
+</span>
+(claim distinguisher-&#9671;
+  (&#928; ((A U)
+      (x A)
+      (y A)
+      (x&#9671;y (&#9671; A x y)))
+     (&#8594; A Bool)))
+(define distinguisher-&#9671;
+  (&#955; (_ _ _ x&#9671;y)
+     (car x&#9671;y)))
+
+(claim distinguishes-fst
+  (&#928; ((A U)
+      (x A)
+      (y A)
+      (x&#9671;y (&#9671; A x y)))
+     (= Bool
+        (distinguisher-&#9671; A x y x&#9671;y x)
+        true)))
+(define distinguishes-fst
+  (&#955; (_ _ _ x&#9671;y)
+     (car (cdr x&#9671;y))))
+
+(claim distinguishes-snd
+  (&#928; ((A U)
+      (x A)
+      (y A)
+      (x&#9671;y (&#9671; A x y)))
+     (= Bool
+        (distinguisher-&#9671; A x y x&#9671;y y)
+        false)))
+(define distinguishes-snd
+  (&#955; (_ _ _ x&#9671;y)
+     (cdr (cdr x&#9671;y))))
+</pre>
+</div>
+
+<p>
+Distinguishability captures more generally what's going on in the
+case of 5 = 7 and true = false.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim &#9671;&#8594;explode&#8316;
+  (&#928; ((A U)
+      (x A)
+      (y A))
+     (&#8594; (&#9671; A x y)
+        (= A x y)
+        (&#928; ((B U)) B))))
+(define &#9671;&#8594;explode&#8316;
+  (&#955; (A x y x&#9671;y x=y)
+    (explode-true=false
+      (trans
+        <span style="color: #b22222;">; true = f x
+</span>        (symm (distinguishes-fst A x y x&#9671;y))
+        (trans
+          <span style="color: #b22222;">; f x = f y
+</span>          (cong x=y (distinguisher-&#9671; A x y x&#9671;y))
+          <span style="color: #b22222;">; f y = false
+</span>          (distinguishes-snd A x y x&#9671;y))))))
+</pre>
+</div>
+
+<p>
+In other words, <i>any equality of distinguishable terms is explosive.</i>
+</p>
+</div>
+</div>
+<div id="outline-container-org534e150" class="outline-2">
+<h2 id="org534e150">Inequality</h2>
+<div class="outline-text-2" id="text-org534e150">
+<p>
+Distinguishability is a strictly stronger relation than inequality
+minimal Pie.<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim &#9671;&#8594;&#8800;
+  (&#928; ((A U)
+      (x A)
+      (y A))
+     (&#8594; (&#9671; A x y)
+        (&#8800; A x y))))
+(define &#9671;&#8594;&#8800;
+  (&#955; (A x y x&#9671;y x=y)
+     (&#9671;&#8594;explode&#8316; A x y x&#9671;y x=y &#8869;)))
+
+(claim &#10216;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#8594; (&#928; ((A U)
+         (x A)
+         (y A))
+        (&#8594; (&#8800; A x y)
+           (&#9671; A x y)))
+     (&#8594; &#8869; (&#928; ((A U)) A))))
+(define &#10216;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#955; (&#8800;&#8594;&#9671; absurd)
+     (&#9671;&#8594;explode&#8316;
+       &#8868;
+       sole
+       sole
+       (&#8800;&#8594;&#9671;
+         &#8868;
+         sole
+         sole
+         (&#955; (_) absurd))
+       (same sole))))
+</pre>
+</div>
+
+<p>
+≠→◇ has the flavor of many semi-classical principles: it expresses
+that we can extract something constructive from a negation
+proof.<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>  So it's not surprising that we can't prove ≠→◇ in vanilla
+Pie<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>
+but we also can't disprove it.  This is because ≠→◇ is a theorem in
+the classical extension of Pie (which is consistent).<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+</p>
+
+<p>
+That ≠→◇ holds classically is not immediately obivous, but becomes
+more clear through the lens of <a href="https://ncatlab.org/nlab/show/decidable%20equality">decidable equality</a>.  In vanilla Pie,
+<b>if 𝐴 admits decidable equality, then unequal terms of type 𝐴 are
+distinguishable.</b>
+</p>
+
+<p>
+And how does <i>that</i> work?  This is also not immediately obvious.  It's
+easy to forget that decidability, though core to constructive type
+theory, has its origins in computability theory.
+</p>
+</div>
+</div>
+<div id="outline-container-orgeac2c43" class="outline-2">
+<h2 id="orgeac2c43">Decidability</h2>
+<div class="outline-text-2" id="text-orgeac2c43">
+<p>
+A type 𝐴 admits <b>decidable equality</b> if for any two terms 𝑎₁ and 𝑎₂ of
+type 𝐴, we have 𝑎₁ = 𝑎₂ or 𝑎₁ ≠ 𝑎₂.  This is a restriction of the <a href="https://en.wikipedia.org/wiki/Law_of_excluded_middle">law
+of excluded middle</a>, so all types admit decidable equality in classical
+Pie.
+</p>
+
+<p>
+The computability theoretic notion of decidability is slightly
+different: a predicate 𝑃 is <b>decidable</b> if there is a computable
+function 𝑓 such that 𝑓(𝑥) = 1 if and only if 𝑃(𝑥) holds.
+</p>
+
+<p>
+<i>How do these two notions correspond?</i> We just need to put on our
+<a href="https://en.wikipedia.org/wiki/Curry%E2%80%93Howard_correspondence">Curry-Howard</a> glasses: a term 𝑓 of type
+</p>
+
+<blockquote>
+<p>
+(Π ((𝑥 𝐴) (𝑥 𝐴)) (∨ (= 𝐴 𝑥 𝑦) (≠ 𝐴 𝑥 𝑦)))
+</p>
+</blockquote>
+
+<p>
+on the one hand is a proof that 𝐴 admits decidable equality.  On the
+other hand, it's a <i>computable function</i> where 𝑓(𝑎, 𝑏) evaluates to a
+left term if 𝑎 = 𝑏 and a right term otherwise.  Since we can determine
+leftness versus rightness programmatically (using <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._ind-.Either%29%29"><code>ind-Either</code></a>), the
+term 𝑓 can be made an equality decider in the computability theoretic
+sense.
+</p>
+
+<p>
+More generally, a type 𝐴 (viewed through the Curry-Howard lens) is
+<b>decidable</b> if either 𝐴 or ¬𝐴 holds.  The law of excluded middle is
+equivalent to every type being decidable.  We can lift this notion of
+decidability to binary predicates, but if we want to use those
+predicates in their Curried form, we'll need to uncurry when reasoning
+about their decidability.<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim Dec (→ U U))
+(define Dec
+  (λ (A) (∨ A (¬ A))))
+
+(claim Decᴾ
+  (Π ((A U)
+      (P (→ A U)))
+     U))
+(define Decᴾ
+  (λ (A P)
+     (Π ((x A)) (Dec (P x)))))
+
+(claim Uncurryᴾ
+  (Π ((A U)
+      (B U)
+      (P (→ A B U)))
+     (→ (Pair A B) U)))
+(define Uncurryᴾ
+  (λ (_ _ P p)
+     (P (car p) (cdr p))))
+
+(claim Decᴾ²
+  (Π ((A U)
+      (B U)
+      (P (→ A B U)))
+     U))
+(define Decᴾ²
+  (λ (A B P)
+     (Decᴾ (Pair A B) (Uncurryᴾ A B P))))
+
+(claim Dec⁼ (→ U U))
+(define Dec⁼
+  (λ (A)
+     (Decᴾ²
+       A
+       A
+       (λ (x y) (= A x y)))))
+</pre>
+</div>
+
+<p>
+We express the computability theoretic notion of decidability as
+having a decider, i.e., a function that witnesses the truth value of
+the predicate.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim Decides
+  (Π ((A U)
+      (f (→ A Bool))
+      (P (→ A U)))
+     U))
+(define Decides
+  (λ (A f P)
+     (Π ((x A))
+        (↔ (P x)
+           (= Bool (f x) true)))))
+
+(claim Decider
+  (Π ((A U)
+      (P (→ A U)))
+     U))
+(define Decider
+  (λ (A P)
+     (Σ ((f (→ A Bool)))
+        (Decides A f P))))
+
+(claim uncurry
+  (Π ((A U)
+      (B U)
+      (C U))
+     (→ (→ A B C)
+        (→ (Pair A B) C))))
+(define uncurry
+  (λ (_ _ _ f p)
+     (f (car p) (cdr p))))
+
+(claim Decides₂
+  (Π ((A U)
+      (B U)
+      (f (→ A B Bool))
+      (P (→ A B U)))
+     U))
+(define Decides₂
+  (λ (A B f P)
+     (Decides
+       (Pair A B)
+       (uncurry A B Bool f)
+       (Uncurryᴾ A B P))))
+
+(claim Decider₂
+  (Π ((A U)
+      (B U)
+      (P (→ A B U)))
+     U))
+(define Decider₂
+  (λ (A B P)
+     (Σ ((f (→ A B Bool)))
+        (Decides₂ A B f P))))
+
+(claim Decides⁼
+  (Π ((A U)
+      (f (→ A A Bool)))
+     U))
+(define Decides⁼
+  (λ (A f)
+     (Decides₂
+       A
+       A
+       f
+       (λ (x y) (= A x y)))))
+
+(claim Decider⁼ (→ U U))
+(define Decider⁼
+  (λ (A)
+     (Σ ((f (→ A A Bool)))
+        (Decides⁼ A f))))
+</pre>
+</div>
+
+<p>
+As noted above, types that admit decidable equalities have an
+"obvious" decider, i.e., the one encoded in the proof of decidability.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim left?
+  (Π ((A U)
+      (B U))
+     (→ (Either A B)
+        Bool)))
+(define left?
+  (λ (_ _ e)
+     (ind-Either
+       e
+       (λ (_) Bool)
+       (λ (_) true)
+       (λ (_) false))))
+
+(claim ?
+  (Π ((A U)
+      (P (→ A U)))
+     (→ (Decᴾ A P) A Bool)))
+(define ?
+  (λ (_ P decᴾ x)
+     (left?
+       (P x)
+       (¬ (P x))
+       (decᴾ x))))
+
+(claim ?₂
+  (Π ((A U)
+      (B U)
+      (P (→ A B U))
+      (decᴾ² (Decᴾ² A B P)))
+     (→ A B Bool)))
+(define ?₂
+  (λ (A B P decᴾ² x y)
+     (?
+       (Pair A B)
+       (Uncurryᴾ A B P)
+       decᴾ²
+       (cons x y))))
+
+(claim ≟
+  (Π ((A U))
+     (→ (Dec⁼ A) A A Bool)))
+(define ≟
+  (λ (A) (?₂ A A (λ (x y) (= A x y)))))
+</pre>
+</div>
+
+<p>
+And we can convert the equality decider into an <i>distinguisher</i> by
+partially applying it: if 𝑓(𝑎, 𝑏) is true if and only if 𝑎 = 𝑏, then
+if 𝑎 ≠ 𝑏 we have we (λ𝑥.𝑓(𝑎, 𝑥))(𝑎) is true and (λ𝑥.𝑓(𝑎, 𝑥))(b) is
+false.  But, our first "interesting" observation: that this holds
+depends crucially on the principle of explosion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim ind-&#8869;&#8594;dec&#8316;&#8594;&#8800;&#8594;&#9671;
+  (&#8594; (&#8594; &#8869; (&#928; ((A U)) A))
+     (&#928; ((A U)
+         (dec&#8316; (Dec&#8316; A))
+         (x A)
+         (y A))
+        (&#8594; (&#8800; A x y) (&#9671; A x y)))))
+(define ind-&#8869;&#8594;dec&#8316;&#8594;&#8800;&#8594;&#9671;
+  (&#955; (ind-&#8869; A dec&#8316; x y x&#8800;y)
+     (cons
+       (&#8799; A dec&#8316; x)
+       (cons
+         (ind-Either
+           (dec&#8316; (cons x x))
+           (&#955; (e)
+              (= Bool
+                 (left?
+                   (= A x x)
+                   (&#8800; A x x)
+                   e)
+                 true))
+           (&#955; (_) (same true))
+           (&#955; (x&#8800;x)
+              (ind-&#8869;
+                (x&#8800;x (same x))
+                (= Bool false true))))
+         (ind-Either
+           (dec&#8316; (cons x y))
+           (&#955; (e)
+              (= Bool
+                 (left?
+                   (= A x y)
+                   (&#8800; A x y)
+                   e)
+                 false))
+            (&#955; (x=y) (ind-&#8869; (x&#8800;y x=y) (= Bool true false)))
+            (&#955; (_) (same false)))))))
+
+(claim &#10216;dec&#8316;&#8594;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#8594; (&#928; ((A U)
+         (dec&#8316; (Dec&#8316; A))
+         (x A)
+         (y A))
+        (&#8594; (&#8800; A x y) (&#9671; A x y)))
+     (&#8594; &#8869; (&#928; ((A U)) A))))
+(define &#10216;dec&#8316;&#8594;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#955; (dec&#8316;&#8594;&#8800;&#8594;&#9671; absurd)
+     (&#9671;&#8594;explode&#8316;
+       &#8868;
+       sole
+       sole
+       (dec&#8316;&#8594;&#8800;&#8594;&#9671;
+         &#8868;
+         (&#955; (_) (right (&#955; (_) absurd)))
+         sole
+         sole
+         <span style="color: #b22222;">; artificial negation proof
+</span>         (&#955; (_) absurd))
+       (same sole))))
+</pre>
+</div>
+
+<p>
+Another theme is made visible here: in nearly all cases, the <code>Trivial</code>
+type is sufficient to find a counterexample in minimal Pie of a given
+principle.  And usually this comes down to an artificial proof of a
+negation using our <code>Absurd</code> assumption (see above).
+</p>
+
+<p>
+As a corollary, we can prove versions of ≠→◇ in classical Pie and
+vanilla Pie.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim dec&#8316;&#8594;&#8800;&#8594;&#9671;
+  (&#928; ((A U)
+      (dec&#8316; (Dec&#8316; A))
+      (x A)
+      (y A))
+     (&#8594; (&#8800; A x y) (&#9671; A x y))))
+(define dec&#8316;&#8594;&#8800;&#8594;&#9671;
+  (&#955; (A dec&#8316; x y x&#8800;y)
+     (ind-&#8869;&#8594;dec&#8316;&#8594;&#8800;&#8594;&#9671;
+       <span style="color: #b22222;">; explicit use of ind-Absurd
+</span>       (&#955; (absurd A) (ind-Absurd absurd A))
+       A
+       dec&#8316;
+       x
+       y
+       x&#8800;y)))
+
+<span style="color: #b22222;">; </span><span style="color: #b22222;">postulating the law of excluded middle
+</span>(claim lem (&#928; ((A U)) (&#8744; A (&#172; A))))
+(define lem TODO)
+
+(claim &#8800;&#8594;&#9671;-classical
+  (&#928; ((A U)
+      (x A)
+      (y A))
+     (&#8594; (&#8800; A x y) (&#9671; A x y))))
+(define &#8800;&#8594;&#9671;-classical
+  (&#955; (A x y x&#8800;y)
+     (dec&#8316;&#8594;&#8800;&#8594;&#9671;
+       A
+       (&#955; (p) (lem (= A (car p) (cdr p))))
+       x
+       y
+       x&#8800;y)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9e0cebb" class="outline-2">
+<h2 id="org9e0cebb">Deciders</h2>
+<div class="outline-text-2" id="text-org9e0cebb">
+<p>
+But what about minimal Pie?  We've demonstrated that we can't prove
+≠→◇ from decidable equality, but is there a <i>stronger</i> notion of
+decidable equality that holds in minimal Pie?  The short answer: yes.
+In minimal pie, <i>we can't even prove that the obvious decider is
+actually a decider.</i> That is, having a decider in minimal Pie (in the
+sense that the obvious decider is, in fact, a decider) is a stronger
+condition than admitting decidable equality.  The long answer: read
+on, that's the point of the piece.
+</p>
+
+<p>
+One direction of the claim in the previous paragraph is fairly easy:
+if a predicate 𝑃 has a decider, then it's decidable, even in minimal
+Pie.  The proof: given 𝑥, ask the decider if 𝑃(𝑥) or ¬𝑃(𝑥).  We break
+the proof up into two parts because working with Σ-types in Pie isn't
+ergonomic.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim decides→decᴾ-helper
+  (Π ((A U)
+      (f (→ A Bool))
+      (P (→ A U))
+      (x A))
+     (→ (↔ (P x) (= Bool (f x) true))
+        (Dec (P x)))))
+(define decides→decᴾ-helper
+  (λ (_ f P x)
+     (ind-Bool
+       (f x)
+       (λ (b)
+          (→ (↔ (P x) (= Bool b true))
+             (Dec (P x))))
+       (λ (prf)
+          (left ((cdr prf) (same true))))
+       (λ (prf)
+          (right
+            (λ (px)
+               (explode-true=false
+                 (symm ((car prf) px))
+                 ⊥)))))))
+
+(claim decider→decᴾ
+  (Π ((A U)
+      (P (→ A U)))
+     (→ (Decider A P)
+        (Decᴾ A P))))
+(define decider→decᴾ
+  (λ (A P decider x)
+     (decides→decᴾ-helper
+       A
+       (car decider)
+       P
+       x
+       ((cdr decider) x))))
+</pre>
+</div>
+
+<p>
+The more difficult direction is to show that if 𝑃 is decidable then it
+has a decider.  Though difficult is not quite right.  The proof is
+very natural: the obvious decider for 𝑃 is a decider. But in minimal
+Pie, <i>we can't prove this.</i>
+</p>
+
+<p>
+Let's break this into two observations: in minimal Pie, if we know the
+value of the obvious decider on 𝑎, then we <i>can</i> derive proofs of the
+𝑃(𝑎) or ¬𝑃(𝑎), depending on the value.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim p?=true→p
+  (Π ((A U)
+      (P (→ A U))
+      (decᴾ (Decᴾ A P))
+      (x A))
+     (→ (= Bool (? A P decᴾ x) true)
+        (P x))))
+(define p?=true→p
+  (λ (_ P decᴾ x)
+     (ind-Either
+       (decᴾ x)
+       (λ (e)
+          (→ (= Bool
+                (left? (P x) (¬ (P x)) e)
+                true)
+             (P x)))
+       (λ (px _) px)
+       (λ (_ false=true)
+          (explode-true=false
+            (symm false=true)
+            (P x))))))
+
+(claim p?=false→¬p
+  (Π ((A U)
+      (P (→ A U))
+      (decᴾ (Decᴾ A P))
+      (x A))
+     (→ (= Bool
+           (? A P decᴾ x)
+           false)
+        (¬ (P x)))))
+(define p?=false→¬p
+  (λ (_ P decᴾ x)
+     (ind-Either
+       (decᴾ x)
+       (λ (e)
+          (→ (= Bool
+                (left? (P x) (¬ (P x)) e)
+                false)
+             (¬ (P x))))
+       (λ (_ true=false)
+          (explode-true=false
+            true=false
+            (¬ (P x))))
+       (λ (¬px _) ¬px))))
+</pre>
+</div>
+
+<p>
+What we <i>can't</i> do within minimal Pie is determine the value of the
+decider itself given 𝑃(𝑎) or ¬𝑃(𝑎), e.g., 𝑃(𝑎) implies the 𝑃?(𝑎) is
+true given the principle of explosion, but this implication also
+<i>implies</i> the principle of explosion.  This ultimately comes down to
+the fact that there isn't a whole lot we can do in the ¬𝑃(𝑎) branch of
+the 𝑃-decidability invocation except explode it with our assumption
+𝑃(𝑎).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">
+(claim ind-&#8869;&#8594;p&#8594;p?=true
+  (&#8594; (&#8594; &#8869; (&#928; ((A U)) A))
+     (&#928; ((A U)
+         (P (&#8594; A U))
+         (dec&#7486; (Dec&#7486; A P))
+         (x A))
+        (&#8594; (P x)
+           (= Bool
+              (? A P dec&#7486; x)
+              true)))))
+(define ind-&#8869;&#8594;p&#8594;p?=true
+  (&#955; (ind-&#8869; _ P dec&#7486; x px)
+     (ind-Either
+       (dec&#7486; x)
+       (&#955; (e)
+          (= Bool
+             (left? (P x) (&#172; (P x)) e)
+             true))
+       (&#955; (_) (same true))
+       (&#955; (&#172;px)
+          (ind-&#8869;
+            (&#172;px px)
+            (= Bool false true))))))
+
+(claim &#10216;p&#8594;p?=true&#10217;&#8594;ind-&#8869;
+  (&#8594; (&#928; ((A U)
+         (P (&#8594; A U))
+         (dec&#7486; (Dec&#7486; A P))
+         (x A))
+        (&#8594; (P x)
+           (= Bool
+              (? A P dec&#7486; x)
+              true)))
+     (&#8594; &#8869; (&#928; ((A U)) A))))
+(define &#10216;p&#8594;p?=true&#10217;&#8594;ind-&#8869;
+  (&#955; (p&#8594;p?=true absurd)
+     (explode-true=false
+       (symm
+         (p&#8594;p?=true
+           &#8868;
+           (&#955; (_) &#8868;)
+           (&#955; (_) (right (&#955; (_) absurd)))
+           sole
+           sole)))))
+
+(claim ind-&#8869;&#8594;&#172;p&#8594;p?=false
+  (&#8594; (&#8594; &#8869; (&#928; ((A U)) A))
+     (&#928; ((A U)
+         (P (&#8594; A U))
+         (dec&#7486; (Dec&#7486; A P))
+         (x A))
+        (&#8594; (&#172; (P x))
+           (= Bool
+              (? A P dec&#7486; x)
+              false)))))
+(define ind-&#8869;&#8594;&#172;p&#8594;p?=false
+  (&#955; (ind-&#8869; _ P dec&#7486; x &#172;px)
+     (ind-Either
+       (dec&#7486; x)
+       (&#955; (e)
+          (= Bool
+             (left? (P x) (&#172; (P x)) e)
+             false))
+       (&#955; (px)
+          (ind-&#8869;
+            (&#172;px px)
+            (= Bool true false)))
+       (&#955; (_) (same false)))))
+
+(claim &#10216;&#172;p&#8594;p?=false&#10217;&#8594;ind-&#8869;
+  (&#8594; (&#928; ((A U)
+         (P (&#8594; A U))
+         (dec&#7486; (Dec&#7486; A P))
+         (x A))
+        (&#8594; (&#172; (P x))
+           (= Bool
+              (? A P dec&#7486; x)
+              false)))
+     (&#8594; &#8869; (&#928; ((A U)) A))))
+(define &#10216;&#172;p&#8594;p?=false&#10217;&#8594;ind-&#8869;
+  (&#955; (&#172;p&#8594;p?=false absurd)
+     (explode-true=false
+       (&#172;p&#8594;p?=false
+         &#8868;
+         (&#955; (_) &#8869;)
+         (&#955; (_) (left absurd))
+         sole
+         (&#955; (absurd) absurd)))))
+</pre>
+</div>
+
+<p>
+This inability to determine the value of the decider implies our
+inability to prove that the obvious decider decides.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim ind-⊥→decᴾ→decides
+  (→ (→ ⊥ (Π ((A U)) A))
+     (Π ((A U)
+         (P (→ A U))
+         (decᴾ (Decᴾ A P)))
+        (Decides A (? A P decᴾ) P))))
+(define ind-⊥→decᴾ→decides
+  (λ (ind-absurd A P decᴾ x)
+     (cons
+       (ind-⊥→p→p?=true
+         ind-absurd
+         A
+         P
+         decᴾ
+         x)
+       (p?=true→p
+         A
+         P
+         decᴾ
+         x))))
+
+(claim ind-⊥→decᴾ→decider
+  (→ (→ ⊥ (Π ((A U)) A))
+     (Π ((A U)
+         (P (→ A U))
+         (decᴾ (Decᴾ A P)))
+        (Decider A P))))
+(define ind-⊥→decᴾ→decider
+  (λ (ind-⊥ A P decᴾ)
+     (cons
+       (? A P decᴾ)
+       (ind-⊥→decᴾ→decides
+         ind-⊥
+         A
+         P
+         decᴾ))))
+
+(claim ⟨decᴾ→decides⟩→ind-⊥
+  (→ (Π ((A U)
+         (P (→ A U))
+         (decᴾ (Decᴾ A P)))
+        (Decides A (? A P decᴾ) P))
+     (→ ⊥ (Π ((A U)) A))))
+(define ⟨decᴾ→decides⟩→ind-⊥
+  (λ (decᴾ→decides absurd)
+     (explode-true=false
+       (symm
+         ((car
+            ((decᴾ→decides
+               ⊤
+               (λ (_) ⊤)
+               (λ (_) (right (λ (_) absurd))))
+              sole))
+            sole)))))
+</pre>
+</div>
+
+<p>
+I'm under the impression that it's also impossible to prove that
+decidability implies having <i>any</i> decider in minimal Pie, but this is
+out of reach if we want to internalize this fact as we've been
+doing. We need some handle on what the decider is to prove anything
+about it.
+</p>
+
+<p>
+Getting to the point: having an equality decider is a stronger than
+admitting decidable equality in minimal Pie. This makes it a candidate
+condition from which we might prove distinguishability of unequals.
+But, alas, it's not sufficient.  Its easy to build an equality decider
+for the <code>Trivial</code> type, so we can use our artificial negation proof
+trick again.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim &#10216;decider&#8316;&#8594;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#8594; (&#928; ((A U)
+         (decider&#8316; (Decider&#8316; A))
+         (x A)
+         (y A))
+        (&#8594; (&#8800; A x y) (&#9671; A x y)))
+     (&#8594; &#8869; (&#928; ((A U)) A))))
+(define &#10216;decider&#8316;&#8594;&#8800;&#8594;&#9671;&#10217;&#8594;ind-&#8869;
+  (&#955; (decider&#8316;&#8594;&#8800;&#8594;&#9671; absurd)
+     (&#9671;&#8594;explode&#8316;
+       Trivial
+       sole
+       sole
+       (decider&#8316;&#8594;&#8800;&#8594;&#9671;
+         Trivial
+         (cons
+           (&#955; (_ _) true)
+           (&#955; (p)
+             (cons
+               (&#955; (_) (same true))
+               (&#955; (_) (same sole)))))
+         sole
+         sole
+         <span style="color: #b22222;">; artifical negation proof
+</span>         (&#955; (_) absurd))
+       (same sole))))
+</pre>
+</div>
+
+<p>
+Our quest continues.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbcca5b6" class="outline-2">
+<h2 id="orgbcca5b6">Distinguishability</h2>
+<div class="outline-text-2" id="text-orgbcca5b6">
+<p>
+But first, a side quest. Let's consider another definition which
+implies decidable equality, and seems promising.  We'll say that a
+type admits <b>complete distinguishability</b> if all of its values are
+equal or distinguishable.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim Distinguishability (→ U U))
+(define Distinguishability
+  (λ (A)
+     (Π ((x A)
+         (y A))
+        (∨ (= A x y)
+           (◇ A x y)))))
+</pre>
+</div>
+
+<p>
+It shouldn't be too surprising that having an equality decider is
+equivalent to admitting complete distinguishability in vanilla Pie
+(because of ◇→≠).  What's surprising (at least to me) is that this
+also holds in minimal Pie, i.e., <i>the ability to construct an
+equality decider from complete distinguishability does not depend on
+the principle explosion.</i> In this sense, complete distinguishability
+is the "correct" lowering of decidable equality into minimal Pie if we
+want to be able to derive equality deciders.
+</p>
+
+<p>
+As usual, one direction is easier than the other. If we have an
+equality decider, we can use it to distinguish unequals.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim =true∨=false
+  (Π ((b Bool))
+     (∨ (= Bool b true)
+        (= Bool b false))))
+(define =true∨=false
+  (λ (b)
+     (ind-Bool
+       b
+       (λ (b)
+          (∨ (= Bool b true)
+             (= Bool b false)))
+      (left (same true))
+      (right (same false)))))
+
+(claim decider⁼→dist
+  (Π ((A U))
+     (→ (Decider⁼ A)
+        (Distinguishability A))))
+(define decider⁼→dist
+  (λ (A decider⁼ x y)
+     (ind-Either
+       (=true∨=false ((car decider⁼) x y))
+       (λ (_)
+          (∨ (= A x y)
+             (◇ A x y)))
+       (λ (fxy=true)
+          (left
+            ((cdr ((cdr decider⁼) (cons x y))) fxy=true)))
+       (λ (fxy=false)
+          (right
+            (cons
+              ((car decider⁼) x)
+              (cons
+                ((car ((cdr decider⁼) (cons x x))) (same x))
+                fxy=false)))))))
+</pre>
+</div>
+
+<p>
+To derive an equality decider from complete distinguishability, it'll
+be convenient to hand roll a new obvious decider, the analogous one
+for complete distinguishability.  We can prove that this decider is,
+in fact, a decider by taking advantage of the ambient
+distinguishability proof, which we can leverage to avoid using
+explosion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim ==
+  (Π ((A U))
+     (→ (Distinguishability A) A A Bool)))
+(define ==
+  (λ (A dist x y)
+     (left?
+       (= A x y)
+       (◇ A x y)
+       (dist x y))))
+
+(claim dist→=→==true
+  (Π ((A U)
+      (dist (Distinguishability A))
+      (x A)
+      (y A))
+     (→ (= A x y)
+        (= Bool
+           (== A dist x y)
+           true))))
+(define dist→=→==true
+  (λ (A dist x y x=y)
+     (replace
+       x=y
+       (λ (a)
+          (= Bool
+             (== A dist x a)
+             true))
+       (ind-Either
+         (dist x x)
+         (λ (e)
+            (= Bool
+               (left?
+                 (= A x x)
+                 (◇ A x x)
+                 e)
+               true))
+         (λ (_) (same true))
+         (λ (x◇x)
+            (trans
+              ; false = f x
+              (symm (cdr (cdr x◇x)))
+              ; f x = true
+              (car (cdr x◇x))))))))
+
+(claim dist→==true→=
+  (Π ((A U)
+      (dist (Distinguishability A))
+      (x A)
+      (y A))
+     (→ (= Bool
+           (== A dist x y)
+           true)
+        (= A x y))))
+(define dist→==true→=
+  (λ (A dist x y)
+     (ind-Either
+       (dist x y)
+       (λ (e)
+          (→ (= Bool
+               (left?
+                 (= A x y)
+                 (◇ A x y)
+                 e)
+               true)
+             (= A x y)))
+       (λ (x=y _) x=y)
+       (λ (_ false=true)
+          (explode-true=false
+            (symm false=true)
+            (= A x y))))))
+
+(claim dist→decider⁼
+  (Π ((A U))
+     (→ (Distinguishability A)
+        (Decider⁼ A))))
+(define dist→decider⁼
+  (λ (A dist)
+     (cons
+       (== A dist)
+       (λ (p)
+          (cons
+            (dist→=→==true A dist (car p) (cdr p))
+            (dist→==true→= A dist (car p) (cdr p)))))))
+</pre>
+</div>
+
+<p>
+This, of course, gets us nowhere on our quest to find a condition that
+allows use to distinguish unequals, but its a digression through which
+I couldn't help but take a detour.
+</p>
+</div>
+</div>
+<div id="outline-container-org4dd7e79" class="outline-2">
+<h2 id="org4dd7e79">Strong Deciders</h2>
+<div class="outline-text-2" id="text-org4dd7e79">
+<p>
+There are likely far more intermediate definitions of decidable
+equality we could look at, but let's get to the punchline.  Looking
+back, our inability to work with the obvious decider in minimal Pie
+came from our inability to derive equalities for its output values.  A
+minimal definition of decidability should give us this power so we
+don't need to appeal to explosion.
+</p>
+
+<p>
+We'll say that a function 𝑓 is a <b>strong decider</b> for the predicate 𝑃
+if 𝑃(𝑎) implies 𝑓(𝑎) is true and ¬𝑃(𝑎) implies 𝑓(𝑎) is false.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim Strong-Decides
+  (Π ((A U)
+      (f (→ A Bool))
+      (P (→ A U)))
+     U))
+(define Strong-Decides
+  (λ (A f P)
+     (Π ((x A))
+        (∧ (→ (P x) (= Bool (f x) true))
+           (→ (¬ (P x)) (= Bool (f x) false))))))
+
+(claim Strong-Decider
+  (Π ((A U)
+      (P (→ A U)))
+     U))
+(define Strong-Decider
+  (λ (A P)
+     (Σ ((f (→ A Bool)))
+        (Strong-Decides A f P))))
+
+(claim Strong-Decides₂
+  (Π ((A U)
+      (B U)
+      (f (→ A B Bool))
+      (P (→ A B U)))
+     U))
+(define Strong-Decides₂
+  (λ (A B f P)
+     (Strong-Decides
+       (Pair A B)
+       (uncurry A B Bool f)
+       (Uncurryᴾ A B P))))
+
+(claim Strong-Decider₂
+  (Π ((A U)
+      (B U)
+      (P (→ A B U)))
+     U))
+(define Strong-Decider₂
+  (λ (A B P)
+     (Σ ((f (→ A B Bool)))
+        (Strong-Decides₂ A B f P))))
+
+(claim Strong-Decides⁼
+  (Π ((A U)
+      (f (→ A A Bool)))
+     U))
+(define Strong-Decides⁼
+  (λ (A f)
+     (Strong-Decides₂
+       A
+       A
+       f
+       (λ (x y) (= A x y)))))
+
+(claim Strong-Decider⁼ (→ U U))
+(define Strong-Decider⁼
+  (λ (A)
+     (Σ ((f (→ A A Bool)))
+        (Strong-Decides⁼ A f))))
+</pre>
+</div>
+
+<p>
+Having a strong decider is equivalent to having a decider in vanilla
+Pie, but we can see the "stress" this new definition puts on the
+minimal Pie (in the sense that we're pushing against the boundary of
+minimal and vanilla Pie).  The only thing that blocks the equivalence
+in minimal Pie is our inability to prove something very simple: a
+Boolean value that not true is false.  It may be worth noting that
+this principle also has similarities to semi-classical principles like
+the <a href="https://en.wikipedia.org/wiki/Limited_principle_of_omniscience">limited principle of omnipotence</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim ind-⊥→≠true→=false
+  (→ (→ ⊥ (Π ((A U)) A))
+     (Π ((b Bool))
+        (→ (≠ Bool b true)
+           (= Bool b false)))))
+(define ind-⊥→≠true→=false
+  (λ (ind-⊥ b b≠true)
+     (ind-Either
+       (=true∨=false b)
+       (λ (_) (= Bool b false))
+       (λ (b=true)
+          (ind-⊥
+            (b≠true b=true)
+            (= Bool b false)))
+       (λ (b=false) b=false))))
+
+(claim ⟨≠true→=false⟩→ind-⊥
+  (→ (Π ((b Bool))
+        (→ (≠ Bool b true)
+           (= Bool b false)))
+     (→ ⊥ (Π ((A U)) A))))
+(define ⟨≠true→=false⟩→ind-⊥
+  (λ (≠true→=false absurd)
+     (explode-true=false
+       (≠true→=false
+         true
+         (λ (_) absurd)))))
+
+(claim ind-⊥→decides⁼→strong-decides⁼
+  (→ (→ ⊥ (Π ((A U)) A))
+     (Π ((A U)
+         (f (→ A A Bool)))
+        (→ (Decides⁼ A f)
+           (Strong-Decides⁼ A f)))))
+(define ind-⊥→decides⁼→strong-decides⁼
+  (λ (ind-⊥ A f decides⁼ p)
+     (cons
+       (car (decides⁼ p))
+       (λ (x≠y)
+          (ind-⊥→≠true→=false
+            ind-⊥
+            (f (car p) (cdr p))
+            (λ (fxy=true)
+               (x≠y ((cdr (decides⁼ p)) fxy=true))))))))
+
+(claim ⟨decides⁼→strong-decides⁼⟩→ind-⊥
+  (→ (Π ((A U)
+         (f (→ A A Bool)))
+        (→ (Decides⁼ A f)
+           (Strong-Decides⁼ A f)))
+     (→ ⊥ (Π ((A U)) A))))
+(define ⟨decides⁼→strong-decides⁼⟩→ind-⊥
+  (λ (decides⁼→strong-decides⁼ absurd)
+     (explode-true=false
+       ((cdr
+          (decides⁼→strong-decides⁼
+            ⊤
+            (λ (_ _) true)
+            (λ (_)
+               (cons
+                 (λ (_) (same true))
+                 (λ (_) (same sole))))
+            (cons sole sole)))
+         (λ (_) absurd)))))
+</pre>
+</div>
+
+<p>
+Finally, having a strong decider is not quite stronger than having a
+decider in minimal Pie, but it is when taken in tandem with decidable
+equality.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim dec⁼→strong-decider⁼→decider⁼
+  (Π ((A U))
+     (→ (Dec⁼ A)
+        (Strong-Decider⁼ A)
+        (Decider⁼ A))))
+(define dec⁼→strong-decider⁼→decider⁼
+  (λ (A dec⁼ strong-decider⁼)
+     (cons
+       (car strong-decider⁼)
+       (λ (p)
+         (cons
+           (car ((cdr strong-decider⁼) p))
+           (λ (fxy=true)
+              (ind-Either
+                (dec⁼ p)
+                (λ (_) (= A (car p) (cdr p)))
+                (λ (x=y) x=y)
+                (λ (x≠y)
+                   (explode-true=false
+                     (trans
+                       ; true = f (car p) (cdr p)
+                       (symm fxy=true)
+                       ; f (car p) (cdr p) = false
+                       ((cdr ((cdr strong-decider⁼) p)) x≠y))
+                     (= A (car p) (cdr p)))))))))))
+</pre>
+</div>
+<p>
+In particular, having a strong decider is strictly stronger than
+having a decider in the <i>paraconsistent</i> variant of Pie (i.e., with
+excluded middle and without explosion).
+</p>
+</div>
+</div>
+<div id="outline-container-orgb9357ec" class="outline-2">
+<h2 id="orgb9357ec">Conclusions</h2>
+<div class="outline-text-2" id="text-orgb9357ec">
+<p>
+Despite the circuitous nature of this story, the ending is simple: in
+minimal Pie, if a type 𝐴 has a strong equality decider, then it has
+distinguishable unequals.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim strong-decider⁼→≠→◇
+  (Π ((A U)
+      (strong-decider⁼ (Strong-Decider⁼ A))
+      (x A)
+      (y A))
+     (→ (≠ A x y) (◇ A x y))))
+(define strong-decider⁼→≠→◇
+  (λ (A strong-decider⁼ x y x≠y)
+     (cons
+       ((car strong-decider⁼) x)
+       (cons
+         ((car ((cdr strong-decider⁼) (cons x x))) (same x))
+         ((cdr ((cdr strong-decider⁼) (cons x y))) x≠y)))))
+</pre>
+</div>
+
+<p>
+And this is certainly one of those cases where the journey is worth
+more than the destination.  The final definition seems <i>right</i>, in the
+sense that the proof uses the data its given exactly as you would
+expect. There's a satisfying beauty to it, like all the pieces go where
+they should.  But the true value of this exercise comes from
+recognizing that having strong deciders sits on a spectrum of
+decidable equality that is not really all that visible in vanilla Pie.
+</p>
+
+<p>
+Generally speaking, I believe that examining the minimal fragments of
+constructive logics in this reverse-mathematical fashion can reveal
+some pretty interesting structures in constructive proofs.  Or maybe
+it just scratches in itch for the proof-twiddlers among us.
+</p>
+
+<p>
+One last thing. It's perhaps worth giving one final definition:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">(claim Very-Strong-Decides
+  (Π ((A U)
+      (f (→ A Bool))
+      (P (→ A U)))
+     U))
+(define Very-Strong-Decides
+  (λ (A f P)
+     (Π ((x A))
+        (∧ (↔ (P x) (= Bool (f x) true))
+           (↔ (¬ (P x)) (= Bool (f x) false))))))
+</pre>
+</div>
+
+<p>
+If you're feeling explosion conscious, having a very strong decider in
+this sense seems to be the "right" way of capturing decidable
+equality.  It's ultimately just an amalgamation of a strong decider
+and a decider, so it's equivalent to decidable equality in vanilla
+Pie.  Its only curiosity is that there's no need to require in the
+definition
+</p>
+
+<blockquote>
+<p>
+(→ (= Bool (f x) false) (¬ (P x)))
+</p>
+</blockquote>
+
+<p>
+because this is implied (in minimal Pie) by the other three
+implications.  But, I'd choose an unnecessary assumption over a lack
+of symmetry any day.
+</p>
+
+<p>
+<i>July 1, 2025</i>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">If only the sentence ended there.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">See, e.g., Proposition 3.2
+of Constructivism in Mathematics by Trolestra and van Dalen.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Moving forward, we'll take advantage of the fact that
+the principle of explosion is not a theorem of minimal Pie: to show
+that any other claim is not a theorem, it suffices to show that it
+implies explosion.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">See, e.g., Proposition 2.1.1 in <a href="https://arxiv.org/abs/1804.05495">Constructive Reverse
+Mathematics</a> by Diener. Actually, just read the whole thing, it's very
+good.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Said another way, we can't prove ind-⊥→≠→◇ in minimal Pie.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Naturally,
+I'll call this classical Pie.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">If I were building an interface for
+decidability in Pie, I would <i>not</i> design it this way, but this makes
+proving things easier: there's no need to do intermediate translations
+between equivalent definitions.</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>

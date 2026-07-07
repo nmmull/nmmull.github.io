@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-07-07 Tue 17:49 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>On the Papacy of Bertrand Russell</title>
+<meta name="author" content="Nathan" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="myStyle.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">On the Papacy of Bertrand Russell</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1fb9335">Absurdity</a></li>
+<li><a href="#org5967eb4">Congruence</a></li>
+<li><a href="#orgbd646da">Explosives</a></li>
+<li><a href="#orgce32d60">Intermission</a></li>
+<li><a href="#org47d6248">Vectors</a></li>
+<li><a href="#org668933d">Lists</a></li>
+<li><a href="#org8fa8f11">Finite Sets</a></li>
+</ul>
+</div>
+</div>
+<p>
+<i><b>Abstract.</b> I present several Pie formalizations of the claim:</i>
+</p>
+
+<blockquote>
+<p>
+<i>1 = 0 implies I am the Pope.</i>
+</p>
+</blockquote>
+
+<p>
+<i>Some formalizations capture Bertrand Russell's original argument with
+high fidelity, and others are quite different (and in some regards
+simpler). The goal is to highlight the implicit assumptions of the
+various proofs, in particular with respect to explicit invocations of
+the principle of explosion.  This piece is based on an email
+conversation with <a href="https://people.cs.uchicago.edu/~stuart/">Stuart Kurtz</a> and <a href="https://people.cs.uchicago.edu/~caldwellb/">Ben Caldwell</a>, who I consider to be
+co-authors but without the responsibility of answering for my mistakes
+or agreeing with my opinions.</i>
+</p>
+
+
+<p>
+Bertrand Russull is said to have proved that he was the Pope given
+that 1 = 0 in order to demonstrate the <a href="https://en.wikipedia.org/wiki/Principle_of_explosion">principle of explosion</a>
+a.k.a. <i>ex falso quodlibet</i>.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>  This principle states that
+any proposition follows from a contradiction.  The argument in it's
+<a href="https://www.nku.edu/~longa/classes/mat385_resources/docs/russellpope.html">currently most cited form</a> goes:
+</p>
+
+<blockquote>
+<p>
+<i>Add 1 to both sides of the equation: then we have 2 = 1. The set
+containing just me and the Pope has 2 members. But 2 = 1, so it has
+only 1 member; therefore, I am the Pope.</i>
+</p>
+</blockquote>
+
+<p>
+It's a clever argument, but is often presented aphoristically, leaving
+just enough room for a chuckle, but not enough for rigorous analysis.
+The purpose of this piece is to make some room.
+</p>
+
+<p>
+Take, for example, this argument:
+</p>
+
+<blockquote>
+<p>
+<i>1 = 0 contradicts the fact that 1 ≠ 0. By the principle of explosion, I
+am the Pope.</i>
+</p>
+</blockquote>
+
+<p>
+It clearly lacks the disarming wit of the Russell's argument and is
+unlikely to persuade an individual who <i>doubts</i> the principle in the
+first place, but it does beg the question: what did Russell accomplish
+with his argument over this one? He avoids referring to the principle
+of explosion directly, but to what end? Is he making a claim about
+<a href="https://en.wikipedia.org/wiki/Paraconsistent_logic">paraconsistent</a> or <a href="https://en.wikipedia.org/wiki/Minimal_logic">minimal</a> logic?  Is he attempting to demonstrate the
+naturalness of the principle (perhaps by obfuscating its use)?<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+In order to analyze this simple theorem to death, I'll consider
+several formalizations of it in <a href="https://docs.racket-lang.org/pie/index.html">Pie</a>, a dependently typed programming
+language created for the book <a href="https://thelittletyper.com">The Little Typer</a> (which I recommend to
+anyone interested in learning about dependent type theory).  The
+motivation for this is threefold.
+</p>
+
+<ol class="org-ol">
+<li>The Little Typer is used at UChicago by <a href="https://people.cs.uchicago.edu/~stuart/">Stuart Kurtz</a> in his course
+on type theory, and I'd like this piece to be approachable to
+anyone who's taken the course (and is willing to do a bit of
+keyboard head-banging).</li>
+<li>Pie is very explicit. This makes it easier (for me) to ensure I
+haven't done anything sneaky.<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup></li>
+<li>I like it.</li>
+</ol>
+
+<p>
+<b>Disclaimer:</b> This is <i>not</i> a tutorial on dependent type theory or
+Pie.  I realize this severely limits the scope of this piece, but also
+I don't really care (sorry). That said, please read The Little Typer!
+It's great!
+</p>
+<div id="outline-container-org1fb9335" class="outline-2">
+<h2 id="org1fb9335">Absurdity</h2>
+<div class="outline-text-2" id="text-org1fb9335">
+<p>
+The principle of explosion appears in Pie as <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._ind-.Absurd%29%29"><code>ind-Absurd</code></a>, the
+induction principle for <a href="https://docs.racket-lang.org/pie/index.html#%28part._.Absurd%29"><code>Absurd</code></a> (i.e., the empty type).  We can use
+this to formalize the second, less witty argument above given a proof
+that 1 is, in fact, not equal to 0.<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>  In what follows, I use atoms to represent me
+and the Pope.<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>  Also
+note the standard encoding of negation as implication of absurdity.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp"># lang pie
+
+(claim Not (-&gt; U U))
+(define Not (<span style="color: #a020f0;">lambda</span> (A) (-&gt; A Absurd)))
+
+(claim &lt;&gt; (Pi ((A U)) (-&gt; A A U)))
+(define &lt;&gt; (<span style="color: #a020f0;">lambda</span> (A x y) (Not (= A x y))))
+
+(claim 1&lt;&gt;0 (&lt;&gt; Nat 1 0))
+(define 1&lt;&gt;0
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (replace
+      <span style="color: #b22222;">; target
+</span>      1=0
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (n)
+        (which-Nat
+          <span style="color: #b22222;">; target
+</span>          n
+          <span style="color: #b22222;">; base
+</span>          Absurd
+          <span style="color: #b22222;">; step
+</span>          (<span style="color: #a020f0;">lambda</span> (_) Trivial)))
+      <span style="color: #b22222;">; base
+</span>      sole)))
+
+(claim 1=0-implies-i-am-the-pope-0
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-0
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (ind-Absurd
+      <span style="color: #b22222;">; target
+</span>      (1&lt;&gt;0 1=0)
+      <span style="color: #b22222;">; motive
+</span>      (= Atom 'me 'pope))))
+</pre>
+</div>
+
+<p>
+There's nothing wrong with this proof mathematically speaking; the
+principle of explosion is an axiom in most standard logical
+systems.<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+But it's not the proof that Russell gave.  He chooses to bring in some
+pretty heavy artillery: sets.<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>  We'll come
+back to this. But before formalizing Russell's argument, an interlude
+on what I believe is the simplest papacy proof that doesn't use
+<code>ind-Absurd</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org5967eb4" class="outline-2">
+<h2 id="org5967eb4">Congruence</h2>
+<div class="outline-text-2" id="text-org5967eb4">
+<p>
+One crucial feature of natural numbers that they have a distinguished
+element: 0. This number is more than just distinguished (it's the
+smallest with respect to the standard ordering, it's an additive
+identity and a multiplicative annihilator) but at the moment it's
+distinguished status is all we need.  We can easily determine if any
+number is or is not 0.  In Pie, this is witnessed by a simplified
+recursor (already featured above) called <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._which-.Nat%29%29"><code>which-Nat</code></a>, with which we
+can make values (and types!) that depend on whether or not a given
+number is 0.
+</p>
+
+<p>
+Consider this simple (though still less clever) papacy proof:
+</p>
+
+<blockquote>
+<p>
+<i>Suppose we give the Pope a sticker with the number 0 on it, and give
+all other persons a sticker with the number 1 on it.  It follows that
+if a person has a 0 sticker, then they are the Pope.  Since 1 = 0, I
+have a 0 sticker, so I am the Pope.</i>
+</p>
+</blockquote>
+
+<p>
+In fact, everyone is the pope (that's kind of the point).  This
+argument can be formalized in Pie with <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._cong%29%29"><code>cong</code></a>, which allows us to
+prove f(x) = f(y) given x = y.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim 1=0-implies-i-am-the-pope-1
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-1
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (cong
+      <span style="color: #b22222;">; target
+</span>      1=0
+      <span style="color: #b22222;">; fun
+</span>      (<span style="color: #a020f0;">the</span> (-&gt; Nat Atom)
+        (<span style="color: #a020f0;">lambda</span> (n)
+          (which-Nat
+            <span style="color: #b22222;">; target
+</span>            n
+            <span style="color: #b22222;">; base
+</span>            'pope
+            <span style="color: #b22222;">; step
+</span>            (<span style="color: #a020f0;">lambda</span> (_) 'me)))))))
+</pre>
+</div>
+
+<p>
+And no use of <code>ind-Absurd</code>, so the principle of explosion isn't
+necessary to prove Russell's papacy.  But this proof might have you
+thinking: if all we're doing is applying a function to each side of
+the equation 1 = 0 (in essence replacing 1 with me and 0 with the
+Pope) what's to stop us from making <i>any</i> two things equal? Answer:
+nothing!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim 1=0-implies-any-equality
+  (Pi ((A U)
+       (x A)
+       (y A))
+    (-&gt; (= Nat 1 0) (= A x y))))
+(define 1=0-implies-any-equality
+  (<span style="color: #a020f0;">lambda</span> (A x y 1=0)
+    (cong
+      <span style="color: #b22222;">; target
+</span>      1=0
+      <span style="color: #b22222;">; fun
+</span>      (<span style="color: #a020f0;">the</span> (-&gt; Nat A)
+        (<span style="color: #a020f0;">lambda</span> (n)
+          (which-Nat
+            <span style="color: #b22222;">; target
+</span>            n
+            <span style="color: #b22222;">; base
+</span>            y
+            <span style="color: #b22222;">; step
+</span>            (<span style="color: #a020f0;">lambda</span> (_) x)))))))
+
+(claim 1=0-implies-i-am-the-pope-2
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-2
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (1=0-implies-any-equality Atom 'me 'pope 1=0)))
+</pre>
+</div>
+
+<p>
+But wait, there's more! With a little more finesse we can derive
+<i>anything</i> from 1 = 0. Rather than using congruence, we can use
+<a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._replace%29%29"><code>replace</code></a>, which for any predicate<sup><a id="fnr.8" class="footref" href="#fn.8" role="doc-backlink">8</a></sup>  P and
+equality x = y, allows us to <i>prove</i> P(x) and <i>conclude</i> P(y).
+Because 0 is a distinguished number, we can design a predicate P such
+that P(1) easy to prove (e.g., <a href="https://docs.racket-lang.org/pie/index.html#%28part._.Trivial%29"><code>Trivial</code></a>) and P(0) is anything we
+want.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim explode-1=0
+  (Pi ((A U)) (-&gt; (= Nat 1 0) A)))
+(define explode-1=0
+  (<span style="color: #a020f0;">lambda</span> (A 1=0)
+    (replace
+      <span style="color: #b22222;">; target
+</span>      1=0
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (a)
+        (which-Nat
+          <span style="color: #b22222;">; target
+</span>          a
+          <span style="color: #b22222;">; base
+</span>          A
+          <span style="color: #b22222;">; step
+</span>          (<span style="color: #a020f0;">lambda</span> (_) Trivial)))
+      <span style="color: #b22222;">; base
+</span>      sole)))
+
+(claim 1=0-implies-i-am-the-pope-3
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-3
+  (explode-1=0 (= Atom 'me 'pope)))
+</pre>
+</div>
+
+<p>
+In other words, the claim 1 = 0 is <i>explosive</i>.  In fact, we could
+<i>define</i> <code>Absurd</code> using the type <code>(= Nat 0 1)</code>, i.e., we could do away
+with <code>Absurd</code> altogether and used <code>(= Nat 0 1)</code> instead.<sup><a id="fnr.9" class="footref" href="#fn.9" role="doc-backlink">9</a></sup>
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd646da" class="outline-2">
+<h2 id="orgbd646da">Explosives</h2>
+<div class="outline-text-2" id="text-orgbd646da">
+<p>
+The first thing to observe is just how lucky Russell was in the choice
+of contradiction from which he needed to prove his papacy. It just so
+happens that 1 = 0 is explosive in the sense above.  This gave him a
+fair amount power to come up with a proof.  We can even re-imagine
+Russell's argument as a sort of magic trick:
+</p>
+
+<blockquote>
+<p>
+<i>Here I have here an ordinary sheet of paper. On one side I've written
+the number 1, and on the other the number 0.  May I have a volunteer
+write a proposition on the side with 0?</i>
+</p>
+
+<p>
+<i>Ah, "Bertrand Russell is the Pope", very good.</i>
+</p>
+
+<p>
+<i>I will now, before your very eyes, prove to you that I am the Pope
+assuming that 1 = 0.  I begin by writing on my sheet of paper, the
+side with the number 1: "My name is Bertrand Russell."  We all accept
+this to be true, yes?  Then it is certainly the case that the side
+with 1 has written on it a true fact, yes? Very good. Now, suppose 1
+= 0.  Then you must confess that the side with 0 has written on it a
+true fact! For, 1 or 0, what difference does it make if they are
+equal? But that true fact is &#x2026; Presto! I am the Pope!</i>
+</p>
+</blockquote>
+
+<p>
+In the presence of the principle of explosion, everything provably
+false is explosive, and this can be witnessed within Pie (without
+using <code>ind-Absurd</code>).  In fact, that everything provably false is
+explosive is <i>equivalent</i> to the principle of explosion.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim ind-absurd-implies-explode
+  (-&gt; (Pi ((A U)) (-&gt; Absurd A))
+    (Pi ((A U)) (-&gt; (Not A) (Pi ((B U)) (-&gt; A B))))))
+(define ind-absurd-implies-explode
+  (<span style="color: #a020f0;">lambda</span> (ind-absurd A not-a B a)
+    (ind-absurd B (not-a a))))
+
+(claim explode-implies-ind-absurd
+  (-&gt; (Pi ((A U)) (-&gt; (Not A) (Pi ((B U)) (-&gt; A B))))
+    (Pi ((A U)) (-&gt; Absurd A))))
+(define explode-implies-ind-absurd
+  (<span style="color: #a020f0;">lambda</span> (explode A)
+    (explode Absurd (<span style="color: #a020f0;">lambda</span> (x) x) A)))
+</pre>
+</div>
+
+
+
+<p>
+But what we're saying about 1 = 0 is stronger than this: let's say
+that a type <code>A</code> is <b>truly explosive</b> if we can derive anything from
+<code>A</code> without <code>ind-Absurd</code>.  Any equality between unequal natural
+numbers is truly explosive. So is <code>(Pi ((A U)) A)</code> (which expresses
+that everything is true).
+</p>
+
+<p>
+There are also many claims which are provably false and not truly
+explosive, e.g., <code>Pair Absurd Absurd</code> and <code>Either Absurd (= Nat 13
+5)</code>.  Also, just <code>Absurd</code>.  Imagine if Russell's interlocutor in the
+original story had said:
+</p>
+
+<blockquote>
+<p>
+<i>You're telling me that anything follows from a contradiction? Well
+then, prove that you're the Pope from the false proposition!</i>
+</p>
+</blockquote>
+
+<p>
+I'm sure Russull would come up with a more intelligent response than I
+could, but he couldn't succeed in proving his papacy without appealing
+to the principle of explosion.<sup><a id="fnr.10" class="footref" href="#fn.10" role="doc-backlink">10</a></sup>
+</p>
+</div>
+</div>
+<div id="outline-container-orgce32d60" class="outline-2">
+<h2 id="orgce32d60">Intermission</h2>
+<div class="outline-text-2" id="text-orgce32d60">
+<p>
+Let's take stock.  What was Russell supposed to accomplish with his
+argument? I've presented things up to now as though our imagined
+interlocutor <i>doubted</i> the principle of explosion.  We've shown that
+we can use a form of explosion to prove Russell's papacy without
+appealing to the principle proper.
+</p>
+
+<p>
+But perhaps our imagined interlocutor was just challenging the
+naturalness of the principle. Maybe they didn't doubt the principle
+<i>per se</i> but wanted a demonstration of its use in "normal" discourse.
+In this sense, the use of <code>explode-1=0</code> is also likely to be not all
+too satisfying; it has the feeling of a magic trick.  And the
+congruence proof has an equality-twiddling flavor which is
+mathematically acceptable, but not necessarily intuitive.
+</p>
+
+<p>
+In what remains, we look at a few formalization which are closer to
+Russell's argument, and hence more natural. I believe the first one
+(using vectors) is the "correct" one, but it depends on a loose
+interpretation of Russell's meaning of "set."
+</p>
+</div>
+</div>
+<div id="outline-container-org47d6248" class="outline-2">
+<h2 id="org47d6248">Vectors</h2>
+<div class="outline-text-2" id="text-org47d6248">
+<p>
+We begin by putting me and the Pope into a 2-element vector:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim me-and-the-pope-Vec (Vec Atom 2))
+(define me-and-the-pope-Vec (vec:: 'me (vec:: 'pope vecnil)))
+</pre>
+</div>
+
+<p>
+We'd like to argue that if we extract 2 elements from a 1-element
+vector then they're the same element.  But in order to identify me and
+the Pope, it must be that if we extract 2 elements in the same way
+from a 2-element vector, then they're different.
+</p>
+
+<p>
+We already have one way of extracting an element from a vector: <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._head%29%29"><code>head</code></a>
+grabs the first one.  We need another way of extracting an element
+which gives the head element of a singleton, and a non-head element of
+a 2-element vector. So we define a <code>next</code> function, which grabs the
+<i>second</i> element of a vector, if it exists, and otherwise, falls back
+to the head.  This will be more convenient if we pre-destruct the
+given vector; in other words, we're really defining a head function
+with a default value for the empty case.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim next
+  (Pi ((A U)
+       (n Nat))
+    (-&gt; A (Vec A n) A)))
+(define next
+  (<span style="color: #a020f0;">lambda</span> (A n a v)
+    (ind-Vec
+      <span style="color: #b22222;">; target-1
+</span>      n
+      <span style="color: #b22222;">; target-2
+</span>      v
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (_ _) A)
+      <span style="color: #b22222;">; base
+</span>      a
+      <span style="color: #b22222;">; step
+</span>      (<span style="color: #a020f0;">lambda</span> (_ a _ _) a))))
+</pre>
+</div>
+
+<p>
+We then show that if the tail of our vector is empty (i.e., the vector is
+a singleton), then the head element is the same as the next element.
+We express the emptiness of the tail in terms of its length because
+this will make using the hypothesis 1 = 0 easier.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim empty-tail-implies-head=next
+  (Pi ((A U)
+       (n Nat)
+       (n=0 (= Nat n 0))
+       (v (Vec A (add1 n))))
+    (= A
+       (head v)
+       (next A n (head v) (tail v)))))
+(define empty-tail-implies-head=next
+  (<span style="color: #a020f0;">lambda</span> (A n n=0)
+    (replace
+      <span style="color: #b22222;">; target
+</span>      (symm n=0)
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (k)
+        (Pi ((v (Vec A (add1 k))))
+          (= A (head v) (next A k (head v) (tail v)))))
+      <span style="color: #b22222;">; base
+</span>      (<span style="color: #a020f0;">lambda</span> (v)
+        (replace
+          <span style="color: #b22222;">; target
+</span>          (<span style="color: #a020f0;">the</span> (= (Vec A 0) vecnil (tail v)) (same vecnil))
+          <span style="color: #b22222;">; motive
+</span>          (<span style="color: #a020f0;">lambda</span> (a) (= A (head v) (next A 0 (head v) a)))
+          <span style="color: #b22222;">; base
+</span>          (same (head v)))))))
+</pre>
+</div>
+
+<p>
+And so if 1 = 0, <code>me-and-the-pope</code> is a 1-element vector, and the
+head element (<code>'me</code>) is the same as the next element (<code>'pope</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim 1=0-implies-i-am-the-pope-4
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-4
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (empty-tail-implies-head=next
+      Atom
+      1
+      1=0
+      me-and-the-pope-Vec)))
+</pre>
+</div>
+
+<p>
+Presto! (just kidding) I believe this proof captures the spirit of
+Russell's argument while remaining simple.  And it doesn't appeal to
+the principle of explosion, just our ability to fool our type system
+into thinking that a 2-element vector only has 1 element.  It's only
+real knock is that it doesn't use to any set-theoretic language (and
+this isn't a true knock in my opinion).  Also, and this super
+nitpicky, it doesn't use the "add 1 to both sides" part of the
+argument.
+</p>
+
+<p>
+But we're not here to stop at a reasonable stopping point, we're here
+to overdo things. So let's suppose we <i>do</i> want to use set-theoretic
+language (and add 1 to both sides).  The first thing we'll have to
+figure out is how to talk about <i>membership</i>. It's not possible to
+define a membership predicate for vectors directly because of the
+(somewhat surprising) absence of a <code>rec-Vec</code> recursor.<sup><a id="fnr.11" class="footref" href="#fn.11" role="doc-backlink">11</a></sup>
+But there is <a href="https://docs.racket-lang.org/pie/index.html#%28def._%28%28lib._pie%2Fmain..rkt%29._rec-.List%29%29"><code>rec-List</code></a>!
+</p>
+</div>
+</div>
+<div id="outline-container-org668933d" class="outline-2">
+<h2 id="org668933d">Lists</h2>
+<div class="outline-text-2" id="text-org668933d">
+<p>
+Round 2: we begin by putting me and the pope into a 2-element <i>list</i>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim me-and-the-pope-List (List Atom))
+(define me-and-the-pope-List (<span style="color: #483d8b;">::</span> 'me (<span style="color: #483d8b;">::</span> 'pope nil)))
+</pre>
+</div>
+
+<p>
+Lists don't keep track of their own length, so we'll need to define a
+<code>length</code> function, mostly so that we can determine if a list is a
+singleton.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim length
+  (Pi ((A U))
+    (-&gt; (List A) Nat)))
+(define length
+  (<span style="color: #a020f0;">lambda</span> (A l)
+    (rec-List
+      <span style="color: #b22222;">; target
+</span>      l
+      <span style="color: #b22222;">; base
+</span>      0
+      <span style="color: #b22222;">; step
+</span>      (<span style="color: #a020f0;">lambda</span> (_ _ length-tail)
+        (add1 length-tail)))))
+</pre>
+</div>
+
+<p>
+We can use <code>rec-List</code> to recursively define a membership predicate on
+lists.  This predicate says (albeit more verbosely in the Pie version):
+</p>
+
+<ul class="org-ul">
+<li>x ∉ []</li>
+<li>x ∈ (y ∷ ys) if x = y or x ∈ ys</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim Elem-List
+  (Pi ((A U)
+       (x A)
+       (l (List A)))
+    U))
+(define Elem-List
+  (<span style="color: #a020f0;">lambda</span> (A x l)
+    ((rec-List
+       <span style="color: #b22222;">; target
+</span>       l
+       <span style="color: #b22222;">; base
+</span>       (<span style="color: #a020f0;">the</span> (-&gt; A U) (<span style="color: #a020f0;">lambda</span> (_) Absurd))
+       <span style="color: #b22222;">; step
+</span>       (<span style="color: #a020f0;">lambda</span> (x xs elem-xs)
+         (<span style="color: #a020f0;">lambda</span> (y)
+           (Either
+             (= A x y)
+             (elem-xs y)))))
+     x)))
+</pre>
+</div>
+
+<p>
+Now, the kicker: we can prove a natural looking lemma which says that
+any 2 elements of a singleton list are the same.  The proof is hairy,
+so I won't go into the details, but it goes as you would expect:
+</p>
+
+<blockquote>
+<p>
+if x ∈ [a] and y ∈ [a] then x = a and y = a, so x = y.
+</p>
+</blockquote>
+
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim singleton-has-unique-element-List
+  (Pi ((A U)
+       (x A)
+       (y A)
+       (l (List A)))
+    (-&gt; (= Nat (length A l) 1)
+        (Elem-List A x l)
+        (Elem-List A y l)
+      (= A x y))))
+(define singleton-has-unique-element-List
+  (<span style="color: #a020f0;">lambda</span> (A x y l)
+    (ind-List
+      <span style="color: #b22222;">; target
+</span>      l
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (l)
+        (-&gt; (= Nat (length A l) 1)
+            (Elem-List A x l)
+            (Elem-List A y l)
+          (= A x y)))
+      <span style="color: #b22222;">; base
+</span>      (<span style="color: #a020f0;">lambda</span> (0=1)
+        (explode-1=0
+          (-&gt; Absurd
+              Absurd
+            (= A x y))
+          (symm 0=1)))
+      <span style="color: #b22222;">; step
+</span>      (<span style="color: #a020f0;">lambda</span> (a as almost)
+        (ind-List
+          <span style="color: #b22222;">; target
+</span>          as
+          <span style="color: #b22222;">; motive
+</span>          (<span style="color: #a020f0;">lambda</span> (l)
+            (-&gt; (= Nat (length A (<span style="color: #483d8b;">::</span> a l)) 1)
+                  (Elem-List A x (<span style="color: #483d8b;">::</span> a l))
+                  (Elem-List A y (<span style="color: #483d8b;">::</span> a l))
+                  (= A x y)))
+          <span style="color: #b22222;">; base
+</span>          (<span style="color: #a020f0;">lambda</span> (_ x-in-a y-in-a)
+            (ind-Either
+              <span style="color: #b22222;">; target
+</span>              x-in-a
+              <span style="color: #b22222;">; motive
+</span>              (<span style="color: #a020f0;">lambda</span> (_) (= A x y))
+              <span style="color: #b22222;">; on-left
+</span>              (<span style="color: #a020f0;">lambda</span> (a=x)
+                (ind-Either
+                  <span style="color: #b22222;">; target
+</span>                  y-in-a
+                  <span style="color: #b22222;">; motive
+</span>                  (<span style="color: #a020f0;">lambda</span> (_) (= A x y))
+                  <span style="color: #b22222;">; on-left
+</span>                  (<span style="color: #a020f0;">lambda</span> (a=y)
+                    (trans
+                      (symm a=x)
+                      a=y))
+                  <span style="color: #b22222;">; on-right
+</span>                  (<span style="color: #a020f0;">lambda</span> (false)
+                    (ind-Absurd
+                      <span style="color: #b22222;">; target
+</span>                      false
+                      <span style="color: #b22222;">; motive
+</span>                      (= A x y)))))
+              (<span style="color: #a020f0;">lambda</span> (false)
+                (ind-Absurd
+                  <span style="color: #b22222;">; target
+</span>                  false
+                  <span style="color: #b22222;">; motive
+</span>                  (= A x y)))))
+          <span style="color: #b22222;">; step
+</span>          (<span style="color: #a020f0;">lambda</span> (b bs _ SSk=1)
+            (explode-1=0
+              (-&gt; (Elem-List A x (<span style="color: #483d8b;">::</span> a (<span style="color: #483d8b;">::</span> b bs)))
+                  (Elem-List A y (<span style="color: #483d8b;">::</span> a (<span style="color: #483d8b;">::</span> b bs)))
+                (= A x y))
+              (cong
+                <span style="color: #b22222;">; target
+</span>                SSk=1
+                <span style="color: #b22222;">; fun
+</span>                (<span style="color: #a020f0;">the</span> (-&gt; Nat Nat)
+                  (<span style="color: #a020f0;">lambda</span> (n)
+                    (which-Nat
+                      <span style="color: #b22222;">; target
+</span>                      n
+                      <span style="color: #b22222;">; base
+</span>                      0
+                      <span style="color: #b22222;">; step
+</span>                      (<span style="color: #a020f0;">lambda</span> (n-1)
+                        (which-Nat
+                          <span style="color: #b22222;">; target
+</span>                          n-1
+                          <span style="color: #b22222;">; base
+</span>                          0
+                          <span style="color: #b22222;">; target
+</span>
+                          (<span style="color: #a020f0;">lambda</span> (_) 1))))))))))))))
+</pre>
+</div>
+
+<p>
+Those of you keeping score at home may have noticed: we snuck in a
+couple uses of <code>ind-Absurd</code>!  According to the somewhat artificial
+rules of the game we're playing, this is <i>necessary</i>. We can
+demonstrate this formally by deriving the principle of explosion from
+the above lemma without using <code>ind-Absurd</code>.  This works by applying
+our lemma to [1], using our false assumption to prove that 0 ∈ [1],
+and then exploding the resulting proof of 1 = 0.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim singleton-has-unique-element-List-implies-ind-absurd
+  (-&gt; (Pi ((A U)
+           (x A)
+           (y A)
+           (l (List A)))
+        (-&gt; (= Nat (length A l) 1)
+            (Elem-List A x l)
+            (Elem-List A y l)
+          (= A x y)))
+    (Pi ((A U)) (-&gt; Absurd A))))
+(define singleton-has-unique-element-List-implies-ind-absurd
+  (<span style="color: #a020f0;">lambda</span> (prf A absurd)
+    (explode-1=0
+      A
+      (prf
+        Nat
+        1
+        0
+        (<span style="color: #483d8b;">::</span> 1 nil)
+        (same 1)
+        (left (same 1))
+        (right absurd)))))
+</pre>
+</div>
+
+<p>
+Okay, fine.<sup><a id="fnr.12" class="footref" href="#fn.12" role="doc-backlink">12</a></sup>  But we do get this nice
+papacy proof:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim 1=0-implies-i-am-the-pope-5
+  (-&gt; (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-5
+  (<span style="color: #a020f0;">lambda</span> (1=0)
+    (singleton-has-unique-element-List
+      Atom
+      'me
+      'pope
+      me-and-the-pope-List
+      (cong
+        <span style="color: #b22222;">; target
+</span>        1=0
+        <span style="color: #b22222;">; fun
+</span>        (<span style="color: #a020f0;">the</span> (-&gt; Nat Nat)
+          (<span style="color: #a020f0;">lambda</span> (n)
+            (add1 n))))
+      (left (same 'me))              <span style="color: #b22222;">; 'me is in the list
+</span>      (right (left (same 'pope)))))) <span style="color: #b22222;">; 'pope is in the list</span>
+</pre>
+</div>
+
+<p>
+And look! The "add 1 to both sides" part is there!
+</p>
+</div>
+</div>
+<div id="outline-container-org8fa8f11" class="outline-2">
+<h2 id="org8fa8f11">Finite Sets</h2>
+<div class="outline-text-2" id="text-org8fa8f11">
+<p>
+What remains is an exercise in taking things too far.  What we've done
+above is all fine and good, but the maximalist in me wants to say: but
+what about <i>actual</i> sets? So without further ado, a version of
+Russell's argument using an encoding of finite sets in Pie.<sup><a id="fnr.13" class="footref" href="#fn.13" role="doc-backlink">13</a></sup>  I won't dwell on the details,
+it's for the most part ugly. But, to loosely quote Barendregt: "the
+attentive reader that has worked through the proofs in this [piece]
+may experience a free association of the whirling details."
+</p>
+
+<p>
+The first step is to define an encoding of finite sets.  We use a
+pretty standard one: an n-element finite set is a n-stack of <code>Sigma</code>
+types that keep track of an element and a proof that it's not equal to
+any of the other elements in the set.  We have to define the set type
+and it's membership predicate simultaneously, and then extract each
+part <i>a posteriori</i>.  Note one important feature of this encoding that
+will come back later: it depends on equality.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim FiniteSetAndElem
+  (Pi ((A U)
+       (n Nat))
+    (Sigma ((B U)) (-&gt; A B U))))
+(define FiniteSetAndElem
+  (<span style="color: #a020f0;">lambda</span> (A n)
+    (rec-Nat
+      <span style="color: #b22222;">; target
+</span>      n
+      <span style="color: #b22222;">; base
+</span>      (<span style="color: #a020f0;">the</span> (Sigma ((B U)) (-&gt; A B U))
+        (cons Trivial (<span style="color: #a020f0;">lambda</span> (x empty) Absurd)))
+      <span style="color: #b22222;">; step
+</span>      (<span style="color: #a020f0;">lambda</span> (n-1 set-and-elem)
+        (cons
+          (Sigma ((y A)
+                  (set (car set-and-elem)))
+            (-&gt; ((cdr set-and-elem) y set) Absurd))
+          (<span style="color: #a020f0;">lambda</span> (x set)
+            (Either
+              (= A x (car set))
+              ((cdr set-and-elem) x (car (cdr set))))))))))
+
+(claim FiniteSet (-&gt; U Nat U))
+(define FiniteSet (<span style="color: #a020f0;">lambda</span> (A n) (car (FiniteSetAndElem A n))))
+
+(claim Elem-FiniteSet
+  (Pi ((A U)
+       (n Nat))
+    (-&gt; A (FiniteSet A n) U)))
+(define Elem-FiniteSet (<span style="color: #a020f0;">lambda</span> (A n) (cdr (FiniteSetAndElem A n))))
+</pre>
+</div>
+
+<p>
+Next we write a little interface for constructing small sets.  Again,
+note that constructing a 2-element set <i>requires</i> that the 2
+elements are not equal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim empty (Pi ((A U)) (FiniteSet A 0)))
+(define empty (<span style="color: #a020f0;">lambda</span> (A) sole))
+
+(claim singleton (Pi ((A U) (x A)) (FiniteSet A 1)))
+(define singleton
+  (<span style="color: #a020f0;">lambda</span> (A x)
+    (cons x (cons sole (<span style="color: #a020f0;">lambda</span> (x) x)))))
+
+(claim pair
+  (Pi ((A U)
+       (x A)
+       (y A)
+       (x&lt;&gt;y (-&gt; (= A x y) Absurd)))
+    (FiniteSet A 2)))
+(define pair
+  (<span style="color: #a020f0;">lambda</span> (A x y x&lt;&gt;y)
+    (cons
+      x
+      (cons
+        (singleton A y)
+        (<span style="color: #a020f0;">lambda</span> (x=y-or-false)
+          (ind-Either
+            <span style="color: #b22222;">; target
+</span>            x=y-or-false
+            <span style="color: #b22222;">; motive
+</span>            (<span style="color: #a020f0;">lambda</span> (_) Absurd)
+            <span style="color: #b22222;">; on-left
+</span>            (<span style="color: #a020f0;">lambda</span> (x=y) (x&lt;&gt;y x=y))
+            <span style="color: #b22222;">; on-right
+</span>            (<span style="color: #a020f0;">lambda</span> (false) false)))))))
+</pre>
+</div>
+
+<p>
+Let's take a look again at the language of the argument: "the set
+containing me and the Pope has 2 members." How do we know this? The
+only way to be sure is if we already know <i>I'm not the Pope</i>.  We
+don't know this either, but if I'm the Pope, there's nothing to prove.
+The point: <i>there's a hidden non-constructive assumption in Russell's
+argument.</i> Or rather, Russell is assuming something perhaps
+non-obvious: that <i>people</i> admit decidable equality.<sup><a id="fnr.14" class="footref" href="#fn.14" role="doc-backlink">14</a></sup>
+</p>
+
+<p>
+Now for the key lemma:
+</p>
+
+<blockquote>
+<p>
+if x ∈ S and y ∈ S and |S| = 1, then x = y.
+</p>
+</blockquote>
+
+<p>
+The proof is similar to that of the analogous lemma for lists.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim singleton-has-unique-element-FiniteSet
+  (Pi ((A U)
+       (n Nat)
+       (x A)
+       (y A)
+       (s (FiniteSet A n)))
+    (-&gt; (= Nat n 1)
+        (Elem-FiniteSet A n x s)
+        (Elem-FiniteSet A n y s)
+      (= A x y))))
+(define singleton-has-unique-element-FiniteSet
+  (<span style="color: #a020f0;">lambda</span> (A n x y)
+    (ind-Nat
+      <span style="color: #b22222;">; target
+</span>      n
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (k)
+        (Pi ((s (FiniteSet A k)))
+          (-&gt; (= Nat k 1)
+              (Elem-FiniteSet A k x s)
+              (Elem-FiniteSet A k y s)
+            (= A x y))))
+      <span style="color: #b22222;">; base
+</span>      (<span style="color: #a020f0;">lambda</span> (_ 0=1 _ _)
+        (cong
+          <span style="color: #b22222;">; target
+</span>          0=1
+          <span style="color: #b22222;">; fun
+</span>          (<span style="color: #a020f0;">the</span> (-&gt; Nat A)
+            (<span style="color: #a020f0;">lambda</span> (m)
+              (which-Nat
+                <span style="color: #b22222;">; target
+</span>                m
+                <span style="color: #b22222;">; base
+</span>                x
+                <span style="color: #b22222;">; step
+</span>                (<span style="color: #a020f0;">lambda</span> (_) y))))))
+      <span style="color: #b22222;">; step
+</span>      (<span style="color: #a020f0;">lambda</span> (n-1 _)
+        (ind-Nat
+          <span style="color: #b22222;">; target
+</span>          n-1
+          <span style="color: #b22222;">; motive
+</span>          (<span style="color: #a020f0;">lambda</span> (k)
+            (Pi ((s (FiniteSet A (add1 k))))
+              (-&gt; (= Nat (add1 k) 1)
+                  (Elem-FiniteSet A (add1 k) x s)
+                  (Elem-FiniteSet A (add1 k) y s)
+                (= A x y))))
+          <span style="color: #b22222;">; base
+</span>          (<span style="color: #a020f0;">lambda</span> (s _ x-in-s y-in-s)
+            (ind-Either
+              <span style="color: #b22222;">; target
+</span>              x-in-s
+              <span style="color: #b22222;">; motive
+</span>              (<span style="color: #a020f0;">lambda</span> (_) (= A x y))
+              <span style="color: #b22222;">; on-left
+</span>              (<span style="color: #a020f0;">lambda</span> (x=r)
+                (ind-Either
+                  <span style="color: #b22222;">; target
+</span>                  y-in-s
+                  <span style="color: #b22222;">; motive
+</span>                  (<span style="color: #a020f0;">lambda</span> (_) (= A x y))
+                  <span style="color: #b22222;">; on-left
+</span>                  (<span style="color: #a020f0;">lambda</span> (y=r) (trans x=r (symm y=r)))
+                  <span style="color: #b22222;">; on-right
+</span>                  (<span style="color: #a020f0;">lambda</span> (false)
+                    (ind-Absurd
+                      <span style="color: #b22222;">; target
+</span>                      false
+                      <span style="color: #b22222;">; motive
+</span>                      (= A x y)))))
+              <span style="color: #b22222;">; on-right
+</span>              (<span style="color: #a020f0;">lambda</span> (false)
+                (ind-Absurd
+                  <span style="color: #b22222;">; target
+</span>                  false
+                  <span style="color: #b22222;">; motive
+</span>                  (= A x y)))))
+          <span style="color: #b22222;">; step
+</span>          (<span style="color: #a020f0;">lambda</span> (n-2 _)
+            (<span style="color: #a020f0;">lambda</span> (_ SSk=1 _ _)
+              (cong
+                <span style="color: #b22222;">; target
+</span>                SSk=1
+                <span style="color: #b22222;">; fun
+</span>                (<span style="color: #a020f0;">the</span> (-&gt; Nat A)
+                  (<span style="color: #a020f0;">lambda</span> (m)
+                    (which-Nat
+                      <span style="color: #b22222;">; target
+</span>                      m
+                      <span style="color: #b22222;">; base
+</span>                      x
+                      <span style="color: #b22222;">; step
+</span>                      (<span style="color: #a020f0;">lambda</span> (m-1)
+                        (which-Nat
+                          <span style="color: #b22222;">; target
+</span>                          m-1
+                          <span style="color: #b22222;">; base
+</span>                          y
+                          <span style="color: #b22222;">; step
+</span>                          (<span style="color: #a020f0;">lambda</span> (_) x))))))))))))))
+</pre>
+</div>
+
+<p>
+As in the list proof, we have to use <code>ind-Absurd</code>, but at this point
+we've given up on that battle.  Maybe what Russell accomplished was
+not giving an argument independent of <code>ind-Absurd</code>, but rather giving
+one so obfuscatory in it's use of <code>ind-Absurd</code> that it's somehow more
+natural than many of the proofs that avoid it.
+</p>
+
+<p>
+Finally addressing the aforementioned elephant: we can't construct the
+set containing just me and the Pope without already knowing that I am
+not the Pope.  Note that we didn't have to deal with this for vectors
+and lists because there's nothing stopping me from create a list
+containing me and myself, or the pope and the pope.  If we <i>assume</i>
+I'm not the Pope then the proof goes through.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim 1=0-implies-i-am-the-pope-kind-of
+  (-&gt; (&lt;&gt; Atom 'me 'pope) (= Nat 1 0) (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-kind-of
+  (<span style="color: #a020f0;">lambda</span> (me&lt;&gt;pope 1=0)
+    (singleton-has-unique-element-FiniteSet
+      Atom
+      2
+      'me
+      'pope
+      (pair Atom 'me 'pope me&lt;&gt;pope)
+      (cong
+        <span style="color: #b22222;">; target
+</span>        1=0
+        <span style="color: #b22222;">; fun
+</span>        (<span style="color: #a020f0;">the</span> (-&gt; Nat Nat)
+          (<span style="color: #a020f0;">lambda</span> (k) (add1 k))))
+      (left (same 'me))              <span style="color: #b22222;">; 'me is in the set
+</span>      (right (left (same 'pope)))))) <span style="color: #b22222;">; 'pope is in the set</span>
+</pre>
+</div>
+<p>
+As a skeptic of intuitionism, Russell likely wouldn't consider this a
+legitimate roadblock.  If we accept the law of excluded middle, we can
+work with the premise that either I am or am not the Pope, and the
+proof goes through as expected, though the trivial branch of the
+disjunction is elided in the original argument. We conclude with a
+simple generalization of the above result, which demonstrates that
+this argument works for equating any two values of a type which admits
+decidable equality.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">(claim Dec-= (-&gt; U U))
+(define Dec-=
+  (<span style="color: #a020f0;">lambda</span> (A)
+    (Pi ((x A)
+         (y A))
+      (Either
+       (= A x y)
+       (&lt;&gt; A x y)))))
+
+(claim 1=0-implies-x=y-given-dec-=
+  (Pi ((A U)
+       (x A)
+       (y A))
+    (-&gt; (Dec-= A)
+        (= Nat 1 0)
+      (= A x y))))
+(define 1=0-implies-x=y-given-dec-=
+  (<span style="color: #a020f0;">lambda</span> (A x y dec-= 1=0)
+    (ind-Either
+      <span style="color: #b22222;">; target
+</span>      (dec-= x y)
+      <span style="color: #b22222;">; motive
+</span>      (<span style="color: #a020f0;">lambda</span> (_) (= A x y))
+      <span style="color: #b22222;">; on-left
+</span>      (<span style="color: #a020f0;">lambda</span> (x=y) x=y)
+      <span style="color: #b22222;">; on-right
+</span>      (<span style="color: #a020f0;">lambda</span> (x&lt;&gt;y)
+        (singleton-has-unique-element-FiniteSet
+          A
+          2
+          x
+          y
+          (pair A x y x&lt;&gt;y)
+          (cong
+            <span style="color: #b22222;">; target
+</span>            1=0
+            <span style="color: #b22222;">; fun
+</span>            (<span style="color: #a020f0;">the</span> (-&gt; Nat Nat)
+              (<span style="color: #a020f0;">lambda</span> (k) (add1 k))))
+          (left (same x))
+          (right (left (same y))))))))
+
+(claim 1=0-implies-i-am-the-pope-classical
+  (-&gt; (Pi ((A U)) (Either A (Not A)))
+      (= Nat 1 0)
+    (= Atom 'me 'pope)))
+(define 1=0-implies-i-am-the-pope-classical
+  (<span style="color: #a020f0;">lambda</span> (lem 1=0)
+    (1=0-implies-x=y-given-dec-=
+      Atom
+      'me
+      'pope
+      (<span style="color: #a020f0;">lambda</span> (x y) (lem (= Atom x y)))
+      1=0)))
+</pre>
+</div>
+
+<p>
+So if you're a staunch intuitionist who believes that people admit
+decidable equality, then rest assured you can still carry out
+Russell's argument in this contrived form, but you're gonna need the
+principle of explosion (and doesn't this beg the question)?
+</p>
+
+<p>
+<i>June 16, 2025</i>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">The exact source of this story seems
+to be lost.  An <a href="https://www.reddit.com/r/math/comments/814cpi/bertrand_russell_is_the_pope/">old reddit post</a> claims it's in the introduction to the
+second edition of Russell's Principles of Mathematics, but unless I
+have a false copy, this is not the case.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">It
+goes without saying (but I'll say it anyway) that he's doing none of
+these things, it's just a quip.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Dependent pattern matching and
+implicit arguments are beautiful features, but using them sometimes
+feels like a riding finely-tuned motorcycle (not that I'd actually
+know, but I think the analogy stands). Pie is the steel frame bike
+you had in college, clunky and simple and gets the job done.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">A version of <code>1&lt;&gt;0</code> is given
+in The Little Typer.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">It's fair to question this choice. That said, using
+atoms has some nice properties. For one, it allows me to avoid
+postulating a <code>Person</code> type.  It would have also been possible to use
+a different type as a proxy for <code>Person</code>, e.g. <code>Nat</code>, but <code>Atom</code> is
+nice because it doesn't admit decidable equality, so using it makes
+fewer philosophical assumptions about the nature of personhood.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">That is, excluding paraconsistent and minimal systems.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">To call this heavy artillery is
+somewhat anachronistic.  At the time, set theory was a fairly
+lightweight mathematical foundations, and it would be several decades
+before we feel comfortable leaving the "paradise" of set theory (to
+quote Hilbert) and spend more time in the "playgrounds" of weaker
+foundational systems (to quote Shore).  It's also a bit unfair: set
+theory is only heavy if you're not already doing set theory, e.g., if
+you're doing type theory.  But no matter, we forge ahead.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Note that Pie uses the term
+<i>motive</i> for a predicate used in an induction principle.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This is a
+standard fact of constructive mathematics.  See, e.g., Proposition 3.2
+of Constructivism in Mathematics by Troelstra and van Dalen.  I most
+recently came across this argument in a <a href="https://github.com/lawrencecpaulson/lawrencecpaulson.github.io/issues/43#issuecomment-1944264835">comment</a> by <a href="https://hermesmarc.github.io">Marc Hermes</a> on a
+<a href="https://lawrencecpaulson.github.io/2024/02/14/Contradiction.html">blog post</a> by <a href="https://www.cl.cam.ac.uk/~lp15/">Lawrence C. Paulson</a> on the same topic as this one.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">There's much more to say about
+this. For example, it's outside the scope of this piece to prove that
+the principle of explosion isn't a theorem in Pie without
+<code>ind-Absurd</code>. There are also some interesting semi-classical
+principles that arise from looking more carefully at the notion of
+explosion.  I may come back to these questions in another piece.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This isn't
+a limitation of dependent type theory in general, just a limitation of
+Pie: it doesn't have a universe hierarchy.  Without a recursor (as
+opposed to an inductor) we'd get the dreaded "U is a type, but it does
+not have a type" error when defining the motive <code>(lambda (_ _) U)</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This is where things get a bit finicky.  Technically
+we <i>can</i> prove everything in this section without <code>ind-Absurd</code> but
+we'd have to use something explosive like <code>(= Nat 1 0)</code> in place of
+<code>Absurd</code> in <code>Elem-List</code>. But this is cheating. We could make the
+nature of this cheating more formal, but I'm satisfied with simply
+stipulating that, in this game we're playing, we're not allowed to
+replace <code>Absurd</code> in predicates we define.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13" role="doc-backlink">13</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">When I
+was a TA for Stu's type theory course I made it a tradition to do at
+least one over-the-top proof in Pie each quarter. I'd like to think
+this proof continues the tradition.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This means
+accepting that for any two people, either they are the same person or
+not the same person.  Apropos of nothing, at the time of writing, the
+film <a href="https://en.wikipedia.org/wiki/Mickey_17">Mickey 17</a> just came out.</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>

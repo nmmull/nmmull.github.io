@@ -1,0 +1,51 @@
+body {
+    font-family: 'Monaco', monospace;
+    margin: 50px;
+    max-width: 680px;
+    line-height: 1.8;
+}
+
+code {
+    font-family: 'Monaco', monospace;
+    border-style: solid;
+    border-width: thin;
+    padding: 1px;
+}
+
+pre{
+    font-family: 'Monaco', monospace;
+    border-style: solid;
+    border-width: thin;
+    padding: 10px;
+    display: block;
+    overflow: auto;
+}
+
+
+#table-of-contents {
+    position: fixed;
+    right: 1.5em;
+    top: -0.5em;
+    max-height: 100%;
+    width: 20em;
+    overflow: auto;
+}
+
+a:link, a:visited {
+    color: #328039;
+    text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: calc(680px + 24em)) {
+    #table-of-contents {
+        display: none;
+    }
+}
+
+.subtitle {
+    font-size: 0.8em;
+}
