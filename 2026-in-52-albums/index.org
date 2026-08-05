@@ -9,6 +9,201 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 31 (7/26)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/junk-drawer.jpg]]
+
+[[https://am-overcast.bandcamp.com/album/junk-drawer][*Junk Drawer* by A.M. Overcast]]
+
+This week I went on my roughly-semi-annual math-rock bender.  I
+learned Good Game came with an album in 2023 (*Get Good*) that I
+missed, and I got sucked in.  Aside: I learned there's a
+surprisingly large number of South American math-rock bands, some of
+whom bill themselves as midwest emo, which I find charming.
+
+The folks at Good Game describe A.M. Overcast as "criminally
+underrated" and I'm inclined to agree, but also, it's some of the
+strangest music I've listened to in a while.  At first +glance+
+listen, it's pretty standard math-pop-punk-rock (plus Bandcamp-tagged
+as "burritos").  But there's an uncanny valley thing going on here
+that I've had an admittedly hard time convincing other people of.
+
+The way I've been describing it: /this album sounds like it was
+written by aliens posing as a pop-punk band to blend in on Earth./
+Okay, yeah, if you listen through you likely won't agree immediately,
+but hear me out.  If I were an alien and I was gonna blend in on Earth
+by posing as a pop-punk band, I'd listen to every pop-punk song ever
+written (or as many as feasibly depending on the level of
+super-intelligence my species has attained), and develop some kind of
+AI-generated conglomeration.  I might not recognize that there are
+subcultures that make certain combinations of themes/techniques kinda
+uncommon.  I might not have a voice box, and so I'll need to generate
+a pretty good approximation to human singing, something that's
+pleasant but maybe has an unavoidable hint
+filtered-through-various-electronics sound.  I'm not gonna want
+something that's really out-there──too much attention, I might be
+found out──but I probably won't be able to really hit the average (we
+all know about hallucinations).  I'll probably write kinda short
+songs; I won't really have a good sense of the human condition and
+what-not so no reason to write ballads.  In fact, my lyrics might be a
+bit nonsense and mostly unintelligible (e.g., "I'm leaving myself
+(don't tell the neighbors) in an ordinary confident solitary way") but
+I'll cut my losses, 'cause who's listening?  If my research has told
+me anything, it's that it's all about those crunchy guitar
+chords/riffs.  It won't exactly be that every song sounds like a
+different band; rather each song'll sound like it was written by
+multiple bands, giving the whole thing a kind of consistent
+inconsistency.
+
+
+Besides the alien bits, the above is pretty much my review.
+
+* Week 30 (7/19)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/of-agency-and-abstraction.jpg]]
+
+[[https://rajnaswaminathan.bandcamp.com/album/of-agency-and-abstraction][*Of Agency and Abstraction* by Rajna Swaminathan]]
+
+One of the few rules I have with this project that I try to avoid
+notable similarities between adjacent albums.  I don't think I've
+broken this rule──this album is unique, and has in-your-face
+differences from the previous one──but soft warning: it's another
+violin-jazz-adjacent album.
+
+Part of what makes this album a safe choice is that the violin is not
+the centerpiece.  Rajna Swaminathan, the composer of the bulk of the
+album's tracks, also plays mrudangam on this one, and the instrument
+naturally gives the whole project an Indian music bent──what's perhaps
+most fascinating is the way the trumpet/saxophone/guitar are only
+part-way familiar, a tenuous tether to the jazz-influence part of the
+album's stylistic equation.
+
+That said, the violin is awesome; my western-music-brain can't keep up
+with that glissando, it's a skill I don't understand, it sounds like a
+different instrument.  I also have to direct some attention toward the
+mrudangam.  It easy for my (again) western-music-brain to dismiss the
+percussion as "exotic" and "folk/world-music-y" (I'm not proud to
+admit this, but as usual I hope that by being honest about it, I can
+be better "next time" so to speak).  It took a couple tries, but on later
+listens (and, yes, this album rewards multiple listen-throughs) I focused on
+the drumming and, wow, it's technical, intricate, so much range in
+the instrument and playing, up there was some of my favorite drumming.
+
+I'll close by noting it come from the Biophilia label (hence the
+diamond-shaped cover) home of Linda May Han Oh and Fabian Almazan,
+which I can't recommend enough.
+
+* Week 29 (7/12)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/role-models.jpg]]
+
+[[https://dominicingham1.bandcamp.com/album/role-models][*Role Models* by Dominic Ingham]]
+
+As someone who does academic research for fun (and teaches in academia
+for work) I find my schedule is inconsistent in a way most
+college-attending folks experience and happily dispense with
+post-commencement.  This is my excuse for being bad at blogging, even
+at the "micro-" scale.  I've built a backlog (which, surprisingly,
+I've been called out on (surprising because that implies someone read
+this once)) so I'm gonna keep some of these short.
+
+This album is your standard violin-forward jazz.  I don't actually
+have a sense of the standard here, I'm sure it's out there, but my
+general sense is that it tends to be kinda bad.  This one is: good.
+Dominic Ingham played on Jonny Mansfield's *The Air in Front of You*,
+another jazz album with more than the standard number of string
+players, and which I recommend highly.  Something about his playing
+actually works, he doesn't play like a classical violinist, or even as a
+fiddler; he "figured out" jazz violin.
+
+I said I'd keep this short, but I have to recall an educational film I
+was made to watch several times between 2006-2008 (middle school
+orchestra teacher) in which Yo-Yo Ma discusses
+music-something-or-other with a jazz trumpeter (I want to say Wynton
+Marsalis but I haven't been able to verify this).  Yo-Yo Ma goes on to
+say something to the effect that it would take him years to master the
+jazz style, even if he was able to reproduce the notes.  Seems
+self-explanatory why I brought that up.
+
+* Week 28 (7/5)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/to-what-end.jpg]]
+
+[[https://oddisee.bandcamp.com/album/to-what-end][*To What End* by Oddisee]]
+
+There's a line in *The French Dispatch* delivered by Jeffery Wright's
+character that goes: "...never ask a man why.  It tenses a fellow up."
+Dispatch is far (though not that far) from my favorite Wes, but this
+is an invasive scene in my idle thoughts, usually bubbling up when I
+ask someone to explain "the why of it all"──something which I find
+myself doing with increasing frequency.  I've used this line to
+internally justify not thinking too hard about "the why", and as a
+reminder to stop needling folks for it.
+
+My next segue-less thought: there are certain rappers who (in the
+approximate words of a friend of mine) when I listen to them, I can't
+listen to anyone else.  Oddisee is one, but so is Saba, milo,
+Serengeti, JPEGMAFIA.
+
+The wobbly dismount: preparing to write this, I was thinking about
+/why/ Oddisee is so good.  Working through this highlights a
+(pseudo-)valid criticism of asking why: it has the potential to
+besmirch the unspoken beauty of a thing by speaking of it.  But my
+general opinion on this point is f*** that──apologies to all the
+Wittgensteinians out there.
+
+So: poets differentiate to some degree by the linguistic unit on which
+they choose to hone their expertise.  Saba is a story teller. I
+wouldn't go as far as to say he blurs the line between telling and
+rapping (he's nowhere near spoken word) but he gets the closest to
+that line without crossing it (that PROM/KING rhymes is more feeling
+than fact, I'm often too rapt to clock it in any more than an academic
+way).  milo is magic with syllables (I think he shares this with
+Wallace Stevens).  I'm often moved more by the internal logic at the
+periphery of his rhymes, e.g., from /zen scientist/:
+
+#+begin_quote
+  It's him who wrote the tao of the pessimist as thesbians maneuver
+  through the now and it's messiness.
+
+  I've grown weary of their kindnesses, the addled zen scientist, with
+  the inwardly infinite capacity for mindfulness.
+#+end_quote
+
+Now compare this to one of my favorite Oddissee couplets, the opening
+of /All I need/:
+
+#+begin_quote
+  I got some things that I need and some things that I want to a
+  lesser degree.
+
+  See it today and I get it tomorrow, it's all about checkin' my
+  greed.
+#+end_quote
+
+Amazing lines, and for almost diametrically opposed reasons; they hit
+straight and fast, flow without a beat.  Oddissee commands the
+sentence as a linguistic unit, the rhythm, the expressivity, the
+simplicity.  milo subverts the sentence, creating literal
+tongue-in-cheek exercises, whereas Oddissee's lines "fall out" of the
+mouth and hold space to be reflected on.  Here's another one, from
+/People Watching/:
+
+#+begin_quote
+You ever been in company of people you despise?
+
+I feel like that every time I take a walk outside.
+#+end_quote
+
+This is not to put Oddissee (or anyone else) in a box.  He also has
+variation in his groove, his syncopation, his topic, etc.; there are
+many ways to be great.  I just can't help hearing connections to other
+simple sentence experts like Delillo and Rakoff.
+
 * Week 27 (6/28)
 
 #+ATTR_HTML: :width 300px
