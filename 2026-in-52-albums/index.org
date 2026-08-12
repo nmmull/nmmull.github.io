@@ -9,6 +9,30 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 32 (8/2)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/sprinting.jpg]]
+
+[[https://silvanstrauss.bandcamp.com/album/sprinting][*SPRINTING* by Silvan Strauss]]
+
+I don't recall how I came learn about Silvan Strauss.  The album [[https://silvanstrauss.bandcamp.com/album/live-at-clouds-hill][*Live
+at Cloud Hill*]] may have been a bandcamp-equivalent-of-doom-scrolling
+find.  He's an impressive percussionist and he better than anyone hits
+the genre dartboard right on that jazz/hip-hop line (off screen:
+"we're gonna have'ta pull out the magnifier...").  This album's foray
+into footwork is so natural it verges on being uninteresting, but as
+usual it's all in the details.  Good headphones and/or mutiple listens
+make this one, and it goes by quick so it's easy to do (and also easy
+to miss).  The synth sweep in the opener /ALL BOSSES/ couldn't
+honestly make the entire album worth it, but as a whole it's studded
+with endless tiny gems; there's a whole world of blips and clicks
+living underneath the triumphant synth riff of /STRESSED OUT (FEEL
+ALL)/.  I've never really been a footwork fan, but this album is
+another example of how the genre's fringes breed masters.
+
+-----
+
 * Week 31 (7/26)
 
 #+ATTR_HTML: :width 300px
@@ -17,8 +41,8 @@ This microblog is written without the use of generative AI.
 [[https://am-overcast.bandcamp.com/album/junk-drawer][*Junk Drawer* by A.M. Overcast]]
 
 This week I went on my roughly-semi-annual math-rock bender.  I
-learned Good Game came with an album in 2023 (*Get Good*) that I
-missed, and I got sucked in.  Aside: I learned there's a
+learned Good Game came with an album in 2023 ([[https://goodgameband.bandcamp.com/album/get-good][*Get Good*]]) that I
+missed, and I got sucked in.  Aside: I also learned there's a
 surprisingly large number of South American math-rock bands, some of
 whom bill themselves as midwest emo, which I find charming.
 
@@ -34,30 +58,31 @@ written by aliens posing as a pop-punk band to blend in on Earth./
 Okay, yeah, if you listen through you likely won't agree immediately,
 but hear me out.  If I were an alien and I was gonna blend in on Earth
 by posing as a pop-punk band, I'd listen to every pop-punk song ever
-written (or as many as feasibly depending on the level of
+written (or as many as feasible depending on the level of
 super-intelligence my species has attained), and develop some kind of
-AI-generated conglomeration.  I might not recognize that there are
-subcultures that make certain combinations of themes/techniques kinda
-uncommon.  I might not have a voice box, and so I'll need to generate
-a pretty good approximation to human singing, something that's
-pleasant but maybe has an unavoidable hint
+AI-generated conglomeration of it all.  I might not recognize that
+there are subcultures that make certain combinations of
+themes/techniques kinda uncommon.  I might not have a voice box, and
+so I'll need to generate a pretty good approximation to human singing,
+something that's pleasant but maybe has an unavoidable hint of that
 filtered-through-various-electronics sound.  I'm not gonna want
-something that's really out-there──too much attention, I might be
+something that's really "out there"──too much attention, I might be
 found out──but I probably won't be able to really hit the average (we
-all know about hallucinations).  I'll probably write kinda short
-songs; I won't really have a good sense of the human condition and
-what-not so no reason to write ballads.  In fact, my lyrics might be a
-bit nonsense and mostly unintelligible (e.g., "I'm leaving myself
-(don't tell the neighbors) in an ordinary confident solitary way") but
-I'll cut my losses, 'cause who's listening?  If my research has told
-me anything, it's that it's all about those crunchy guitar
-chords/riffs.  It won't exactly be that every song sounds like a
-different band; rather each song'll sound like it was written by
-multiple bands, giving the whole thing a kind of consistent
-inconsistency.
+all know the results of AI hallucinating at this point).  I'll
+probably write kinda short songs; I won't really have a good sense of
+the human condition and what-not so no reason to write ballads.  In
+fact, my lyrics might be a bit nonsense and mostly unintelligible
+(e.g., "I'm leaving myself (don't tell the neighbors) in an ordinary
+confident solitary way") but I'll cut my losses, 'cause who's
+listening?  If my research has told me anything, it's that it's all
+about those crunchy guitar chords/riffs.  It won't exactly be that
+every song sounds like a different band; rather each song'll sound
+like it was written by multiple bands, giving the whole thing a kind
+of consistent inconsistency.
 
+Modulo the alien bits, the above is pretty much my review.
 
-Besides the alien bits, the above is pretty much my review.
+-----
 
 * Week 30 (7/19)
 
@@ -86,14 +111,17 @@ different instrument.  I also have to direct some attention toward the
 mrudangam.  It easy for my (again) western-music-brain to dismiss the
 percussion as "exotic" and "folk/world-music-y" (I'm not proud to
 admit this, but as usual I hope that by being honest about it, I can
-be better "next time" so to speak).  It took a couple tries, but on later
-listens (and, yes, this album rewards multiple listen-throughs) I focused on
-the drumming and, wow, it's technical, intricate, so much range in
-the instrument and playing, up there was some of my favorite drumming.
+be better "next time" so to speak).  It took a couple tries, but on
+later listens (and, yes, this album rewards multiple listen-throughs)
+I focused on the drumming and, wow, it's technical, intricate, so much
+range in the playing and the instrument itself, up there was some of
+my favorite drumming.
 
-I'll close by noting it come from the Biophilia label (hence the
+I'll close by noting it came from the Biophilia label (hence the
 diamond-shaped cover) home of Linda May Han Oh and Fabian Almazan,
 which I can't recommend enough.
+
+-----
 
 * Week 29 (7/12)
 
@@ -113,20 +141,22 @@ this once)) so I'm gonna keep some of these short.
 This album is your standard violin-forward jazz.  I don't actually
 have a sense of the standard here, I'm sure it's out there, but my
 general sense is that it tends to be kinda bad.  This one is: good.
-Dominic Ingham played on Jonny Mansfield's *The Air in Front of You*,
+Dominic Ingham played on Jonny Mansfield's [[https://jonnymansfield.bandcamp.com/album/the-air-in-front-of-you][*The Air in Front of You*]],
 another jazz album with more than the standard number of string
 players, and which I recommend highly.  Something about his playing
 actually works, he doesn't play like a classical violinist, or even as a
-fiddler; he "figured out" jazz violin.
+fiddler; he "figured out" proper jazz violin.
 
 I said I'd keep this short, but I have to recall an educational film I
-was made to watch several times between 2006-2008 (middle school
-orchestra teacher) in which Yo-Yo Ma discusses
+was made to watch several times between 2006-2008 (due to a particular
+middle school orchestra conductor) in which Yo-Yo Ma discusses
 music-something-or-other with a jazz trumpeter (I want to say Wynton
 Marsalis but I haven't been able to verify this).  Yo-Yo Ma goes on to
 say something to the effect that it would take him years to master the
 jazz style, even if he was able to reproduce the notes.  Seems
 self-explanatory why I brought that up.
+
+-----
 
 * Week 28 (7/5)
 
@@ -135,7 +165,7 @@ self-explanatory why I brought that up.
 
 [[https://oddisee.bandcamp.com/album/to-what-end][*To What End* by Oddisee]]
 
-There's a line in *The French Dispatch* delivered by Jeffery Wright's
+There's a line in The French Dispatch delivered by Jeffery Wright's
 character that goes: "...never ask a man why.  It tenses a fellow up."
 Dispatch is far (though not that far) from my favorite Wes, but this
 is an invasive scene in my idle thoughts, usually bubbling up when I
@@ -153,14 +183,14 @@ The wobbly dismount: preparing to write this, I was thinking about
 /why/ Oddisee is so good.  Working through this highlights a
 (pseudo-)valid criticism of asking why: it has the potential to
 besmirch the unspoken beauty of a thing by speaking of it.  But my
-general opinion on this point is f*** that──apologies to all the
+general opinion on this point is f*** that──apologies to the
 Wittgensteinians out there.
 
 So: poets differentiate to some degree by the linguistic unit on which
 they choose to hone their expertise.  Saba is a story teller. I
 wouldn't go as far as to say he blurs the line between telling and
 rapping (he's nowhere near spoken word) but he gets the closest to
-that line without crossing it (that PROM/KING rhymes is more feeling
+that line without crossing it (that /PROM/KING/ rhymes is more feeling
 than fact, I'm often too rapt to clock it in any more than an academic
 way).  milo is magic with syllables (I think he shares this with
 Wallace Stevens).  I'm often moved more by the internal logic at the
@@ -204,6 +234,8 @@ variation in his groove, his syncopation, his topic, etc.; there are
 many ways to be great.  I just can't help hearing connections to other
 simple sentence experts like Delillo and Rakoff.
 
+-----
+
 * Week 27 (6/28)
 
 #+ATTR_HTML: :width 300px
@@ -215,7 +247,7 @@ This week I drove from Boston to Chicago on Monday (a 15 hour day) and
 back on Thursday (and 18 hour day due to a detour through Auburn,
 Indiana).  This meant I listened to a lot of music.  Most of what's
 made it onto this microblog was on repeat, one notable exception being
-Waxahatchee's *Tigers Blood* (which I used to keep myself awake by
+Waxahatchee's [[https://waxahatchee.bandcamp.com/album/tigers-blood][*Tigers Blood*]] (which I used to keep myself awake by
 singing loudly to each song while attempting to memorize the lyrics
 (which meant most of the time I was singing in pseudo-English, just
 guessing words)).  The other exception is the above album.
@@ -231,7 +263,7 @@ to.  I feel bad that I want to apologize for this album (dictionary
 definition of guilty pleasure I guess) but it really does just bring
 me joy.  And, in fairness to Suwon Yim, it has a classical-streak that
 may be the backbone of my admiration.  The R&B-ish motifs are
-counterbalanced with Mendelssohn-ish phasing and occasional
+counterbalanced with occasional Mendelssohn-ish phases and
 French-impressionist-ish textures.  Although that description sounds a
 bit more wild than I intend it to be, it's kind of like the "lite"
 versions of all of those things, with a dash of the cinematic, and of
@@ -268,42 +300,42 @@ enthusiastically.
 Soojin Suh is another data point supporting my (not all that
 surprising) hypothesis that the best composers are percussionists and
 bassists.  My first introduction to Soojin Suh was her project
-*Alchemy* with Daniel Ko, which I maintain is the most accessible
-saxaphone + drum free jazz album out there (fight me (I won't win, but
-still, it's worth a listen)).  Her later album *Roots to Branches*
+[[https://mungmusic.bandcamp.com/album/alchemy][*Alchemy*]] with Daniel Ko, which I maintain is the most accessible
+saxophone + drum free jazz album out there (fight me (I won't win, but
+still, it's worth a listen)).  Her later album [[https://soojinsuh.bandcamp.com/album/roots-to-branches][*Roots to Branches*]]
 with the cutely named Chordless Quartet consistently finds its way
 onto my listening queue.  Both of these albums demonstrate a
 preternatural ability create lush with little ("Chordless" here
-referring to the fact that the group is drum, bass, double sax).  This
+referring to the fact that the group is drum, bass, sax, sax).  This
 is often achieved by allowing the members of the group freedom to
 move, only occasionally syncing back up but never straying too far
 from each other.  Regardless of how it's achieved, I never──in either
 album──leave thinking /that needed some piano/.
 
-It's within this context that I'm surprised by *PRISM*; there /is/ a
-piano, and it's boxy as hell.  The rhythms of THE DOORS OF PERCEPTION
-are by no means easy, but they are tightly regimented, almost
-claustrophobically so, with whole sections dedicated to frenetic
-lock-step melodies.  The chordal character of the entire album is
-anxious, with only a few glimmers of hopeful consonance.  There's a
-suite of pieces called UNCERTAINTY (it take every fiber of my being to
-not write "for crying out loud" here, so instead I self-consciously
-include it as a parenthetical) the first movement of which (the opener
-of the album) creates an awkward, disconcerting mood of classic bebop
-groove meets cat-walks-on-the-piano postmodern grab bag.
+It's within this context that I'm surprised by [[https://soojinsuh.bandcamp.com/album/prism-of-existence][*PRISM*]]; there /is/ a
+piano, and it's boxy as hell.  The rhythms of /THE DOORS OF
+PERCEPTION/ are by no means easy, but they are tightly regimented,
+almost claustrophobically so, with whole sections dedicated to
+frenetic lock-step melodies.  The chordal character of the entire
+album is anxious, with only a few glimmers of hopeful consonance.
+There's a suite of pieces called /UNCERTAINTY/ (it take every fiber of
+my being to not write "for crying out loud" here, so instead I
+self-consciously include it as a parenthetical) the first movement of
+which (the opener of the album) creates an awkward, disconcerting mood
+of classic bebop groove meets cat-walks-on-the-piano postmodern grab
+bag.
 
 I'll admit, I'm all in on this one; I'm generally very much for
 artists breaking out of familiar patterns.  But I've included the
 above because (1) I think it's important to understand where the
 album's aesthetic is coming from (to the extent that I can claim to
 know) and (2) if you already know, it's too easy to see this one as
-bending to trends.  But by putting herself (and bassist Hoo Kim
-and pianist Jaehun Kang) within these meticulous structures, the
-anxiety comes through not just in the composition but in the
-performance.  Every player feels beholden to the prescribed
-rhythmic/melodic game, but also has moments of breaking out, of
-hinting at something freer, and I think listening for these moments is
-what has me coming back.
+bending to trends.  But by putting herself (and bassist Hoo Kim and
+pianist Jaehun Kang) within these meticulous structures, the anxiety
+comes through not just in the composition but in the performance.
+Every player feels beholden to the prescribed rhythmic/melodic game,
+but also has moments of breaking out, of hinting at something freer,
+and I think listening for these moments is what has me coming back.
 
 -----
 
@@ -315,26 +347,26 @@ what has me coming back.
 [[https://mingjia.bandcamp.com/album/star-star][*star, star* by mingjia]]
 
 I found myself in a contemporary classical rabbit hole on Bandcamp and
-came across this album by the one of the teeth-contributers (dumb
+came across this album by the one of the teethy folks (dumb
 joke) that somehow went under my radar.  Which surprises me at least
 in part because the album art is so striking I would have expected it
-to catch my eye if it ever found it's way on my computer screen.
+to catch my eye if it ever found it's way onto my computer screen.
 
 This album has a lot of my favorite things about the classical pop
-cross-section.  The classical-side may find it too musical theater.
-The pop-side may find it, also too musical theater.  It's admittedly a
-bit musical theater.  But that's not why I love it (nor is it a
-negative in my view).  Mingjia sings like its an extension of her
-speaking voice.  She enunciates.  I cannot stress how much this feels
-like an aesthetic choice and not just an emergent feature of proper
-training. Her voice is glass smooth and glass clear, her minute
-flourishes never come at the expense of the story she's telling.  The
-arrangements are what read classical, and there are some excerpts that
-could be part of a proper symphony, but this in itself feels
-unnecessarily boxy as a descriptor (also a tad elitist).  The story
-telling also reads classical──the pieces are long and meandering──to
-the extent that I might amend my previous phrase and rather say that
-it's /operatic/.
+cross-section.  The more classical-leaning may find it too musical
+theater.  The more pop-leaning may find it, also too musical theater.
+It's admittedly a bit musical theater.  But that's not why I love it
+(nor is it a negative in my view).  Mingjia sings like it's an
+extension of her speaking voice.  She enunciates.  I can't stress
+enough how much this feels like an aesthetic choice and not just an
+emergent feature of proper training. Her voice is glass smooth and
+glass clear, her minute flourishes never come at the expense of the
+story she's telling.  The arrangements are what read classical, and
+there are some excerpts that could be part of a proper symphony, but
+this in itself feels unnecessarily boxy as a descriptor (also a tad
+elitist).  The story telling also reads classical──the pieces are long
+and meandering──to the extent that I might amend my previous phrase
+and rather say that it reads /operatic/.
 
 -----
 
@@ -346,17 +378,17 @@ it's /operatic/.
 [[https://ezraquartet.bandcamp.com/album/whippersnap][*Whippersnap* by EZRA]]
 
 A collegue of mine hosts (and produces and engineers) a radio program
-on WMBR Camridge called [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]].  A such she has
-fantastic taste in music, and every time I get a chance to chat I ask
-about what music's been exciting her (the first recommendation she
-ever gave me was *STILLPOINT* by Awadagin Pratt, which remains a
-favorite of mine).  I brought up that I'd been listening to The Hands
-Free's new album *Upturned Cup*, and she followed with *Froggy's
-Demise* by EZRA.  And, honestly, checkmate.
+on WMBR called [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]].  A such she has fantastic taste
+in music, and every time I get a chance to chat I ask about what
+music's been exciting her (the first recommendation she ever gave me
+was [[https://awadaginpratt.bandcamp.com/album/stillpoint][*STILLPOINT*]] by Awadagin Pratt, which remains a favorite of mine).
+I brought up that I'd been listening to The Hands Free's new album
+[[https://thehandsfree.bandcamp.com/album/upturned-cup][*Upturned Cup*]], and she followed with [[https://ezraquartet.bandcamp.com/album/froggys-demise][*Froggy's Demise*]] by EZRA.  And,
+honestly, checkmate.
 
 Classically-Jazzically-inclined bluegrass isn't new, but I think it
 finds it's greatest popularity──and arguably one of it's highest
-inflection points──in the *The Goat Rodeo Sessions* (of course the
+inflection points──in the [[https://en.wikipedia.org/wiki/The_Goat_Rodeo_Sessions][*The Goat Rodeo Sessions*]] (of course the
 related prototype/offshoot projects are important too; as an aside,
 I've always been curious how Béla Fleck fits into the picture, a
 frequent collaborator with Edgar Meyer, but somehow not a Goat
@@ -369,9 +401,9 @@ fluidity, there's group cohesion.  The transitions between avante-jazz
 and bluegrass lick are quick, and often done with a kind of precision
 that feels like watching someone slalom with an Escalade (this is not
 a particularly flattering metaphor, but once I thought it I couldn't
-eject the image from my mind, and just it feels right).  True solos
+eject the image from my mind, and it just feels right).  True solos
 are sparse, there are leading players on most pieces but it's well
-balanced (both Pomaria and Gossamer have lovely bass melodies).  The
+balanced (both /Pomaria/ and /Gossamer/ have lovely bass melodies).  The
 introduction of the piano on this album's instrumentation occasionally
 leans saccharine, but mostly gives a satisfying body to the entire
 project.
@@ -386,8 +418,8 @@ project.
 [[https://blackseadahu.bandcamp.com/album/everything][*Everything* by Black Sea Dehu]]
 
 Okay, so I made a suggestive hint last time as to what kind of album
-I'd be covering this week.  And I did give *Clifford Brown and Max
-Roach at Basin Street* as well as *Freedom Suite* a fair number of
+I'd be covering this week.  And I did give [[https://www.prestomusic.com/jazz/products/8496511--clifford-brown-and-max-roach-at-basin-street][*Clifford Brown and Max
+Roach at Basin Street*]] as well as [[https://www.prestomusic.com/jazz/products/8501211--freedom-suite][*Freedom Suite*]] a fair number of
 listens.  But I have to stay true to the concept of this microblog,
 and the reality is this album ultimately dominated my queue (also, who
 the f*** cares? I'm well aware no one's reading this).
@@ -421,10 +453,10 @@ clacks, clarinets, accordion, backup vocals (and as far as I can tell,
 exactly one additional "oh" from an unknown vocalist which lasts
 something like 3 seconds).  It's a lot. But somehow it's not crowded.
 It's the kind of arranging that I've never fully grasped, along the
-lines of early Sufjan, akin to the way a painter will include a
+lines of early Sufjan Stevens, akin to the way a painter will include a
 flourish of green within a decidedly red-blue skyscape that I'd never
 think to include but is somehow just right.  And all this eventually
-quiets, closing with these haunting lyrics:
+quiets, closing with the haunting lyrics:
 
 #+begin_quote
 Is it June again?
@@ -451,10 +483,10 @@ her ability to oscillate/transition between notes is chilling.
 This weekend I went to the [[https://www.the-mushroom-shop-somerville.com][THE mushroom shop]] in Somerville with a
 friend and the person behind the counter was playing this album.  I
 hadn't listened to it yet, but it's not hard to clock the Jeff Parker
-and friends.  I've been listening to Jeff Parker since *Suite for Max
-Brown*, having been following International Anthem since Ben LaMar
-Gay's *Downtown Castles Can Never Block The Sun*.  This album is in my
-mind very much a continuation of *The Way Out of Easy* (the implicit
+and friends.  I've been listening to Jeff Parker since [[https://intlanthem.bandcamp.com/album/suite-for-max-brown][*Suite for Max
+Brown*]], having been following International Anthem since Ben LaMar
+Gay's [[https://intlanthem.bandcamp.com/album/downtown-castles-can-never-block-the-sun][*Downtown Castles Can Never Block The Sun*]].  This album is in my
+mind very much a continuation of [[https://intlanthem.bandcamp.com/album/the-way-out-of-easy][*The Way Out of Easy*]] (the implicit
 criticism being hopefully as ambiguous as intended).
 
 Okay, here's my take, which is less cogent than usual (usual being
@@ -470,11 +502,11 @@ as listeners are companions on a journey led by experts, with the
 understanding that things may not go as expected. To make a hack but
 apt metaphor, this is music that feels like a mushroom hunt headed by
 an experienced forager.  It lends the project a vulnerability that
-seems out of place in not-uncommon machismo mentality of the music
+seems out of place in the not-uncommon machismo mentality of the music
 world.  As someone with a touch of musical skill (though absolutely
 none in the field of jazz) the highest praise I feel I can give is
 that this music makes me want to join in, it brings me back to
-improvising with friends.  And of course, this is not to say that way
+improvising with friends.  And of course, this is not to say that what
 they do is trivial, just that it's warm, welcoming, and inspiring.
 
 As an aside, I had a lovely time chatting with the aforementioned
@@ -516,20 +548,20 @@ but in the way that I couldn't bring an example to mind because I tend
 dimiss then forget before committing to memory, a bad habit I'm well
 aware).  The question reminded me going into the album to allow the
 kinds of emotional states that come from thinking things like: /What
-scared me about movie Pinocchio? Did I really see a ghost that night?
-Remember when my cousin and I believed we could unlock super-strength
-via a kind of induced fugue state?/...──allow those states to wash
-over the way they used to.  Without this it's easy to get into my
-usual jaded headspace; I almost turned it off at Dänke, and Weird Kid,
-albeit a fun song, borrows the first-line melody of A Day in the Life,
-which I can't not hear.
+scared me about the movie Pinocchio? Did I really see a ghost that
+night?  Remember when my cousin and I believed we could unlock
+super-strength via a kind of induced fugue state?/... It reminded me
+to allow those states to wash over the way they used to.  Without this
+it's easy to get into my usual jaded headspace; I almost turned it off
+at /Dänke/; and /Weird Kid/, albeit a fun song, borrows the first-line
+melody of /A Day in the Life/, which I can't not hear.
 
 But, yes, I liked this album. A fair amount too.  It helps that I was
 a Beatles kid (to the extent that I cannot listen to the Beatles now,
 like, at all) so the nostalgic flares of late-English-cinematic-pop
 really work on me (operative word be "on" and not "for").  The places
 where this album shines is in it's slower more introspective songs.
-They hit like lullabies, hovering in layers multi-instrumental and
+They hit like lullabies, hovering in layers of multi-instrumental and
 electronic sound experiments.  I can imagine getting lost in the
 forests of Switzerland to these songs, the sun setting, alone, my fear
 of the dark creeping in, but somehow with a smile on my face.
@@ -548,10 +580,10 @@ somehow, cool?  Or is he trying too hard?  I honestly can't tell.  But
 at some point you have to appreciate the hustle.
 
 Props to [[https://giraffasaur.us][my dad]] on this one (of [[https://www.picturemecoding.com][Picture Me Coding]] "fame") he
-recommended to me La Tempête's most recent album *Bomba Flameca*,
+recommended to me La Tempête's most recent album [[https://www.prestomusic.com/classical/products/9846323--bomba-flamenca][*Bomba Flameca*]],
 which is by far one of the most bizarre albums of early music I've
 ever listened to (I'm not gonna explain it, just go listen).  Since
-then I've been digging into their discography.  *The Tempest* isn't
+then I've been digging into their discography.  [[https://www.prestomusic.com/classical/products/8061505--the-tempest][*The Tempest*]] isn't
 quite as "out there" as some of what they've gotten into, but it's
 still expertly curated and the performance is oozing with first-album
 energy (I, as a general rule, am fascinated by debuts, that raw desire
@@ -573,12 +605,12 @@ it (Is that just me? Are the 2010s dingy? They feel dingy to me) a
 familiar desire to incorporate electro, beat tape, and hip-hop motifs
 into /everything/ (there are times it felt like a race to the bottom,
 /which folk band would discover the synthesizer/drum pad next?/).  I
-can imagine it sitting comfortably on my shelf between Son Lux's *We
-are Rising* and Robert Glasper's *Black Radio* (which is a pretty apt
+can imagine it sitting comfortably on my shelf between Son Lux's [[https://sonlux.bandcamp.com/album/we-are-rising][*We
+are Rising*]] and Robert Glasper's [[https://en.wikipedia.org/wiki/Black_Radio][*Black Radio*]] (which is a pretty apt
 characterization of my music-taste genesis).
 
 As familiar as I've made it out to be thus far, there are a couple
-surprises: "The Right Side of the Elevator" breaks me out of any
+surprises: /The Right Side of the Elevator/ breaks me out of any
 reminiscing I'm doing and brings me to a truly fantastic place. Also
 there's a hilarious interjection in the opening piece which, despite
 being low-hanging comedic fruit, gets me every time.
@@ -594,19 +626,19 @@ being low-hanging comedic fruit, gets me every time.
 
 I feel like I should've heard of Diners by now.  That said, when I
 mentioned this album expecting the "yeah, I've been listening to them
-for years" response, most folks hadn't heard of them.  It's got
+for years" response, most folks hadn't heard of them either.  It's got
 flavors of textbook power pop, but has a pretty unique compositional
 streak, the kind I have a hard time explaining because music
 composition has always been beyond me.  It feels through-and-through
 California, which I'm reaching for more these days out in the wilds of
-Cambridge MA (why can't I convice my east coast friends how weird the
-east coast is?).  The track "Someday I'll Go Surfing" makes me tear up
+Cambridge MA (why can't I convince my east coast friends how weird the
+east coast is?).  The track /Someday I'll Go Surfing/ makes me tear up
 in that homesick/dreams of high school way.
 
 It's impossible to not bring up that I came across this album because
 a friend of mine from another life recently collaborated with Blue
-Broderick under the name Judy on an EP called *Songs of Mutt and
-Hate*, also very much worth a listen.
+Broderick under the name Judy on an EP called [[https://herecomesjudy.bandcamp.com/album/songs-of-mutt-and-hate][*Songs of Mutt and
+Hate*]], also very much worth a listen.
 
 -----
 
@@ -617,12 +649,12 @@ Hate*, also very much worth a listen.
 
 [[https://candyclaws.bandcamp.com/album/two-airships-exploder-falls-2][*Two Airships / Exploder Falls* by Candy Claws]]
 
-I missed the whole Candy Claws thing (I feel like I remember Ceres &
-Calypso in the Deep Time being on Pitchfork back when I still followed
-Pitchfork, can't say for certain), but I was listening to wmbr (the
-MIT campus radio station) and a someone (probably a decade younger
-than me) played Exploder Falls.  It's got what I perceive to be an
-anachronistic amount of bitcrusher.
+I missed the whole Candy Claws thing (I feel like I remember [[https://candyclaws.bandcamp.com/album/ceres-calypso-in-the-deep-time][*Ceres &
+Calypso in the Deep Time*]] being on Pitchfork back when I still
+followed Pitchfork, can't say for certain), but I was listening to
+WMBR (the MIT campus radio station) and a someone (probably a decade
+younger than me) played Exploder Falls.  It's got what I perceive to
+be an anachronistic amount of bitcrusher.
 
 -----
 
@@ -665,14 +697,14 @@ I came across this album during my most recent browsing of the Sooper
 Records (Sen Morimoto, Luke Titus, NNAMDÏ, KAINA) catalog.  It's a
 hidden-gem-of-a-collection of pop-leaning songs that I could
 unironically recommend to a top-20s-listener (i.e., not in the
-backhanded try-harder-to-have-good-tastes way).  It has that
+backhanded try-harder-to-have-good-taste way).  It has that
 nostalgic-80s-cross-Britney-Spears influence that's trendy, but
 manages to stand out, even if only in its attention to detail (I love
-the use of silence in For Emi and Neosporin).  One could be forgiven
-(though not by me) for dismissing this one as "just another pop album"
-but there's something satisfying in seeing mastery in the commonplace;
-if I may be pardoned for a lazy analogy: there are, in fact, excellent
-plain scones.
+the use of silence in /For Emi/ and /Neosporin/).  One could be
+forgiven (though not by me) for dismissing this one as "just another
+pop album" but there's something satisfying in seeing mastery in the
+commonplace; if I may be pardoned for a lazy analogy: there are, in
+fact, excellent plain scones.
 
 -----
 
@@ -711,7 +743,7 @@ music theory, despite having played music for most of my life (I'm the
 kind of person who internally scoffs when someone tells me their child
 is an impressive musician, and then hates himself for it). It seems
 clear to me that Julia Holter, when she composes and performs music,
-is "doing something." I get the sense she has a deep knowledge of
+is "doing something". I get the sense she has a deep knowledge of
 musical structure and form, leaving her intention simply inaccessible
 to me; tldr it makes me feel dumb and I'm not a fan of feeling dumb (I
 glean all this in the same way that I glean a physicist knows physics,
@@ -727,7 +759,7 @@ imagine most Julia Holter songs─and every movement of this piece─as
 stand alone objects; the tonal decisions seem to aim at complementing
 the language more than the music.  Said another way, I feel the
 melodic dimension is akin to the typographical dimension of concrete
-poetry, and this dimension─an extension of the lyrics─creates space,
+poetry, and this dimension──an extension of the lyrics──creates space,
 what's ultimately a space of play in which the quartet can wander.
 The underlying accompaniment is light, responsive, full of flourishes,
 some cinematic, some highly textured, but with a self-consciousness of
@@ -737,8 +769,8 @@ gloopy, but manages to stave off this criticism (at least from me).
 One more thing I cannot help but point out: I've seen several
 comparisons of this piece to Schönberg's String Quartet No. 2 which,
 besides feeling like an avant-gardian name-drop/flex, I think is far
-less applicable then a much more obvious comparison: *The Juliet
-Letters* by Elvis Costello and the Brodsky Quartet.  The similarities
+less applicable then a much more obvious comparison: [[https://en.wikipedia.org/wiki/The_Juliet_Letters][*The Juliet
+Letters*]] by Elvis Costello and the Brodsky Quartet.  The similarities
 are eerie, to the point that I feel like I'm being gaslit when I
 cannot find anyone else making this connection.
 
@@ -784,35 +816,35 @@ appearance in ALTA with a lesser bad-guy side character), the chain
 whip (whatever you're imagining is probably pretty close), and a
 personal favorite, worthy of a Google: the horse bench.  And although
 I've already spent too much time on this supposedly brief aside, I
-can't help but recall a memory of watching a performance of a dual
-weapon form (think choreographed knife fight) between chain-whip and
-double hook swords, which felt like the moral equivalent of throwing
-firecrackers at someone with a weed-whacker.
+can't help but recall a memory of watching a dual weapon form (think
+choreographed knife fight) between chain-whip and double hook swords,
+which feels like the moral equivalent of throwing firecrackers at
+someone with a weed-whacker.
 
 Self-consciously (bad) Wallacian digression notwithstanding, I further
-submit a thought experiment: imagine watching a performance of said
-dorky white male American sinophile /using/ said nunchucks.
-Furthermore, this is someone who has taken up the practice of martial
-arts not simply as a kind of socially-recognized affectation, but who
-has /actually/ studied the art /as an art/ and is /actually/ pretty
-good.  Imagine him manipulating those chained wooden sticks with
-Bruce-Lee-level grace, but still moving in that somewhat awkwardly
-stiff way that people who haven't done gymnastics/dance/acrobatics
-their whole lives naturally do.  If the image in your mind is at all
-similar to mine, you might get the sense of the cringy beauty I'm
-trying to convey (in my now-very-self-consciously circuitous way).
+submit a thought experiment: imagine watching said dorky white male
+American sinophile /wield/ said nunchucks.  Furthermore, this is
+someone who's taken up the practice of martial arts not simply as a
+kind of socially-recognized affectation, but who's /actually/ studied
+the art /as an art/ and is /actually/ pretty good.  Imagine him
+manipulating them with Bruce-Lee-level grace, but still moving in that
+somewhat awkwardly stiff way that people who haven't done
+gymnastics/dance/acrobatics their whole lives naturally do.  If the
+image in your mind is at all similar to mine, you might get the sense
+of the cringy beauty I'm trying to convey (in my
+now-very-self-consciously circuitous way).
 
 The thesis: /Ted Hearne & The Crossing wield irony like our friend
 from the though-experiment wields nunchucks./ I can't say that
-*Farming* is a "good" album, but it has that aforementioned cringy
+[[https://deathbombarc.bandcamp.com/album/farming][*Farming*]] is a "good" album, but it has that aforementioned cringy
 beauty; I can't stop listening even though it makes me tired and a
-little angry.  Sound-wise, it brings to mind Roomful of Teeth's *Rough
-Magic*, in which the group seemed to want more "edge", except that
-*Farming* takes this concept to it's Weierstrassian extreme, to a
+little angry.  Sound-wise, it brings to mind Roomful of Teeth's [[https://roomfulofteeth.bandcamp.com/album/rough-magic][*Rough
+Magic*]], in which the group seemed to want more "edge", except that
+[[https://deathbombarc.bandcamp.com/album/farming][*Farming*]] takes this concept to it's Weierstrassian extreme, to a
 veritable lump of nothing-but-edge (where, if you tried to pick it up,
 you'd be infinitely pin-pricked by its fractalous surface).  I imagine
-an AI agent fed on a steady diet of Reich's speech-melodies,
-Americana, Fox News, hyperpop, and church-on-TV could hallucinate a solid
+an AI fed on a steady diet of Reich's speech-melodies, Americana, Fox
+News, hyperpop, and church-on-TV could hallucinate a solid
 approximation of this album, but there's something so /human/ and so
 utterly /committed/ in the combination of heavy-handed social
 commentary and high production value and the literal human-factor that
@@ -838,7 +870,7 @@ make it this week's album so I could figure out if I actually like
 it. Final analysis: I do.  This one made me work for it; at first it
 just barely registered under the din of the currently-crowded
 post-bebop/modern chamber jazz soundscape.  I think what ultimately
-did it for me was the solo in the second track "PF" which plays like a
+did it for me was the solo in the second track /PF/ which plays like a
 slightly unhinged Bach.  It also took me several listens to realize
 just how full-bodied the tracks are.  The first couple listen-throughs
 I guess I thought some tracks were multiple; several of them are past
@@ -853,13 +885,13 @@ other attention-getters──but it lacks that cool
 I'm-so-good-I-could-give-my-buddy-the-spotlight-and-you-still-couldn't-help-noticing-me
 character of some of my absolute favorite jazz albums (people who've
 known me long enough and have talked music with me will know that my
-such-as example is Ben Wendel's *Understory: Live at the Village
-Vanguard*).  One consequence: the album is sprinkled with "gimmicks"
+such-as example is Ben Wendel's [[https://benwendel.bandcamp.com/album/understory-live-at-the-village-vanguard][*Understory: Live at the Village
+Vanguard*]]).  One consequence: the album is sprinkled with "gimmicks"
 several of which are used by the greats but are gimmicks none the
 less: (1) the bass-follow-piano riffs that give a satisfying almost
 hip-hop cadence (2) the hidden-rhythm syncopation of one voice
 followed by the another which sets the beat (like Vijay Iyer's
-"Accelerando" or Dirty Projectors' "The Socialites").  But in my view
+/Accelerando/ or Dirty Projectors' /The Socialites/).  But in my view
 the real kicker is that Javier Burin is freakin' 25 (22 on recording
 this album), and I'm very much looking forward to whatever's next.
 
@@ -873,34 +905,34 @@ this album), and I'm very much looking forward to whatever's next.
 [[https://avaluna.bandcamp.com/album/ava-luna][*Ava Luna* by Ava Luna]]
 
 Ava Luna is era-defining for me (which essentially means I listened to
-them in college).  *Electric Balloon* felt like a revelation (though I
+them in college).  [[https://avaluna.bandcamp.com/album/electric-balloon-2][*Electric Balloon*]] felt like a revelation (though I
 would later learn it was basically a revival of no-wave in the style
 of James Chance and the Contortions).  I remember being floored by
-"Billz", the first single off *Infinite House*, with its oscillations
+/Billz/, the first single off [[https://avaluna.bandcamp.com/album/infinite-house-2][*Infinite House*]], with its oscillations
 between crushing wall of noise and chill groove; urgent and virtuosic,
 driven by the truly important questions: "who's gonna pay my bills?"
-(also, gotta say, "Steve Polyester" is one of the best non-Pynchon
-Pynchon characters out there).  I was lukewarm on *Moon 2*, I enjoyed
+(also, gotta say, Steve Polyester is one of the best non-Pynchon
+Pynchon characters out there).  I was lukewarm on [[https://avaluna.bandcamp.com/album/moon-2][*Moon 2*]], I enjoyed
 it primarily in a second-order way, but it felt like it wasn't meant
 for me (maybe for someone with stronger ties to Devo and Talking
 Heads). I was bummed to hear in 2019 that we weren't gonna get any
 more Ava Luna, but Carlos Hernandez and Felicia Douglass continued to
-make music so it didn't feel /over/ over (*On Folly* seemed very much
-a continuation of the Ava Luna storyline).  Last week, getting a
-sudden urge to listen back to *Moon 2* (maybe this time I'd "get it")
+make music so it didn't feel /over/ over ([[https://carlostruly.bandcamp.com/album/on-folly][*On Folly*]] seemed very much
+a continuation of the Ava Luna story-line).  Last week, getting a
+sudden urge to listen back to [[https://avaluna.bandcamp.com/album/moon-2][*Moon 2*]] (maybe this time I'd "get it")
 I learned that Ava Luna came out with an album last year (!). On first
 listen I was, disappointed.  It has none of the pent-up energy, the
 deep-cutting angst, less I-need-to-say-this-let-me-speak and more
 getting-older-and-throwing-up-the-hands.  The album is a distillation
 of everything that makes Ava Luna unequaled composers and musicians,
-but I see parallels with the last Dirty Projectors project *Songs of
-the Earth*, in which composition becomes the sole vehicle for
+but I see parallels with the last Dirty Projectors project [[https://dirtyprojectors.bandcamp.com/album/song-of-the-earth][*Songs of
+the Earth*]], in which composition becomes the sole vehicle for
 expression.  Despite this, I listened through again, and then again,
-and again, and then it clicked: it's a damn fun album.  That I think
+and then again, and then it clicked: it's a damn fun album.  That I think
 is the thread through everything they do.  They're a group of super
 talented folks, getting together yet again to make music, building on
 their years-worth of experiences, and the product is, simply put,
-beautiful.  The banter at the end of "My Walk" makes me smile every
+beautiful.  The banter at the end of /My Walk/ makes me smile every
 time I listen to it.
 
 -----
@@ -951,10 +983,10 @@ too am giving in any way I can.  I chose this album simply as a token
 
 With all that's going on in the AI-sphere, this 2019 AI-music
 experiment feels almost quiant. It's a marked departure from Herndon's
-previous albums; when listening to *Movement*, one has the feeling
+previous albums; when listening to [[https://hollyherndon.bandcamp.com/album/movement][*Movement*]], one has the feeling
 that every synth began life as a sine wave and was molded to fit its
 aural purpose, wrestled into submission and imbued with a sense of the
-primordial.  In *PROTO*, Herndon takes the voice as the starting
+primordial.  In [[https://hollyherndon.bandcamp.com/album/proto][*PROTO*]], Herndon takes the voice as the starting
 point, and uses AI to aid the molding, a more powerful tool for a less
 giving medium.  This is done to great effect, but I believe falls into
 the trap of many early-AI projects: AI is used in the way that reverb
@@ -964,7 +996,7 @@ Herndon towards "the middle", welcoming more than usual (not
 unflattering) comparisons──I get flavors of Oneohtrix Point Never,
 Caroline Shaw, Julia Holter, Purity Ring, and it's hard not to think
 of Imogen Heap, at least for folks listening to music in the aughts.
-Taken as an experiment (as I think it's intended) *PROTO* is
+Taken as an experiment (as I think it's intended) [[https://hollyherndon.bandcamp.com/album/proto][*PROTO*]] is
 ground-breaking, and I can't think of anyone I'd rather address the
 AI-music problem.
 
@@ -979,10 +1011,10 @@ AI-music problem.
 
 Ambient can sometimes be inscrutable (at least for me) but
 occasionally you get lucky with the context in which you first hear a
-piece of ambient.  I was in a weird place in my life, staring out at a
-pond on a cool fall day while my car was getting serviced.  The
-emergent overtones and relentlessly compressed bass drones of the
-synthesizer just worked for this scene and headspace.
+piece.  I was in a weird place in my life, staring out at a pond on a
+cool fall day while my car was getting serviced.  The emergent
+overtones and relentlessly compressed bass drones of the synthesizer
+just worked for this scene and headspace.
 
 -----
 
@@ -1009,9 +1041,9 @@ brings out the lightness and occasional humor of it all.
 
 [[https://dabinryu.bandcamp.com/album/trio][*Trio!* by Dabin Ryu]]
 
-Dabin Ryu has classical-pianist-energy.  The opener "Vertigo" has
-Ólafsson precision (sub Bach for post-bop) and the intro of "In the
-Land of Oo-Bla-Dee" plays like a Prokofiev piano sonata.  Also goes
+Dabin Ryu has classical-pianist-energy.  The opener /Vertigo/ has
+Ólafsson precision (sub Bach for post-bop) and the intro of /In the
+Land of Oo-Bla-Dee/ plays like a Prokofiev piano sonata.  Also goes
 without saying, Joe Martin (bass) and Johnathan Blake (drums) hold
 their own, and have plenty of their own shining moments.
 
@@ -1025,7 +1057,7 @@ their own, and have plenty of their own shining moments.
 [[https://serengeti.bandcamp.com/album/with-greg-from-deerhoof][*With Greg from Deerhoof* by Serengeti]]
 
 An unexpected but natural collaboration, the 17 minute ad-hoc live
-session "I Got Your Password" is unreal.  This album has been on my
+session /I Got Your Password/ is unreal.  This album has been in my
 listening queue for years, but I think aptly captures 2026's
 off-the-bat absurdities.
 
@@ -1040,5 +1072,5 @@ off-the-bat absurdities.
 
 Unapologetically catchy, produced enough to not feel like a demo tape,
 but not so much that it has the sometimes-cloying polish of recent
-Waxahatchee (full disclosure, I have a sweet tooth).  "Angel Wings" is
-the first ear-worm in a while I've enjoyed having.
+Waxahatchee (full disclosure, I have a sweet tooth).  /Angel Wings/ is
+the first ear-worm I've had in a while that I actually enjoy.
