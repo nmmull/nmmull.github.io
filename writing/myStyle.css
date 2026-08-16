@@ -49,3 +49,7 @@ a:hover {
 .subtitle {
     font-size: 0.8em;
 }
+
+hr {
+    border: 1px dashed black;
+}
