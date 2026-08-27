@@ -6,21 +6,21 @@ I've lately been inclined to write on what it'll mean to teach at a
 university in the back half of the 2020s.  It's been just three years
 since I started teaching full time, and as of summer 2026 I feel I
 have no idea what I'm doing or (perhaps more importantly) why I'm
-doing it.
+doing it.  The simple truth: AI is changing the way that people learn,
+and──to my mostly quiet frustration──this behooves me to re-evaluate
+the way I teach.
 
-It's hard to call it an elephant in the room──the idiom presumes the
-inhabitants of said room are ignoring said elephant.  Truth is we
-can't stop talking about the elephant.  Every conversation now takes
-the form: "I liked that restaurant you recommended, but the space was
-a bit claustrophobic.  Kind of like how this elephant is making it
-hard to move around in this room."  or "Been reading Kafka, it's
-fascinating.  Can you imagine the elephant in this room writing
-stories like that?  Oh, it already did? Wow, I thought I would've
-heard about it given the elephant is /in the room/."
 
-The other truth is: my opinion doesn't matter.  AI is changing the way
-that people learn, and──to my mostly quiet frustration──this behooves
-me to re-evaluate the way I teach.
+
+# It's hard to call it an elephant in the room──the idiom presumes the
+# inhabitants of said room are ignoring said elephant.  Truth is we
+# can't stop talking about the elephant.  Every conversation now takes
+# the form: "I liked that restaurant you recommended, but the space was
+# a bit claustrophobic.  Kind of like how this elephant is making it
+# hard to move around in this room."  or "Been reading Kafka, it's
+# fascinating.  Can you imagine the elephant in this room writing
+# stories like that?  Oh, it already did? Wow, I thought I would've
+# heard about it given the elephant is /in the room/."
 
 This essay serves three purposes:
 
@@ -35,43 +35,32 @@ This essay serves three purposes:
 
 -----
 
-/What does it mean to learn with AI?/ I've been considering this the
-way one considers trying out rock climbing.[fn::I've chosen this
-analogy because I myself am a climber, so it balances my critique
-(gotta play devil's advocate with yourself sometimes).]  The appeal is
-clear (to the right kind of person) but it's also kinda questionable
+/What does it mean to learn with AI?/ I've been recently considering
+this question the way one considers trying out rock climbing.[fn::I've
+chosen this analogy because I myself am a climber, so it balances my
+critique (gotta play devil's advocate with yourself sometimes).]  The
+appeal is clear (to the right person) but it's also kinda questionable
 right?  There's a lot of "stuff" involved, there's like, shoes and
-chalk and ropes? And you have to pay exorbitantly for a membership out
-here in Boston...
+chalk and ropes? And you have to pay exorbitantly for a membership, at
+least out here in Boston. The other thing (and it pains me to +say+
+write this): /a lot of people climb/.  It's become a crowded space.
+And climbers stereotypically push it on their peers.  /It's the most
+fun way to get a good workout.  Sure, you can get injured but there's
+a "right" way to do it./
 
-The other thing (and it pains me to +say+ write this): /a lot of
-people climb/.  It's become a crowded space.  And climbers
-stereotypically push climbing on their friends.  /It's the most fun
-way to get a good workout.  Sure, you can get injured but there's a
-"right" way to do it./
+It isn't important to the analogy, but climbing also has levels and
+subcultures the way that AI use does currently.  There are the
+5-days-a-week-ers, the once-a-blue-moon-ers, the free-day-pass-ers,
+the weekend warriors, the board bros, the trad dads, the surprisingly
+strong STEM kids...[fn::Challenge to the (numerous) simultaneous
+climbers + programmers: map these onto AI users.]  Where the analogy
+breaks down in general is where it remains true (for now) in my
+particular case: /no one's saying you'll lose your job if you don't
+climb/.
 
-And it isn't all that important to the analogy, but climbing also has
-levels and subcultures the way that AI use does currently.  There are
-the 5-days-a-week-ers, the once-a-blue-moon-ers, the
-free-day-pass-ers, the weekend warriors, the board bros, the trad
-dads, the surprisingly strong STEM kids...[fn::Challenge to the
-(numerous) simultaneous climbers + programmers: map these onto AI
-users.]
-
-Where the analogy breaks down in general is where it remains true (for
-now) in my particular case: /no one's telling you that you'll lose
-your job if you don't climb/.  The fear of "falling behind" looms
-large──especially in mathematics, the area with which I'm most
-familiar──and may be the real elephant in the room.[fn::I have a
-tendency to over-cook analogies, but this feels akin to avoiding the
-topic of the elephant's odor, for fear of being told "if it bothers
-you so much, why don't you just leave the room?" The implication (to
-be unnecessarily concrete) being that we'd all like to stay in the
-room if we can.]
-
-If you've lost the track of the point, fair, I think I did too.  Let
-me try get at it again, with concision this time: /I don't know what
-it means to learn with AI and I have no strong desire to
+If you've lost track of the point, fair, I think I did too.  Let
+me try to get at it again, with concision this time: /I don't know
+what it means to learn with AI and I have no strong desire to
 know./[fn::Another rough analogy: I view AI-use like smartphone
 ownership; life without a smartphone is more difficult in some
 respects (e.g., you have to print out physical insurance cards), but
@@ -85,25 +74,22 @@ told all this by senior members of my community.
 
 -----
 
-/What is my job?/ The question, as I understand it,[fn::And I'm not
-claiming any novelty in this view.]  has two parts.  First, what is my
-objective? Then, how do I accomplish my objective?
-
+/What is my job?/ This question, as I understand it, has two parts.
+First, what is my objective? Then, how do I accomplish my objective?
 Things seem pretty clear to me objective-wise: /when <student>
 finishes my course, <student> knows how to do <topic>./ The ambiguity
 of the "do" is where the discussion begins. Is doing <topic> the same
 as doing <topic> with the help of an outside resource (e.g., textbook,
-friend, notes, AI)?  Is doing <topic> the same as doing <topic> in the
-"real" world?  What if you'll never "realistically" do <topic>?
-
-This part of the question is ultimately about evaluation.  And I'm
-generally of the opinion that evaluation is an important feature of
-the university as an institution.  This is why I've never been able to
-get entirely behind ungrading.[fn::I can't wait to see how many
+phone-a-friend, notes, AI)?  Is doing <topic> the same as doing
+<topic> in the "real" world?  What if you'll never "realistically" do
+<topic>?  These are ultimately (sub)questions about evaluation.  And
+I'm generally of the opinion that evaluation is an important feature
+of the university as an institution.  This is why I've never been able
+to get entirely behind ungrading.[fn::I can't wait to see how many
 arguments I'll get into about this one line.]  No matter how inclusive
 the pedagogy, no matter how oppressive the education system, there is
 in my opinion immense value in receiving feedback from an expert, even
-if what you choose to do with it is exasperatedly throw up your hands
+if what you choose to do with it is to exasperatedly throw up your hands
 and shout: "The experts have fallen, it shows in their inane,
 quibbling evaluation. But no matter, the new generation will soon
 rise!"[fn::The jaded expert is an incredible anti-aesthetic (though
@@ -114,52 +100,47 @@ application of evaluation as a certificate.  This is an ugly emergent
 property of the university as a business.  And though I don't believe
 becoming a business is inherent to the nature of the university──even
 in a capitalist hellscape──it's not hard to connect the dots; money
-motivates.
-
-This brings me to one sub-point: /I need to evaluate <student> on
-their ability to do <topic>.  And I believe this brings value to
-<student>, both in time and after the fact./ That my evaluation
-carries weight for future employers of <student> is the moralistic
-cross I bare as a result not of evaluation-as-such but of the above
-evaluation-as-certificate point.  Every semester I bare this cross
-with admittedly near-absolute emotional despair as I try to make my
-evaluation as fair and reasonable as possible, dealing with broken
-systems, actors of varying degrees of nefarious, and unspoken but
+motivates.  This brings me to my first sub-point: /I need to evaluate
+<student> on their ability to do <topic>.  And I believe this brings
+value to <student>, both in time and after the fact./ That my
+evaluation carries weight for future employers of <student> is the
+moralistic cross I bear as a result not of evaluation-as-such but of
+the above evaluation-as-certificate point.  Every semester I bear this
+cross with admittedly near-absolute emotional despair as I try to make
+my evaluation as fair and reasonable as possible, dealing with broken
+systems, nefarious actors (of varying degrees), and unspoken but
 incredibly visible power dynamics; it's a veritable mess, and I end
 every semester in something of a stupor.  Perhaps it could be
 otherwise, but I consider this the sacrifice I make to shield students
 (whether they want it or not) from the university-as-business, in the
 hope of imbuing the evaluation we give each year with an iota of
-academic and intellectual purity.
-
-There's a whole lot more I could +say+ write, but as a meta-point, it
-seems the contemporary essay often feels the need to +say+ write
-everything, rather than leave some for a later conversation,[fn::And
-it's difficult not to connect this with the fear you may never have
-that conversation, due to (among other things) epidemic levels of
-loneliness.] hence the number of mega-opinion pieces I've recently
-been sent.[fn::I prefer to waste my word count on over-cooked
-analogies and unnecessary footnotes.]
-
-An aside: above I've made the classic error of conflating feedback and
-evaluation, where "evaluation" may be read somewhat euphemistically
-here as "grade".  This is partially on purpose; I believe a grade
-should ideally be treated as a low-fidelity, summarizing form of
-feedback.[fn::Of course, this is not and likely will never again be
-the case.]  But I do want to make clear that, no matter the ultimate
-point I make here, I still consider providing productive feedback high
-pedagogical priority.
+academic and intellectual purity.  Of course, here I've made the
+classic error of conflating feedback and evaluation, where
+"evaluation" may be read somewhat euphemistically here as "grade".
+This is partially on purpose; I believe a grade should ideally be
+treated as a low-fidelity, summarizing form of feedback.[fn::Though
+this is not and likely will never again be the case.]  But I do want
+to make clear that, no matter the ultimate point I make here, I still
+consider providing productive feedback high pedagogical
+priority.[fn::There's a whole lot more to +say+ write, but as a
+meta-point, it seems the contemporary essay often feels the need to
++say+ write everything, rather than leave some for a later
+conversation (perhaps for fear of never having that conversation, due
+to (among other things) epidemic levels of loneliness) hence the
+number of mega-opinion pieces I've been sent as of late.  I prefer to
+waste my word count on over-cooked analogies and unnecessary
+footnotes.]
 
 -----
 
-Back to the second part: how do I accomplish said objective?  (And
-what does this have to do with "learning with AI"?)  This is
-invariably the "fun" part, where actual pedagogy meets the
-metaphorical pavement.  I think it best to broad-stroke this one:
-/it's the job of the teacher it to create an environment in which
-<student> can become competent in <topic>./ I like this framing
-because it says virtually nothing (though not entirely nothing).  To
-loosely quote my advisor/first teaching mentor:
+Back to the second part of the question: how do I accomplish said
+objective?  (And what does this have to do with "learning with AI"?)
+This is the "fun" part, where actual pedagogy meets the metaphorical
+pavement, and I think it best to broad-stroke this one: /it's the job
+of the teacher to create an environment in which <student> can
+become competent in <topic>./ I like this framing because it says
+virtually nothing (though not entirely nothing).  To loosely quote my
+advisor/first teaching mentor:
 
 #+begin_quote
 /Every pedagogical method works, because in attempting to implement
@@ -168,48 +149,45 @@ and thinking carefully about the learning environment leads to better
 learning outcomes./
 #+end_quote
 
-Teaching is a relentlessly personal endeavor. I love discussing
-pedagogy with fellow teachers, but I think we're sometimes
-under-conscious of the fact that our conversations always go the same
-way: "I did <pedagogical method>...oh cool, I tried <other pedagogical
-method>...interesting, I did something similar but more like
-<different pedagogical method>...I like that, that's like this thing I
-did where..."  The environmental view of teaching elicits just enough
-"aura" in the endeavor to justify how self-centered we are; we share
-in an objective (to the degree that we agree on the objective) but
-there's an aesthetic we're after in our classrooms, the unnameable
-thing that sets up the synapses for further growth and stimulation,
-even and especially post-"business hours".
+Teaching is a relentlessly personal endeavor. I love talking teaching
+with teachers, but we're often under-conscious of the fact that our
+conversations always go the same way: "I did <pedagogical method>...oh
+cool, I tried <other pedagogical method>...interesting, I did
+something similar but more like <different pedagogical method>...I
+like that, that's like this thing I did where..."  The environmental
+view of teaching creates just enough "aura" around the endeavor to
+justify how self-centered we are; we share in an objective (to the
+degree that we agree on the objective) but what we're actually after
+is that unnameable thing that sets up the synapses for growth and
+stimulation, even (and especially) post-"business hours".  And like
+anything with an aesthetic (almost mystic) bent, different folks have
+different strengths.  Course organization is one of my strengths, but
+I'm pretty weak when it comes to being open to approaches to learning
+outside of my own.
 
-And like anything with an aesthetic (almost mystic) bent, different
-folks have different strengths.  Course organization is one of my
-strengths, but I'm pretty weak when it comes to being open to
-approaches to learning outside of my own.
+Okay, let's round that corner.  AI is changing the way that people
+learn.  I don't care to know how (at the moment) because, frankly, I
+don't want to (at the moment).  But I'd like to be open to the use of
+AI for learning.[fn::Read: I don't want to be grumpy about AI.] It's
+here to stay and (feel free to fight me on this one the most) the evil
+fog in which the discourse places it will eventually dissipate, not
+necessarily for it being less evil, but for it being normalized.
 
-Okay, let's round that corner at third.  AI is changing the way that
-people learn.  I don't care to know how (at the moment) because,
-frankly, I don't want to (at the moment).  But I'd like to be open to
-the use of AI for learning.[fn::Read: I don't want to be grumpy about
-AI.] It's here to stay and (feel free to fight me on this one the
-most) the evil fog in which the discourse places it will eventually
-dissipate, not necessarily for it being less evil, but for it being
-normalized.
-
-Another aside: I've had quite a few conversations with teachers about
-the most obvious follow-up question: /How do students actually use
-tools like ChatGPT and Claude?/ This is particularly pertinent as
-individual teachers and whole institutions are trying to draw circles
-around "reasonable"/"responsible" AI use.  It's difficult to gauge
-because responding honestly to this question might mean admitting
-(accidentally or otherwise) to unreasonable/irresponsible use.
-There's a sense among pedagogues that students are one-shot-ing
+Aside: I've had quite a few conversations with teachers about the most
+obvious follow-up question: /How do students actually use tools like
+ChatGPT and Claude?/ an unsurprisingly important question to consider
+as individual teachers and whole institutions are trying to draw
+circles around "reasonable"/"responsible" AI use.  It's difficult to
+gauge because responding honestly to this question might mean
+admitting (accidentally or otherwise) to unreasonable/irresponsible
+use.  There's a sense among pedagogues that students are one-shot-ing
 problem sets, essays, and projects, then f***ing off and snickering on
 their way out the metaphorical door.  Or rather, there's a sense among
 pedagogues that other pedagogues feel this way.  It's implicit in the
-way we talk about (and, yes, I'm am also guilty of this) "trusting"
-our students.  But, barring the most jaded among us, the word "trust"
-is mostly a placeholder, we lack a better term.  Part of my aim is to
-make my argument without appealing to trust.
+way we talk about "trusting" our students.  But, barring the most
+jaded among us, the word "trust" is mostly a placeholder, we lack a
+better term.  Part of my aim is to make my argument without appealing
+to trust.
 
 -----
 
@@ -221,8 +199,8 @@ I think it's time for a pseudo-syllogism.
   "fair" or "reasonable" use of AI.
 + Like me, some people have no interest in learning with AI.
 + For a graded form of evaluation to be fair and reasonable, the
-  difference in distribution for AI-users vs. AI-non-users should be
-  statistically insignificant.
+  difference in grade distribution for AI-users vs. AI-non-users
+  should be statistically insignificant.
 + For AI-users, /the solutions to every at-home assignment or project
   I've written and will ever write in any introductory math or
   computer science course are available, in perpetuity./
@@ -230,13 +208,12 @@ I think it's time for a pseudo-syllogism.
   and reasonable form of evaluation.*
 
 This potential paradigm shift is eviscerating.  I love writing
-problems sets.  I love challenging problems, the kinds of problems
+problem sets.  I love challenging problems, the kinds of problems
 that feel like puzzles, that you have to put down and come back to.
-This is almost certainly because working on problems sets was my
-favorite part of being a student.  I loved letting a problem /steep/;
-getting stuck, thinking about it on my walk to class, getting angry
-about it, talking with friends about it.[fn::In fairness, it was also
-sometimes awful.]
+This is almost certainly because working on problem sets was my
+favorite part of being a student, letting a problem /steep/, thinking
+about it on my walk to class, getting angry about it, talking about it
+with friends.[fn::In fairness, it was also sometimes awful.]
 
 That, /and also/, test anxiety is currently at a high point. It's
 difficult for me to justify a teaching plan with more quizzes and
@@ -254,16 +231,16 @@ assignments has become an insignificant indicator of success.]
 
 -----
 
-All of the above is predicated on fact that I have near sole
+All of the above is predicated on the fact that I have near sole
 determination of my courses' objectives.  And unlike some of my peers,
-/I don't believe my job is to preparing <student> for the job market/,
+/I don't believe my job is to prepare <student> for the job market/,
 at least not directly.  Nor do I believe that learning with AI helps
 in this respect.[fn::Some later conversation fodder.]  In the future,
 my expertise as a pedagogue may be trumped by the powers that be, who
 view AI as a necessary part of human education.  This doesn't seem so
 unlikely, with token-surveillance becoming standard practice at
 high-profile software companies.  Until then (at which point,
-sayonara) I consider competency in <topic> my soul objective.[fn::This
+sayonara) I consider competency in <topic> my sole objective.[fn::This
 is, of course, not strictly true.  I care about my students' success
 in life.  And I'm not a sociopath.  But it's certainly more emphatic
 as stated.]
@@ -271,7 +248,7 @@ as stated.]
 But, as I hope I've preempted sufficiently well, my real job begins in
 deciding /how/ to achieve this.  And in the presence of learning with
 AI, this begs the obvious question: If everything I teach can be
-presented in uniform way by AI, if AI can write you a custom textbook,
+presented in a uniform way by AI, if AI can write you a custom textbook,
 a custom syllabus, and answer your every question as you learn,
 providing you with practice problems and immediate feedback, /what do
 I contribute?/ This is the "why" of it all. And I don't have a
@@ -286,42 +263,41 @@ story-telling and contrarianism.
 As you can tell, I'm not an amazing writer.  I'm a wannabe mash-up of
 Salinger and Wallace, with traces of Russell's strict grammarian.  But
 I've taken a less-traveled intellectual path, one that's shaped me
-into a "peculiar" writer, presenter, and teacher (and that allows for
-that obnoxious combination of name-drops).  To me this is an integral
-aspect of story-telling: your life's trajectory is /everything./ And
-I'm well aware my brand of intellectual soup isn't for everyone, but
-I'm also aware I can't be different.  This is yet another AI tradeoff:
+into a "peculiar" writer, presenter, and teacher (and allows for that
+obnoxious string of name-drops).  To me this is an integral aspect of
+story-telling: your life's trajectory is /everything./ And I'm well
+aware my brand of intellectual soup isn't for everyone, but I'm also
+aware I can't be different.  This is yet another tradeoff with AI:
 when every detail of everything unfurls completely before you, nothing
 seems more important than another thing.
 
-Contrarianism follows a similar vein.  The first thing I do when I try
-to learn something is disbelieve it.  The second thing I do (after I
-believe it) is find a better way to present it.  /Because there's
-always a better way of presenting it./
+My appeal to contrarianism follows a similar vein.  The first thing I
+do when I try to learn something is disbelieve it.  The second thing I
+do (after I believe it) is find a better way to present it.  /Because
+there's always a better way of presenting it./
 
 /Can AI be contrarian?/ This isn't a dig at the sycophantic tendencies
 of current out-of-the-box models.  AI can disagree, and it can do so
 aggressively, but is this to be contrarian?  There's a philosopher out
-there who can put me in my place, but in lieu of this schooling, I'd
-argue that being contrarian depends as much on context as
-story-telling; it's difficult to interpret someone's acting like an
+there who can put me in my place, but in the absence of this
+schooling, I'd argue that being contrarian depends as much on context
+as story-telling; it's difficult to interpret someone's acting like an
 ass without also knowing and understanding them, at least a little.
 
 This is all to say (in a roundabout way): I'm going to bring up
-infinite dimension spheres and Flatland in my introductory linear
+infinite-dimensional spheres and Flatland in my introductory linear
 algebra course.  I'm going to s*** talk Python all the way through my
 programming languages course, and tell you about how Robin Popplestone
 drowned his boat when we cover higher-order programming.  I'm going to
-make you learn about tensors in my PL course because /I wanted to
-learn about tensors/, and I'm going to make dumb mistakes my students
-are going to call me out on.
+make you learn about tensors in my PL course because /I want to learn
+about tensors/, and I'm going to make dumb mistakes that my
+students'll call me out on.
 
 AI is going to tell you that finding singular values is like "treasure
 hunting" and use the "tip of the iceberg" metaphor every f***ing time
-it presents a topic that's a little more complicated than it looks at
-first glance.[fn::This may not always be the case, but asking AI to
-come up with analogies remains a source of humor for me in these dire
-times.]
+it presents a topic that's a little complicated.[fn::This will almost
+certainly not always be the case, but as of now asking AI to come up
+with analogies remains a source of humor for me in these dire times.]
 
 -----
 
@@ -339,8 +315,8 @@ drastically change what we calculate./ Google changed the rate at
 which we could attain facts about the world, /but it didn't
 drastically change what facts can be known./ Both technologies are
 accompanied by atrophy, but in skills that we could in principle do;
-with some practice, I can read off a multiplications table, or look up
-a topic in an encyclopedia.
+with some practice, I can read off a multiplication table, or look up
+something in an encyclopedia.
 
 # Furthermore, I don't gain terribly by
 # doing actually the thing; I in principle know that I can multiply two
@@ -349,10 +325,10 @@ a topic in an encyclopedia.
 # arithmetic, but I gain a lot more in the exercise.
 
 AI asks us to apply it to tasks for which the "in principle" isn't
-important; this is kind of it's whole modus operandi.  /Make a webapp
+important; this is kind of its whole modus operandi.  /Make a webapp
 in minutes, you don't even need to know how +it works+ to code./ And
-there are certainly applications of this, e.g., being a better
-manager/capitalist.  But if calculators are the carbon fiber plates of
+there are certainly applications of this (e.g., being a better
+manager/capitalist) but if calculators are the carbon fiber plates of
 the running world, then LLMs are inline skates.  We get to point B
 more efficiently, but we're not running anymore; we've given up the
 sport, and traded it for something potentially rewarding, but
@@ -360,12 +336,13 @@ ultimately less adaptable.
 
 /But AI is a tool, you can learn "the old-fashioned way" and still use
 it as a tool./ Maybe.  My whole point to some degree is I'm open to
-this prospect.  But learning is an act of reflection, and teaching is
-an act of sharing.  Using AI is an act of taking.  You can take
-answers (this is the definition of cheating) but you can't take
-comprehension.  /What if I have a question and no one is around to
-answer it?/ Then ask AI.  But also consider: confusion is more aid
-than barrier to learning (also, don't confuse confusion with
+this prospect.[fn::To the extent that writing this essay has made me
+more open to playing around with AI.]  But learning is an act of
+reflection, and teaching is an act of sharing.  Using AI is an act of
+taking.  You can take answers (this is the definition of cheating) but
+you can't take comprehension.  /What if I have a question and no one
+is around to answer it?/ Then ask AI.  But also consider: confusion is
+more aid than barrier to learning (also, don't confuse confusion with
 ignorance).
 
 /August 16, 2026/
