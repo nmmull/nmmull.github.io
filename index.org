@@ -7,6 +7,7 @@ is ~(++ @bu.edu)nmmull~.  I'm interested generally in logic and
 computing.  I use the pronouns he/him/his.
 * Teaching
 + *CAS CS 132* Geometric Algorithms
+  + [[https://nmmull.github.io/cs132-f26/index.html][Fall 2026]]
   + [[https://nmmull.github.io/cs132-s26/index.html][Spring 2026]]
   + [[https://nmmull.github.io/CS132-F25/index.html][Fall 2025]]
   + [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]]
