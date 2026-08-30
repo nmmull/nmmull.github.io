@@ -9,6 +9,96 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 35 (8/23)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/gerald-finzi.jpeg]]
+
+[[https://www.prestomusic.com/classical/products/9872476--finzi-requiem-da-camera-other-choral-works][*Gerald Finzi: Requiem da camera & Other Choral Works* by The Choir of Trinity College Cambridge and others]]
+
+The neo-classicists have always done it for me, along the same lines
+as the mannerists; not quite uncanny-valley-esque, but poking at the
+membrane towards the outer edges of stable, often with a backward
+looking mysticism (though I guess if I really think about it the
+neo-classicists and mannerists are working in opposite directions; the
+mannerists want to pull all their aesthetic baggage through the
+pin-prick at the cell-wall, inevitably causing a burst, whereas the
+neo-classicists want to salvage post-burst, not necessarily rebuild,
+but re-establish (I don't know what the f*** I'm saying, but I love an
+overcooked analogy)).  Nostalgia melancholia vs. pre-destructive
+frontierism (or something).
+
+Finzi has a place in my heart as a
+once-(and-hopefully-one-day-future)-cellist, his dark and melodramatic
+concerto occasionally haunts the dusty corners of my brain (I'd love
+to play it with an orchestra one day, though that opportunity has
+likely passed).  Driving home in high school (from God knows what)
+listening to San Diego's classical music radio station (I could look
+it up, but I don't care to at the moment) I had something of a musical
+awakening listen to Finzi's Romance for String Orchestra, with its
+characteristic opening A flat major 7 → G (flat 9) → E flat
+progression that breaks my heart every time I hear it (I was far more
+sentimental than I was comfortable admitting or even wholly realized
+at the time (I remain as if not more sentimental, but now readily
+admit it)).  I parked the car and stayed to finish listening.
+
+I have less to say in general about organ and choral music, except
+that it makes me feel like I have trace Catholicism in my veins (like
+some kind of religious Midi-chlorians).
+
+-----
+
+* Week 34 (8/16)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/hearts-mixtape.jpg]]
+
+[[https://ej58.bandcamp.com/album/hearts-m-xtape][*hearts mîxtape* by EJ58]]
+
+This album may be too cool for me.  It dripping with style, possibly
+to its detriment. The mimetic space it carves out is almost too easy
+to caricature; it brings to mind run-of-the-mill anti-culture (think
+gauges and glasses, a higher than average number of tattoos, dark
+baggy clothing, beanies and five-panel hats, a refined Portlandia
+hipster of sorts).
+
+But the only thing more boring than bagging on the hipsters is
+dismissing their taste; sometimes (through crucially not always)
+there's value in consensus, especially that of a group of folks so
+taste-conscious.  And although low-fi is a runout genre (in my
+unreasonable opinion) every so often someone hits the mark.
+
+This album is a quick listen but it's dense.  It's squarely chill low-fi,
+but feels less like guy-in-bedroom-messing-with-drum-pad and more like
+skilled-musicians-crafting-in-a-studio (both have merit, to be clear).
+I may never fully understand why /actual/ drums sound so good, but
+they do.  Music is magic (in whatever real sense I can invoke that
+word).
+
+-----
+
+* Week 33 (8/9)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/a-little-summer-mixtape.jpg]]
+
+[[https://www.patreon.com/dimitrigrimm/posts/little-summer-162950255][*A little summer mixtape* by various artists (compiled by Dimitri Grimm)]]
+
+As the summer concludes (and the Fall semester begins (Jesus, what
+happened)) I find myself coming back to this mini project of Dimitri
+Grimm/Dim Grimm/Dimlite a.o.  I know of D.G. through his now defunct
+project Misel Quinto; [[https://everestrecords.bandcamp.com/album/sleep-over-pieces-vol-1][Sleep Over Pieces Vol. 1]] remains for me one of
+the most genre-defining highly-underrated electro-acoustic albums from
+the aughts (which I didn't discover until college (the early tens)).
+This mixtape carries on what feels like a long-lost tradition; it
+treats music not as a static art object, but as something to be
+shared, discovered, enjoyed, engaged with, played with, re-molded,
+re-discovered, re-enjoyed, and then re-shared.
+
+Best enjoyed on a slightly sticky summer dusk-walk.
+
+-----
+
 * Week 32 (8/2)
 
 #+ATTR_HTML: :width 300px
@@ -22,7 +112,7 @@ find.  He's an impressive percussionist and he better than anyone hits
 the genre dartboard right on that jazz/hip-hop line (off screen:
 "we're gonna have'ta pull out the magnifier...").  This album's foray
 into footwork is so natural it verges on being uninteresting, but as
-usual it's all in the details.  Good headphones and/or mutiple listens
+usual it's all in the details.  Good headphones and/or multiple listens
 make this one, and it goes by quick so it's easy to do (and also easy
 to miss).  The synth sweep in the opener /ALL BOSSES/ couldn't
 honestly make the entire album worth it, but as a whole it's studded
@@ -91,7 +181,7 @@ Modulo the alien bits, the above is pretty much my review.
 
 [[https://rajnaswaminathan.bandcamp.com/album/of-agency-and-abstraction][*Of Agency and Abstraction* by Rajna Swaminathan]]
 
-One of the few rules I have with this project that I try to avoid
+One of the few rules I have with this project is that I try to avoid
 notable similarities between adjacent albums.  I don't think I've
 broken this rule──this album is unique, and has in-your-face
 differences from the previous one──but soft warning: it's another
@@ -108,8 +198,8 @@ album's stylistic equation.
 That said, the violin is awesome; my western-music-brain can't keep up
 with that glissando, it's a skill I don't understand, it sounds like a
 different instrument.  I also have to direct some attention toward the
-mrudangam.  It easy for my (again) western-music-brain to dismiss the
-percussion as "exotic" and "folk/world-music-y" (I'm not proud to
+mrudangam.  It's easy for my (again) western-music-brain to dismiss
+the percussion as "exotic" and "folk/world-music-y" (I'm not proud to
 admit this, but as usual I hope that by being honest about it, I can
 be better "next time" so to speak).  It took a couple tries, but on
 later listens (and, yes, this album rewards multiple listen-throughs)
@@ -165,7 +255,7 @@ self-explanatory why I brought that up.
 
 [[https://oddisee.bandcamp.com/album/to-what-end][*To What End* by Oddisee]]
 
-There's a line in The French Dispatch delivered by Jeffery Wright's
+There's a line in The French Dispatch delivered by Jeffrey Wright's
 character that goes: "...never ask a man why.  It tenses a fellow up."
 Dispatch is far (though not that far) from my favorite Wes, but this
 is an invasive scene in my idle thoughts, usually bubbling up when I
@@ -204,7 +294,7 @@ periphery of his rhymes, e.g., from /zen scientist/:
   the inwardly infinite capacity for mindfulness.
 #+end_quote
 
-Now compare this to one of my favorite Oddissee couplets, the opening
+Now compare this to one of my favorite Oddisee couplets, the opening
 of /All I need/:
 
 #+begin_quote
@@ -216,10 +306,10 @@ of /All I need/:
 #+end_quote
 
 Amazing lines, and for almost diametrically opposed reasons; they hit
-straight and fast, flow without a beat.  Oddissee commands the
+straight and fast, flow without a beat.  Oddisee commands the
 sentence as a linguistic unit, the rhythm, the expressivity, the
 simplicity.  milo subverts the sentence, creating literal
-tongue-in-cheek exercises, whereas Oddissee's lines "fall out" of the
+tongue-in-cheek exercises, whereas Oddisee's lines "fall out" of the
 mouth and hold space to be reflected on.  Here's another one, from
 /People Watching/:
 
@@ -229,7 +319,7 @@ You ever been in company of people you despise?
 I feel like that every time I take a walk outside.
 #+end_quote
 
-This is not to put Oddissee (or anyone else) in a box.  He also has
+This is not to put Oddisee (or anyone else) in a box.  He also has
 variation in his groove, his syncopation, his topic, etc.; there are
 many ways to be great.  I just can't help hearing connections to other
 simple sentence experts like Delillo and Rakoff.
@@ -244,7 +334,7 @@ simple sentence experts like Delillo and Rakoff.
 [[https://suwonyim.bandcamp.com/album/traunkirchen][*Traunkirchen* by Suwon Yim]]
 
 This week I drove from Boston to Chicago on Monday (a 15 hour day) and
-back on Thursday (and 18 hour day due to a detour through Auburn,
+back on Thursday (an 18 hour day due to a detour through Auburn,
 Indiana).  This meant I listened to a lot of music.  Most of what's
 made it onto this microblog was on repeat, one notable exception being
 Waxahatchee's [[https://waxahatchee.bandcamp.com/album/tigers-blood][*Tigers Blood*]] (which I used to keep myself awake by
@@ -305,7 +395,7 @@ saxophone + drum free jazz album out there (fight me (I won't win, but
 still, it's worth a listen)).  Her later album [[https://soojinsuh.bandcamp.com/album/roots-to-branches][*Roots to Branches*]]
 with the cutely named Chordless Quartet consistently finds its way
 onto my listening queue.  Both of these albums demonstrate a
-preternatural ability create lush with little ("Chordless" here
+preternatural ability to create lush with little ("Chordless" here
 referring to the fact that the group is drum, bass, sax, sax).  This
 is often achieved by allowing the members of the group freedom to
 move, only occasionally syncing back up but never straying too far
@@ -318,7 +408,7 @@ PERCEPTION/ are by no means easy, but they are tightly regimented,
 almost claustrophobically so, with whole sections dedicated to
 frenetic lock-step melodies.  The chordal character of the entire
 album is anxious, with only a few glimmers of hopeful consonance.
-There's a suite of pieces called /UNCERTAINTY/ (it take every fiber of
+There's a suite of pieces called /UNCERTAINTY/ (it takes every fiber of
 my being to not write "for crying out loud" here, so instead I
 self-consciously include it as a parenthetical) the first movement of
 which (the opener of the album) creates an awkward, disconcerting mood
@@ -347,10 +437,10 @@ and I think listening for these moments is what has me coming back.
 [[https://mingjia.bandcamp.com/album/star-star][*star, star* by mingjia]]
 
 I found myself in a contemporary classical rabbit hole on Bandcamp and
-came across this album by the one of the teethy folks (dumb
+came across this album by one of the teethy folks (dumb
 joke) that somehow went under my radar.  Which surprises me at least
 in part because the album art is so striking I would have expected it
-to catch my eye if it ever found it's way onto my computer screen.
+to catch my eye if it ever found its way onto my computer screen.
 
 This album has a lot of my favorite things about the classical pop
 cross-section.  The more classical-leaning may find it too musical
@@ -377,8 +467,8 @@ and rather say that it reads /operatic/.
 
 [[https://ezraquartet.bandcamp.com/album/whippersnap][*Whippersnap* by EZRA]]
 
-A collegue of mine hosts (and produces and engineers) a radio program
-on WMBR called [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]].  A such she has fantastic taste
+A colleague of mine hosts (and produces and engineers) a radio program
+on WMBR called [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]].  As such she has fantastic taste
 in music, and every time I get a chance to chat I ask about what
 music's been exciting her (the first recommendation she ever gave me
 was [[https://awadaginpratt.bandcamp.com/album/stillpoint][*STILLPOINT*]] by Awadagin Pratt, which remains a favorite of mine).
@@ -387,7 +477,7 @@ I brought up that I'd been listening to The Hands Free's new album
 honestly, checkmate.
 
 Classically-Jazzically-inclined bluegrass isn't new, but I think it
-finds it's greatest popularity──and arguably one of it's highest
+finds its greatest popularity──and arguably one of its highest
 inflection points──in the [[https://en.wikipedia.org/wiki/The_Goat_Rodeo_Sessions][*The Goat Rodeo Sessions*]] (of course the
 related prototype/offshoot projects are important too; as an aside,
 I've always been curious how Béla Fleck fits into the picture, a
@@ -397,7 +487,7 @@ huge amount of movement in this already rarefied space.  EZRA reminded
 me (like a slap in the face) that there many dimensions to musical
 innovation.  There is of course technical skill (which EZRA clearly
 has, within grasp of the Goat Rodeo crew), but there's also genre
-fluidity, there's group cohesion.  The transitions between avante-jazz
+fluidity, there's group cohesion.  The transitions between avant-jazz
 and bluegrass lick are quick, and often done with a kind of precision
 that feels like watching someone slalom with an Escalade (this is not
 a particularly flattering metaphor, but once I thought it I couldn't
@@ -434,8 +524,8 @@ legs on its left side, walks around the mountain counterclockwise; the
 /dextrogyre dahu/, with the shorter legs on its right side, walks
 clockwise around the mountain."  Someone was having fun.
 
-I think what makes this album so compelling is that is feels jammed
-packed with everything (nudge nudge): musical and lyrical prowess,
+I think what makes this album so compelling is that it feels jam-packed
+with everything (nudge nudge): musical and lyrical prowess,
 emotional outpour, mythos, the tug of life and death, of
 traditionalism and experimentalism.  It feels tight; the album blurb
 notes that it comes on the heels of some major touring hours.  It also
@@ -445,7 +535,7 @@ forest after fire."  The result is stunning, but in a way that
 necessitates a couple listens.
 
 Case in point: Ants on the Wall (the opener) is a lovely rumination on
-the mundane: ants come in the summer.  Arrangement-wise, it's core is
+the mundane: ants come in the summer.  Arrangement-wise, its core is
 a clear ambling guitar, a minimal drum beat, airy vocals.  This is
 layered with rhythm guitar, bass (okay sure) but then also a steel
 guitar, another electric guitar, an array of percussional clicks and
@@ -511,7 +601,7 @@ they do is trivial, just that it's warm, welcoming, and inspiring.
 
 As an aside, I had a lovely time chatting with the aforementioned
 person behind counter.  I did that dumb thing where I was so excited
-to talk /my/ listening-queue to I forgot to ask for theirs (an
+to talk /my/ listening-queue I forgot to ask for theirs (an
 embarrassing example of the egocentricity I claim to not have).  I
 ended up going back several days later to actually buy mushrooms (I
 didn't first go, but got some gorgeous morels second go) and saw them
@@ -545,8 +635,8 @@ whole enchilada theory (not really a thing, if that wasn't clear).
 The title of the album for example saves the project from going
 immediately in my Lily-Allen-esque bucket (a surprisingly full bucket,
 but in the way that I couldn't bring an example to mind because I tend
-dimiss then forget before committing to memory, a bad habit I'm well
-aware).  The question reminded me going into the album to allow the
+to dismiss then forget before committing to memory, a bad habit I'm well
+aware of).  The question reminded me going into the album to allow the
 kinds of emotional states that come from thinking things like: /What
 scared me about the movie Pinocchio? Did I really see a ghost that
 night?  Remember when my cousin and I believed we could unlock
@@ -559,8 +649,8 @@ melody of /A Day in the Life/, which I can't not hear.
 But, yes, I liked this album. A fair amount too.  It helps that I was
 a Beatles kid (to the extent that I cannot listen to the Beatles now,
 like, at all) so the nostalgic flares of late-English-cinematic-pop
-really work on me (operative word be "on" and not "for").  The places
-where this album shines is in it's slower more introspective songs.
+really work on me (operative word being "on" and not "for").  The places
+where this album shines are in its slower more introspective songs.
 They hit like lullabies, hovering in layers of multi-instrumental and
 electronic sound experiments.  I can imagine getting lost in the
 forests of Switzerland to these songs, the sun setting, alone, my fear
@@ -580,7 +670,7 @@ somehow, cool?  Or is he trying too hard?  I honestly can't tell.  But
 at some point you have to appreciate the hustle.
 
 Props to [[https://giraffasaur.us][my dad]] on this one (of [[https://www.picturemecoding.com][Picture Me Coding]] "fame") he
-recommended to me La Tempête's most recent album [[https://www.prestomusic.com/classical/products/9846323--bomba-flamenca][*Bomba Flameca*]],
+recommended to me La Tempête's most recent album [[https://www.prestomusic.com/classical/products/9846323--bomba-flamenca][*Bomba Flamenca*]],
 which is by far one of the most bizarre albums of early music I've
 ever listened to (I'm not gonna explain it, just go listen).  Since
 then I've been digging into their discography.  [[https://www.prestomusic.com/classical/products/8061505--the-tempest][*The Tempest*]] isn't
@@ -680,7 +770,7 @@ Often it's just an off-kilter dissonance in the bassline or guitarline
 or vocalline, but it tips the scales towards an uncanny valley between
 easy listening and ironic posturing.
 
-Except, then there's the quite guitar-vocal track /I miss you/ that's
+Except, then there's the quiet guitar-vocal track /I miss you/ that's
 so touching it makes me wanna cry.  So I dunno, it's kind of all over
 the place.
 
@@ -719,7 +809,7 @@ I've never been big on house/EDM/IDM/whatever electronic music, but
 like ambient, every once in a while there's something that holds my
 interest. lynyn has the academic/experimental flavor of early early
 James Blake─and that may be my only concrete point of reference so
-this is all to say it's similar the the only other
+this is all to say it's similar to the only other
 house/EDM/IDM/whatever I've historically liked.
 
 -----
@@ -763,13 +853,13 @@ poetry, and this dimension──an extension of the lyrics──creates space,
 what's ultimately a space of play in which the quartet can wander.
 The underlying accompaniment is light, responsive, full of flourishes,
 some cinematic, some highly textured, but with a self-consciousness of
-it's space-filling duty.  This gets dangerously close to becoming
+its space-filling duty.  This gets dangerously close to becoming
 gloopy, but manages to stave off this criticism (at least from me).
 
 One more thing I cannot help but point out: I've seen several
 comparisons of this piece to Schönberg's String Quartet No. 2 which,
 besides feeling like an avant-gardian name-drop/flex, I think is far
-less applicable then a much more obvious comparison: [[https://en.wikipedia.org/wiki/The_Juliet_Letters][*The Juliet
+less applicable than a much more obvious comparison: [[https://en.wikipedia.org/wiki/The_Juliet_Letters][*The Juliet
 Letters*]] by Elvis Costello and the Brodsky Quartet.  The similarities
 are eerie, to the point that I feel like I'm being gaslit when I
 cannot find anyone else making this connection.
@@ -808,7 +898,7 @@ myself an iota of authority on the matter (of which, in reality, I
 have none) I'll mention briefly that I practiced Kung Fu as a "yute",
 and although I was partial to the humble broadsword (which I have to
 thank for a souvenir in the form of a 1in scar on my ankle,
-self-inflicted (accidently) by one such sword of the blunt practice
+self-inflicted (accidentally) by one such sword of the blunt practice
 variety) I was also fascinated in that same (teenage-)dorky-sinophile
 way to the more "exotic" weapons, e.g., the double hook swords of
 Jet-from-Avatar fame, the double hammers (which also make an
@@ -840,7 +930,7 @@ from the though-experiment wields nunchucks./ I can't say that
 beauty; I can't stop listening even though it makes me tired and a
 little angry.  Sound-wise, it brings to mind Roomful of Teeth's [[https://roomfulofteeth.bandcamp.com/album/rough-magic][*Rough
 Magic*]], in which the group seemed to want more "edge", except that
-[[https://deathbombarc.bandcamp.com/album/farming][*Farming*]] takes this concept to it's Weierstrassian extreme, to a
+[[https://deathbombarc.bandcamp.com/album/farming][*Farming*]] takes this concept to its Weierstrassian extreme, to a
 veritable lump of nothing-but-edge (where, if you tried to pick it up,
 you'd be infinitely pin-pricked by its fractalous surface).  I imagine
 an AI fed on a steady diet of Reich's speech-melodies, Americana, Fox
@@ -890,7 +980,7 @@ Vanguard*]]).  One consequence: the album is sprinkled with "gimmicks"
 several of which are used by the greats but are gimmicks none the
 less: (1) the bass-follow-piano riffs that give a satisfying almost
 hip-hop cadence (2) the hidden-rhythm syncopation of one voice
-followed by the another which sets the beat (like Vijay Iyer's
+followed by another which sets the beat (like Vijay Iyer's
 /Accelerando/ or Dirty Projectors' /The Socialites/).  But in my view
 the real kicker is that Javier Burin is freakin' 25 (22 on recording
 this album), and I'm very much looking forward to whatever's next.
@@ -982,7 +1072,7 @@ too am giving in any way I can.  I chose this album simply as a token
 [[https://hollyherndon.bandcamp.com/album/proto][*PROTO* by Holly Herndon]]
 
 With all that's going on in the AI-sphere, this 2019 AI-music
-experiment feels almost quiant. It's a marked departure from Herndon's
+experiment feels almost quaint. It's a marked departure from Herndon's
 previous albums; when listening to [[https://hollyherndon.bandcamp.com/album/movement][*Movement*]], one has the feeling
 that every synth began life as a sine wave and was molded to fit its
 aural purpose, wrestled into submission and imbued with a sense of the
