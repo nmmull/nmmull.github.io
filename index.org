@@ -13,6 +13,7 @@ computing.  I use the pronouns he/him/his.
   + [[https://nmmull.github.io/CS132-F24/index.html][Fall 2024]]
   + [[https://nmmull.github.io/CS132-F23/index.html][Fall 2023]]
 + *CAS CS 320* Concepts of Programming Languages
+  + [[https://bu-cs320.github.io/cs320-f26/index.html][Fall 2026]]
   + [[https://bu-cs320.github.io/cs320-s26/][Spring 2026]]
   + [[https://nmmull.github.io/CS320/landing/Fall-2025/index.html][Fall 2025]]
   + [[https://nmmull.github.io/CS320/landing/Spring-2025/index.html][Spring 2025]]
