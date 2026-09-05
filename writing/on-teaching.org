@@ -5,12 +5,9 @@
 I've lately been inclined to write on what it'll mean to teach at a
 university in the back half of the 2020s.  It's been just three years
 since I started teaching full time, and as of summer 2026 I feel I
-have no idea what I'm doing or (perhaps more importantly) why I'm
-doing it.  The simple truth: AI is changing the way that people learn,
-and──to my mostly quiet frustration──this behooves me to re-evaluate
-the way I teach.
-
-
+have no idea what I'm doing.  The basic truth: AI is changing the way
+that people learn, and──to my mostly quiet frustration──this behooves
+me to re-evaluate the way I teach.
 
 # It's hard to call it an elephant in the room──the idiom presumes the
 # inhabitants of said room are ignoring said elephant.  Truth is we
@@ -24,19 +21,19 @@ the way I teach.
 
 This essay serves three purposes:
 
-1. I wanted to organize my thoughts about teaching in 2026, as it
-   relates to AI and the university as an institution.
-2. I wanted to provide an open letter of sorts to students and to the
+1. organize my thoughts about teaching in 2026, as it
+   relates to AI and the university as an institution;
+2. provide an open letter of sorts to students and to the
    community writ large with the purpose of justifying some of my
-   course-organizational decisions.  I hate doing some of the things I
-   do, and I wanted to make a case for why I do them.
-3. I wanted to have some fun writing and ruminating.  It's been a
+   course-organizational decisions;  I hate doing some of the things I
+   do, and I want to make a case for why I do them;
+3. have some fun writing and ruminating;  it's been a
    while since I've written an essay proper.
 
 -----
 
-/What does it mean to learn with AI?/ I've been recently considering
-this question the way one considers trying out rock climbing.[fn::I've
+/What does it mean to learn with AI?/  I've been pondering this
+question the way one considers trying out rock climbing.[fn::I've
 chosen this analogy because I myself am a climber, so it balances my
 critique (gotta play devil's advocate with yourself sometimes).]  The
 appeal is clear (to the right person) but it's also kinda questionable
