@@ -9,6 +9,39 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 36 (8/30)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/solo.jpg]]
+
+
+[[https://caseygoldenmusic.bandcamp.com/album/solo][*Solo* by Casey Golden]]
+
+And so it begins (the fall semester).  There's been an uptick music
+listening (something about stress and taking long walks to work).  A
+lot of classical music, I was very tempted to choose the album
+[[https://www.prestomusic.com/classical/products/9879284--melancolie?utm_source=presto&utm_medium=app&link_token=a1116187-63b8-429f-bd30-3488c27efc90][*Melancolie*]] by Konstantin Krimmel (baritone) and Ammiel Bushakevitz
+(piano), a collection of songs by Brahms and Mandyczewski.  Krimmel's
+baritone is uncommonly glassy (I have lovely memory of gushing over an
+equally smooth tenor with a friend at UChicago after listening to
+choral works (I want to say Handel?) at the chapel).  But, per my
+arbitrary rule of avoiding adjacent albums of the same genre, I've
+instead gone with Casey Golden's new collection of solo piano pieces.
+This feels like an appropriate homage to my [[*Week 4 (1/18)][choice]] at the beginning of
+spring semester this year.  At the time I noted the way in which
+Evans's playing feels guided by some kind of fate.  Evans is often
+treated as a kind of Platonic ideal.  And so I feel like I'm listening
+to Evans all the time (though you can tell when it's the real stuff).
+Golden is distinct.  Evans is textures, Evans constructs edifaces.
+Golden is almost basic.  It's notable to me how often Golden is only
+playing two or three notes at any given time (particulary in the track
+/K.T./).  His left and right hands are like two old friends, finishing
+each other's phrases and leaving a lot unsaid without missing a beat.
+His playing is a bit structural, but don't you talk the with old
+friends the way you did a decade (or more) ago?
+
+-----
+
 * Week 35 (8/23)
 
 #+ATTR_HTML: :width 300px
