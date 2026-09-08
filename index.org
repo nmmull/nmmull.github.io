@@ -5,6 +5,8 @@ I'm a lecturer in the [[https://www.bu.edu/cs/][Department of Computer Science]]
 University.  My office number is *CDS 907* and my email address
 is ~(++ @bu.edu)nmmull~.  I'm interested generally in logic and
 computing.  I use the pronouns he/him/his.
+
+My office hours for the Fall 2026 semester are ~MTW 5:00PM-6:00PM CDS907~.
 * Teaching
 + *CAS CS 132* Geometric Algorithms
   + [[https://nmmull.github.io/cs132-f26/index.html][Fall 2026]]
