@@ -9,6 +9,112 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 39 (9/20)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/polaris.jpg]]
+
+[[https://cypres.bandcamp.com/album/polaris-cyp1693][*Polaris* by Duo Kiasma]]
+
+I kind of hate how much I like this.  It's nearly kitschy, but in an
+way that doesn't detract from the ultimate goal of creating an
+authentic recontextualization of baroque music. Maybe I'm just
+bothered by the fact that this isn't the only classical album with
+accordian that I've liked this year, there was also [[https://cypres.bandcamp.com/album/circa-diem-cyp4672][Circa Diem]] by Les
+Heures Bleues (on the same label).  Maybe it's about time that
+accordion was an integral part of the classical canon?  From the
+liner notes: "Rostropovich himself claimed that the bayan (the Russian
+accordion) was a better match for the cello than the piano."  I think
+kind of convinced, I just can't tell yet at the moment if this is a
+phase or true tonal breakthrough.
+
+-----
+
+* Week 38 (9/13)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/espacio-absoluto.jpg]]
+
+[[https://jamesdiaz.bandcamp.com/album/espacio-absoluto][*Espacio absoluto* by James Díaz & John Popham]]
+
+Hard not to start this one off with just: wow.  Also, props to Alley
+of [[https://alleystoughton.us/not-brahms-and-liszt/][/Not/ Brahms and Liszt]] (yet again) for bringing this one to my
+attention.  I wouldn't necessarily recommend to everyone, but it's one
+of the most fascinating explorations of the cello I've ever heard.
+
+My formative years as cellist coincided with my stint as a wannabe
+contraraian/avant-gardian (I have since become far more "basic") which
+is just to say I've listened to a lot of sound art pieces for the
+cello, and also played a few (and also wrote one to accompany a dance
+piece for one of my roommates in college).  There's a sameness to these
+pieces, they tend more towards Stravinsky-esque dissonance, harmonics
+galore, sawing, tremolo, glissando, whatever it takes to create
+unexpected sounds (which isn't difficult with the instrument).
+
+Días and Popham manage to generate as wide-ranging a sonic tapestry as
+anything I've heard, but almost entirely of consonant structures.  And
+this is accentuated by the nearly-ghostly reverb of the recording
+throughout, something I tend to hate in solo cello recording (sorry
+Yo-Yo) but in this case acts as an extension of the piece.  It's also
+worth noting how much expertise is needed to accomplish this; reverb
+muddles Bach, but in soundscape pieces like this, we /live/ in that
+reverb, we just have to sit with any inadvertent semitones (of which
+there were very few as far as I could tell).
+
+But the real reason I find this piece so incredible is somewhat
+insider-baseball.  The cello is an instrument of degrees-of-freedom.
+This is in part why it's difficult, why it's beautiful, and why it's a
+natural source of bizarre sounds.  On this last point, much of
+mastering the cello is learning to not accidentally make bizarre
+sounds: the squeak, the click, the harmonic, the near-bridge buzz.  In
+a sense this is what separates good cellists from excellent ones; my
+greatest fear as a young cellist wasn't intonation (I was pretty good
+on that front) but crunching or bouncing on the bow, switching bow
+direction too quickly, hitting an adjacent string and producing a
+harmonic, the kinds of things the greats never do.  Días and Popham
+treat the delta between these two states as a liminal space, something
+that can be amplified and enlarged, moved in and out of.  And I think
+this was on purpose; there are moments Popham will be playing an
+arpeggio and slowly transition into another arpeggio of harmonics with
+a completely different character, not by changing the position of his
+fingering hand, but just by changing the pressure of his fingers and
+his bowing.  Or when he brings his bow towards the bridge to bring out
+the a buzz, and then /further/ digs in until it transforms from
+spine-tingling distortion into ethereal harmonic.
+
+There's a whimsy to all this that's inspiring, and rewarding as a
+listener.  Why fear all these the sounds the cello makes?  Let's call it
+music and go from there.
+
+-----
+
+* Week 37 (9/6)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/boundless-blue.jpg]]
+
+[[https://ellazirina.bandcamp.com/album/boundless-blue-sunset-hue][*Boundless Blue, Sunset Hue* by Ella Zirina]]
+
+I tend to cringe at jazz electric guitar.  It has unflattering
+associations in my mind with brunch.  The stereotyical tone of
+electric guitar in jazz is so mid-y and rounded, at some point you
+might as well be playing a doorbell.  A jazz electric guitar album
+that keeps my interest is in itself a win.  Ella Zirina is an
+impressive instrumentalist, but I think more so understands intimately
+the sonics of electric guitar.  She swings it ever so slightly
+crunchy, ever so slightly reverb-y, and high enough in the treble
+range to bring out the percussive features of the instrument (I want
+to hear the picks and strums, the strings hitting the frets, I'm not
+sure why, something about knowing there's a human at the other end of
+it all).  I'm also a sucker for polyrhythms; and turns out she got me
+once already without me realizing.  The piece /Etude 7th/ appeared in
+big-band form on one of my favorite albums from last year, [[https://nuartorchestra.bandcamp.com/album/the-tivoli-sessions-1][The Trivoli
+Sessions]] by Nu Art Orchestra. It confused me the first time I heard it
+on this album, like when you see someone from your past while in an
+unfamiliar city.
+
+-----
+
 * Week 36 (8/30)
 
 #+ATTR_HTML: :width 300px
@@ -17,7 +123,7 @@ This microblog is written without the use of generative AI.
 
 [[https://caseygoldenmusic.bandcamp.com/album/solo][*Solo* by Casey Golden]]
 
-And so it begins (the fall semester).  There's been an uptick music
+And so it begins (the fall semester).  There's been an uptick in music
 listening (something about stress and taking long walks to work).  A
 lot of classical music, I was very tempted to choose the album
 [[https://www.prestomusic.com/classical/products/9879284--melancolie?utm_source=presto&utm_medium=app&link_token=a1116187-63b8-429f-bd30-3488c27efc90][*Melancolie*]] by Konstantin Krimmel (baritone) and Ammiel Bushakevitz
