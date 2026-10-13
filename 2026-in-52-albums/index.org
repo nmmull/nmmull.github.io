@@ -9,6 +9,40 @@ This microblog is written without the use of generative AI.
 
 -----
 
+* Week 41 (10/4)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/hunting-what-we-alread-killed.jpg]]
+
+[[https://devlemons.bandcamp.com/album/hunting-what-we-already-killed][*hunting what we already killed* by Dev Lemons]]
+
+This album convinces me that contemprary irony has come full circle.
+It feels right out of the early 2010s, but doesn't carry any of the
+that implicit brow-wiggling I associate with "young" folk (i.e., folk
+5-10 years younger than me) reviving the beat-heavy alt-rock of my
+radio-listening days.
+
+-----
+
+* Week 40 (9/27)
+
+#+ATTR_HTML: :width 300px
+[[file:covers/schumann.jpeg]]
+
+[[https://www.prestomusic.com/classical/products/8505954--sol-gabetta-schumann][*Schumann* by Sol Gabetta (and Friends)]]
+
+Sol Gabetta may be my favorite cellist alive at the moment.  Her
+playing emphasizes tone and intonation over drama, but never at the
+expense of character (though, from what I can tell, this is a more
+recent development).  There are phrases in /Stücke im Volkston/ that
+I'm used to hearing schmaltzy, where she instead lets the instrument
+sing.  It helps that Bertrand Chamayou is also a favorite of mine.
+This album and her album on Mendelssohn (also with Bertrand Chamayou)
+are the ones I take as starting points for eventually playing these
+pieces.
+
+-----
+
 * Week 39 (9/20)
 
 #+ATTR_HTML: :width 300px
